@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Placingo — Find Your Next Place</title>
+<title>Placingo — Property Without the Middleman</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,10 +13,6 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
 
 <style>
-
-/* =========================================================
-   RESET
-========================================================= */
 
 *{
   margin:0;
@@ -30,8 +26,8 @@ html{
 
 body{
   font-family:"DM Sans",sans-serif;
-  background:#f4f0e7;
-  color:#17352d;
+  background:#f5f1e8;
+  color:#173f35;
   overflow-x:hidden;
 }
 
@@ -49,53 +45,37 @@ a{
   text-decoration:none;
 }
 
-
-/* =========================================================
-   VARIABLES
-========================================================= */
-
 :root{
   --green:#173f35;
   --green-dark:#0d2d26;
-  --green-light:#315f50;
-
-  --cream:#f4f0e7;
-  --cream-light:#fbf9f3;
-  --cream-dark:#e8e1d4;
-
   --lime:#d9ef7c;
 
-  --text:#17352d;
-  --muted:#68766f;
+  --cream:#f5f1e8;
+  --cream-light:#fbf9f3;
 
-  --border:rgba(23,53,45,.12);
-
-  --radius-xl:34px;
-  --radius-lg:24px;
-  --radius-md:16px;
+  --muted:#6c7972;
+  --border:rgba(23,63,53,.12);
 }
 
 
 /* =========================================================
-   NAVBAR — GLASS HEADER
+   GLASS HEADER
 ========================================================= */
 
 .navbar{
   width:calc(100% - 10vw);
 
-  margin:0 5vw;
+  position:absolute;
+  top:18px;
+  left:5vw;
 
-  padding:13px 14px 13px 18px;
+  z-index:20;
+
+  padding:12px 13px 12px 18px;
 
   display:flex;
   align-items:center;
   justify-content:space-between;
-
-  position:absolute;
-  top:18px;
-  left:0;
-
-  z-index:20;
 
   color:white;
 
@@ -109,7 +89,7 @@ a{
   -webkit-backdrop-filter:blur(18px);
 
   box-shadow:
-    0 12px 35px rgba(0,0,0,.10);
+    0 15px 40px rgba(0,0,0,.12);
 }
 
 .logo{
@@ -119,12 +99,13 @@ a{
 
   font-size:22px;
   font-weight:700;
+
   letter-spacing:-.7px;
 }
 
 .logo-mark{
-  width:34px;
-  height:34px;
+  width:35px;
+  height:35px;
 
   border-radius:11px;
 
@@ -135,6 +116,7 @@ a{
   justify-content:center;
 
   color:var(--green);
+
   font-weight:800;
 
   transform:rotate(-8deg);
@@ -143,9 +125,9 @@ a{
 .nav-links{
   display:flex;
   align-items:center;
-  gap:34px;
+  gap:32px;
 
-  font-size:14px;
+  font-size:13px;
   font-weight:500;
 }
 
@@ -175,7 +157,7 @@ a{
 
   border-radius:30px;
 
-  font-size:14px;
+  font-size:13px;
 }
 
 .list-btn{
@@ -189,8 +171,9 @@ a{
 
   border-radius:30px;
 
+  font-size:13px;
+
   font-weight:700;
-  font-size:14px;
 }
 
 .menu-btn{
@@ -200,13 +183,14 @@ a{
   height:42px;
 
   border:none;
+
   border-radius:50%;
 
   background:rgba(255,255,255,.12);
 
   color:white;
 
-  font-size:20px;
+  font-size:19px;
 }
 
 
@@ -222,7 +206,7 @@ a{
   display:flex;
   align-items:flex-end;
 
-  padding:150px 5vw 65px;
+  padding:155px 5vw 65px;
 
   overflow:hidden;
 
@@ -231,7 +215,7 @@ a{
       180deg,
       rgba(10,35,29,.42),
       rgba(10,35,29,.16) 35%,
-      rgba(10,35,29,.78)
+      rgba(10,35,29,.80)
     ),
     url("https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=2200&q=90")
     center/cover no-repeat;
@@ -319,6 +303,7 @@ a{
   max-width:570px;
 
   font-size:17px;
+
   line-height:1.65;
 
   color:rgba(255,255,255,.82);
@@ -328,7 +313,7 @@ a{
 
 
 /* =========================================================
-   SEARCH PANEL
+   SEARCH
 ========================================================= */
 
 .search-panel{
@@ -344,7 +329,7 @@ a{
   align-items:center;
 
   box-shadow:
-    0 25px 70px rgba(0,0,0,.2);
+    0 25px 70px rgba(0,0,0,.20);
 }
 
 .search-field{
@@ -383,7 +368,9 @@ a{
 
 .search-label{
   font-size:11px;
+
   color:#89918c;
+
   font-weight:600;
 }
 
@@ -396,6 +383,7 @@ a{
   color:var(--green);
 
   font-size:14px;
+
   font-weight:600;
 
   width:100%;
@@ -410,6 +398,7 @@ a{
   border:none;
 
   background:var(--green);
+
   color:white;
 
   padding:17px 28px;
@@ -417,6 +406,7 @@ a{
   border-radius:18px;
 
   font-weight:700;
+
   font-size:14px;
 
   transition:.25s;
@@ -424,6 +414,7 @@ a{
 
 .search-button:hover{
   background:var(--green-dark);
+
   transform:translateY(-1px);
 }
 
@@ -433,16 +424,18 @@ a{
 ========================================================= */
 
 .intro{
-  padding:105px 5vw 90px;
+  padding:100px 5vw 85px;
 
   background:var(--cream-light);
 }
 
 .intro-inner{
   max-width:1280px;
+
   margin:auto;
 
   display:grid;
+
   grid-template-columns:1fr 1fr;
 
   gap:90px;
@@ -458,6 +451,7 @@ a{
   letter-spacing:1.8px;
 
   font-size:11px;
+
   font-weight:700;
 
   margin-bottom:17px;
@@ -480,7 +474,7 @@ a{
 }
 
 .intro-copy{
-  max-width:480px;
+  max-width:500px;
 
   color:#65736c;
 
@@ -489,77 +483,85 @@ a{
   line-height:1.75;
 }
 
+.intro-copy strong{
+  color:var(--green);
+}
+
 
 /* =========================================================
-   CATEGORIES
+   PROPERTY CATEGORIES
 ========================================================= */
 
 .categories{
-  padding:90px 5vw;
+  padding:85px 5vw 110px;
 
   background:var(--cream-light);
 }
 
 .container{
   max-width:1280px;
+
   margin:auto;
 }
 
 .section-heading{
   display:flex;
+
   justify-content:space-between;
+
   align-items:flex-end;
 
-  margin-bottom:35px;
+  margin-bottom:38px;
 }
 
 .section-heading h2{
   font-family:"Playfair Display",serif;
 
-  font-size:42px;
+  font-size:clamp(40px,5vw,58px);
 
-  letter-spacing:-1.5px;
+  letter-spacing:-2px;
+
+  line-height:1;
 }
 
-.section-link{
-  font-size:13px;
-  font-weight:700;
+.section-heading p{
+  max-width:390px;
 
-  border-bottom:1px solid var(--green);
+  color:#718078;
 
-  padding-bottom:4px;
+  font-size:14px;
+
+  line-height:1.7;
 }
 
 .category-grid{
   display:grid;
 
   grid-template-columns:
-    1.35fr
-    1fr
-    1fr;
-
-  grid-template-rows:240px 240px;
+    repeat(4,1fr);
 
   gap:16px;
 }
 
 .category-card{
+  min-height:255px;
+
   position:relative;
 
   overflow:hidden;
 
-  border-radius:26px;
+  border-radius:25px;
 
-  min-height:200px;
+  display:flex;
+
+  align-items:flex-end;
+
+  padding:23px;
 
   color:white;
 
-  display:flex;
-  align-items:flex-end;
-
-  padding:25px;
-
   background-size:cover;
+
   background-position:center;
 
   transition:.35s;
@@ -573,40 +575,66 @@ a{
   content:"";
 
   position:absolute;
+
   inset:0;
 
   background:
     linear-gradient(
       180deg,
-      transparent 25%,
-      rgba(8,27,22,.82)
+      transparent 20%,
+      rgba(7,29,23,.86)
     );
 }
 
-.category-card > div{
+.category-card-content{
   position:relative;
+
   z-index:2;
 }
 
 .category-card h3{
   font-family:"Playfair Display",serif;
 
-  font-size:27px;
+  font-size:24px;
 
   margin-bottom:5px;
 }
 
 .category-card p{
-  font-size:12px;
+  color:rgba(255,255,255,.76);
 
-  color:rgba(255,255,255,.75);
+  font-size:11px;
 }
 
-.category-house{
-  grid-row:span 2;
+.category-icon{
+  position:absolute;
 
+  top:18px;
+  right:18px;
+
+  width:38px;
+  height:38px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  border-radius:50%;
+
+  background:rgba(255,255,255,.15);
+
+  border:1px solid rgba(255,255,255,.20);
+
+  backdrop-filter:blur(10px);
+
+  z-index:3;
+
+  font-size:15px;
+}
+
+.category-home{
   background-image:
-    url("https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=90");
+    url("https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=900&q=90");
 }
 
 .category-apartment{
@@ -614,7 +642,12 @@ a{
     url("https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=900&q=90");
 }
 
-.category-land{
+.category-room{
+  background-image:
+    url("https://images.unsplash.com/photo-1560185008-b033106af5c3?auto=format&fit=crop&w=900&q=90");
+}
+
+.category-plot{
   background-image:
     url("https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=900&q=90");
 }
@@ -624,235 +657,22 @@ a{
     url("https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=900&q=90");
 }
 
-.category-farm{
+.category-farmhouse{
   background-image:
     url("https://images.unsplash.com/photo-1500076656116-558758c991c1?auto=format&fit=crop&w=900&q=90");
 }
+
+.category-warehouse{
+  background-image:
+    url("https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=900&q=90");
+}
+
+.category-office{
+  background-image:
+    url("https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=900&q=90");
+}
 /* =========================================================
-   FEATURED PROPERTY SECTION
-========================================================= */
-
-.featured{
-  padding:110px 5vw;
-
-  background:var(--green);
-
-  color:white;
-}
-
-.featured .section-eyebrow{
-  color:#aebcb5;
-}
-
-.featured-heading{
-  display:flex;
-  justify-content:space-between;
-  align-items:end;
-
-  margin-bottom:38px;
-}
-
-.featured-heading h2{
-  font-family:"Playfair Display",serif;
-
-  font-size:clamp(40px,5vw,62px);
-
-  line-height:1;
-
-  letter-spacing:-2px;
-}
-
-.featured-heading p{
-  max-width:350px;
-
-  color:#aab9b2;
-
-  font-size:14px;
-
-  line-height:1.65;
-}
-
-.property-grid{
-  display:grid;
-
-  grid-template-columns:
-    repeat(3,1fr);
-
-  gap:18px;
-}
-
-.property-card{
-  background:#f8f6ef;
-
-  color:var(--green);
-
-  border-radius:25px;
-
-  padding:10px;
-
-  transition:.3s;
-}
-
-.property-card:hover{
-  transform:translateY(-5px);
-}
-
-.property-image{
-  height:260px;
-
-  border-radius:18px;
-
-  position:relative;
-
-  background-size:cover;
-  background-position:center;
-}
-
-.property-badge{
-  position:absolute;
-
-  top:13px;
-  left:13px;
-
-  background:rgba(251,249,243,.94);
-
-  color:var(--green);
-
-  padding:7px 10px;
-
-  border-radius:20px;
-
-  font-size:10px;
-
-  font-weight:700;
-}
-
-.property-heart{
-  position:absolute;
-
-  top:12px;
-  right:12px;
-
-  width:34px;
-  height:34px;
-
-  border-radius:50%;
-
-  border:none;
-
-  background:rgba(255,255,255,.9);
-
-  font-size:16px;
-}
-
-.property-details{
-  padding:17px 10px 12px;
-}
-
-.property-type{
-  font-size:10px;
-
-  text-transform:uppercase;
-
-  letter-spacing:1.2px;
-
-  color:#839087;
-
-  font-weight:700;
-
-  margin-bottom:7px;
-}
-
-.property-title{
-  font-family:"Playfair Display",serif;
-
-  font-size:22px;
-
-  margin-bottom:5px;
-}
-
-.property-location{
-  color:#78847e;
-
-  font-size:12px;
-
-  margin-bottom:15px;
-}
-
-.property-meta{
-  display:flex;
-
-  gap:16px;
-
-  padding-bottom:14px;
-
-  border-bottom:1px solid rgba(23,53,45,.1);
-
-  color:#66736d;
-
-  font-size:11px;
-}
-
-.property-footer{
-  display:flex;
-
-  align-items:center;
-
-  justify-content:space-between;
-
-  padding-top:13px;
-}
-
-.property-price{
-  font-size:16px;
-
-  font-weight:700;
-}
-
-.confirmed{
-  display:flex;
-
-  align-items:center;
-
-  gap:5px;
-
-  font-size:10px;
-
-  color:#658044;
-
-  font-weight:700;
-}
-
-.confirmed-dot{
-  width:6px;
-  height:6px;
-
-  border-radius:50%;
-
-  background:#86aa48;
-}
-
-
-/* PROPERTY IMAGES */
-
-.property-one{
-  background-image:
-    url("https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1000&q=90");
-}
-
-.property-two{
-  background-image:
-    url("https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1000&q=90");
-}
-
-.property-three{
-  background-image:
-    url("https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=1000&q=90");
-}
-
-
-/* =========================================================
-   FRESH LISTINGS
+   FRESH / OWNER CONFIRMED
 ========================================================= */
 
 .fresh{
@@ -868,7 +688,7 @@ a{
 
   background:#f9f7f0;
 
-  border-radius:32px;
+  border-radius:34px;
 
   padding:65px;
 
@@ -876,44 +696,47 @@ a{
 
   grid-template-columns:1fr 1fr;
 
-  gap:70px;
+  gap:75px;
 
   align-items:center;
 }
 
 .fresh-visual{
-  min-height:450px;
+  min-height:480px;
 
-  border-radius:25px;
+  border-radius:27px;
+
+  position:relative;
+
+  overflow:hidden;
 
   background:
     linear-gradient(
       180deg,
       transparent,
-      rgba(14,48,39,.3)
+      rgba(14,48,39,.38)
     ),
     url("https://images.unsplash.com/photo-1600607688969-a5bfcd646154?auto=format&fit=crop&w=1200&q=90")
     center/cover;
-
-  position:relative;
 }
 
 .confirm-card{
   position:absolute;
 
-  bottom:25px;
   left:25px;
   right:25px;
+  bottom:25px;
 
-  background:rgba(251,249,243,.95);
+  padding:18px;
 
   border-radius:20px;
 
-  padding:17px;
+  background:rgba(251,249,243,.95);
 
   color:var(--green);
 
-  box-shadow:0 15px 35px rgba(0,0,0,.15);
+  box-shadow:
+    0 15px 35px rgba(0,0,0,.16);
 }
 
 .confirm-top{
@@ -923,23 +746,23 @@ a{
 
   align-items:center;
 
-  margin-bottom:8px;
+  margin-bottom:9px;
 }
 
 .confirm-title{
-  font-weight:700;
-
   font-size:14px;
+
+  font-weight:700;
 }
 
 .confirm-status{
+  padding:6px 9px;
+
+  border-radius:20px;
+
   background:#e2efc7;
 
   color:#54703b;
-
-  padding:5px 8px;
-
-  border-radius:20px;
 
   font-size:9px;
 
@@ -947,15 +770,17 @@ a{
 }
 
 .confirm-card p{
+  color:#768079;
+
   font-size:11px;
 
-  color:#768079;
+  line-height:1.5;
 }
 
 .fresh-content h2{
   font-family:"Playfair Display",serif;
 
-  font-size:clamp(42px,5vw,65px);
+  font-size:clamp(42px,5vw,66px);
 
   line-height:1;
 
@@ -969,15 +794,15 @@ a{
 }
 
 .fresh-content > p{
-  color:#68756e;
+  max-width:490px;
 
-  line-height:1.75;
+  color:#68756e;
 
   font-size:15px;
 
-  max-width:480px;
+  line-height:1.75;
 
-  margin-bottom:30px;
+  margin-bottom:32px;
 }
 
 .fresh-points{
@@ -985,9 +810,9 @@ a{
 
   flex-direction:column;
 
-  gap:17px;
+  gap:18px;
 
-  margin-bottom:32px;
+  margin-bottom:34px;
 }
 
 .fresh-point{
@@ -999,8 +824,8 @@ a{
 }
 
 .point-icon{
-  width:32px;
-  height:32px;
+  width:34px;
+  height:34px;
 
   flex-shrink:0;
 
@@ -1009,13 +834,13 @@ a{
   align-items:center;
   justify-content:center;
 
-  border-radius:10px;
+  border-radius:11px;
 
   background:#e6eed5;
 
   color:#607d42;
 
-  font-size:13px;
+  font-size:14px;
 }
 
 .point-text strong{
@@ -1023,7 +848,7 @@ a{
 
   font-size:13px;
 
-  margin-bottom:3px;
+  margin-bottom:4px;
 }
 
 .point-text span{
@@ -1031,13 +856,13 @@ a{
 
   font-size:11px;
 
-  line-height:1.4;
+  line-height:1.5;
 }
 
 .learn-btn{
   display:inline-flex;
 
-  padding:13px 19px;
+  padding:13px 20px;
 
   border-radius:30px;
 
@@ -1052,6 +877,249 @@ a{
 
 
 /* =========================================================
+   AVAILABILITY INFO STRIP
+========================================================= */
+
+.availability{
+  padding:90px 5vw;
+
+  background:var(--green);
+
+  color:white;
+}
+
+.availability-grid{
+  max-width:1280px;
+
+  margin:auto;
+
+  display:grid;
+
+  grid-template-columns:
+    1.25fr
+    1fr
+    1fr;
+
+  gap:18px;
+}
+
+.availability-main{
+  grid-row:span 2;
+
+  min-height:420px;
+
+  padding:38px;
+
+  border-radius:28px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(217,239,124,.14),
+      rgba(255,255,255,.04)
+    );
+
+  border:1px solid rgba(255,255,255,.10);
+
+  display:flex;
+
+  flex-direction:column;
+
+  justify-content:space-between;
+}
+
+.availability-main h2{
+  max-width:520px;
+
+  font-family:"Playfair Display",serif;
+
+  font-size:clamp(40px,4vw,58px);
+
+  line-height:1;
+
+  letter-spacing:-2px;
+}
+
+.availability-main h2 span{
+  color:var(--lime);
+}
+
+.availability-main p{
+  max-width:480px;
+
+  color:#aebcb5;
+
+  font-size:14px;
+
+  line-height:1.7;
+}
+
+.availability-badge{
+  display:inline-flex;
+
+  width:max-content;
+
+  align-items:center;
+
+  gap:8px;
+
+  padding:8px 12px;
+
+  border-radius:30px;
+
+  background:rgba(255,255,255,.08);
+
+  border:1px solid rgba(255,255,255,.12);
+
+  color:#d8e2dc;
+
+  font-size:10px;
+
+  font-weight:700;
+
+  text-transform:uppercase;
+
+  letter-spacing:1px;
+}
+
+.availability-card{
+  min-height:201px;
+
+  padding:27px;
+
+  border-radius:28px;
+
+  background:#f8f6ef;
+
+  color:var(--green);
+
+  display:flex;
+
+  flex-direction:column;
+
+  justify-content:space-between;
+}
+
+.availability-number{
+  font-family:"Playfair Display",serif;
+
+  font-size:42px;
+
+  line-height:1;
+}
+
+.availability-card p{
+  color:#78847e;
+
+  font-size:12px;
+
+  line-height:1.55;
+}
+
+.availability-card strong{
+  font-size:13px;
+
+  display:block;
+
+  margin-bottom:5px;
+}
+
+
+/* =========================================================
+   HOW IT WORKS
+========================================================= */
+
+.how{
+  padding:105px 5vw;
+
+  background:var(--cream-light);
+}
+
+.how-heading{
+  max-width:1280px;
+
+  margin:0 auto 45px;
+}
+
+.how-heading h2{
+  font-family:"Playfair Display",serif;
+
+  font-size:clamp(42px,5vw,64px);
+
+  line-height:1;
+
+  letter-spacing:-2px;
+}
+
+.how-heading h2 span{
+  color:#7c9a48;
+}
+
+.steps{
+  max-width:1280px;
+
+  margin:auto;
+
+  display:grid;
+
+  grid-template-columns:
+    repeat(3,1fr);
+
+  gap:18px;
+}
+
+.step{
+  padding:30px;
+
+  border-radius:25px;
+
+  background:#f0ebe0;
+
+  min-height:230px;
+
+  position:relative;
+}
+
+.step-number{
+  width:38px;
+  height:38px;
+
+  border-radius:12px;
+
+  background:var(--green);
+
+  color:var(--lime);
+
+  display:flex;
+
+  align-items:center;
+  justify-content:center;
+
+  font-size:12px;
+
+  font-weight:700;
+
+  margin-bottom:40px;
+}
+
+.step h3{
+  font-family:"Playfair Display",serif;
+
+  font-size:24px;
+
+  margin-bottom:9px;
+}
+
+.step p{
+  color:#748078;
+
+  font-size:12px;
+
+  line-height:1.65;
+}
+
+
+/* =========================================================
    CTA
 ========================================================= */
 
@@ -1060,9 +1128,9 @@ a{
 
   background:
     radial-gradient(
-      circle at 85% 20%,
+      circle at 82% 20%,
       rgba(217,239,124,.22),
-      transparent 25%
+      transparent 26%
     ),
     var(--green);
 
@@ -1094,15 +1162,15 @@ a{
 }
 
 .cta p{
-  color:#b8c4be;
-
   max-width:530px;
 
   margin:0 auto 32px;
 
-  line-height:1.7;
+  color:#b8c4be;
 
   font-size:15px;
+
+  line-height:1.7;
 }
 
 .cta-button{
@@ -1112,13 +1180,13 @@ a{
 
   gap:8px;
 
-  background:var(--lime);
-
-  color:var(--green);
-
   padding:15px 24px;
 
   border-radius:30px;
+
+  background:var(--lime);
+
+  color:var(--green);
 
   font-size:13px;
 
@@ -1131,11 +1199,11 @@ a{
 ========================================================= */
 
 footer{
+  padding:55px 5vw 30px;
+
   background:#0d2d26;
 
   color:white;
-
-  padding:55px 5vw 30px;
 }
 
 .footer-top{
@@ -1143,19 +1211,19 @@ footer{
 
   margin:auto;
 
+  padding-bottom:45px;
+
   display:flex;
 
   justify-content:space-between;
 
   gap:50px;
 
-  padding-bottom:45px;
-
   border-bottom:1px solid rgba(255,255,255,.1);
 }
 
 .footer-brand{
-  max-width:300px;
+  max-width:320px;
 }
 
 .footer-brand .logo{
@@ -1185,11 +1253,11 @@ footer{
 .footer-column a{
   display:block;
 
+  margin-bottom:10px;
+
   color:#84938c;
 
   font-size:11px;
-
-  margin-bottom:10px;
 
   transition:.2s;
 }
@@ -1213,22 +1281,14 @@ footer{
 
   font-size:10px;
 }
-/* =========================================================
-   MOBILE
-========================================================= */
-
-@media(max-width:900px){
+@media(max-width:950px){
 
   .navbar{
     width:calc(100% - 8vw);
 
-    margin:0 4vw;
-
-    top:14px;
+    left:4vw;
 
     padding:11px 12px 11px 15px;
-
-    border-radius:18px;
   }
 
   .nav-links,
@@ -1241,29 +1301,21 @@ footer{
   }
 
   .hero{
-    min-height:760px;
+    min-height:750px;
 
-    padding:130px 5vw 45px;
-
-    align-items:flex-end;
+    padding:135px 5vw 45px;
   }
 
   .hero h1{
-    font-size:58px;
+    font-size:60px;
 
     letter-spacing:-2.5px;
-  }
-
-  .hero-description{
-    font-size:14px;
   }
 
   .search-panel{
     flex-direction:column;
 
     padding:8px;
-
-    border-radius:20px;
   }
 
   .search-field{
@@ -1281,83 +1333,91 @@ footer{
   .intro-inner{
     grid-template-columns:1fr;
 
-    gap:25px;
+    gap:30px;
   }
 
   .category-grid{
-    grid-template-columns:1fr 1fr;
-
-    grid-template-rows:
-      220px
-      220px
-      220px;
-  }
-
-  .category-house{
-    grid-row:span 1;
-
-    grid-column:span 2;
-  }
-
-  .property-grid{
-    grid-template-columns:1fr;
-  }
-
-  .featured-heading{
-    flex-direction:column;
-
-    align-items:flex-start;
-
-    gap:18px;
+    grid-template-columns:repeat(2,1fr);
   }
 
   .fresh-box{
     grid-template-columns:1fr;
 
-    padding:25px;
+    padding:28px;
 
     gap:40px;
   }
 
   .fresh-visual{
+    min-height:380px;
+  }
+
+  .availability-grid{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .availability-main{
+    grid-column:span 2;
+
     min-height:350px;
+  }
+
+  .steps{
+    grid-template-columns:1fr;
   }
 
   .footer-top{
     flex-direction:column;
   }
 
-  .footer-links{
-    gap:45px;
-  }
-
 }
 
 
-@media(max-width:550px){
+@media(max-width:600px){
 
   .navbar{
+    top:12px;
+
     width:calc(100% - 7vw);
 
-    margin:0 3.5vw;
+    left:3.5vw;
+
+    border-radius:17px;
+  }
+
+  .logo{
+    font-size:20px;
+  }
+
+  .logo-mark{
+    width:32px;
+    height:32px;
   }
 
   .hero{
     min-height:720px;
+
+    padding:125px 5vw 38px;
   }
 
   .hero h1{
-    font-size:51px;
+    font-size:50px;
+
+    letter-spacing:-2px;
   }
 
-  .intro,
-  .categories,
-  .featured,
-  .fresh,
-  .cta{
-    padding-top:75px;
+  .hero-description{
+    font-size:14px;
 
-    padding-bottom:75px;
+    margin-bottom:28px;
+  }
+
+  .category-grid{
+    grid-template-columns:1fr;
+  }
+
+  .category-card{
+    min-height:210px;
   }
 
   .section-heading{
@@ -1368,19 +1428,60 @@ footer{
     gap:15px;
   }
 
-  .category-grid{
+  .fresh-box{
+    padding:20px;
+
+    border-radius:25px;
+  }
+
+  .fresh-visual{
+    min-height:320px;
+
+    border-radius:21px;
+  }
+
+  .confirm-card{
+    left:15px;
+    right:15px;
+    bottom:15px;
+  }
+
+  .availability-grid{
     grid-template-columns:1fr;
-
-    grid-template-rows:
-      repeat(5,190px);
   }
 
-  .category-house{
+  .availability-main{
     grid-column:span 1;
+
+    min-height:400px;
+
+    padding:28px;
   }
 
-  .fresh-content h2{
-    font-size:45px;
+  .availability-card{
+    min-height:180px;
+  }
+
+  .how{
+    padding:80px 5vw;
+  }
+
+  .step{
+    min-height:200px;
+  }
+
+  .step-number{
+    margin-bottom:28px;
+  }
+
+  .cta{
+    padding:90px 5vw;
+  }
+
+  .cta h2{
+    font-size:50px;
+
+    letter-spacing:-2px;
   }
 
   .footer-links{
@@ -1399,6 +1500,64 @@ footer{
 
 }
 
+
+/* =========================================================
+   MOBILE MENU
+========================================================= */
+
+.mobile-menu{
+  position:fixed;
+
+  inset:0;
+
+  z-index:50;
+
+  display:none;
+
+  padding:90px 25px 30px;
+
+  background:
+    rgba(13,45,38,.97);
+
+  color:white;
+}
+
+.mobile-menu.active{
+  display:block;
+}
+
+.mobile-menu a{
+  display:block;
+
+  padding:18px 0;
+
+  border-bottom:1px solid rgba(255,255,255,.1);
+
+  font-family:"Playfair Display",serif;
+
+  font-size:28px;
+}
+
+.mobile-close{
+  position:absolute;
+
+  top:20px;
+  right:20px;
+
+  width:42px;
+  height:42px;
+
+  border:none;
+
+  border-radius:50%;
+
+  background:rgba(255,255,255,.1);
+
+  color:white;
+
+  font-size:20px;
+}
+
 </style>
 </head>
 
@@ -1407,7 +1566,7 @@ footer{
 
 
 <!-- =======================================================
-     NAVBAR
+     GLASS HEADER
 ======================================================== -->
 
 <header class="navbar">
@@ -1448,7 +1607,10 @@ footer{
 
   <div class="nav-actions">
 
-    <button class="login-btn">
+    <button
+      class="login-btn"
+      onclick="signIn()"
+    >
       Sign in
     </button>
 
@@ -1473,6 +1635,53 @@ footer{
 
 
 <!-- =======================================================
+     MOBILE MENU
+======================================================== -->
+
+<div
+  class="mobile-menu"
+  id="mobileMenu"
+>
+
+  <button
+    class="mobile-close"
+    onclick="toggleMenu()"
+  >
+    ×
+  </button>
+
+  <a
+    href="#explore"
+    onclick="toggleMenu()"
+  >
+    Explore
+  </a>
+
+  <a
+    href="#categories"
+    onclick="toggleMenu()"
+  >
+    Properties
+  </a>
+
+  <a
+    href="#fresh"
+    onclick="toggleMenu()"
+  >
+    Why Placingo
+  </a>
+
+  <a
+    href="#about"
+    onclick="toggleMenu()"
+  >
+    About
+  </a>
+
+</div>
+
+
+<!-- =======================================================
      HERO
 ======================================================== -->
 
@@ -1482,6 +1691,7 @@ footer{
 >
 
   <div class="hero-content">
+
 
     <div class="hero-top-label">
 
@@ -1653,18 +1863,19 @@ footer{
         </div>
 
         <h2>
-          Find what fits.
+          Find your kind of place.
         </h2>
 
       </div>
 
 
-      <a
-        href="#featured"
-        class="section-link"
-      >
-        Explore all →
-      </a>
+      <p>
+
+        From a room for tonight to land for
+        something much bigger, find the type
+        of place you're actually looking for.
+
+      </p>
 
     </div>
 
@@ -1673,18 +1884,22 @@ footer{
 
 
       <div
-        class="category-card category-house"
+        class="category-card category-home"
         onclick="openCategory('Homes & Villas')"
       >
 
-        <div>
+        <div class="category-icon">
+          ↗
+        </div>
+
+        <div class="category-card-content">
 
           <h3>
             Homes & Villas
           </h3>
 
           <p>
-            Find a place to call home
+            A place to call your own
           </p>
 
         </div>
@@ -1697,14 +1912,18 @@ footer{
         onclick="openCategory('Apartments')"
       >
 
-        <div>
+        <div class="category-icon">
+          ↗
+        </div>
+
+        <div class="category-card-content">
 
           <h3>
             Apartments
           </h3>
 
           <p>
-            Spaces ready for you
+            Modern spaces for everyday living
           </p>
 
         </div>
@@ -1713,11 +1932,39 @@ footer{
 
 
       <div
-        class="category-card category-land"
+        class="category-card category-room"
+        onclick="openCategory('Rooms & PGs')"
+      >
+
+        <div class="category-icon">
+          ↗
+        </div>
+
+        <div class="category-card-content">
+
+          <h3>
+            Rooms & PGs
+          </h3>
+
+          <p>
+            Simple spaces that fit your needs
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div
+        class="category-card category-plot"
         onclick="openCategory('Plots & Land')"
       >
 
-        <div>
+        <div class="category-icon">
+          ↗
+        </div>
+
+        <div class="category-card-content">
 
           <h3>
             Plots & Land
@@ -1737,7 +1984,11 @@ footer{
         onclick="openCategory('Commercial')"
       >
 
-        <div>
+        <div class="category-icon">
+          ↗
+        </div>
+
+        <div class="category-card-content">
 
           <h3>
             Commercial
@@ -1753,18 +2004,70 @@ footer{
 
 
       <div
-        class="category-card category-farm"
+        class="category-card category-farmhouse"
         onclick="openCategory('Farmhouses')"
       >
 
-        <div>
+        <div class="category-icon">
+          ↗
+        </div>
+
+        <div class="category-card-content">
 
           <h3>
             Farmhouses
           </h3>
 
           <p>
-            Get away from the usual
+            More space. More freedom.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div
+        class="category-card category-warehouse"
+        onclick="openCategory('Warehouses')"
+      >
+
+        <div class="category-icon">
+          ↗
+        </div>
+
+        <div class="category-card-content">
+
+          <h3>
+            Warehouses
+          </h3>
+
+          <p>
+            Storage and industrial spaces
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div
+        class="category-card category-office"
+        onclick="openCategory('Offices')"
+      >
+
+        <div class="category-icon">
+          ↗
+        </div>
+
+        <div class="category-card-content">
+
+          <h3>
+            Offices
+          </h3>
+
+          <p>
+            Spaces made for work
           </p>
 
         </div>
@@ -1780,259 +2083,7 @@ footer{
 
 
 <!-- =======================================================
-     FEATURED
-======================================================== -->
-
-<section
-  class="featured"
-  id="featured"
->
-
-  <div class="container">
-
-
-    <div class="section-eyebrow">
-      Discover places
-    </div>
-
-
-    <div class="featured-heading">
-
-      <h2>
-
-        Places worth<br>
-        seeing.
-
-      </h2>
-
-
-      <p>
-
-        Explore properties that match what you're
-        looking for — with clearer information and
-        fresher availability.
-
-      </p>
-
-    </div>
-
-
-    <div class="property-grid">
-
-
-      <article class="property-card">
-
-        <div class="property-image property-one">
-
-          <div class="property-badge">
-            Owner confirmed
-          </div>
-
-          <button class="property-heart">
-            ♡
-          </button>
-
-        </div>
-
-
-        <div class="property-details">
-
-          <div class="property-type">
-            Villa · For Sale
-          </div>
-
-          <div class="property-title">
-            Modern Garden Villa
-          </div>
-
-          <div class="property-location">
-            Bhopal, Madhya Pradesh
-          </div>
-
-
-          <div class="property-meta">
-
-            <span>
-              3 Beds
-            </span>
-
-            <span>
-              2 Baths
-            </span>
-
-            <span>
-              2,400 sq.ft
-            </span>
-
-          </div>
-
-
-          <div class="property-footer">
-
-            <div class="property-price">
-              ₹85 Lakh
-            </div>
-
-            <div class="confirmed">
-
-              <span class="confirmed-dot"></span>
-
-              Confirmed recently
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </article>
-
-
-      <article class="property-card">
-
-        <div class="property-image property-two">
-
-          <div class="property-badge">
-            Available
-          </div>
-
-          <button class="property-heart">
-            ♡
-          </button>
-
-        </div>
-
-
-        <div class="property-details">
-
-          <div class="property-type">
-            Apartment · Rent
-          </div>
-
-          <div class="property-title">
-            Green View Apartment
-          </div>
-
-          <div class="property-location">
-            Indore, Madhya Pradesh
-          </div>
-
-
-          <div class="property-meta">
-
-            <span>
-              2 Beds
-            </span>
-
-            <span>
-              2 Baths
-            </span>
-
-            <span>
-              1,180 sq.ft
-            </span>
-
-          </div>
-
-
-          <div class="property-footer">
-
-            <div class="property-price">
-              ₹22,000/mo
-            </div>
-
-            <div class="confirmed">
-
-              <span class="confirmed-dot"></span>
-
-              Confirmed recently
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </article>
-
-
-      <article class="property-card">
-
-        <div class="property-image property-three">
-
-          <div class="property-badge">
-            Owner confirmed
-          </div>
-
-          <button class="property-heart">
-            ♡
-          </button>
-
-        </div>
-
-
-        <div class="property-details">
-
-          <div class="property-type">
-            Home · For Sale
-          </div>
-
-          <div class="property-title">
-            Quiet Courtyard Home
-          </div>
-
-          <div class="property-location">
-            Bhopal, Madhya Pradesh
-          </div>
-
-
-          <div class="property-meta">
-
-            <span>
-              4 Beds
-            </span>
-
-            <span>
-              3 Baths
-            </span>
-
-            <span>
-              2,100 sq.ft
-            </span>
-
-          </div>
-
-
-          <div class="property-footer">
-
-            <div class="property-price">
-              ₹72 Lakh
-            </div>
-
-            <div class="confirmed">
-
-              <span class="confirmed-dot"></span>
-
-              Confirmed recently
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </article>
-
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- =======================================================
-     FRESH LISTINGS
+     FRESH AVAILABILITY
 ======================================================== -->
 
 <section
@@ -2060,8 +2111,8 @@ footer{
         </div>
 
         <p>
-          This property was recently confirmed
-          as available by the owner.
+          The owner recently confirmed that
+          this property is still available.
         </p>
 
       </div>
@@ -2075,6 +2126,7 @@ footer{
         A better way to search
       </div>
 
+
       <h2>
 
         Don't chase<br>
@@ -2086,9 +2138,9 @@ footer{
 
       <p>
 
-        One of the most frustrating parts of property
-        hunting is finding something perfect — only to
-        discover that it's already gone.
+        Property listings can sit online long after
+        they've been rented, sold or taken off the market.
+        Placingo is designed to make availability clearer.
 
       </p>
 
@@ -2109,8 +2161,8 @@ footer{
             </strong>
 
             <span>
-              Property owners can renew their listing
-              when the property is still available.
+              Owners can renew their listing when
+              the property is still available.
             </span>
 
           </div>
@@ -2131,8 +2183,8 @@ footer{
             </strong>
 
             <span>
-              Know when availability was last confirmed
-              instead of guessing.
+              Know when availability was last
+              confirmed instead of guessing.
             </span>
 
           </div>
@@ -2153,8 +2205,8 @@ footer{
             </strong>
 
             <span>
-              Focus your time on places that are
-              actually worth contacting.
+              Focus your time on properties that
+              are actually worth contacting.
             </span>
 
           </div>
@@ -2166,15 +2218,236 @@ footer{
 
 
       <a
-        href="#"
+        href="#how"
         class="learn-btn"
-        onclick="return false;"
       >
-        How it works →
+        See how it works →
       </a>
 
 
     </div>
+
+  </div>
+
+</section>
+
+
+<!-- =======================================================
+     AVAILABILITY
+======================================================== -->
+
+<section class="availability">
+
+  <div class="availability-grid">
+
+
+    <div class="availability-main">
+
+      <div>
+
+        <div class="availability-badge">
+
+          <span class="status-dot"></span>
+
+          Built around fresh listings
+
+        </div>
+
+      </div>
+
+
+      <div>
+
+        <h2>
+
+          Know when a place was
+          <span>last confirmed.</span>
+
+        </h2>
+
+        <p>
+
+          Instead of treating every listing as equally fresh,
+          Placingo gives availability a timestamp — so you
+          have more context before making that call.
+
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <div class="availability-card">
+
+      <div class="availability-number">
+        01
+      </div>
+
+      <div>
+
+        <strong>
+          Owner lists
+        </strong>
+
+        <p>
+          The property enters the marketplace.
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <div class="availability-card">
+
+      <div class="availability-number">
+        02
+      </div>
+
+      <div>
+
+        <strong>
+          Owner confirms
+        </strong>
+
+        <p>
+          Availability gets renewed when it's still open.
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <div class="availability-card">
+
+      <div class="availability-number">
+        03
+      </div>
+
+      <div>
+
+        <strong>
+          You search
+        </strong>
+
+        <p>
+          See the freshness of the listing before contacting.
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <div class="availability-card">
+
+      <div class="availability-number">
+        04
+      </div>
+
+      <div>
+
+        <strong>
+          Find your place
+        </strong>
+
+        <p>
+          Less uncertainty. A simpler property search.
+        </p>
+
+      </div>
+
+    </div>
+
+
+  </div>
+
+</section>
+
+
+<!-- =======================================================
+     HOW IT WORKS
+======================================================== -->
+
+<section
+  class="how"
+  id="how"
+>
+
+  <div class="how-heading">
+
+    <div class="section-eyebrow">
+      Simple by design
+    </div>
+
+    <h2>
+
+      Property hunting,
+      <span>without the chaos.</span>
+
+    </h2>
+
+  </div>
+
+
+  <div class="steps">
+
+
+    <div class="step">
+
+      <div class="step-number">
+        01
+      </div>
+
+      <h3>
+        Search
+      </h3>
+
+      <p>
+        Choose your location and the kind of
+        property you're looking for.
+      </p>
+
+    </div>
+
+
+    <div class="step">
+
+      <div class="step-number">
+        02
+      </div>
+
+      <h3>
+        Check freshness
+      </h3>
+
+      <p>
+        See when the owner last confirmed
+        that the property was available.
+      </p>
+
+    </div>
+
+
+    <div class="step">
+
+      <div class="step-number">
+        03
+      </div>
+
+      <h3>
+        Connect
+      </h3>
+
+      <p>
+        Contact the owner and take the next
+        step toward your new place.
+      </p>
+
+    </div>
+
 
   </div>
 
@@ -2204,7 +2477,7 @@ footer{
     <p>
 
       Explore homes, rooms, land, workspaces and more —
-      all through one simpler property experience.
+      through one simpler property experience.
 
     </p>
 
@@ -2231,7 +2504,10 @@ footer{
 
     <div class="footer-brand">
 
-      <a href="#" class="logo">
+      <a
+        href="#"
+        class="logo"
+      >
 
         <span class="logo-mark">
           P
@@ -2246,8 +2522,9 @@ footer{
 
       <p>
 
-        A simpler way to find property — built around
-        clearer discovery and fresher availability.
+        Property without the unnecessary middleman.
+        A simpler way to discover places and understand
+        what's actually available.
 
       </p>
 
@@ -2271,12 +2548,12 @@ footer{
           Properties
         </a>
 
-        <a href="#featured">
-          Discover
-        </a>
-
         <a href="#fresh">
           Why Placingo
+        </a>
+
+        <a href="#about">
+          About
         </a>
 
       </div>
@@ -2288,7 +2565,10 @@ footer{
           Placingo
         </h4>
 
-        <a href="#">
+        <a
+          href="#"
+          onclick="signIn(); return false;"
+        >
           Sign in
         </a>
 
@@ -2299,8 +2579,8 @@ footer{
           List a property
         </a>
 
-        <a href="#about">
-          About
+        <a href="#how">
+          How it works
         </a>
 
       </div>
@@ -2354,45 +2634,44 @@ function searchProperties(){
     );
 
     return;
-
   }
-
-
-  let message =
-    "Search will be available soon.";
 
 
   if(location && property){
 
-    message =
+    alert(
       "Searching for " +
       property +
       " in " +
       location +
-      ".";
+      "."
+    );
 
+    return;
   }
 
-  else if(location){
 
-    message =
+  if(location){
+
+    alert(
       "Searching properties in " +
       location +
-      ".";
+      "."
+    );
 
+    return;
   }
 
-  else if(property){
 
-    message =
+  if(property){
+
+    alert(
       "Searching for " +
       property +
-      ".";
+      "."
+    );
 
   }
-
-
-  alert(message);
 
 }
 
@@ -2416,27 +2695,24 @@ function startListing(){
 }
 
 
-function toggleMenu(){
+function signIn(){
 
   alert(
-    "Menu will be available soon."
+    "Sign in will be available soon."
   );
 
 }
 
 
-document.addEventListener(
-  "keydown",
-  function(event){
+function toggleMenu(){
 
-    if(event.key === "Escape"){
+  const menu =
+    document.getElementById("mobileMenu");
 
-      // Reserved for mobile menu
+  menu.classList.toggle("active");
 
-    }
+}
 
-  }
-);
 
 </script>
 
