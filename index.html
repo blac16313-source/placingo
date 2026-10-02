@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Placingo — Find Your Next Place</title>
-
-<meta name="description"
-content="Placingo helps you discover your next property without the unnecessary middleman. Find homes, apartments, land, commercial spaces and more.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -66,7 +64,6 @@ a{
   --cream-dark:#e8e1d4;
 
   --lime:#d9ef7c;
-  --orange:#e98c58;
 
   --text:#17352d;
   --muted:#68766f;
@@ -80,23 +77,39 @@ a{
 
 
 /* =========================================================
-   NAVBAR
+   NAVBAR — GLASS HEADER
 ========================================================= */
 
 .navbar{
-  width:100%;
-  padding:22px 5vw;
+  width:calc(100% - 10vw);
+
+  margin:0 5vw;
+
+  padding:13px 14px 13px 18px;
 
   display:flex;
   align-items:center;
   justify-content:space-between;
 
   position:absolute;
-  top:0;
+  top:18px;
   left:0;
+
   z-index:20;
 
   color:white;
+
+  background:rgba(255,255,255,.10);
+
+  border:1px solid rgba(255,255,255,.20);
+
+  border-radius:20px;
+
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+
+  box-shadow:
+    0 12px 35px rgba(0,0,0,.10);
 }
 
 .logo{
@@ -148,15 +161,18 @@ a{
 .nav-actions{
   display:flex;
   align-items:center;
-  gap:12px;
+  gap:10px;
 }
 
 .login-btn{
   border:1px solid rgba(255,255,255,.35);
+
   background:rgba(255,255,255,.08);
+
   color:white;
 
-  padding:11px 18px;
+  padding:10px 17px;
+
   border-radius:30px;
 
   font-size:14px;
@@ -164,10 +180,13 @@ a{
 
 .list-btn{
   border:none;
+
   background:var(--lime);
+
   color:var(--green);
 
-  padding:12px 19px;
+  padding:11px 18px;
+
   border-radius:30px;
 
   font-weight:700;
@@ -184,6 +203,7 @@ a{
   border-radius:50%;
 
   background:rgba(255,255,255,.12);
+
   color:white;
 
   font-size:20px;
@@ -255,6 +275,7 @@ a{
   border-radius:30px;
 
   background:rgba(255,255,255,.13);
+
   border:1px solid rgba(255,255,255,.2);
 
   backdrop-filter:blur(12px);
@@ -307,7 +328,7 @@ a{
 
 
 /* =========================================================
-   SEARCH BOX
+   SEARCH PANEL
 ========================================================= */
 
 .search-panel{
@@ -408,7 +429,7 @@ a{
 
 
 /* =========================================================
-   INTRO STRIP
+   INTRO
 ========================================================= */
 
 .intro{
@@ -464,6 +485,7 @@ a{
   color:#65736c;
 
   font-size:16px;
+
   line-height:1.75;
 }
 
@@ -576,6 +598,7 @@ a{
 
 .category-card p{
   font-size:12px;
+
   color:rgba(255,255,255,.75);
 }
 
@@ -605,8 +628,6 @@ a{
   background-image:
     url("https://images.unsplash.com/photo-1500076656116-558758c991c1?auto=format&fit=crop&w=900&q=90");
 }
-
-
 /* =========================================================
    FEATURED PROPERTY SECTION
 ========================================================= */
@@ -647,6 +668,7 @@ a{
   color:#aab9b2;
 
   font-size:14px;
+
   line-height:1.65;
 }
 
@@ -759,6 +781,7 @@ a{
 
 .property-meta{
   display:flex;
+
   gap:16px;
 
   padding-bottom:14px;
@@ -772,7 +795,9 @@ a{
 
 .property-footer{
   display:flex;
+
   align-items:center;
+
   justify-content:space-between;
 
   padding-top:13px;
@@ -780,12 +805,15 @@ a{
 
 .property-price{
   font-size:16px;
+
   font-weight:700;
 }
 
 .confirmed{
   display:flex;
+
   align-items:center;
+
   gap:5px;
 
   font-size:10px;
@@ -821,6 +849,8 @@ a{
   background-image:
     url("https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=1000&q=90");
 }
+
+
 /* =========================================================
    FRESH LISTINGS
 ========================================================= */
@@ -873,7 +903,6 @@ a{
 
   bottom:25px;
   left:25px;
-
   right:25px;
 
   background:rgba(251,249,243,.95);
@@ -889,6 +918,7 @@ a{
 
 .confirm-top{
   display:flex;
+
   justify-content:space-between;
 
   align-items:center;
@@ -898,6 +928,7 @@ a{
 
 .confirm-title{
   font-weight:700;
+
   font-size:14px;
 }
 
@@ -917,6 +948,7 @@ a{
 
 .confirm-card p{
   font-size:11px;
+
   color:#768079;
 }
 
@@ -950,6 +982,7 @@ a{
 
 .fresh-points{
   display:flex;
+
   flex-direction:column;
 
   gap:17px;
@@ -959,6 +992,7 @@ a{
 
 .fresh-point{
   display:flex;
+
   align-items:flex-start;
 
   gap:13px;
@@ -971,6 +1005,7 @@ a{
   flex-shrink:0;
 
   display:flex;
+
   align-items:center;
   justify-content:center;
 
@@ -995,6 +1030,7 @@ a{
   color:#7b8580;
 
   font-size:11px;
+
   line-height:1.4;
 }
 
@@ -1073,6 +1109,7 @@ a{
   display:inline-flex;
 
   align-items:center;
+
   gap:8px;
 
   background:var(--lime);
@@ -1176,13 +1213,23 @@ footer{
 
   font-size:10px;
 }
-
-
 /* =========================================================
    MOBILE
 ========================================================= */
 
 @media(max-width:900px){
+
+  .navbar{
+    width:calc(100% - 8vw);
+
+    margin:0 4vw;
+
+    top:14px;
+
+    padding:11px 12px 11px 15px;
+
+    border-radius:18px;
+  }
 
   .nav-links,
   .nav-actions{
@@ -1191,10 +1238,6 @@ footer{
 
   .menu-btn{
     display:block;
-  }
-
-  .navbar{
-    padding:18px 5vw;
   }
 
   .hero{
@@ -1207,6 +1250,7 @@ footer{
 
   .hero h1{
     font-size:58px;
+
     letter-spacing:-2.5px;
   }
 
@@ -1226,6 +1270,7 @@ footer{
     width:100%;
 
     border-right:none;
+
     border-bottom:1px solid var(--border);
   }
 
@@ -1242,7 +1287,10 @@ footer{
   .category-grid{
     grid-template-columns:1fr 1fr;
 
-    grid-template-rows:220px 220px 220px;
+    grid-template-rows:
+      220px
+      220px
+      220px;
   }
 
   .category-house{
@@ -1288,6 +1336,12 @@ footer{
 
 @media(max-width:550px){
 
+  .navbar{
+    width:calc(100% - 7vw);
+
+    margin:0 3.5vw;
+  }
+
   .hero{
     min-height:720px;
   }
@@ -1302,12 +1356,15 @@ footer{
   .fresh,
   .cta{
     padding-top:75px;
+
     padding-bottom:75px;
   }
 
   .section-heading{
     align-items:flex-start;
+
     flex-direction:column;
+
     gap:15px;
   }
 
@@ -1336,6 +1393,7 @@ footer{
 
   .footer-bottom{
     flex-direction:column;
+
     gap:10px;
   }
 
@@ -1355,16 +1413,38 @@ footer{
 <header class="navbar">
 
   <a href="#" class="logo">
-    <span class="logo-mark">P</span>
-    <span>Placingo</span>
+
+    <span class="logo-mark">
+      P
+    </span>
+
+    <span>
+      Placingo
+    </span>
+
   </a>
 
+
   <nav class="nav-links">
-    <a href="#explore">Explore</a>
-    <a href="#categories">Properties</a>
-    <a href="#fresh">Why Placingo</a>
-    <a href="#about">About</a>
+
+    <a href="#explore">
+      Explore
+    </a>
+
+    <a href="#categories">
+      Properties
+    </a>
+
+    <a href="#fresh">
+      Why Placingo
+    </a>
+
+    <a href="#about">
+      About
+    </a>
+
   </nav>
+
 
   <div class="nav-actions">
 
@@ -1372,13 +1452,20 @@ footer{
       Sign in
     </button>
 
-    <button class="list-btn" onclick="startListing()">
+    <button
+      class="list-btn"
+      onclick="startListing()"
+    >
       List a property
     </button>
 
   </div>
 
-  <button class="menu-btn" onclick="toggleMenu()">
+
+  <button
+    class="menu-btn"
+    onclick="toggleMenu()"
+  >
     ☰
   </button>
 
@@ -1389,7 +1476,10 @@ footer{
      HERO
 ======================================================== -->
 
-<section class="hero" id="explore">
+<section
+  class="hero"
+  id="explore"
+>
 
   <div class="hero-content">
 
@@ -1401,18 +1491,26 @@ footer{
 
     </div>
 
+
     <h1>
+
       Find your
       <span>next place.</span>
+
     </h1>
 
+
     <p class="hero-description">
+
       Homes, apartments, rooms, land and workspaces —
       all in one place, with a better way to know
       what's actually available.
+
     </p>
 
+
     <div class="search-panel">
+
 
       <div class="search-field">
 
@@ -1469,6 +1567,7 @@ footer{
         Search properties
       </button>
 
+
     </div>
 
   </div>
@@ -1480,9 +1579,13 @@ footer{
      INTRO
 ======================================================== -->
 
-<section class="intro" id="about">
+<section
+  class="intro"
+  id="about"
+>
 
   <div class="intro-inner">
+
 
     <div>
 
@@ -1491,29 +1594,38 @@ footer{
       </div>
 
       <h2>
+
         Your place<br>
+
         <span>is out there.</span>
+
       </h2>
 
     </div>
 
+
     <div class="intro-copy">
 
       <p>
+
         Finding property shouldn't mean opening ten tabs,
         calling numbers that don't answer, and discovering
         that a listing was gone weeks ago.
+
       </p>
 
       <br>
 
       <p>
+
         <strong>Placingo</strong> is built around a simple idea:
         make finding a place easier — and make availability
         something you can actually trust.
+
       </p>
 
     </div>
+
 
   </div>
 
@@ -1524,9 +1636,13 @@ footer{
      CATEGORIES
 ======================================================== -->
 
-<section class="categories" id="categories">
+<section
+  class="categories"
+  id="categories"
+>
 
   <div class="container">
+
 
     <div class="section-heading">
 
@@ -1542,6 +1658,7 @@ footer{
 
       </div>
 
+
       <a
         href="#featured"
         class="section-link"
@@ -1553,6 +1670,7 @@ footer{
 
 
     <div class="category-grid">
+
 
       <div
         class="category-card category-house"
@@ -1653,34 +1771,47 @@ footer{
 
       </div>
 
+
     </div>
 
   </div>
 
 </section>
+
+
 <!-- =======================================================
-     FEATURED PROPERTIES
+     FEATURED
 ======================================================== -->
 
-<section class="featured" id="featured">
+<section
+  class="featured"
+  id="featured"
+>
 
   <div class="container">
+
 
     <div class="section-eyebrow">
       Discover places
     </div>
 
+
     <div class="featured-heading">
 
       <h2>
+
         Places worth<br>
         seeing.
+
       </h2>
 
+
       <p>
+
         Explore properties that match what you're
         looking for — with clearer information and
         fresher availability.
+
       </p>
 
     </div>
@@ -1688,8 +1819,6 @@ footer{
 
     <div class="property-grid">
 
-
-      <!-- PROPERTY 1 -->
 
       <article class="property-card">
 
@@ -1705,6 +1834,7 @@ footer{
 
         </div>
 
+
         <div class="property-details">
 
           <div class="property-type">
@@ -1718,6 +1848,7 @@ footer{
           <div class="property-location">
             Bhopal, Madhya Pradesh
           </div>
+
 
           <div class="property-meta">
 
@@ -1734,6 +1865,7 @@ footer{
             </span>
 
           </div>
+
 
           <div class="property-footer">
 
@@ -1756,8 +1888,6 @@ footer{
       </article>
 
 
-      <!-- PROPERTY 2 -->
-
       <article class="property-card">
 
         <div class="property-image property-two">
@@ -1772,6 +1902,7 @@ footer{
 
         </div>
 
+
         <div class="property-details">
 
           <div class="property-type">
@@ -1785,6 +1916,7 @@ footer{
           <div class="property-location">
             Indore, Madhya Pradesh
           </div>
+
 
           <div class="property-meta">
 
@@ -1801,6 +1933,7 @@ footer{
             </span>
 
           </div>
+
 
           <div class="property-footer">
 
@@ -1823,8 +1956,6 @@ footer{
       </article>
 
 
-      <!-- PROPERTY 3 -->
-
       <article class="property-card">
 
         <div class="property-image property-three">
@@ -1839,6 +1970,7 @@ footer{
 
         </div>
 
+
         <div class="property-details">
 
           <div class="property-type">
@@ -1852,6 +1984,7 @@ footer{
           <div class="property-location">
             Bhopal, Madhya Pradesh
           </div>
+
 
           <div class="property-meta">
 
@@ -1868,6 +2001,7 @@ footer{
             </span>
 
           </div>
+
 
           <div class="property-footer">
 
@@ -1889,6 +2023,7 @@ footer{
 
       </article>
 
+
     </div>
 
   </div>
@@ -1900,7 +2035,10 @@ footer{
      FRESH LISTINGS
 ======================================================== -->
 
-<section class="fresh" id="fresh">
+<section
+  class="fresh"
+  id="fresh"
+>
 
   <div class="fresh-box">
 
@@ -1938,14 +2076,20 @@ footer{
       </div>
 
       <h2>
+
         Don't chase<br>
+
         <span>dead listings.</span>
+
       </h2>
 
+
       <p>
+
         One of the most frustrating parts of property
         hunting is finding something perfect — only to
         discover that it's already gone.
+
       </p>
 
 
@@ -2029,6 +2173,7 @@ footer{
         How it works →
       </a>
 
+
     </div>
 
   </div>
@@ -2049,13 +2194,18 @@ footer{
     </div>
 
     <h2>
+
       Your next place<br>
+
       <span>starts here.</span>
+
     </h2>
 
     <p>
+
       Explore homes, rooms, land, workspaces and more —
       all through one simpler property experience.
+
     </p>
 
     <a
@@ -2078,6 +2228,7 @@ footer{
 
   <div class="footer-top">
 
+
     <div class="footer-brand">
 
       <a href="#" class="logo">
@@ -2092,15 +2243,19 @@ footer{
 
       </a>
 
+
       <p>
+
         A simpler way to find property — built around
         clearer discovery and fresher availability.
+
       </p>
 
     </div>
 
 
     <div class="footer-links">
+
 
       <div class="footer-column">
 
@@ -2150,12 +2305,10 @@ footer{
 
       </div>
 
+
     </div>
 
   </div>
-
-
-  <!-- SOCIAL LINKS + CONTACT DETAILS WILL BE ADDED HERE LATER. -->
 
 
   <div class="footer-bottom">
@@ -2182,10 +2335,17 @@ footer{
 function searchProperties(){
 
   const location =
-    document.getElementById("locationInput").value.trim();
+    document
+      .getElementById("locationInput")
+      .value
+      .trim();
 
   const property =
-    document.getElementById("propertyInput").value.trim();
+    document
+      .getElementById("propertyInput")
+      .value
+      .trim();
+
 
   if(!location && !property){
 
@@ -2194,10 +2354,13 @@ function searchProperties(){
     );
 
     return;
+
   }
+
 
   let message =
     "Search will be available soon.";
+
 
   if(location && property){
 
@@ -2209,6 +2372,7 @@ function searchProperties(){
       ".";
 
   }
+
   else if(location){
 
     message =
@@ -2217,6 +2381,7 @@ function searchProperties(){
       ".";
 
   }
+
   else if(property){
 
     message =
@@ -2225,6 +2390,7 @@ function searchProperties(){
       ".";
 
   }
+
 
   alert(message);
 
