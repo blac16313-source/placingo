@@ -2363,190 +2363,53 @@
 
 
   </script>
-    /* =========================
-       ENTER KEY SEARCH
-    ========================= */
+<script>
 
-    document.addEventListener(
-      "DOMContentLoaded",
-      function(){
+document.addEventListener(
+  "DOMContentLoaded",
+  function(){
 
-        const inputs = [
+    const inputs = [
+      document.getElementById("location"),
+      document.getElementById("minPrice"),
+      document.getElementById("maxPrice")
+    ];
 
-          document.getElementById(
-            "location"
-          ),
+    inputs.forEach(function(input){
 
-          document.getElementById(
-            "minPrice"
-          ),
+      if(!input){
+        return;
+      }
 
-          document.getElementById(
-            "maxPrice"
-          )
+      input.addEventListener(
+        "keydown",
+        function(event){
 
-        ];
-
-
-        inputs.forEach(
-          function(input){
-
-            if(!input){
-              return;
-            }
-
-
-            input.addEventListener(
-              "keydown",
-              function(event){
-
-                if(
-                  event.key === "Enter"
-                ){
-
-                  event.preventDefault();
-
-                  applyFilters();
-
-                }
-
-              }
-            );
-
+          if(event.key === "Enter"){
+            event.preventDefault();
+            applyFilters();
           }
-        );
 
-      }
-    );
-
-
-    /* =========================
-       BROWSER BACK / FORWARD
-    ========================= */
-
-    window.addEventListener(
-      "popstate",
-      function(){
-
-        /*
-          Reload filters from URL
-          when user presses the
-          browser back/forward button.
-        */
-
-        loadUrlFilters();
-
-        applyFilters();
-
-      }
-    );
-
-
-    /* =========================
-       CATEGORY LABEL HELPERS
-    ========================= */
-
-    function getPropertyTypeLabel(
-      type
-    ){
-
-      const labels = {
-
-        home:
-          "Homes & Villas",
-
-        apartment:
-          "Apartments",
-
-        room:
-          "Rooms",
-
-        pg:
-          "PGs",
-
-        plot:
-          "Plots & Land",
-
-        farmhouse:
-          "Farmhouses",
-
-        commercial:
-          "Commercial",
-
-        shop:
-          "Shops",
-
-        office:
-          "Offices",
-
-        warehouse:
-          "Warehouses"
-
-      };
-
-
-      return (
-        labels[type] ||
-        type ||
-        "Property"
+        }
       );
 
-    }
+    });
+
+  }
+);
 
 
-    /*
-      This makes future
-      Supabase property cards
-      display human-friendly
-      property type names.
-    */
+window.addEventListener(
+  "popstate",
+  function(){
 
-    const originalRenderProperties =
-      renderProperties;
+    loadUrlFilters();
+    applyFilters();
 
+  }
+);
 
-    renderProperties =
-      function(list){
-
-        list =
-          list.map(
-            function(property){
-
-              return {
-
-                ...property,
-
-                propertyType:
-                  getPropertyTypeLabel(
-                    property.propertyType
-                  )
-
-              };
-
-            }
-          );
-
-
-        originalRenderProperties(
-          list
-        );
-
-      };
-
-
-    /* =========================
-       INITIAL EMPTY STATE
-    ========================= */
-
-    /*
-      initializePage() from Part 2
-      runs automatically after
-      DOMContentLoaded.
-    */
-
-  </script>
-
+</script>
 
 </body>
-
 </html>
