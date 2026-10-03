@@ -213,6 +213,8 @@
       margin-bottom:26px;
     }
 
+    /* GOOGLE BUTTON */
+
     .google-button{
       width:100%;
       min-height:56px;
@@ -246,6 +248,161 @@
       width:20px;
       height:20px;
       display:block;
+    }
+
+    /* ACCOUNT */
+
+    .account-profile{
+      display:flex;
+      align-items:center;
+      gap:14px;
+
+      padding:15px;
+
+      margin-bottom:18px;
+
+      border:1px solid var(--line);
+      border-radius:15px;
+
+      background:var(--cream-light);
+    }
+
+    .profile-image{
+      width:52px;
+      height:52px;
+
+      flex:none;
+
+      border-radius:50%;
+
+      object-fit:cover;
+
+      background:#e9eee9;
+
+      border:2px solid #fff;
+
+      box-shadow:
+        0 5px 15px rgba(13,45,38,.08);
+    }
+
+    .profile-info{
+      min-width:0;
+    }
+
+    .profile-name{
+      font-size:16px;
+      font-weight:700;
+
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .profile-email{
+      margin-top:3px;
+
+      color:var(--muted);
+
+      font-size:12px;
+
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .account-status{
+      display:flex;
+      align-items:center;
+      gap:8px;
+
+      margin:18px 0;
+
+      color:#5d6e29;
+
+      font-size:13px;
+      font-weight:700;
+    }
+
+    .account-status-dot{
+      width:8px;
+      height:8px;
+
+      border-radius:50%;
+
+      background:#8ea93b;
+    }
+
+    .account-detail{
+      display:flex;
+      justify-content:space-between;
+      gap:15px;
+
+      padding:13px 0;
+
+      border-top:1px solid var(--line);
+
+      font-size:13px;
+    }
+
+    .account-detail-label{
+      color:var(--muted);
+    }
+
+    .account-detail-value{
+      text-align:right;
+      font-weight:600;
+    }
+
+    .dashboard-button{
+      width:100%;
+
+      min-height:54px;
+
+      display:flex;
+      align-items:center;
+      justify-content:center;
+
+      margin-top:20px;
+
+      border-radius:12px;
+
+      background:var(--green);
+      color:#fff;
+
+      font-size:14px;
+      font-weight:700;
+
+      transition:.2s ease;
+    }
+
+    .dashboard-button:hover{
+      background:var(--green-dark);
+      transform:translateY(-1px);
+    }
+
+    .logout-button{
+      width:100%;
+
+      min-height:50px;
+
+      margin-top:10px;
+
+      border:1px solid rgba(23,63,53,.14);
+
+      border-radius:12px;
+
+      background:#fff;
+
+      color:var(--green);
+
+      font-size:14px;
+      font-weight:700;
+
+      transition:.2s ease;
+    }
+
+    .logout-button:hover{
+      background:var(--cream-light);
     }
 
     .divider{
@@ -437,15 +594,17 @@
         <section class="login-copy">
 
           <div class="eyebrow">
-            Welcome to Placingo
+            <span id="eyebrowText">
+              Welcome to Placingo
+            </span>
           </div>
 
-          <h1>
+          <h1 id="mainHeading">
             Your property journey,
             <em>starts here.</em>
           </h1>
 
-          <p>
+          <p id="mainDescription">
             Sign in to manage your properties,
             keep your listings current and stay
             connected with your property journey.
@@ -454,65 +613,174 @@
         </section>
 
 
-        <!-- LOGIN CARD -->
+        <!-- LOGIN / ACCOUNT CARD -->
 
         <section class="login-card">
 
-          <h2>
+          <h2 id="cardTitle">
             Sign in
           </h2>
 
-          <p class="login-card-subtitle">
+          <p
+            class="login-card-subtitle"
+            id="cardSubtitle"
+          >
             Continue with your Google account
             to access your Placingo dashboard.
           </p>
 
-          <button
-            id="googleButton"
-            class="google-button"
-            type="button"
-            onclick="signInWithGoogle()"
+
+          <!-- LOGGED OUT -->
+
+          <div id="loggedOutArea">
+
+            <button
+              id="googleButton"
+              class="google-button"
+              type="button"
+              onclick="signInWithGoogle()"
+            >
+
+              <svg
+                class="google-icon"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+
+                <path
+                  fill="#4285F4"
+                  d="M21.35 12.23c0-.79-.07-1.55-.23-2.27H12v4.3h5.24a4.48 4.48 0 0 1-1.94 2.94v2.45h3.14c1.84-1.69 2.91-4.18 2.91-7.42Z"
+                />
+
+                <path
+                  fill="#34A853"
+                  d="M12 21.5c2.63 0 4.84-.87 6.45-2.35l-3.14-2.45c-.87.58-1.98.93-3.31.93-2.54 0-4.7-1.72-5.47-4.03H3.28v2.53A9.74 9.74 0 0 0 12 21.5Z"
+                />
+
+                <path
+                  fill="#FBBC05"
+                  d="M6.53 13.6A5.86 5.86 0 0 1 6.22 12c0-.56.1-1.1.31-1.6V7.87H3.28A9.74 9.74 0 0 0 2.25 12c0 1.57.38 3.05 1.03 4.13l3.25-2.53Z"
+                />
+
+                <path
+                  fill="#EA4335"
+                  d="M12 6.38c1.43 0 2.71.49 3.72 1.45l2.79-2.79C16.84 3.48 14.63 2.5 12 2.5a9.74 9.74 0 0 0-8.72 5.37l3.25 2.53C7.3 8.1 9.46 6.38 12 6.38Z"
+                />
+
+              </svg>
+
+              <span id="googleButtonText">
+                Continue with Google
+              </span>
+
+            </button>
+
+          </div>
+
+
+          <!-- LOGGED IN -->
+
+          <div
+            id="loggedInArea"
+            style="display:none;"
           >
 
-            <svg
-              class="google-icon"
-              viewBox="0 0 24 24"
-              aria-hidden="true"
+            <div class="account-profile">
+
+              <img
+                id="profileImage"
+                class="profile-image"
+                src=""
+                alt="Google profile"
+              >
+
+              <div class="profile-info">
+
+                <div
+                  id="profileName"
+                  class="profile-name"
+                >
+                  Google User
+                </div>
+
+                <div
+                  id="profileEmail"
+                  class="profile-email"
+                >
+                  -
+                </div>
+
+              </div>
+
+            </div>
+
+
+            <div class="account-status">
+
+              <span class="account-status-dot"></span>
+
+              <span>
+                Signed in with Google
+              </span>
+
+            </div>
+
+
+            <div class="account-detail">
+
+              <span class="account-detail-label">
+                Last sign-in
+              </span>
+
+              <span
+                id="lastSignIn"
+                class="account-detail-value"
+              >
+                -
+              </span>
+
+            </div>
+
+
+            <a
+              href="dashboard.html"
+              class="dashboard-button"
             >
-              <path
-                fill="#4285F4"
-                d="M21.35 12.23c0-.79-.07-1.55-.23-2.27H12v4.3h5.24a4.48 4.48 0 0 1-1.94 2.94v2.45h3.14c1.84-1.69 2.91-4.18 2.91-7.42Z"
-              />
-              <path
-                fill="#34A853"
-                d="M12 21.5c2.63 0 4.84-.87 6.45-2.35l-3.14-2.45c-.87.58-1.98.93-3.31.93-2.54 0-4.7-1.72-5.47-4.03H3.28v2.53A9.74 9.74 0 0 0 12 21.5Z"
-              />
-              <path
-                fill="#FBBC05"
-                d="M6.53 13.6A5.86 5.86 0 0 1 6.22 12c0-.56.1-1.1.31-1.6V7.87H3.28A9.74 9.74 0 0 0 2.25 12c0 1.57.38 3.05 1.03 4.13l3.25-2.53Z"
-              />
-              <path
-                fill="#EA4335"
-                d="M12 6.38c1.43 0 2.71.49 3.72 1.45l2.79-2.79C16.84 3.48 14.63 2.5 12 2.5a9.74 9.74 0 0 0-8.72 5.37l3.25 2.53C7.3 8.1 9.46 6.38 12 6.38Z"
-              />
-            </svg>
+              Open Dashboard →
+            </a>
 
-            <span id="googleButtonText">
-              Continue with Google
-            </span>
 
-          </button>
+            <button
+              id="logoutButton"
+              class="logout-button"
+              type="button"
+              onclick="signOut()"
+            >
+              Sign out
+            </button>
+
+          </div>
+
 
           <div
             id="message"
             class="message"
           ></div>
 
+
           <div class="divider">
-            <span>Secure sign in</span>
+
+            <span id="dividerText">
+              Secure sign in
+            </span>
+
           </div>
 
-          <p class="login-note">
+
+          <p
+            class="login-note"
+            id="loginNote"
+          >
             Your Google account is used to create
             and maintain your <strong>Placingo</strong>
             account securely.
@@ -538,7 +806,9 @@
     </div>
 
   </footer>
-<!-- SUPABASE -->
+
+
+  <!-- SUPABASE -->
 
   <script
     src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
@@ -569,13 +839,84 @@
     ========================================= */
 
     const googleButton =
-      document.getElementById("googleButton");
+      document.getElementById(
+        "googleButton"
+      );
 
     const googleButtonText =
-      document.getElementById("googleButtonText");
+      document.getElementById(
+        "googleButtonText"
+      );
 
     const message =
-      document.getElementById("message");
+      document.getElementById(
+        "message"
+      );
+
+    const loggedOutArea =
+      document.getElementById(
+        "loggedOutArea"
+      );
+
+    const loggedInArea =
+      document.getElementById(
+        "loggedInArea"
+      );
+
+    const cardTitle =
+      document.getElementById(
+        "cardTitle"
+      );
+
+    const cardSubtitle =
+      document.getElementById(
+        "cardSubtitle"
+      );
+
+    const eyebrowText =
+      document.getElementById(
+        "eyebrowText"
+      );
+
+    const mainHeading =
+      document.getElementById(
+        "mainHeading"
+      );
+
+    const mainDescription =
+      document.getElementById(
+        "mainDescription"
+      );
+
+    const dividerText =
+      document.getElementById(
+        "dividerText"
+      );
+
+    const loginNote =
+      document.getElementById(
+        "loginNote"
+      );
+
+    const profileImage =
+      document.getElementById(
+        "profileImage"
+      );
+
+    const profileName =
+      document.getElementById(
+        "profileName"
+      );
+
+    const profileEmail =
+      document.getElementById(
+        "profileEmail"
+      );
+
+    const lastSignIn =
+      document.getElementById(
+        "lastSignIn"
+      );
 
 
     /* =========================================
@@ -591,7 +932,8 @@
         return;
       }
 
-      message.textContent = text;
+      message.textContent =
+        text;
 
       message.className =
         "message show " + type;
@@ -605,7 +947,8 @@
         return;
       }
 
-      message.textContent = "";
+      message.textContent =
+        "";
 
       message.className =
         "message";
@@ -636,6 +979,258 @@
             : "Continue with Google";
 
       }
+
+    }
+
+
+    /* =========================================
+       FORMAT LAST SIGN IN
+    ========================================= */
+
+    function formatLastSignIn(
+      timestamp
+    ){
+
+      if(!timestamp){
+        return "Not available";
+      }
+
+      const date =
+        new Date(timestamp);
+
+
+      if(
+        Number.isNaN(
+          date.getTime()
+        )
+      ){
+
+        return "Not available";
+
+      }
+
+
+      return date.toLocaleString(
+        undefined,
+        {
+          day:"numeric",
+          month:"short",
+          year:"numeric",
+          hour:"numeric",
+          minute:"2-digit"
+        }
+      );
+
+    }
+
+
+    /* =========================================
+       SHOW LOGGED OUT STATE
+    ========================================= */
+
+    function showLoggedOut(){
+
+      if(loggedOutArea){
+        loggedOutArea.style.display =
+          "block";
+      }
+
+      if(loggedInArea){
+        loggedInArea.style.display =
+          "none";
+      }
+
+
+      if(eyebrowText){
+        eyebrowText.textContent =
+          "Welcome to Placingo";
+      }
+
+      if(mainHeading){
+        mainHeading.innerHTML =
+          'Your property journey, <em>starts here.</em>';
+      }
+
+      if(mainDescription){
+        mainDescription.textContent =
+          "Sign in to manage your properties, keep your listings current and stay connected with your property journey.";
+      }
+
+      if(cardTitle){
+        cardTitle.textContent =
+          "Sign in";
+      }
+
+      if(cardSubtitle){
+        cardSubtitle.textContent =
+          "Continue with your Google account to access your Placingo dashboard.";
+      }
+
+      if(dividerText){
+        dividerText.textContent =
+          "Secure sign in";
+      }
+
+      if(loginNote){
+        loginNote.innerHTML =
+          'Your Google account is used to create and maintain your <strong>Placingo</strong> account securely.';
+      }
+
+    }
+
+
+    /* =========================================
+       SHOW LOGGED IN STATE
+    ========================================= */
+
+    function showLoggedIn(
+      user
+    ){
+
+      if(loggedOutArea){
+        loggedOutArea.style.display =
+          "none";
+      }
+
+      if(loggedInArea){
+        loggedInArea.style.display =
+          "block";
+      }
+
+
+      const metadata =
+        user.user_metadata || {};
+
+
+      const name =
+        metadata.full_name ||
+        metadata.name ||
+        user.email ||
+        "Google User";
+
+
+      const email =
+        user.email ||
+        "Email unavailable";
+
+
+      const avatar =
+        metadata.avatar_url ||
+        metadata.picture ||
+        "";
+
+
+            if(profileName){
+        profileName.textContent =
+          name;
+      }
+
+      if(profileEmail){
+        profileEmail.textContent =
+          email;
+      }
+
+
+      if(profileImage){
+
+        if(avatar){
+
+          profileImage.src =
+            avatar;
+
+          profileImage.style.display =
+            "block";
+
+        }
+        else{
+
+          profileImage.style.display =
+            "none";
+
+        }
+
+      }
+
+
+      if(lastSignIn){
+
+        lastSignIn.textContent =
+          formatLastSignIn(
+            user.last_sign_in_at
+          );
+
+      }
+
+
+      if(eyebrowText){
+        eyebrowText.textContent =
+          "Your Placingo account";
+      }
+
+      if(mainHeading){
+        mainHeading.innerHTML =
+          'Welcome back, <em>' +
+          escapeHtml(name.split(" ")[0]) +
+          '.</em>';
+      }
+
+      if(mainDescription){
+        mainDescription.textContent =
+          "Your account is connected. Manage your properties and keep your listings current from your dashboard.";
+      }
+
+      if(cardTitle){
+        cardTitle.textContent =
+          "Account";
+      }
+
+      if(cardSubtitle){
+        cardSubtitle.textContent =
+          "You're already signed in to Placingo with your Google account.";
+      }
+
+      if(dividerText){
+        dividerText.textContent =
+          "Account security";
+      }
+
+      if(loginNote){
+        loginNote.innerHTML =
+          'Your account is securely connected through <strong>Google</strong>.';
+      }
+
+    }
+
+
+    /* =========================================
+       SAFE HTML
+    ========================================= */
+
+    function escapeHtml(
+      value
+    ){
+
+      return String(value)
+        .replace(
+          /&/g,
+          "&amp;"
+        )
+        .replace(
+          /</g,
+          "&lt;"
+        )
+        .replace(
+          />/g,
+          "&gt;"
+        )
+        .replace(
+          /"/g,
+          "&quot;"
+        )
+        .replace(
+          /'/g,
+          "&#039;"
+        );
 
     }
 
@@ -691,15 +1286,6 @@
         }
 
 
-        /*
-          Supabase will redirect the browser
-          to Google automatically.
-
-          The 'data' object is intentionally
-          not used here because the browser
-          leaves this page during OAuth.
-        */
-
         console.log(
           "Google OAuth started:",
           data
@@ -726,7 +1312,65 @@
 
 
     /* =========================================
-       CHECK EXISTING SESSION
+       SIGN OUT
+    ========================================= */
+
+    async function signOut(){
+
+      clearMessage();
+
+      try{
+
+        const {
+          error
+        } =
+          await supabaseClient.auth.signOut();
+
+
+        if(error){
+
+          console.error(
+            "Sign out error:",
+            error
+          );
+
+          showMessage(
+            error.message ||
+            "Unable to sign out.",
+            "error"
+          );
+
+          return;
+        }
+
+
+        showLoggedOut();
+
+        showMessage(
+          "You have been signed out successfully.",
+          "success"
+        );
+
+      }
+      catch(error){
+
+        console.error(
+          "Unexpected sign out error:",
+          error
+        );
+
+        showMessage(
+          "Something went wrong while signing out.",
+          "error"
+        );
+
+      }
+
+    }
+
+
+    /* =========================================
+       CHECK SESSION
     ========================================= */
 
     async function checkExistingSession(){
@@ -747,7 +1391,10 @@
             error
           );
 
+          showLoggedOut();
+
           return;
+
         }
 
 
@@ -756,19 +1403,16 @@
           data.session;
 
 
-        if(session){
+        if(session && session.user){
 
-          /*
-            The user is already signed in.
-
-            Send them directly to the
-            dashboard instead of showing
-            the Google login screen again.
-          */
-
-          window.location.replace(
-            "dashboard.html"
+          showLoggedIn(
+            session.user
           );
+
+        }
+        else{
+
+          showLoggedOut();
 
         }
 
@@ -779,6 +1423,8 @@
           "Unexpected session error:",
           error
         );
+
+        showLoggedOut();
 
       }
 
@@ -801,13 +1447,30 @@
         );
 
 
+        /*
+          Do NOT automatically redirect
+          signed-in users to the dashboard.
+
+          The login page now works as an
+          account page when a session exists.
+        */
+
         if(
-          event === "SIGNED_IN" &&
-          session
+          event === "SIGNED_OUT"
         ){
 
-          window.location.replace(
-            "dashboard.html"
+          showLoggedOut();
+
+        }
+
+        if(
+          event === "SIGNED_IN" &&
+          session &&
+          session.user
+        ){
+
+          showLoggedIn(
+            session.user
           );
 
         }
@@ -830,5 +1493,7 @@
     );
 
   </script>
+
 </body>
 </html>
+       
