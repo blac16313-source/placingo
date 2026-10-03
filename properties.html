@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
   <meta charset="UTF-8">
@@ -15,6 +14,28 @@
 
   <style>
 
+    :root{
+
+      --green:#173f35;
+      --green-dark:#0d2d26;
+      --lime:#d9ef7c;
+
+      --cream:#f5f1e8;
+      --cream-light:#fbf9f3;
+
+      --white:#ffffff;
+
+      --muted:#6c7972;
+
+      --line:rgba(23,63,53,.12);
+
+      --shadow:
+        0 20px 60px
+        rgba(13,45,38,.10);
+
+    }
+
+
     *{
       box-sizing:border-box;
       margin:0;
@@ -28,13 +49,22 @@
 
 
     body{
-      font-family:Arial, Helvetica, sans-serif;
 
-      background:#dfeee4;
+      font-family:
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
 
-      color:#173b2b;
+      background:
+        var(--cream-light);
 
-      min-height:100vh;
+      color:
+        var(--green-dark);
+
+      line-height:1.5;
+
     }
 
 
@@ -50,6 +80,12 @@
     }
 
 
+    a{
+      color:inherit;
+      text-decoration:none;
+    }
+
+
     /* =========================
        HEADER
     ========================= */
@@ -57,122 +93,95 @@
     .site-header{
 
       position:sticky;
-
-      top:14px;
-
+      top:0;
       z-index:100;
 
-      width:calc(100% - 32px);
+      background:
+        rgba(251,249,243,.94);
 
-      max-width:1280px;
+      backdrop-filter:
+        blur(16px);
 
-      margin:14px auto 0;
+      border-bottom:
+        1px solid var(--line);
 
-      padding:13px 18px;
+    }
+
+
+    .nav-inner{
+
+      width:
+        min(1240px, calc(100% - 40px));
+
+      margin:auto;
+
+      min-height:78px;
 
       display:flex;
-
       align-items:center;
-
       justify-content:space-between;
 
-      gap:20px;
-
-      background:rgba(255,255,255,.78);
-
-      border:1px solid rgba(255,255,255,.85);
-
-      backdrop-filter:blur(18px);
-
-      -webkit-backdrop-filter:blur(18px);
-
-      border-radius:22px;
-
-      box-shadow:
-        0 10px 35px rgba(29,72,51,.10);
+      gap:30px;
 
     }
 
 
-    .brand{
+    .logo{
+
+      font-size:28px;
+      font-weight:800;
+      letter-spacing:-1.5px;
+
+      color:
+        var(--green);
+
+    }
+
+
+    .logo span{
+      color:
+        #9db94d;
+    }
+
+
+    .desktop-nav{
 
       display:flex;
-
       align-items:center;
 
-      gap:10px;
+      gap:30px;
 
-      text-decoration:none;
-
-      color:#173b2b;
-
-      font-weight:800;
-
-      font-size:21px;
-
-      letter-spacing:-.7px;
-
-      white-space:nowrap;
-    }
-
-
-    .brand-mark{
-
-      width:38px;
-
-      height:38px;
-
-      display:grid;
-
-      place-items:center;
-
-      background:#173b2b;
-
-      color:white;
-
-      border-radius:13px;
-
-      font-size:19px;
-
-      font-weight:800;
-    }
-
-
-    .nav-links{
-
-      display:flex;
-
-      align-items:center;
-
-      gap:26px;
-    }
-
-
-    .nav-links a{
-
-      text-decoration:none;
-
-      color:#345646;
+      color:
+        #52635c;
 
       font-size:14px;
-
       font-weight:600;
+
     }
 
 
-    .nav-links a:hover{
+    .desktop-nav a{
 
-      color:#173b2b;
+      transition:
+        color .2s ease;
+
     }
 
 
-    .header-actions{
+    .desktop-nav a:hover{
+
+      color:
+        var(--green);
+
+    }
+
+
+    .nav-actions{
 
       display:flex;
-
       align-items:center;
+      gap:10px;
 
-      gap:9px;
     }
 
 
@@ -180,13 +189,17 @@
 
       border:0;
 
-      background:transparent;
+      background:
+        transparent;
 
-      color:#244a38;
-
-      padding:10px 13px;
+      color:
+        var(--green);
 
       font-weight:700;
+
+      padding:
+        11px 15px;
+
     }
 
 
@@ -194,36 +207,94 @@
 
       border:0;
 
-      background:#173b2b;
+      background:
+        var(--green);
 
       color:white;
 
-      padding:11px 16px;
+      padding:
+        12px 18px;
 
-      border-radius:13px;
+      border-radius:12px;
 
       font-weight:700;
+
+      box-shadow:
+        0 8px 20px
+        rgba(23,63,53,.16);
+
+    }
+
+
+    .menu-btn{
+
+      display:none;
+
+      border:0;
+
+      background:transparent;
+
+      color:var(--green);
+
+      font-size:25px;
+
+    }
+
+
+    .mobile-menu{
+
+      display:none;
+
+      padding:
+        10px 20px 22px;
+
+      border-top:
+        1px solid var(--line);
+
+    }
+
+
+    .mobile-menu.open{
+      display:flex;
+      flex-direction:column;
+      gap:4px;
+    }
+
+
+    .mobile-menu a,
+    .mobile-menu button{
+
+      padding:
+        12px 8px;
+
+      text-align:left;
+
+      border:0;
+
+      background:transparent;
+
+      color:var(--green);
+
+      font-weight:600;
+
     }
 
 
     /* =========================
-       PAGE
+       PAGE HERO
     ========================= */
 
-    .page{
+    .page-hero{
 
-      width:min(
-        1240px,
-        calc(100% - 32px)
-      );
+      width:
+        min(1240px, calc(100% - 40px));
 
-      margin:0 auto;
-    }
+      margin:
+        0 auto;
 
+      padding:
+        78px 0 42px;
 
-    .page-intro{
-
-      padding:75px 0 34px;
     }
 
 
@@ -235,67 +306,66 @@
 
       gap:8px;
 
-      color:#547765;
+      color:
+        #71816d;
 
-      font-size:12px;
-
+      font-size:13px;
       font-weight:800;
 
       text-transform:uppercase;
 
-      letter-spacing:1.5px;
+      letter-spacing:1.4px;
 
-      margin-bottom:14px;
+      margin-bottom:16px;
+
     }
 
 
-    .eyebrow span{
+    .eyebrow::before{
+
+      content:"";
 
       width:7px;
-
       height:7px;
 
       border-radius:50%;
 
-      background:#3d7657;
+      background:
+        #a6c75b;
+
     }
 
 
-    .page-intro h1{
+    .page-hero h1{
 
       max-width:760px;
 
-      font-family:
-        Georgia,
-        "Times New Roman",
-        serif;
-
       font-size:
-        clamp(
-          42px,
-          7vw,
-          76px
-        );
+        clamp(42px, 6vw, 74px);
 
-      line-height:.98;
+      line-height:
+        .98;
 
-      letter-spacing:-3px;
+      letter-spacing:
+        -3px;
 
-      color:#173b2b;
+      color:
+        var(--green);
+
+      margin-bottom:20px;
+
     }
 
 
-    .page-intro p{
+    .page-hero p{
 
       max-width:650px;
 
-      margin-top:18px;
-
-      color:#567162;
+      color:
+        var(--muted);
 
       font-size:17px;
 
-      line-height:1.7;
     }
 
 
@@ -303,153 +373,112 @@
        FILTER PANEL
     ========================= */
 
+    .filter-section{
+
+      width:
+        min(1240px, calc(100% - 40px));
+
+      margin:
+        0 auto 50px;
+
+    }
+
+
     .filter-panel{
 
-      background:#f8fbf8;
+      background:
+        var(--white);
 
-      border:1px solid rgba(
-        40,
-        82,
-        60,
-        .10
-      );
+      border:
+        1px solid var(--line);
 
-      border-radius:28px;
+      border-radius:22px;
 
-      padding:24px;
+      padding:22px;
 
       box-shadow:
-        0 18px 55px rgba(
-          28,
-          69,
-          49,
-          .09
-        );
+        var(--shadow);
 
-      margin-bottom:55px;
     }
 
 
-    .filter-heading{
-
-      display:flex;
-
-      align-items:center;
-
-      justify-content:space-between;
-
-      gap:15px;
-
-      margin-bottom:20px;
-    }
-
-
-    .filter-heading h2{
-
-      font-family:
-        Georgia,
-        "Times New Roman",
-        serif;
-
-      font-size:27px;
-
-      color:#173b2b;
-    }
-
-
-    .clear-btn{
-
-      border:0;
-
-      background:transparent;
-
-      color:#527260;
-
-      font-size:13px;
-
-      font-weight:700;
-
-      text-decoration:underline;
-
-      cursor:pointer;
-    }
-
-
-    .filters{
+    .filter-grid{
 
       display:grid;
 
       grid-template-columns:
-        repeat(4, 1fr);
+        1.4fr
+        1fr
+        1fr
+        1fr;
 
       gap:14px;
+
     }
 
 
-    .field{
+    .filter-field{
 
       display:flex;
-
       flex-direction:column;
 
-      gap:8px;
+      gap:7px;
+
     }
 
 
-    .field label{
+    .filter-field label{
 
       font-size:12px;
 
       font-weight:800;
 
-      color:#587161;
+      color:
+        #66756e;
 
       text-transform:uppercase;
 
       letter-spacing:.7px;
+
     }
 
 
-    .field input,
-    .field select{
+    .filter-field input,
+    .filter-field select{
 
       width:100%;
 
-      min-height:50px;
+      min-height:48px;
 
-      border:1px solid #d9e6dc;
+      border:
+        1px solid var(--line);
 
-      border-radius:14px;
+      border-radius:12px;
 
-      background:white;
+      padding:
+        0 14px;
 
-      color:#173b2b;
+      background:
+        #fcfcfa;
 
-      padding:0 14px;
+      color:
+        var(--green-dark);
 
       outline:none;
+
     }
 
 
-    .field input:focus,
-    .field select:focus{
+    .filter-field input:focus,
+    .filter-field select:focus{
 
-      border-color:#70927e;
+      border-color:
+        rgba(23,63,53,.4);
 
       box-shadow:
         0 0 0 3px
-        rgba(
-          77,
-          119,
-          92,
-          .10
-        );
-    }
+        rgba(23,63,53,.07);
 
-
-    .wide{
-
-      grid-column:span 2;
     }
 
 
@@ -461,7 +490,8 @@
 
       gap:10px;
 
-      margin-top:18px;
+      margin-top:16px;
+
     }
 
 
@@ -469,239 +499,242 @@
 
       border:0;
 
-      background:#173b2b;
+      background:
+        var(--green);
 
       color:white;
 
-      padding:14px 24px;
+      padding:
+        13px 22px;
 
-      border-radius:14px;
+      border-radius:12px;
 
       font-weight:800;
+
     }
 
 
     /* =========================
-       RESULTS HEADER
+       RESULTS
     ========================= */
+
+    .results-section{
+
+      width:
+        min(1240px, calc(100% - 40px));
+
+      margin:
+        0 auto;
+
+      padding-bottom:90px;
+
+    }
+
 
     .results-header{
 
       display:flex;
 
-      align-items:end;
-
       justify-content:space-between;
+
+      align-items:end;
 
       gap:20px;
 
-      margin-bottom:20px;
+      margin-bottom:22px;
+
     }
 
 
     .results-header h2{
 
-      font-family:
-        Georgia,
-        "Times New Roman",
-        serif;
+      font-size:30px;
 
-      font-size:34px;
+      letter-spacing:-1px;
 
-      color:#173b2b;
+      color:
+        var(--green);
+
     }
 
 
-    .results-count{
+    #resultsCount{
 
-      color:#688072;
+      color:
+        var(--muted);
 
       font-size:14px;
 
-      font-weight:700;
+      font-weight:600;
+
     }
 
 
     /* =========================
-       EMPTY STATE
-    ========================= */
-
-    .empty-state{
-
-      min-height:430px;
-
-      display:flex;
-
-      flex-direction:column;
-
-      align-items:center;
-
-      justify-content:center;
-
-      text-align:center;
-
-      background:rgba(
-        255,
-        255,
-        255,
-        .58
-      );
-
-      border:1px dashed
-        rgba(
-          46,
-          87,
-          65,
-          .25
-        );
-
-      border-radius:30px;
-
-      padding:50px 25px;
-
-      margin-bottom:80px;
-    }
-
-
-    .empty-icon{
-
-      width:76px;
-
-      height:76px;
-
-      display:grid;
-
-      place-items:center;
-
-      background:#173b2b;
-
-      color:white;
-
-      border-radius:24px;
-
-      font-size:29px;
-
-      margin-bottom:24px;
-    }
-
-
-    .empty-state h3{
-
-      font-family:
-        Georgia,
-        "Times New Roman",
-        serif;
-
-      font-size:31px;
-
-      color:#173b2b;
-
-      margin-bottom:10px;
-    }
-
-
-    .empty-state p{
-
-      max-width:500px;
-
-      color:#617568;
-
-      line-height:1.7;
-
-      font-size:15px;
-    }
-
-
-    .empty-state .owner-btn{
-
-      margin-top:25px;
-
-      border:0;
-
-      background:#173b2b;
-
-      color:white;
-
-      padding:14px 20px;
-
-      border-radius:14px;
-
-      font-weight:800;
-    }
-
-
-    /* =========================
-       FUTURE PROPERTY CARD
+       PROPERTY GRID
     ========================= */
 
     .property-grid{
 
-      display:none;
+      display:grid;
 
       grid-template-columns:
-        repeat(3,1fr);
+        repeat(3, 1fr);
 
       gap:22px;
 
-      margin-bottom:80px;
     }
 
 
     .property-card{
 
-      background:#fff;
+      background:
+        var(--white);
 
-      border-radius:24px;
+      border:
+        1px solid var(--line);
+
+      border-radius:20px;
 
       overflow:hidden;
 
       box-shadow:
-        0 15px 40px
-        rgba(
-          29,
-          72,
-          51,
-          .08
-        );
+        0 12px 35px
+        rgba(13,45,38,.07);
 
       cursor:pointer;
 
       transition:
-        transform .2s ease,
-        box-shadow .2s ease;
+        transform .22s ease,
+        box-shadow .22s ease;
+
     }
 
 
     .property-card:hover{
 
-      transform:translateY(-4px);
+      transform:
+        translateY(-4px);
 
       box-shadow:
-        0 20px 50px
-        rgba(
-          29,
-          72,
-          51,
-          .13
-        );
+        0 20px 45px
+        rgba(13,45,38,.12);
+
+    }
+
+
+    .property-image-wrap{
+
+      position:relative;
+
+      height:245px;
+
+      overflow:hidden;
+
+      background:
+        #e9e6dc;
+
     }
 
 
     .property-image{
 
       width:100%;
-
-      aspect-ratio:1.15/1;
+      height:100%;
 
       object-fit:cover;
 
       display:block;
+
     }
 
 
-    .property-content{
+    .property-status{
 
-      padding:18px;
+      position:absolute;
+
+      top:14px;
+      left:14px;
+
+      display:inline-flex;
+
+      align-items:center;
+
+      gap:7px;
+
+      padding:
+        8px 11px;
+
+      border-radius:999px;
+
+      background:
+        rgba(255,255,255,.94);
+
+      backdrop-filter:
+        blur(8px);
+
+      font-size:11px;
+
+      font-weight:800;
+
+      color:
+        var(--green);
+
+      box-shadow:
+        0 6px 18px
+        rgba(0,0,0,.12);
+
+    }
+
+
+    .status-dot{
+
+      width:7px;
+      height:7px;
+
+      border-radius:50%;
+
+      background:
+        #4f9a62;
+
+    }
+
+
+    .status-soon .status-dot{
+
+      background:
+        #d0a43a;
+
+    }
+
+
+    .status-warning .status-dot{
+
+      background:
+        #b87857;
+
+    }
+
+
+    .property-card-body{
+
+      padding:19px;
+
+    }
+
+
+    .property-card-top{
+
+      display:flex;
+
+      justify-content:space-between;
+
+      align-items:center;
+
+      gap:10px;
+
+      margin-bottom:9px;
+
     }
 
 
@@ -713,243 +746,438 @@
 
       text-transform:uppercase;
 
-      letter-spacing:1px;
+      letter-spacing:.7px;
 
-      color:#62806e;
+      color:
+        #75827c;
+
+    }
+
+
+    .property-purpose{
+
+      font-size:11px;
+
+      font-weight:800;
+
+      text-transform:uppercase;
+
+      color:
+        var(--green);
+
+      background:
+        #edf4dc;
+
+      padding:
+        5px 8px;
+
+      border-radius:7px;
+
     }
 
 
     .property-title{
 
-      font-family:
-        Georgia,
-        "Times New Roman",
-        serif;
+      font-size:21px;
 
-      font-size:24px;
+      line-height:1.2;
 
-      margin-top:7px;
+      letter-spacing:-.5px;
 
-      color:#173b2b;
-    }
+      color:
+        var(--green);
 
+      margin-bottom:9px;
 
-    .property-price{
-
-      margin-top:12px;
-
-      font-weight:800;
-
-      color:#173b2b;
     }
 
 
     .property-location{
 
-      margin-top:6px;
-
-      color:#708077;
+      color:
+        var(--muted);
 
       font-size:13px;
-    }
 
-
-    /* =========================
-       FOOTER
-    ========================= */
-
-    footer{
-
-      border-top:
-        1px solid
-        rgba(
-          40,
-          82,
-          60,
-          .12
-        );
-
-      padding:30px 0 40px;
+      margin-bottom:13px;
 
       display:flex;
 
-      justify-content:space-between;
+      gap:6px;
 
-      align-items:center;
-
-      gap:20px;
-
-      color:#718279;
-
-      font-size:13px;
     }
 
 
-    footer strong{
+    .property-price{
 
-      color:#315340;
+      font-size:20px;
+
+      font-weight:800;
+
+      color:
+        var(--green-dark);
+
+      margin-bottom:12px;
+
+    }
+
+
+    .property-meta{
+
+      display:flex;
+
+      flex-wrap:wrap;
+
+      gap:7px;
+
+      margin-bottom:13px;
+
+    }
+
+
+    .property-meta span{
+
+      padding:
+        6px 9px;
+
+      background:
+        #f3f1e9;
+
+      border-radius:7px;
+
+      color:
+        #65716c;
+
+      font-size:11px;
+
+      font-weight:700;
+
+    }
+
+
+    .property-confirmed{
+
+      display:flex;
+
+      align-items:center;
+
+      gap:7px;
+
+      color:
+        #5c7167;
+
+      font-size:12px;
+
+      font-weight:700;
+
+    }
+
+
+    .confirmed-check{
+
+      width:18px;
+      height:18px;
+
+      display:inline-flex;
+
+      align-items:center;
+      justify-content:center;
+
+      border-radius:50%;
+
+      background:
+        #e7f2d4;
+
+      color:
+        #467347;
+
+      font-size:11px;
+
     }
 
 
     /* =========================
-       MOBILE
+       LOADING
     ========================= */
 
-    @media(max-width:900px){
+    .loading-state{
 
-      .nav-links{
+      min-height:260px;
+
+      display:none;
+
+      align-items:center;
+
+      justify-content:center;
+
+      flex-direction:column;
+
+      gap:14px;
+
+      color:
+        var(--muted);
+
+    }
+
+
+    .loading-spinner{
+
+      width:38px;
+      height:38px;
+
+      border:
+        3px solid
+        rgba(23,63,53,.12);
+
+      border-top-color:
+        var(--green);
+
+      border-radius:50%;
+
+      animation:
+        spin .8s linear infinite;
+
+    }
+
+
+    @keyframes spin{
+
+      to{
+        transform:rotate(360deg);
+      }
+
+    }
+
+
+    /* =========================
+       EMPTY STATE
+    ========================= */
+
+    .empty-state{
+
+      display:none;
+
+      text-align:center;
+
+      padding:
+        70px 20px;
+
+      background:
+        var(--white);
+
+      border:
+        1px solid var(--line);
+
+      border-radius:22px;
+
+    }
+
+
+    .empty-state h3{
+
+      font-size:28px;
+
+      color:
+        var(--green);
+
+      margin-bottom:8px;
+
+    }
+
+
+    .empty-state p{
+
+      max-width:500px;
+
+      margin:
+        0 auto 22px;
+
+      color:
+        var(--muted);
+
+    }
+
+
+    .owner-btn{
+
+      border:0;
+
+      background:
+        var(--green);
+
+      color:white;
+
+      padding:
+        13px 20px;
+
+      border-radius:12px;
+
+      font-weight:800;
+
+    }
+
+
+    /* =========================
+       RESPONSIVE
+    ========================= */
+
+    @media(max-width:1000px){
+
+      .desktop-nav{
         display:none;
       }
 
-
-      .filters{
-
-        grid-template-columns:
-          repeat(2,1fr);
+      .menu-btn{
+        display:block;
       }
 
+      .filter-grid{
+
+        grid-template-columns:
+          repeat(2, 1fr);
+
+      }
 
       .property-grid{
 
         grid-template-columns:
-          repeat(2,1fr);
+          repeat(2, 1fr);
+
       }
 
     }
 
 
-    @media(max-width:620px){
+    @media(max-width:650px){
 
-      .site-header{
+      .nav-inner{
 
-        width:calc(100% - 20px);
+        width:
+          min(100% - 28px, 1240px);
 
-        margin-top:10px;
+        min-height:68px;
 
-        top:10px;
-
-        padding:10px 12px;
-
-        border-radius:18px;
       }
 
 
-      .brand{
-
-        font-size:18px;
+      .logo{
+        font-size:25px;
       }
 
 
-      .brand-mark{
-
-        width:34px;
-
-        height:34px;
-
-        border-radius:11px;
-      }
-
-
-      .header-actions
-      .signin-btn{
-
+      .nav-actions .signin-btn{
         display:none;
       }
 
 
       .list-btn{
 
-        padding:10px 12px;
+        padding:
+          10px 13px;
 
-        font-size:12px;
+        font-size:13px;
+
       }
 
 
-      .page{
+      .page-hero{
 
-        width:calc(
-          100% - 20px
-        );
+        width:
+          calc(100% - 28px);
+
+        padding:
+          55px 0 32px;
+
       }
 
 
-      .page-intro{
+      .page-hero h1{
 
-        padding:55px 0 28px;
+        font-size:
+          45px;
+
+        letter-spacing:
+          -2px;
+
       }
 
 
-      .page-intro h1{
+      .page-hero p{
 
-        font-size:48px;
+        font-size:
+          15px;
 
-        letter-spacing:-2px;
       }
 
 
-      .page-intro p{
+      .filter-section,
+      .results-section{
 
-        font-size:15px;
+        width:
+          calc(100% - 28px);
+
       }
 
 
       .filter-panel{
 
-        padding:17px;
+        padding:
+          16px;
 
-        border-radius:22px;
+        border-radius:
+          17px;
+
       }
 
 
-      .filters{
+      .filter-grid{
 
-        grid-template-columns:1fr;
-      }
+        grid-template-columns:
+          1fr;
 
-
-      .wide{
-
-        grid-column:span 1;
       }
 
 
       .filter-actions{
 
-        display:block;
+        justify-content:
+          stretch;
+
       }
 
 
       .apply-btn{
 
         width:100%;
-      }
 
-
-      .results-header h2{
-
-        font-size:28px;
-      }
-
-
-      .empty-state{
-
-        min-height:370px;
-
-        border-radius:23px;
       }
 
 
       .property-grid{
 
-        grid-template-columns:1fr;
+        grid-template-columns:
+          1fr;
+
       }
 
 
-      footer{
+      .property-image-wrap{
 
-        flex-direction:column;
+        height:225px;
 
-        align-items:flex-start;
+      }
+
+
+      .results-header{
+
+        align-items:
+          flex-start;
+
+        flex-direction:
+          column;
+
+        gap:5px;
+
       }
 
     }
@@ -962,28 +1190,24 @@
 <body>
 
 
-  <!-- =========================
-       HEADER
-  ========================= -->
+<!-- =========================
+     HEADER
+========================= -->
 
-  <header class="site-header">
+<header class="site-header">
+
+  <div class="nav-inner">
 
 
     <a
       href="index.html"
-      class="brand"
+      class="logo"
     >
-
-      <span class="brand-mark">
-        P
-      </span>
-
-      Placingo
-
+      Placingo<span>.</span>
     </a>
 
 
-    <nav class="nav-links">
+    <nav class="desktop-nav">
 
       <a href="index.html">
         Home
@@ -1004,11 +1228,12 @@
     </nav>
 
 
-    <div class="header-actions">
+    <div class="nav-actions">
 
       <button
         class="signin-btn"
-        onclick="goToLogin()"
+        type="button"
+        onclick="signIn()"
       >
         Sign in
       </button>
@@ -1016,1400 +1241,2201 @@
 
       <button
         class="list-btn"
+        type="button"
         onclick="listProperty()"
       >
         List a property
       </button>
 
+
+      <button
+        class="menu-btn"
+        type="button"
+        onclick="toggleMenu()"
+        aria-label="Open menu"
+      >
+        ☰
+      </button>
+
     </div>
 
-  </header>
+  </div>
 
 
-  <main class="page">
+  <div
+    class="mobile-menu"
+    id="mobileMenu"
+  >
+
+    <a
+      href="index.html"
+      onclick="closeMenu()"
+    >
+      Home
+    </a>
+
+    <a
+      href="properties.html"
+      onclick="closeMenu()"
+    >
+      Properties
+    </a>
+
+    <a
+      href="index.html#fresh"
+      onclick="closeMenu()"
+    >
+      Why Placingo
+    </a>
+
+    <a
+      href="index.html#about"
+      onclick="closeMenu()"
+    >
+      About
+    </a>
+
+    <button
+      type="button"
+      onclick="signIn(); closeMenu();"
+    >
+      Sign in
+    </button>
+
+    <button
+      type="button"
+      onclick="listProperty(); closeMenu();"
+    >
+      List a property
+    </button>
+
+  </div>
+
+</header>
 
 
-    <!-- =========================
-         INTRO
-    ========================= -->
+<!-- =========================
+     PAGE HERO
+========================= -->
 
-    <section class="page-intro">
+<section class="page-hero">
+
+  <div class="eyebrow">
+    Explore Placingo
+  </div>
 
 
-      <div class="eyebrow">
+  <h1>
+    Find a place that feels right.
+  </h1>
 
-        <span></span>
 
-        Explore Placingo
+  <p>
+    Explore homes, apartments, rooms, PGs,
+    plots, commercial spaces and more —
+    listed directly by property owners.
+  </p>
+
+</section>
+
+
+<!-- =========================
+     FILTERS
+========================= -->
+
+<section class="filter-section">
+
+  <div class="filter-panel">
+
+    <div class="filter-grid">
+
+
+      <div class="filter-field">
+
+        <label for="location">
+          Location
+        </label>
+
+        <input
+          id="location"
+          type="text"
+          placeholder="City, area or locality"
+        >
 
       </div>
 
 
-      <h1>
+      <div class="filter-field">
 
-        Find a place<br>
+        <label for="purpose">
+          Looking to
+        </label>
 
-        that feels right.
+        <select id="purpose">
 
-      </h1>
+          <option value="">
+            Buy or rent
+          </option>
 
+          <option value="rent">
+            Rent
+          </option>
+
+          <option value="buy">
+            Buy
+          </option>
+
+        </select>
+
+      </div>
+
+
+      <div class="filter-field">
+
+        <label for="propertyType">
+          Property type
+        </label>
+
+        <select id="propertyType">
+
+          <option value="">
+            All property types
+          </option>
+
+          <option value="home">
+            Homes & Villas
+          </option>
+
+          <option value="apartment">
+            Apartments
+          </option>
+
+          <option value="room">
+            Rooms
+          </option>
+
+          <option value="pg">
+            PGs
+          </option>
+
+          <option value="plot">
+            Plots & Land
+          </option>
+
+          <option value="farmhouse">
+            Farmhouses
+          </option>
+
+          <option value="shop">
+            Shops
+          </option>
+
+          <option value="office">
+            Offices
+          </option>
+
+          <option value="warehouse">
+            Warehouses
+          </option>
+
+          <option value="commercial">
+            Commercial
+          </option>
+
+        </select>
+
+      </div>
+
+
+      <div class="filter-field">
+
+        <label for="bedrooms">
+          Bedrooms
+        </label>
+
+        <select id="bedrooms">
+
+          <option value="">
+            Any
+          </option>
+
+          <option value="1">
+            1+
+          </option>
+
+          <option value="2">
+            2+
+          </option>
+
+          <option value="3">
+            3+
+          </option>
+
+          <option value="4">
+            4+
+          </option>
+
+        </select>
+
+      </div>
+
+
+      <div class="filter-field">
+
+        <label for="minPrice">
+          Minimum price
+        </label>
+
+        <input
+          id="minPrice"
+          type="number"
+          placeholder="₹ Min"
+          min="0"
+        >
+
+      </div>
+
+
+      <div class="filter-field">
+
+        <label for="maxPrice">
+          Maximum price
+        </label>
+
+        <input
+          id="maxPrice"
+          type="number"
+          placeholder="₹ Max"
+          min="0"
+        >
+
+      </div>
+
+
+      <div class="filter-field">
+
+        <label for="furnishing">
+          Furnishing
+        </label>
+
+        <select id="furnishing">
+
+          <option value="">
+            Any
+          </option>
+
+          <option value="furnished">
+            Furnished
+          </option>
+
+          <option value="semi-furnished">
+            Semi furnished
+          </option>
+
+          <option value="unfurnished">
+            Unfurnished
+          </option>
+
+        </select>
+
+      </div>
+
+
+      <div class="filter-field">
+
+        <label for="availability">
+          Availability
+        </label>
+
+        <select id="availability">
+
+          <option value="">
+            Any
+          </option>
+
+          <option value="week">
+            Confirmed this week
+          </option>
+
+          <option value="two-weeks">
+            Confirmed in 2 weeks
+          </option>
+
+          <option value="month">
+            Confirmed this month
+          </option>
+
+        </select>
+
+      </div>
+
+    </div>
+
+
+    <div class="filter-actions">
+
+      <button
+        class="apply-btn"
+        id="applyBtn"
+        type="button"
+      >
+        Apply filters
+      </button>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     RESULTS
+========================= -->
+
+<main class="results-section">
+
+  <div class="results-header">
+
+    <h2>
+      Properties
+    </h2>
+
+    <span id="resultsCount">
+      Loading...
+    </span>
+
+  </div>
+
+
+  <div
+    class="loading-state"
+    id="loadingState"
+  >
+
+    <div class="loading-spinner"></div>
+
+    <p>
+      Loading properties...
+    </p>
+
+  </div>
+
+
+  <div
+    class="property-grid"
+    id="propertyGrid"
+  >
+  </div>
+
+
+  <div
+    class="empty-state"
+    id="emptyState"
+  >
+
+    <h3>
+      No properties found
+    </h3>
+
+
+    <p id="emptyMessage">
+
+      There are no properties      matching your current search.
+      Try changing your filters, or be the first
+      owner to list a property.
+
+    </p>
+
+
+    <button
+      class="owner-btn"
+      type="button"
+      onclick="listProperty()"
+    >
+      List a property
+    </button>
+
+  </div>
+
+
+</main>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer class="site-footer">
+
+  <div class="footer-inner">
+
+    <div class="footer-brand">
+
+      <div class="footer-logo">
+        Placingo<span>.</span>
+      </div>
 
       <p>
-
-        Explore homes, apartments, rooms, land and commercial
-        properties listed directly by owners.
-
+        Property without the middle man.
+        Find places directly from owners.
       </p>
 
-    </section>
-
-
-    <!-- =========================
-         FILTERS
-    ========================= -->
-
-    <section class="filter-panel">
-
-
-      <div class="filter-heading">
-
-        <h2>
-          Find your property
-        </h2>
-
-
-        <button
-          class="clear-btn"
-          onclick="clearFilters()"
-        >
-          Clear filters
-        </button>
-
-      </div>
-
-
-      <div class="filters">
-
-
-        <!-- LOCATION -->
-
-        <div class="field wide">
-
-          <label for="location">
-            Location
-          </label>
-
-
-          <input
-            id="location"
-            type="text"
-            placeholder="City, area or locality"
-          >
-
-        </div>
-
-
-        <!-- PURPOSE -->
-
-        <div class="field">
-
-          <label for="purpose">
-            Looking for
-          </label>
-
-
-          <select id="purpose">
-
-            <option value="">
-              Buy or rent
-            </option>
-
-            <option value="buy">
-              Buy
-            </option>
-
-            <option value="rent">
-              Rent
-            </option>
-
-          </select>
-
-        </div>
-
-
-        <!-- PROPERTY TYPE -->
-
-        <div class="field">
-
-          <label for="propertyType">
-            Property type
-          </label>
-
-
-          <select id="propertyType">
-
-            <option value="">
-              Any property
-            </option>
-
-
-            <option value="home">
-              Homes & Villas
-            </option>
-
-
-            <option value="apartment">
-              Apartments
-            </option>
-
-
-            <option value="room">
-              Rooms
-            </option>
-
-
-            <option value="pg">
-              PGs
-            </option>
-
-
-            <option value="plot">
-              Plots & Land
-            </option>
-
-
-            <option value="farmhouse">
-              Farmhouses
-            </option>
-
-
-            <option value="commercial">
-              Commercial
-            </option>
-
-
-            <option value="shop">
-              Shops
-            </option>
-
-
-            <option value="office">
-              Offices
-            </option>
-
-
-            <option value="warehouse">
-              Warehouses
-            </option>
-
-          </select>
-
-        </div>
-
-
-        <!-- MIN PRICE -->
-
-        <div class="field">
-
-          <label for="minPrice">
-            Minimum price
-          </label>
-
-
-          <input
-            id="minPrice"
-            type="number"
-            min="0"
-            placeholder="₹ Minimum"
-          >
-
-        </div>
-
-
-        <!-- MAX PRICE -->
-
-        <div class="field">
-
-          <label for="maxPrice">
-            Maximum price
-          </label>
-
-
-          <input
-            id="maxPrice"
-            type="number"
-            min="0"
-            placeholder="₹ Maximum"
-          >
-
-        </div>
-
-
-        <!-- BEDROOMS -->
-
-        <div class="field">
-
-          <label for="bedrooms">
-            Bedrooms
-          </label>
-
-
-          <select id="bedrooms">
-
-            <option value="">
-              Any
-            </option>
-
-
-            <option value="1">
-              1+
-            </option>
-
-
-            <option value="2">
-              2+
-            </option>
-
-
-            <option value="3">
-              3+
-            </option>
-
-
-            <option value="4">
-              4+
-            </option>
-
-
-            <option value="5">
-              5+
-            </option>
-
-          </select>
-
-        </div>
-
-
-        <!-- FURNISHING -->
-
-        <div class="field">
-
-          <label for="furnishing">
-            Furnishing
-          </label>
-
-
-          <select id="furnishing">
-
-            <option value="">
-              Any
-            </option>
-
-
-            <option value="unfurnished">
-              Unfurnished
-            </option>
-
-
-            <option value="semi">
-              Semi-furnished
-            </option>
-
-
-            <option value="fully">
-              Fully furnished
-            </option>
-
-          </select>
-
-        </div>
-
-
-        <!-- AVAILABILITY -->
-
-        <div class="field">
-
-          <label for="availability">
-            Availability
-          </label>
-
-
-          <select id="availability">
-
-            <option value="">
-              Any
-            </option>
-
-
-            <option value="fresh">
-              Recently confirmed
-            </option>
-
-
-            <option value="week">
-              Confirmed within 7 days
-            </option>
-
-
-            <option value="month">
-              Confirmed within 30 days
-            </option>
-
-          </select>
-
-        </div>
-
-
-      </div>
-
-
-      <div class="filter-actions">
-
-        <button
-          class="apply-btn"
-          onclick="applyFilters()"
-        >
-          Search properties
-        </button>
-
-      </div>
-
-    </section>
-
-
-    <!-- =========================
-         RESULTS
-    ========================= -->
-
-    <section>
-
-
-      <div class="results-header">
-
-        <h2>
-          Properties
-        </h2>
-
-
-        <span
-          class="results-count"
-          id="resultsCount"
-        >
-          0 properties
-        </span>
-
-      </div>
-
-
-      <div
-        class="property-grid"
-        id="propertyGrid"
-      ></div>
-
-
-      <div
-        class="empty-state"
-        id="emptyState"
-      >
-
-        <div class="empty-icon">
-          P
-        </div>
-
-
-        <h3>
-          No properties listed yet
-        </h3>
-
-
-        <p>
-          We're getting Placingo ready for property owners.
-          Once properties are listed, you'll find them here
-          with their details, prices and availability.
-        </p>
-
-
-        <button
-          class="owner-btn"
-          onclick="listProperty()"
-        >
-          List a property
-        </button>
-
-      </div>
-
-    </section>
-
-  </main>
-  <!-- =========================
-       FOOTER
-  ========================= -->
-
-  <footer class="page">
-
-    <div>
-      <strong>Placingo</strong>
-      — Property without the middle man.
     </div>
 
-    <div>
+
+    <div class="footer-column">
+
+      <h4>Explore</h4>
+
+      <a href="properties.html">
+        Properties
+      </a>
+
+      <a href="properties.html?purpose=buy">
+        Buy
+      </a>
+
+      <a href="properties.html?purpose=rent">
+        Rent
+      </a>
+
+      <a href="index.html#categories">
+        Property types
+      </a>
+
+    </div>
+
+
+    <div class="footer-column">
+
+      <h4>Placingo</h4>
+
+      <a href="index.html#fresh">
+        Why Placingo
+      </a>
+
+      <a href="index.html#how">
+        How it works
+      </a>
+
+      <a href="index.html#about">
+        About
+      </a>
+
+    </div>
+
+
+    <div class="footer-column">
+
+      <h4>For owners</h4>
+
+      <a href="list-property.html">
+        List a property
+      </a>
+
+      <a href="login.html">
+        Sign in
+      </a>
+
+    </div>
+
+  </div>
+
+
+  <div class="footer-bottom">
+
+    <span>
       © 2026 Placingo
-    </div>
+    </span>
 
-  </footer>
+    <span>
+      Property without the middle man.
+    </span>
 
+  </div>
 
-  <script>
+</footer>
 
-    /* =========================
-       PROPERTY DATA
-       Empty for now.
-       Supabase will replace this later.
-    ========================= */
 
-    let properties = [];
+<!-- =========================
+     SUPABASE
+========================= -->
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-    /* =========================
-       NAVIGATION
-    ========================= */
 
-    function goToLogin(){
+<script>
 
-      window.location.href =
-        "login.html";
+  const SUPABASE_URL =
+    "https://giugnkxhvahqjjntbpgz.supabase.co";
 
-    }
 
+  const SUPABASE_PUBLISHABLE_KEY =
+    "sb_publishable_AM_jASJf8SA4Jn3uTRSATA_0AJhWwl1";
 
-    function listProperty(){
 
-      window.location.href =
-        "list-property.html";
+  const supabaseClient =
+    window.supabase.createClient(
+      SUPABASE_URL,
+      SUPABASE_PUBLISHABLE_KEY
+    );
 
-    }
 
+  let properties = [];
 
-    /* =========================
-       GET URL PARAMETERS
-    ========================= */
 
-    function getUrlParams(){
+  /* =========================
+     LOAD PROPERTIES
+  ========================= */
 
-      const params =
-        new URLSearchParams(
-          window.location.search
-        );
+  async function loadProperties(){
 
-
-      return {
-
-        location:
-          params.get("location") || "",
-
-        purpose:
-          params.get("purpose") || "",
-
-        category:
-          params.get("category") || "",
-
-        property:
-          params.get("property") || ""
-
-      };
-
-    }
-
-
-    /* =========================
-       CATEGORY → PROPERTY TYPE
-    ========================= */
-
-    function mapPropertyType(value){
-
-      if(!value){
-        return "";
-      }
-
-
-      const normalized =
-        value
-          .trim()
-          .toLowerCase();
-
-
-      const map = {
-
-        "home":"home",
-        "homes":"home",
-        "homes & villas":"home",
-        "villa":"home",
-        "villas":"home",
-
-        "apartment":"apartment",
-        "apartments":"apartment",
-        "flat":"apartment",
-        "flats":"apartment",
-
-        "room":"room",
-        "rooms":"room",
-
-        "pg":"pg",
-        "pgs":"pg",
-
-        "plot":"plot",
-        "plots":"plot",
-        "land":"plot",
-        "plots & land":"plot",
-
-        "farmhouse":"farmhouse",
-        "farmhouses":"farmhouse",
-
-        "commercial":"commercial",
-
-        "shop":"shop",
-        "shops":"shop",
-
-        "office":"office",
-        "offices":"office",
-
-        "warehouse":"warehouse",
-        "warehouses":"warehouse"
-
-      };
-
-
-      return map[normalized] || "";
-
-    }
-
-
-    /* =========================
-       APPLY URL TO FILTERS
-    ========================= */
-
-    function loadUrlFilters(){
-
-      const params =
-        getUrlParams();
-
-
-      const locationInput =
-        document.getElementById(
-          "location"
-        );
-
-
-      const purposeInput =
-        document.getElementById(
-          "purpose"
-        );
-
-
-      const propertyTypeInput =
-        document.getElementById(
-          "propertyType"
-        );
-
-
-      /*
-        Location
-      */
-
-      if(
-        locationInput &&
-        params.location
-      ){
-
-        locationInput.value =
-          params.location;
-
-      }
-
-
-      /*
-        Buy / Rent
-      */
-
-      if(
-        purposeInput &&
-        (
-          params.purpose === "buy" ||
-          params.purpose === "rent"
-        )
-      ){
-
-        purposeInput.value =
-          params.purpose;
-
-      }
-
-
-      /*
-        Category from homepage
-      */
-
-      const categoryType =
-        mapPropertyType(
-          params.category
-        );
-
-
-      /*
-        Property text from homepage
-      */
-
-      const propertyType =
-        mapPropertyType(
-          params.property
-        );
-
-
-      /*
-        Use category first.
-        If category doesn't exist,
-        use property.
-      */
-
-      const finalType =
-        categoryType ||
-        propertyType;
-
-
-      if(
-        propertyTypeInput &&
-        finalType
-      ){
-
-        propertyTypeInput.value =
-          finalType;
-
-      }
-
-    }
-
-
-    /* =========================
-       READ CURRENT FILTERS
-    ========================= */
-
-    function getFilters(){
-
-      return {
-
-        location:
-          document
-            .getElementById("location")
-            .value
-            .trim()
-            .toLowerCase(),
-
-
-        purpose:
-          document
-            .getElementById("purpose")
-            .value,
-
-
-        propertyType:
-          document
-            .getElementById("propertyType")
-            .value,
-
-
-        minPrice:
-          Number(
-            document
-              .getElementById("minPrice")
-              .value
-          ) || 0,
-
-
-        maxPrice:
-          Number(
-            document
-              .getElementById("maxPrice")
-              .value
-          ) || 0,
-
-
-        bedrooms:
-          Number(
-            document
-              .getElementById("bedrooms")
-              .value
-          ) || 0,
-
-
-        furnishing:
-          document
-            .getElementById("furnishing")
-            .value,
-
-
-        availability:
-          document
-            .getElementById("availability")
-            .value
-
-      };
-
-    }
-
-
-    /* =========================
-       UPDATE URL
-    ========================= */
-
-    function updateUrl(filters){
-
-      const params =
-        new URLSearchParams();
-
-
-      if(filters.location){
-
-        params.set(
-          "location",
-          filters.location
-        );
-
-      }
-
-
-      if(filters.purpose){
-
-        params.set(
-          "purpose",
-          filters.purpose
-        );
-
-      }
-
-
-      if(filters.propertyType){
-
-        params.set(
-          "category",
-          filters.propertyType
-        );
-
-      }
-
-
-      const query =
-        params.toString();
-
-
-      const newUrl =
-        window.location.pathname +
-        (
-          query
-            ? "?" + query
-            : ""
-        );
-
-
-      window.history.pushState(
-        {},
-        "",
-        newUrl
+    const loadingState =
+      document.getElementById(
+        "loadingState"
       );
 
-    }
+    const propertyGrid =
+      document.getElementById(
+        "propertyGrid"
+      );
 
+    const emptyState =
+      document.getElementById(
+        "emptyState"
+      );
 
-    /* =========================
-       CHECK AVAILABILITY
-    ========================= */
-
-    function matchesAvailability(
-      property,
-      availability
-    ){
-
-      if(!availability){
-        return true;
-      }
-
-
-      /*
-        If the property doesn't have
-        a confirmation date yet,
-        it cannot pass an
-        availability filter.
-      */
-
-      if(
-        !property.last_confirmed_at
-      ){
-
-        return false;
-
-      }
-
-
-      const confirmed =
-        new Date(
-          property.last_confirmed_at
-        );
-
-
-      if(
-        Number.isNaN(
-          confirmed.getTime()
-        )
-      ){
-
-        return false;
-
-      }
-
-
-      const now =
-        new Date();
-
-
-      const difference =
-        now.getTime() -
-        confirmed.getTime();
-
-
-      const days =
-        difference /
-        (
-          1000 *
-          60 *
-          60 *
-          24
-        );
-
-
-      if(
-        availability === "fresh"
-      ){
-
-        return days <= 3;
-
-      }
-
-
-      if(
-        availability === "week"
-      ){
-
-        return days <= 7;
-
-      }
-
-
-      if(
-        availability === "month"
-      ){
-
-        return days <= 30;
-
-      }
-
-
-      return true;
-
-    }
-
-
-    /* =========================
-       FILTER PROPERTIES
-    ========================= */
-
-    function applyFilters(){
-
-      const filters =
-        getFilters();
-
-
-      updateUrl(
-        filters
+    const resultsCount =
+      document.getElementById(
+        "resultsCount"
       );
 
 
-      const filtered =
-        properties.filter(
-          property => {
+    if(loadingState){
+
+      loadingState.style.display =
+        "flex";
+
+    }
 
 
-            /*
-              Location
-            */
+    if(propertyGrid){
 
-            if(
-              filters.location &&
-              !String(
-                property.location || ""
+      propertyGrid.innerHTML = "";
+
+    }
+
+
+    if(emptyState){
+
+      emptyState.style.display =
+        "none";
+
+    }
+
+
+    if(resultsCount){
+
+      resultsCount.textContent =
+        "Loading...";
+
+    }
+
+
+    try{
+
+      const { data, error } =
+        await supabaseClient
+
+          .from("properties")
+
+          .select(`
+            *,
+            property_images (
+              image_url,
+              display_order
+            )
+          `)
+
+          .eq("status", "active")
+
+          .order(
+            "created_at",
+            {
+              ascending:false
+            }
+          );
+
+
+      if(error){
+
+        throw error;
+
+      }
+
+
+      properties =
+        (data || []).map(
+          function(row){
+
+            const images =
+              Array.isArray(
+                row.property_images
               )
-              .toLowerCase()
-              .includes(
-                filters.location
-              )
-            ){
-
-              return false;
-
-            }
+                ? [...row.property_images]
+                : [];
 
 
-            /*
-              Buy / Rent
-            */
+            images.sort(
+              function(a,b){
 
-            if(
-              filters.purpose &&
-              property.purpose !==
-                filters.purpose
-            ){
+                return (
+                  Number(
+                    a.display_order || 0
+                  ) -
+                  Number(
+                    b.display_order || 0
+                  )
+                );
 
-              return false;
-
-            }
-
-
-            /*
-              Property type
-            */
-
-            if(
-              filters.propertyType &&
-              property.propertyType !==
-                filters.propertyType
-            ){
-
-              return false;
-
-            }
+              }
+            );
 
 
-            /*
-              Minimum price
-            */
-
-            if(
-              filters.minPrice &&
-              Number(property.price || 0) <
-                filters.minPrice
-            ){
-
-              return false;
-
-            }
+            const firstImage =
+              images.length
+                ? images[0].image_url
+                : "";
 
 
-            /*
-              Maximum price
-            */
+            return {
 
-            if(
-              filters.maxPrice &&
-              Number(property.price || 0) >
-                filters.maxPrice
-            ){
+              id:
+                row.id,
 
-              return false;
+              title:
+                row.title,
 
-            }
+              purpose:
+                row.purpose,
 
+              propertyType:
+                row.property_type,
 
-            /*
-              Bedrooms
-            */
+              price:
+                Number(
+                  row.price || 0
+                ),
 
-            if(
-              filters.bedrooms &&
-              Number(property.bedrooms || 0) <
-                filters.bedrooms
-            ){
+              area:
+                row.area,
 
-              return false;
+              location:
+                [
+                  row.locality,
+                  row.city
+                ]
+                  .filter(Boolean)
+                  .join(", "),
 
-            }
+              city:
+                row.city,
 
+              locality:
+                row.locality,
 
-            /*
-              Furnishing
-            */
+              address:
+                row.address,
 
-            if(
-              filters.furnishing &&
-              property.furnishing !==
-                filters.furnishing
-            ){
+              bedrooms:
+                row.bedrooms,
 
-              return false;
+              bathrooms:
+                row.bathrooms,
 
-            }
+              furnishing:
+                row.furnishing,
 
+              availability:
+                row.availability,
 
-            /*
-              Availability
-            */
+              description:
+                row.description,
 
-            if(
-              !matchesAvailability(
-                property,
-                filters.availability
-              )
-            ){
+              ownerName:
+                row.owner_name,
 
-              return false;
+              ownerPhone:
+                row.owner_phone,
 
-            }
+              ownerEmail:
+                row.owner_email,
 
+              listed_at:
+                row.listed_at,
 
-            return true;
+              last_confirmed_at:
+                row.last_confirmed_at,
+
+              status:
+                row.status,
+
+              image:
+                firstImage
+
+            };
 
           }
         );
 
 
-      renderProperties(
-        filtered
-      );
+      loadUrlFilters();
 
-    }
+      applyFilters(false);
 
 
-    /* =========================
-       CLEAR FILTERS
-    ========================= */
+    }catch(error){
 
-    function clearFilters(){
-
-      document
-        .getElementById("location")
-        .value = "";
-
-
-      document
-        .getElementById("purpose")
-        .value = "";
-
-
-      document
-        .getElementById("propertyType")
-        .value = "";
-
-
-      document
-        .getElementById("minPrice")
-        .value = "";
-
-
-      document
-        .getElementById("maxPrice")
-        .value = "";
-
-
-      document
-        .getElementById("bedrooms")
-        .value = "";
-
-
-      document
-        .getElementById("furnishing")
-        .value = "";
-
-
-      document
-        .getElementById("availability")
-        .value = "";
-
-
-      /*
-        Remove URL filters too.
-      */
-
-      window.history.pushState(
-        {},
-        "",
-        window.location.pathname
+      console.error(
+        "Failed to load properties:",
+        error
       );
 
 
-      renderProperties(
-        properties
-      );
-
-    }
+      properties = [];
 
 
-    /* =========================
-       RENDER PROPERTIES
-    ========================= */
+      if(propertyGrid){
 
-    function renderProperties(
-      list
-    ){
-
-      const grid =
-        document.getElementById(
-          "propertyGrid"
-        );
-
-
-      const empty =
-        document.getElementById(
-          "emptyState"
-        );
-
-
-      const count =
-        document.getElementById(
-          "resultsCount"
-        );
-
-
-      count.textContent =
-        `${list.length} ${
-          list.length === 1
-            ? "property"
-            : "properties"
-        }`;
-
-
-      /*
-        No properties
-      */
-
-      if(
-        list.length === 0
-      ){
-
-        grid.innerHTML = "";
-
-        grid.style.display =
-          "none";
-
-        empty.style.display =
-          "flex";
-
-        return;
+        propertyGrid.innerHTML = "";
 
       }
 
 
-      /*
-        Properties exist
-      */
+      if(resultsCount){
 
-      empty.style.display =
-        "none";
+        resultsCount.textContent =
+          "Unable to load properties";
 
-
-      grid.style.display =
-        "grid";
+      }
 
 
-      grid.innerHTML =
-        list
-          .map(
-            property => {
+      if(emptyState){
 
-              return `
+        emptyState.style.display =
+          "block";
 
-                <article
-                  class="property-card"
-                  onclick="openProperty('${escapeHtml(
-                    property.id
-                  )}')"
-                >
-
-                  <img
-                    class="property-image"
-                    src="${escapeHtml(
-                      property.image
-                    )}"
-                    alt="${escapeHtml(
-                      property.title
-                    )}"
-                  >
+      }
 
 
-                  <div
-                    class="property-content"
-                  >
-
-                    <div
-                      class="property-type"
-                    >
-                      ${escapeHtml(
-                        property.propertyType
-                      )}
-                    </div>
+      const emptyMessage =
+        document.getElementById(
+          "emptyMessage"
+        );
 
 
-                    <h3
-                      class="property-title"
-                    >
-                      ${escapeHtml(
-                        property.title
-                      )}
-                    </h3>
+      if(emptyMessage){
+
+        emptyMessage.textContent =
+          "Something went wrong while loading properties. Please try again.";
+
+      }
+
+    }finally{
+
+      if(loadingState){
+
+        loadingState.style.display =
+          "none";
+
+      }
+
+    }
+
+  }
 
 
-                    <div
-                      class="property-price"
-                    >
-                      ₹${Number(
-                        property.price || 0
-                      ).toLocaleString(
-                        "en-IN"
-                      )}
-                    </div>
+  /* =========================
+     ESCAPE HTML
+  ========================= */
 
+  function escapeHtml(value){
 
-                    <div
-                      class="property-location"
-                    >
-                      ${escapeHtml(
-                        property.location
-                      )}
-                    </div>
+    if(
+      value === null ||
+      value === undefined
+    ){
 
-                  </div>
-
-                </article>
-
-              `;
-
-            }
-          )
-          .join("");
+      return "";
 
     }
 
 
-    /* =========================
-       ESCAPE HTML
-    ========================= */
+    return String(value)
 
-    function escapeHtml(value){
-
-      return String(
-        value ?? ""
-      )
       .replace(
         /&/g,
         "&amp;"
       )
+
       .replace(
         /</g,
         "&lt;"
       )
+
       .replace(
         />/g,
         "&gt;"
       )
+
       .replace(
         /"/g,
         "&quot;"
       )
+
       .replace(
         /'/g,
         "&#039;"
       );
 
-    }
+  }
 
 
-    /* =========================
-       OPEN PROPERTY
-    ========================= */
+  /* =========================
+     FORMAT PRICE
+  ========================= */
 
-    function openProperty(id){
+  function formatPrice(price){
 
-      window.location.href =
-        `property.html?id=${
-          encodeURIComponent(id)
-        }`;
-
-    }
+    const number =
+      Number(price || 0);
 
 
-    /* =========================
-       INITIAL LOAD
-    ========================= */
+    if(!number){
 
-    function initializePage(){
-
-      /*
-        First read parameters
-        coming from homepage.
-      */
-
-      loadUrlFilters();
-
-
-      /*
-        Then apply those filters.
-      */
-
-      applyFilters();
+      return "Price on request";
 
     }
 
 
-    document.addEventListener(
-      "DOMContentLoaded",
-      initializePage
+    return (
+      "₹" +
+      number.toLocaleString("en-IN")
     );
 
+  }
 
-  </script>
-<script>
 
-document.addEventListener(
-  "DOMContentLoaded",
-  function(){
+  /* =========================
+     CONFIRMED DATE
+  ========================= */
 
-    const inputs = [
-      document.getElementById("location"),
-      document.getElementById("minPrice"),
-      document.getElementById("maxPrice")
-    ];
+  function formatConfirmedDate(
+    dateString
+  ){
 
-    inputs.forEach(function(input){
+    if(!dateString){
 
-      if(!input){
-        return;
+      return "Availability not confirmed";
+
+    }
+
+
+    const date =
+      new Date(dateString);
+
+
+    if(
+      Number.isNaN(
+        date.getTime()
+      )
+    ){
+
+      return "Availability not confirmed";
+
+    }
+
+
+    const difference =
+      Date.now() -
+      date.getTime();
+
+
+    const days =
+      Math.floor(
+        difference /
+        (1000 * 60 * 60 * 24)
+      );
+
+
+    if(days <= 0){
+
+      return "Owner confirmed today";
+
+    }
+
+
+    if(days === 1){
+
+      return "Owner confirmed 1 day ago";
+
+    }
+
+
+    return (
+      "Owner confirmed " +
+      days +
+      " days ago"
+    );
+
+  }
+
+
+  /* =========================
+     FRESHNESS CLASS
+  ========================= */
+
+  function getFreshnessClass(
+    dateString
+  ){
+
+    if(!dateString){
+
+      return "status-warning";
+
+    }
+
+
+    const date =
+      new Date(dateString);
+
+
+    if(
+      Number.isNaN(
+        date.getTime()
+      )
+    ){
+
+      return "status-warning";
+
+    }
+
+
+    const days =
+      Math.floor(
+        (
+          Date.now() -
+          date.getTime()
+        ) /
+        (1000 * 60 * 60 * 24)
+      );
+
+
+    if(days <= 7){
+
+      return "status-fresh";
+
+    }
+
+
+    if(days <= 14){
+
+      return "status-soon";
+
+    }
+
+
+    return "status-warning";
+
+  }
+
+
+  /* =========================
+     PROPERTY TYPE LABEL
+  ========================= */
+
+  function prettyPropertyType(type){
+
+    const types = {
+
+      home:
+        "Home",
+
+      apartment:
+        "Apartment",
+
+      room:
+        "Room",
+
+      pg:
+        "PG",
+
+      plot:
+        "Plot / Land",
+
+      farmhouse:
+        "Farmhouse",
+
+      shop:
+        "Shop",
+
+      office:
+        "Office",
+
+      warehouse:
+        "Warehouse",
+
+      commercial:
+        "Commercial"
+
+    };
+
+
+    return (
+      types[type] ||
+      type ||
+      "Property"
+    );
+
+  }
+
+
+  /* =========================
+     RENDER PROPERTIES
+  ========================= */
+
+  function renderProperties(
+    list
+  ){
+
+    const propertyGrid =
+      document.getElementById(
+        "propertyGrid"
+      );
+
+    const emptyState =
+      document.getElementById(
+        "emptyState"
+      );
+
+    const resultsCount =
+      document.getElementById(
+        "resultsCount"
+      );
+
+
+    if(!propertyGrid){
+
+      return;
+
+    }
+
+
+    propertyGrid.innerHTML = "";
+
+
+    if(resultsCount){
+
+      resultsCount.textContent =
+        list.length +
+        (
+          list.length === 1
+            ? " property"
+            : " properties"
+        );
+
+    }
+
+
+    if(!list.length){
+
+      if(emptyState){
+
+        emptyState.style.display =
+          "block";
+
       }
 
-      input.addEventListener(
-        "keydown",
-        function(event){
+      return;
 
-          if(event.key === "Enter"){
-            event.preventDefault();
-            applyFilters();
+    }
+
+
+    if(emptyState){
+
+      emptyState.style.display =
+        "none";
+
+    }
+
+
+    list.forEach(
+      function(property){
+
+        const image =
+          property.image ||
+          "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1200&q=88";
+
+
+        const freshnessClass =
+          getFreshnessClass(
+            property.last_confirmed_at
+          );
+
+
+        const confirmedText =
+          formatConfirmedDate(
+            property.last_confirmed_at
+          );
+
+
+        const card =
+          document.createElement(
+            "article"
+          );
+
+
+        card.className =
+          "property-card";
+
+
+        card.onclick =
+          function(){
+
+            openProperty(
+              property.id
+            );
+
+          };
+
+
+        card.innerHTML = `
+
+          <div class="property-image-wrap">
+
+            <img
+              class="property-image"
+              src="${escapeHtml(image)}"
+              alt="${escapeHtml(property.title)}"
+              loading="lazy"
+            >
+
+
+            <div
+              class="property-status ${freshnessClass}"
+            >
+
+              <span class="status-dot"></span>
+
+              Owner Confirmed
+
+            </div>
+
+          </div>
+
+
+          <div class="property-card-body">
+
+            <div class="property-card-top">
+
+              <span class="property-type">
+
+                ${escapeHtml(
+                  prettyPropertyType(
+                    property.propertyType
+                  )
+                )}
+
+              </span>
+
+
+              <span class="property-purpose">
+
+                ${escapeHtml(
+                  property.purpose || ""
+                )}
+
+              </span>
+
+            </div>
+
+
+            <h3 class="property-title">
+
+              ${escapeHtml(
+                property.title
+              )}
+
+            </h3>
+
+
+            <div class="property-location">
+
+              <span>⌖</span>
+
+              ${escapeHtml(
+                property.location
+              )}
+
+            </div>
+
+
+            <div class="property-price">
+
+              ${escapeHtml(
+                formatPrice(
+                  property.price
+                )
+              )}
+
+            </div>
+
+
+            <div class="property-meta">
+
+              ${
+                property.bedrooms !== null &&
+                property.bedrooms !== undefined
+                  ? `
+                    <span>
+                      ${escapeHtml(
+                        property.bedrooms
+                      )} bed
+                    </span>
+                  `
+                  : ""
+              }
+
+
+              ${
+                property.bathrooms !== null &&
+                property.bathrooms !== undefined
+                  ? `
+                    <span>
+                      ${escapeHtml(
+                        property.bathrooms
+                      )} bath
+                    </span>
+                  `
+                  : ""
+              }
+
+
+              ${
+                property.area
+                  ? `
+                    <span>
+                      ${escapeHtml(
+                        property.area
+                      )} sq ft
+                    </span>
+                  `
+                  : ""
+              }
+
+            </div>
+
+
+            <div class="property-confirmed">
+
+              <span class="confirmed-check">
+                ✓
+              </span>
+
+              ${escapeHtml(
+                confirmedText
+              )}
+
+            </div>
+
+          </div>
+
+        `;
+
+
+        propertyGrid.appendChild(
+          card
+        );
+
+      }
+    );
+
+  }
+  /* =========================
+     FILTER PROPERTIES
+  ========================= */
+
+  function applyFilters(
+    updateBrowserUrl = true
+  ){
+
+    const locationInput =
+      document.getElementById(
+        "location"
+      );
+
+    const purposeInput =
+      document.getElementById(
+        "purpose"
+      );
+
+    const typeInput =
+      document.getElementById(
+        "propertyType"
+      );
+
+    const minPriceInput =
+      document.getElementById(
+        "minPrice"
+      );
+
+    const maxPriceInput =
+      document.getElementById(
+        "maxPrice"
+      );
+
+    const bedroomsInput =
+      document.getElementById(
+        "bedrooms"
+      );
+
+    const furnishingInput =
+      document.getElementById(
+        "furnishing"
+      );
+
+    const availabilityInput =
+      document.getElementById(
+        "availability"
+      );
+
+
+    const location =
+      locationInput
+        ? locationInput.value
+            .trim()
+            .toLowerCase()
+        : "";
+
+
+    const purpose =
+      purposeInput
+        ? purposeInput.value
+        : "";
+
+
+    const propertyType =
+      typeInput
+        ? typeInput.value
+        : "";
+
+
+    const minPrice =
+      minPriceInput &&
+      minPriceInput.value
+        ? Number(
+            minPriceInput.value
+          )
+        : null;
+
+
+    const maxPrice =
+      maxPriceInput &&
+      maxPriceInput.value
+        ? Number(
+            maxPriceInput.value
+          )
+        : null;
+
+
+    const bedrooms =
+      bedroomsInput
+        ? bedroomsInput.value
+        : "";
+
+
+    const furnishing =
+      furnishingInput
+        ? furnishingInput.value
+        : "";
+
+
+    const availability =
+      availabilityInput
+        ? availabilityInput.value
+        : "";
+
+
+    const filtered =
+      properties.filter(
+        function(property){
+
+          /* LOCATION */
+
+          if(location){
+
+            const searchable =
+              [
+                property.city,
+                property.locality,
+                property.location,
+                property.address
+              ]
+                .filter(Boolean)
+                .join(" ")
+                .toLowerCase();
+
+
+            if(
+              !searchable.includes(
+                location
+              )
+            ){
+
+              return false;
+
+            }
+
           }
+
+
+          /* PURPOSE */
+
+          if(
+            purpose &&
+            property.purpose !== purpose
+          ){
+
+            return false;
+
+          }
+
+
+          /* PROPERTY TYPE */
+
+          if(
+            propertyType &&
+            property.propertyType !==
+              propertyType
+          ){
+
+            return false;
+
+          }
+
+
+          /* MINIMUM PRICE */
+
+          if(
+            minPrice !== null &&
+            property.price < minPrice
+          ){
+
+            return false;
+
+          }
+
+
+          /* MAXIMUM PRICE */
+
+          if(
+            maxPrice !== null &&
+            property.price > maxPrice
+          ){
+
+            return false;
+
+          }
+
+
+          /* BEDROOMS */
+
+          if(
+            bedrooms &&
+            Number(
+              property.bedrooms || 0
+            ) <
+            Number(bedrooms)
+          ){
+
+            return false;
+
+          }
+
+
+          /* FURNISHING */
+
+          if(
+            furnishing &&
+            property.furnishing !==
+              furnishing
+          ){
+
+            return false;
+
+          }
+
+
+          /* AVAILABILITY */
+
+          if(
+            availability &&
+            !matchesAvailability(
+              property,
+              availability
+            )
+          ){
+
+            return false;
+
+          }
+
+
+          return true;
 
         }
       );
 
-    });
+
+    renderProperties(
+      filtered
+    );
+
+
+    if(updateBrowserUrl){
+
+      updateUrl();
+
+    }
 
   }
-);
 
 
-window.addEventListener(
-  "popstate",
-  function(){
+  /* =========================
+     AVAILABILITY FILTER
+  ========================= */
 
-    loadUrlFilters();
-    applyFilters();
+  function matchesAvailability(
+    property,
+    value
+  ){
+
+    if(
+      !property.last_confirmed_at
+    ){
+
+      return false;
+
+    }
+
+
+    const date =
+      new Date(
+        property.last_confirmed_at
+      );
+
+
+    if(
+      Number.isNaN(
+        date.getTime()
+      )
+    ){
+
+      return false;
+
+    }
+
+
+    const days =
+      Math.floor(
+        (
+          Date.now() -
+          date.getTime()
+        ) /
+        (1000 * 60 * 60 * 24)
+      );
+
+
+    if(value === "week"){
+
+      return days <= 7;
+
+    }
+
+
+    if(value === "two-weeks"){
+
+      return days <= 14;
+
+    }
+
+
+    if(value === "month"){
+
+      return days <= 30;
+
+    }
+
+
+    return true;
 
   }
-);
+
+
+  /* =========================
+     LOAD URL FILTERS
+  ========================= */
+
+  function loadUrlFilters(){
+
+    const params =
+      new URLSearchParams(
+        window.location.search
+      );
+
+
+    const location =
+      params.get("location");
+
+
+    const purpose =
+      params.get("purpose");
+
+
+    const category =
+      params.get("category");
+
+
+    const property =
+      params.get("property");
+
+
+    const locationInput =
+      document.getElementById(
+        "location"
+      );
+
+
+    const purposeInput =
+      document.getElementById(
+        "purpose"
+      );
+
+
+    const typeInput =
+      document.getElementById(
+        "propertyType"
+      );
+
+
+    if(locationInput){
+
+      locationInput.value =
+        location || "";
+
+    }
+
+
+    if(
+      purposeInput &&
+      purpose
+    ){
+
+      purposeInput.value =
+        purpose;
+
+    }
+
+
+    let mappedType = "";
+
+
+    if(category){
+
+      mappedType =
+        mapPropertyType(
+          category
+        );
+
+    }
+
+
+    if(
+      property &&
+      !mappedType
+    ){
+
+      mappedType =
+        mapPropertyType(
+          property
+        );
+
+    }
+
+
+    if(
+      typeInput &&
+      mappedType
+    ){
+
+      typeInput.value =
+        mappedType;
+
+    }
+
+  }
+
+
+  /* =========================
+     MAP CATEGORY
+  ========================= */
+
+  function mapPropertyType(
+    value
+  ){
+
+    if(!value){
+
+      return "";
+
+    }
+
+
+    const normalized =
+      value
+        .toLowerCase()
+        .trim();
+
+
+    const map = {
+
+      home:
+        "home",
+
+      homes:
+        "home",
+
+      villa:
+        "home",
+
+      villas:
+        "home",
+
+      "homes & villas":
+        "home",
+
+      apartment:
+        "apartment",
+
+      apartments:
+        "apartment",
+
+      flat:
+        "apartment",
+
+      flats:
+        "apartment",
+
+      room:
+        "room",
+
+      rooms:
+        "room",
+
+      pg:
+        "pg",
+
+      pgs:
+        "pg",
+
+      plot:
+        "plot",
+
+      plots:
+        "plot",
+
+      land:
+        "plot",
+
+      "plots & land":
+        "plot",
+
+      farmhouse:
+        "farmhouse",
+
+      farmhouses:
+        "farmhouse",
+
+      shop:
+        "shop",
+
+      shops:
+        "shop",
+
+      office:
+        "office",
+
+      offices:
+        "office",
+
+      warehouse:
+        "warehouse",
+
+      warehouses:
+        "warehouse",
+
+      commercial:
+        "commercial"
+
+    };
+
+
+    return (
+      map[normalized] || ""
+    );
+
+  }
+
+
+  /* =========================
+     UPDATE URL
+  ========================= */
+
+  function updateUrl(){
+
+    const params =
+      new URLSearchParams();
+
+
+    const locationInput =
+      document.getElementById(
+        "location"
+      );
+
+    const purposeInput =
+      document.getElementById(
+        "purpose"
+      );
+
+    const typeInput =
+      document.getElementById(
+        "propertyType"
+      );
+
+
+    if(
+      locationInput &&
+      locationInput.value.trim()
+    ){
+
+      params.set(
+        "location",
+        locationInput.value.trim()
+      );
+
+    }
+
+
+    if(
+      purposeInput &&
+      purposeInput.value
+    ){
+
+      params.set(
+        "purpose",
+        purposeInput.value
+      );
+
+    }
+
+
+    if(
+      typeInput &&
+      typeInput.value
+    ){
+
+      params.set(
+        "category",
+        typeInput.value
+      );
+
+    }
+
+
+    const query =
+      params.toString();
+
+
+    const newUrl =
+      window.location.pathname +
+      (
+        query
+          ? "?" + query
+          : ""
+      );
+
+
+    window.history.replaceState(
+      {},
+      "",
+      newUrl
+    );
+
+  }
+
+
+  /* =========================
+     OPEN PROPERTY
+  ========================= */
+
+  function openProperty(id){
+
+    if(!id){
+
+      return;
+
+    }
+
+
+    window.location.href =
+      "property.html?id=" +
+      encodeURIComponent(id);
+
+  }
+
+
+  /* =========================
+     LIST PROPERTY
+  ========================= */
+
+  function listProperty(){
+
+    window.location.href =
+      "list-property.html";
+
+  }
+
+
+  /* =========================
+     SIGN IN
+  ========================= */
+
+  function signIn(){
+
+    window.location.href =
+      "login.html";
+
+  }
+
+
+  /* =========================
+     MOBILE MENU
+  ========================= */
+
+  function toggleMenu(){
+
+    const menu =
+      document.getElementById(
+        "mobileMenu"
+      );
+
+
+    if(!menu){
+
+      return;
+
+    }
+
+
+    menu.classList.toggle(
+      "open"
+    );
+
+  }
+
+
+  function closeMenu(){
+
+    const menu =
+      document.getElementById(
+        "mobileMenu"
+      );
+
+
+    if(!menu){
+
+      return;
+
+    }
+
+
+    menu.classList.remove(
+      "open"
+    );
+
+  }
+
+
+  /* =========================
+     INITIALIZE
+  ========================= */
+
+  document.addEventListener(
+    "DOMContentLoaded",
+    function(){
+
+      loadProperties();
+
+
+      const filterInputs = [
+
+        document.getElementById(
+          "location"
+        ),
+
+        document.getElementById(
+          "minPrice"
+        ),
+
+        document.getElementById(
+          "maxPrice"
+        )
+
+      ];
+
+
+      filterInputs.forEach(
+        function(input){
+
+          if(!input){
+
+            return;
+
+          }
+
+
+          input.addEventListener(
+            "keydown",
+            function(event){
+
+              if(
+                event.key === "Enter"
+              ){
+
+                event.preventDefault();
+
+                applyFilters(true);
+
+              }
+
+            }
+          );
+
+        }
+      );
+
+
+      const selectFilters = [
+
+        document.getElementById(
+          "purpose"
+        ),
+
+        document.getElementById(
+          "propertyType"
+        ),
+
+        document.getElementById(
+          "bedrooms"
+        ),
+
+        document.getElementById(
+          "furnishing"
+        ),
+
+        document.getElementById(
+          "availability"
+        )
+
+      ];
+
+
+      selectFilters.forEach(
+        function(select){
+
+          if(!select){
+
+            return;
+
+          }
+
+
+          select.addEventListener(
+            "change",
+            function(){
+
+              applyFilters(true);
+
+            }
+          );
+
+        }
+      );
+
+
+      const applyBtn =
+        document.getElementById(
+          "applyBtn"
+        );
+
+
+      if(applyBtn){
+
+        applyBtn.addEventListener(
+          "click",
+          function(){
+
+            applyFilters(true);
+
+          }
+        );
+
+      }
+
+
+      document
+        .querySelectorAll(
+          ".mobile-menu a"
+        )
+        .forEach(
+          function(link){
+
+            link.addEventListener(
+              "click",
+              closeMenu
+            );
+
+          }
+        );
+
+
+      window.addEventListener(
+        "popstate",
+        function(){
+
+          loadUrlFilters();
+
+          applyFilters(false);
+
+        }
+      );
+
+    }
+  );
 
 </script>
+
 
 </body>
 </html>
