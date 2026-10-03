@@ -10,7 +10,8 @@
     content="width=device-width, initial-scale=1.0"
   >
 
-  <title>List Your Property — Placingo</title>
+  <title>List a Property — Placingo</title>
+
 
   <style>
 
@@ -18,6 +19,7 @@
 
       --green:#173f35;
       --green-dark:#0d2d26;
+
       --lime:#d9ef7c;
 
       --cream:#f5f1e8;
@@ -25,6 +27,7 @@
 
       --white:#ffffff;
 
+      --text:#173f35;
       --muted:#6c7972;
 
       --line:rgba(23,63,53,.12);
@@ -51,14 +54,17 @@
 
       font-family:
         Inter,
-        Arial,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
         sans-serif;
 
-      background:var(--cream);
+      background:var(--cream-light);
 
-      color:var(--green);
+      color:var(--text);
 
-      min-height:100vh;
+      line-height:1.5;
 
     }
 
@@ -78,6 +84,12 @@
     }
 
 
+    a{
+      color:inherit;
+      text-decoration:none;
+    }
+
+
     /* =========================
        HEADER
     ========================= */
@@ -94,7 +106,7 @@
         rgba(251,249,243,.94);
 
       backdrop-filter:
-        blur(16px);
+        blur(14px);
 
       border-bottom:
         1px solid var(--line);
@@ -104,8 +116,10 @@
 
     .nav{
 
-      width:
-        min(1180px,92%);
+      width:min(
+        1180px,
+        calc(100% - 36px)
+      );
 
       margin:auto;
 
@@ -117,58 +131,49 @@
 
       justify-content:space-between;
 
-      gap:24px;
+      gap:30px;
 
     }
 
 
-    .brand{
+    .logo{
 
       display:flex;
 
       align-items:center;
 
-      gap:11px;
+      gap:10px;
 
-      text-decoration:none;
+      font-size:24px;
+
+      font-weight:800;
+
+      letter-spacing:-.8px;
 
       color:var(--green);
 
     }
 
 
-    .brand-mark{
+    .logo-mark{
 
-      width:39px;
+      width:34px;
 
-      height:39px;
+      height:34px;
 
-      border-radius:13px;
+      border-radius:11px;
+
+      display:grid;
+
+      place-items:center;
 
       background:var(--green);
 
       color:var(--lime);
 
-      display:flex;
+      font-weight:900;
 
-      align-items:center;
-
-      justify-content:center;
-
-      font-size:21px;
-
-      font-weight:800;
-
-    }
-
-
-    .brand-name{
-
-      font-size:21px;
-
-      font-weight:800;
-
-      letter-spacing:-.5px;
+      font-size:19px;
 
     }
 
@@ -181,19 +186,15 @@
 
       gap:28px;
 
+      font-size:14px;
+
+      color:#53625c;
+
     }
 
 
-    .nav-links a{
-
+    .nav-links a:hover{
       color:var(--green);
-
-      text-decoration:none;
-
-      font-size:14px;
-
-      font-weight:650;
-
     }
 
 
@@ -212,7 +213,7 @@
 
       border:1px solid var(--line);
 
-      background:var(--white);
+      background:transparent;
 
       color:var(--green);
 
@@ -225,28 +226,73 @@
     }
 
 
-    /* =========================
-       PAGE
-    ========================= */
+    .signin-btn:hover{
 
-    main{
-
-      width:
-        min(980px,92%);
-
-      margin:auto;
-
-      padding:
-        58px 0 90px;
+      background:rgba(23,63,53,.05);
 
     }
 
 
-    .page-heading{
+    .list-btn{
 
-      max-width:700px;
+      border:none;
 
-      margin-bottom:38px;
+      background:var(--green);
+
+      color:white;
+
+      padding:12px 18px;
+
+      border-radius:12px;
+
+      font-weight:700;
+
+    }
+
+
+    .list-btn:hover{
+
+      background:var(--green-dark);
+
+    }
+
+
+    /* =========================
+       HERO
+    ========================= */
+
+    .page-hero{
+
+      background:
+
+        radial-gradient(
+          circle at 85% 15%,
+          rgba(217,239,124,.32),
+          transparent 34%
+        ),
+
+        linear-gradient(
+          135deg,
+          var(--green),
+          var(--green-dark)
+        );
+
+      color:white;
+
+      padding:
+        74px 18px 82px;
+
+    }
+
+
+    .hero-inner{
+
+      width:min(
+        980px,
+        100%
+      );
+
+      margin:auto;
 
     }
 
@@ -259,101 +305,104 @@
 
       gap:8px;
 
-      background:
-        rgba(217,239,124,.45);
-
-      color:var(--green);
-
-      padding:8px 12px;
+      padding:7px 11px;
 
       border-radius:999px;
+
+      background:
+        rgba(217,239,124,.13);
+
+      border:
+        1px solid rgba(217,239,124,.22);
+
+      color:var(--lime);
 
       font-size:12px;
 
       font-weight:800;
 
-      letter-spacing:.04em;
+      letter-spacing:.5px;
 
       text-transform:uppercase;
 
-      margin-bottom:17px;
+      margin-bottom:20px;
 
     }
 
 
-    .eyebrow-dot{
+    .page-hero h1{
 
-      width:7px;
-
-      height:7px;
-
-      border-radius:50%;
-
-      background:var(--green);
-
-    }
-
-
-    h1{
+      max-width:760px;
 
       font-size:
-        clamp(38px,6vw,62px);
+        clamp(38px,6vw,68px);
 
       line-height:1.02;
 
-      letter-spacing:-2.7px;
+      letter-spacing:-2.8px;
 
-      margin-bottom:17px;
+      margin-bottom:20px;
 
     }
 
 
-    .page-heading p{
-
-      color:var(--muted);
-
-      font-size:17px;
-
-      line-height:1.7;
+    .page-hero p{
 
       max-width:650px;
+
+      color:
+        rgba(255,255,255,.72);
+
+      font-size:17px;
 
     }
 
 
     /* =========================
-       FORM
+       FORM WRAPPER
     ========================= */
 
-    .form-card{
+    main{
 
-      background:var(--white);
+      width:min(
+        980px,
+        calc(100% - 30px)
+      );
 
-      border:
-        1px solid var(--line);
+      margin:
+        -38px auto 80px;
 
-      border-radius:25px;
+      position:relative;
 
-      box-shadow:var(--shadow);
+      z-index:2;
 
-      overflow:hidden;
+    }
+
+
+    form{
+
+      display:flex;
+
+      flex-direction:column;
+
+      gap:20px;
 
     }
 
 
     .form-section{
 
-      padding:32px;
+      background:white;
 
-      border-bottom:
+      border:
         1px solid var(--line);
 
-    }
+      border-radius:24px;
 
+      padding:
+        30px;
 
-    .form-section:last-child{
-
-      border-bottom:0;
+      box-shadow:var(--shadow);
 
     }
 
@@ -367,11 +416,11 @@
 
     .section-heading h2{
 
-      font-size:22px;
+      font-size:24px;
 
-      letter-spacing:-.7px;
+      letter-spacing:-.6px;
 
-      margin-bottom:7px;
+      margin-bottom:6px;
 
     }
 
@@ -382,10 +431,12 @@
 
       font-size:14px;
 
-      line-height:1.6;
-
     }
 
+
+    /* =========================
+       FIELDS
+    ========================= */
 
     .field-grid{
 
@@ -412,17 +463,16 @@
 
     .field.full{
 
-      grid-column:
-        1 / -1;
+      grid-column:1 / -1;
 
     }
 
 
-    label{
+    .field label{
 
       font-size:13px;
 
-      font-weight:750;
+      font-weight:800;
 
       color:var(--green);
 
@@ -431,61 +481,43 @@
 
     .required{
 
-      color:#b34b39;
+      color:#9b4a3d;
 
     }
 
 
-    input,
-    select,
-    textarea{
+    .field input,
+    .field select,
+    .field textarea{
 
       width:100%;
 
       border:
         1px solid var(--line);
 
-      background:#fbfaf6;
+      background:
+        var(--cream-light);
 
       color:var(--green);
 
       border-radius:13px;
 
       padding:
-        14px 15px;
+        13px 14px;
 
       outline:none;
 
       transition:
-        border-color .2s,
+        border .2s,
         box-shadow .2s,
         background .2s;
 
     }
 
 
-    input,
-    select{
-
-      min-height:50px;
-
-    }
-
-
-    textarea{
-
-      min-height:140px;
-
-      resize:vertical;
-
-      line-height:1.6;
-
-    }
-
-
-    input:focus,
-    select:focus,
-    textarea:focus{
+    .field input:focus,
+    .field select:focus,
+    .field textarea:focus{
 
       background:white;
 
@@ -494,46 +526,52 @@
 
       box-shadow:
         0 0 0 4px
-        rgba(217,239,124,.28);
+        rgba(217,239,124,.25);
 
     }
 
 
-    .hint{
+    .field textarea{
 
-      color:var(--muted);
+      min-height:145px;
 
-      font-size:12px;
+      resize:vertical;
 
-      line-height:1.5;
+    }
+
+
+    .field input::placeholder,
+    .field textarea::placeholder{
+
+      color:#9aa49f;
 
     }
 
 
     /* =========================
-       PURPOSE BUTTONS
+       PURPOSE
     ========================= */
 
-    .choice-row{
+    .purpose-options{
 
       display:grid;
 
       grid-template-columns:
-        repeat(2,1fr);
+        repeat(2,minmax(0,1fr));
 
-      gap:10px;
+      gap:12px;
 
     }
 
 
-    .choice{
+    .purpose-option{
 
       position:relative;
 
     }
 
 
-    .choice input{
+    .purpose-option input{
 
       position:absolute;
 
@@ -544,9 +582,7 @@
     }
 
 
-    .choice label{
-
-      min-height:52px;
+    .purpose-option label{
 
       display:flex;
 
@@ -554,12 +590,18 @@
 
       justify-content:center;
 
+      min-height:56px;
+
       border:
         1px solid var(--line);
 
-      background:#fbfaf6;
+      border-radius:14px;
 
-      border-radius:13px;
+      background:var(--cream-light);
+
+      color:var(--green);
+
+      font-weight:800;
 
       cursor:pointer;
 
@@ -568,7 +610,7 @@
     }
 
 
-    .choice input:checked + label{
+    .purpose-option input:checked + label{
 
       background:var(--green);
 
@@ -577,221 +619,44 @@
       border-color:var(--green);
 
       box-shadow:
-        0 8px 20px
+        0 8px 22px
         rgba(23,63,53,.14);
 
     }
 
 
     /* =========================
-       PHOTO AREA
+       PROPERTY DETAILS
     ========================= */
 
-    .photo-box{
+    .details-note{
 
-      border:
-        1.5px dashed
-        rgba(23,63,53,.22);
+      margin-top:20px;
 
-      background:#fbfaf6;
+      padding:14px 16px;
 
-      border-radius:18px;
-
-      padding:35px 22px;
-
-      text-align:center;
-
-    }
-
-
-    .photo-icon{
-
-      width:50px;
-
-      height:50px;
-
-      margin:0 auto 13px;
-
-      border-radius:15px;
+      border-radius:14px;
 
       background:
-        rgba(217,239,124,.5);
+        rgba(217,239,124,.22);
 
-      display:flex;
-
-      align-items:center;
-
-      justify-content:center;
-
-      font-size:22px;
-
-    }
-
-
-    .photo-box h3{
-
-      font-size:17px;
-
-      margin-bottom:6px;
-
-    }
-
-
-    .photo-box p{
-
-      color:var(--muted);
+      color:var(--green);
 
       font-size:13px;
-
-      line-height:1.5;
-
-      margin-bottom:17px;
-
-    }
-
-
-    .upload-btn{
-
-      display:inline-flex;
-
-      align-items:center;
-
-      justify-content:center;
-
-      background:var(--green);
-
-      color:white;
-
-      border:0;
-
-      border-radius:11px;
-
-      padding:11px 17px;
-
-      font-size:13px;
-
-      font-weight:750;
-
-      cursor:pointer;
-
-    }
-
-
-    #photos{
-
-      display:none;
-
-    }
-
-
-    .photo-preview{
-
-      display:grid;
-
-      grid-template-columns:
-        repeat(4,1fr);
-
-      gap:10px;
-
-      margin-top:15px;
-
-    }
-
-
-    .photo-preview img{
-
-      width:100%;
-
-      aspect-ratio:1;
-
-      object-fit:cover;
-
-      border-radius:12px;
-
-      border:1px solid var(--line);
 
     }
 
 
     /* =========================
-       SUBMIT AREA
-    ========================= */
-
-    .submit-section{
-
-      padding:30px 32px;
-
-      background:
-        linear-gradient(
-          135deg,
-          #fbf9f3,
-          #f1f6e8
-        );
-
-      display:flex;
-
-      align-items:center;
-
-      justify-content:space-between;
-
-      gap:20px;
-
-    }
-
-
-    .submit-copy h3{
-
-      font-size:18px;
-
-      margin-bottom:5px;
-
-    }
-
-
-    .submit-copy p{
-
-      color:var(--muted);
-
-      font-size:13px;
-
-      line-height:1.5;
-
-    }
-
-
-    .publish-btn{
-
-      border:0;
-
-      background:var(--green);
-
-      color:white;
-
-      padding:
-        15px 25px;
-
-      border-radius:13px;
-
-      font-weight:800;
-
-      white-space:nowrap;
-
-      box-shadow:
-        0 12px 25px
-        rgba(23,63,53,.17);
-
-    }
-
-
-    /* =========================
-       MOBILE
+       RESPONSIVE
     ========================= */
 
     @media(max-width:760px){
 
       .nav{
 
-        min-height:68px;
+        width:
+          calc(100% - 24px);
 
       }
 
@@ -803,39 +668,50 @@
       }
 
 
-      .signin-btn{
+      .list-btn{
+
+        display:none;
+
+      }
+
+
+      .nav-actions{
+
+        margin-left:auto;
+
+      }
+
+
+      .page-hero{
 
         padding:
-          9px 12px;
+          55px 16px 70px;
 
       }
 
 
-      main{
-
-        padding:
-          38px 0 60px;
-
-      }
-
-
-      .page-heading{
-
-        margin-bottom:28px;
-
-      }
-
-
-      h1{
+      .page-hero h1{
 
         letter-spacing:-1.8px;
 
       }
 
 
+      main{
+
+        width:
+          calc(100% - 20px);
+
+        margin-top:-30px;
+
+      }
+
+
       .form-section{
 
-        padding:23px 19px;
+        padding:22px 18px;
+
+        border-radius:20px;
 
       }
 
@@ -843,8 +719,6 @@
       .field-grid{
 
         grid-template-columns:1fr;
-
-        gap:17px;
 
       }
 
@@ -856,29 +730,9 @@
       }
 
 
-      .photo-preview{
+      .purpose-options{
 
-        grid-template-columns:
-          repeat(2,1fr);
-
-      }
-
-
-      .submit-section{
-
-        padding:
-          24px 19px;
-
-        flex-direction:column;
-
-        align-items:stretch;
-
-      }
-
-
-      .publish-btn{
-
-        width:100%;
+        grid-template-columns:1fr;
 
       }
 
@@ -900,18 +754,19 @@
 
     <nav class="nav">
 
+
       <a
-        class="brand"
+        class="logo"
         href="index.html"
       >
 
-        <div class="brand-mark">
+        <span class="logo-mark">
           P
-        </div>
+        </span>
 
-        <div class="brand-name">
+        <span>
           Placingo
-        </div>
+        </span>
 
       </a>
 
@@ -947,55 +802,69 @@
           Sign in
         </button>
 
+        <button
+          class="list-btn"
+          type="button"
+          onclick="window.scrollTo({top:0,behavior:'smooth'})"
+        >
+          List a property
+        </button>
+
       </div>
+
 
     </nav>
 
   </header>
 
 
+
   <!-- =========================
-       MAIN
+       HERO
   ========================= -->
 
-  <main>
+  <section class="page-hero">
 
-
-    <div class="page-heading">
+    <div class="hero-inner">
 
       <div class="eyebrow">
-
-        <span class="eyebrow-dot"></span>
-
-        List on Placingo
-
+        List with Placingo
       </div>
 
 
       <h1>
-        Put your property<br>
+        Put your property
         in the right place.
       </h1>
 
 
       <p>
-        Share your property directly with people
-        looking for a place. Add the details once,
-        keep availability updated, and connect
-        without the usual middleman.
+        Add your property details,
+        photos and contact information.
+        We'll make it easier for people
+        looking for a place like yours
+        to discover it.
       </p>
 
     </div>
 
+  </section>
+
+
+
+  <!-- =========================
+       MAIN FORM
+  ========================= -->
+
+  <main>
 
     <form
-      class="form-card"
       id="propertyForm"
     >
 
 
       <!-- =========================
-           PROPERTY BASICS
+           BASIC INFORMATION
       ========================= -->
 
       <section class="form-section">
@@ -1007,8 +876,8 @@
           </h2>
 
           <p>
-            Start with the details people need
-            to understand what you're offering.
+            Start with the information
+            people will see first.
           </p>
 
         </div>
@@ -1030,54 +899,56 @@
             <input
               id="title"
               type="text"
-              placeholder="e.g. Spacious 2 BHK apartment near Bawadia Kalan"
+              placeholder="e.g. Spacious 2 BHK apartment near MP Nagar"
               required
             >
 
           </div>
 
 
-          <div class="field">
+
+          <div class="field full">
 
             <label>
-
-              What do you want to do?
-
+              What are you offering?
               <span class="required">*</span>
-
             </label>
 
 
-            <div class="choice-row">
+            <div class="purpose-options">
 
 
-              <div class="choice">
+              <div class="purpose-option">
 
                 <input
-                  type="radio"
                   id="purposeRent"
                   name="purpose"
+                  type="radio"
                   value="rent"
-                  checked
+                  required
                 >
 
-                <label for="purposeRent">
+                <label
+                  for="purposeRent"
+                >
                   Rent
                 </label>
 
               </div>
 
 
-              <div class="choice">
+              <div class="purpose-option">
 
                 <input
-                  type="radio"
                   id="purposeBuy"
                   name="purpose"
+                  type="radio"
                   value="buy"
                 >
 
-                <label for="purposeBuy">
+                <label
+                  for="purposeBuy"
+                >
                   Sell
                 </label>
 
@@ -1087,6 +958,7 @@
             </div>
 
           </div>
+
 
 
           <div class="field">
@@ -1099,6 +971,7 @@
 
             </label>
 
+
             <select
               id="propertyType"
               required
@@ -1109,39 +982,39 @@
               </option>
 
               <option value="home">
-                Homes & Villas
+                Home / Villa
               </option>
 
               <option value="apartment">
-                Apartments
+                Apartment
               </option>
 
               <option value="room">
-                Rooms
+                Room
               </option>
 
               <option value="pg">
-                PGs
+                PG
               </option>
 
               <option value="plot">
-                Plots & Land
+                Plot / Land
               </option>
 
               <option value="farmhouse">
-                Farmhouses
+                Farmhouse
               </option>
 
               <option value="shop">
-                Shops
+                Shop
               </option>
 
               <option value="office">
-                Offices
+                Office
               </option>
 
               <option value="warehouse">
-                Warehouses
+                Warehouse
               </option>
 
               <option value="commercial">
@@ -1151,6 +1024,7 @@
             </select>
 
           </div>
+
 
 
           <div class="field">
@@ -1167,15 +1041,13 @@
               id="price"
               type="number"
               min="0"
+              step="1"
               placeholder="e.g. 15000"
               required
             >
 
-            <div class="hint">
-              Enter monthly rent or total selling price.
-            </div>
-
           </div>
+
 
 
           <div class="field">
@@ -1188,12 +1060,9 @@
               id="area"
               type="number"
               min="0"
-              placeholder="e.g. 1200"
+              step="1"
+              placeholder="e.g. 1200 sq ft"
             >
-
-            <div class="hint">
-              Approximate area in sq ft.
-            </div>
 
           </div>
 
@@ -1201,6 +1070,7 @@
         </div>
 
       </section>
+
 
 
       <!-- =========================
@@ -1212,12 +1082,12 @@
         <div class="section-heading">
 
           <h2>
-            Location
+            Where is it located?
           </h2>
 
           <p>
-            Help people understand exactly
-            where the property is.
+            Give people enough information
+            to understand the location.
           </p>
 
         </div>
@@ -1250,7 +1120,7 @@
 
             <label for="locality">
 
-              Area / locality
+              Locality / Area
 
               <span class="required">*</span>
 
@@ -1259,7 +1129,7 @@
             <input
               id="locality"
               type="text"
-              placeholder="e.g. Bawadia Kalan"
+              placeholder="e.g. MP Nagar"
               required
             >
 
@@ -1269,14 +1139,18 @@
           <div class="field full">
 
             <label for="address">
+
               Full address
+
+              <span class="required">*</span>
+
             </label>
 
-            <input
+            <textarea
               id="address"
-              type="text"
-              placeholder="Street, landmark, building name..."
-            >
+              placeholder="Enter the complete property address"
+              required
+            ></textarea>
 
           </div>
 
@@ -1284,6 +1158,7 @@
         </div>
 
       </section>
+
 
 
       <!-- =========================
@@ -1299,8 +1174,8 @@
           </h2>
 
           <p>
-            Add useful information so people
-            can decide whether the property fits.
+            Add details that help people
+            understand the property quickly.
           </p>
 
         </div>
@@ -1319,6 +1194,7 @@
               id="bedrooms"
               type="number"
               min="0"
+              step="1"
               placeholder="e.g. 2"
             >
 
@@ -1335,6 +1211,7 @@
               id="bathrooms"
               type="number"
               min="0"
+              step="1"
               placeholder="e.g. 2"
             >
 
@@ -1347,7 +1224,9 @@
               Furnishing
             </label>
 
-            <select id="furnishing">
+            <select
+              id="furnishing"
+            >
 
               <option value="">
                 Select furnishing
@@ -1357,11 +1236,11 @@
                 Unfurnished
               </option>
 
-              <option value="semi">
+              <option value="semi-furnished">
                 Semi-furnished
               </option>
 
-              <option value="fully">
+              <option value="fully-furnished">
                 Fully furnished
               </option>
 
@@ -1376,7 +1255,13 @@
               Availability
             </label>
 
-            <select id="availability">
+            <select
+              id="availability"
+            >
+
+              <option value="">
+                Select availability
+              </option>
 
               <option value="now">
                 Available now
@@ -1394,18 +1279,30 @@
           <div class="field full">
 
             <label for="description">
+
               Description
+
             </label>
 
             <textarea
               id="description"
-              placeholder="Tell people about the property, nearby places, amenities, parking, views, rules, and anything else useful..."
+              placeholder="Tell people about the property, nearby places, facilities, views, parking, rules, and anything else useful."
             ></textarea>
 
           </div>
 
 
         </div>
+
+
+        <div class="details-note">
+
+          You can update your property's
+          availability later from your
+          Placingo account.
+
+        </div>
+
 
       </section>
       <!-- =========================
@@ -1457,7 +1354,7 @@
           <input
             id="photos"
             type="file"
-            accept="image/*"
+            accept="image/jpeg,image/png,image/webp"
             multiple
           >
 
@@ -1470,6 +1367,7 @@
         </div>
 
       </section>
+
 
 
       <!-- =========================
@@ -1555,8 +1453,9 @@
       </section>
 
 
+
       <!-- =========================
-           SUBMIT AREA
+           PUBLISH AREA
       ========================= -->
 
       <section class="submit-section">
@@ -1568,8 +1467,8 @@
           </h3>
 
           <p>
-            You can update your property's
-            availability later.
+            Your property will be saved
+            to Placingo when you publish it.
           </p>
 
         </div>
@@ -1577,6 +1476,7 @@
 
         <button
           class="publish-btn"
+          id="publishBtn"
           type="submit"
         >
           Publish property
@@ -1588,6 +1488,7 @@
     </form>
 
   </main>
+
 
 
   <!-- =========================
@@ -1612,10 +1513,301 @@
     </div>
 
   </footer>
+  <style>
+
+    /* =========================
+       PHOTO UPLOAD
+    ========================= */
+
+    .photo-box{
+
+      border:
+        1.5px dashed
+        rgba(23,63,53,.20);
+
+      border-radius:18px;
+
+      padding:34px 20px;
+
+      text-align:center;
+
+      background:
+        var(--cream-light);
+
+    }
+
+
+    .photo-icon{
+
+      width:52px;
+      height:52px;
+
+      margin:0 auto 14px;
+
+      display:grid;
+      place-items:center;
+
+      border-radius:16px;
+
+      background:var(--green);
+
+      color:var(--lime);
+
+      font-size:28px;
+
+      font-weight:400;
+
+    }
+
+
+    .photo-box h3{
+
+      margin-bottom:6px;
+
+      color:var(--green);
+
+    }
+
+
+    .photo-box p{
+
+      color:var(--muted);
+
+      font-size:13px;
+
+      max-width:430px;
+
+      margin:0 auto 18px;
+
+    }
+
+
+    .upload-btn{
+
+      display:inline-flex;
+
+      align-items:center;
+
+      justify-content:center;
+
+      padding:12px 18px;
+
+      border-radius:12px;
+
+      background:var(--green);
+
+      color:white;
+
+      font-size:14px;
+
+      font-weight:800;
+
+      cursor:pointer;
+
+    }
+
+
+    .upload-btn:hover{
+
+      background:var(--green-dark);
+
+    }
+
+
+    #photos{
+
+      display:none;
+
+    }
+
+
+    .photo-preview{
+
+      display:grid;
+
+      grid-template-columns:
+        repeat(4,minmax(0,1fr));
+
+      gap:10px;
+
+      margin-top:20px;
+
+    }
+
+
+    .photo-preview img{
+
+      width:100%;
+
+      aspect-ratio:1 / 1;
+
+      object-fit:cover;
+
+      border-radius:13px;
+
+      display:block;
+
+      border:
+        1px solid var(--line);
+
+    }
+
+
+    /* =========================
+       SUBMIT
+    ========================= */
+
+    .submit-section{
+
+      background:var(--green);
+
+      color:white;
+
+      border-radius:24px;
+
+      padding:26px 30px;
+
+      display:flex;
+
+      align-items:center;
+
+      justify-content:space-between;
+
+      gap:25px;
+
+      box-shadow:
+        0 20px 60px
+        rgba(13,45,38,.16);
+
+    }
+
+
+    .submit-copy h3{
+
+      font-size:20px;
+
+      margin-bottom:5px;
+
+    }
+
+
+    .submit-copy p{
+
+      color:
+        rgba(255,255,255,.68);
+
+      font-size:13px;
+
+    }
+
+
+    .publish-btn{
+
+      flex-shrink:0;
+
+      border:none;
+
+      background:var(--lime);
+
+      color:var(--green);
+
+      padding:14px 22px;
+
+      border-radius:13px;
+
+      font-weight:900;
+
+      cursor:pointer;
+
+      transition:.2s;
+
+    }
+
+
+    .publish-btn:hover{
+
+      transform:translateY(-1px);
+
+      box-shadow:
+        0 10px 25px
+        rgba(0,0,0,.16);
+
+    }
+
+
+    .publish-btn:disabled{
+
+      opacity:.65;
+
+      cursor:not-allowed;
+
+      transform:none;
+
+    }
+
+
+    @media(max-width:760px){
+
+      .photo-preview{
+
+        grid-template-columns:
+          repeat(2,minmax(0,1fr));
+
+      }
+
+
+      .submit-section{
+
+        flex-direction:column;
+
+        align-items:stretch;
+
+      }
+
+
+      .publish-btn{
+
+        width:100%;
+
+      }
+
+    }
+
+  </style>
+
+
+
+  <!-- =========================
+       SUPABASE
+  ========================= -->
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
   <script>
 
     /* =========================
-       NAVIGATION
+       PLACINGO SUPABASE
+    ========================= */
+
+    const SUPABASE_URL =
+      "https://giugnkxhvahqjjntbpgz.supabase.co";
+
+
+    const SUPABASE_PUBLISHABLE_KEY =
+      "sb_publishable_AM_jASJf8SA4Jn3uTRSATA_0AJhWwl1";
+
+
+    const supabaseClient =
+      window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_PUBLISHABLE_KEY
+      );
+
+
+
+    /* =========================
+       LOGIN
     ========================= */
 
     function goToLogin(){
@@ -1624,6 +1816,7 @@
         "login.html";
 
     }
+
 
 
     /* =========================
@@ -1712,8 +1905,45 @@
     }
 
 
+
     /* =========================
-       FORM SUBMIT
+       HELPERS
+    ========================= */
+
+    function getValue(id){
+
+      const element =
+        document.getElementById(id);
+
+      return element
+        ? element.value.trim()
+        : "";
+
+    }
+
+
+    function getNumber(id){
+
+      const value =
+        getValue(id);
+
+      if(!value){
+        return null;
+      }
+
+      const number =
+        Number(value);
+
+      return Number.isFinite(number)
+        ? number
+        : null;
+
+    }
+
+
+
+    /* =========================
+       PUBLISH PROPERTY
     ========================= */
 
     const propertyForm =
@@ -1722,32 +1952,302 @@
       );
 
 
+    const publishBtn =
+      document.getElementById(
+        "publishBtn"
+      );
+
+
     if(propertyForm){
 
       propertyForm.addEventListener(
         "submit",
-        function(event){
+        async function(event){
 
           event.preventDefault();
 
 
-          /*
-            Supabase connection
-            will be added next.
+          if(
+            !propertyForm.checkValidity()
+          ){
 
-            For now we only confirm
-            that the form is working.
-          */
+            propertyForm.reportValidity();
 
-          alert(
-            "Your property form is ready. Database connection comes next."
-          );
+            return;
+
+          }
+
+
+          const files =
+            Array.from(
+              photoInput.files || []
+            );
+
+
+          try{
+
+            publishBtn.disabled = true;
+
+            publishBtn.textContent =
+              "Publishing...";
+
+
+            /* =========================
+               GET PURPOSE
+            ========================= */
+
+            const selectedPurpose =
+              document.querySelector(
+                'input[name="purpose"]:checked'
+              );
+
+
+            const purpose =
+              selectedPurpose
+                ? selectedPurpose.value
+                : "";
+
+
+            /* =========================
+               PROPERTY DATA
+            ========================= */
+
+            const propertyData = {
+
+              title:
+                getValue("title"),
+
+              purpose:
+                purpose,
+
+              property_type:
+                getValue("propertyType"),
+
+              price:
+                getNumber("price"),
+
+              area:
+                getNumber("area"),
+
+              city:
+                getValue("city"),
+
+              locality:
+                getValue("locality"),
+
+              address:
+                getValue("address"),
+
+              bedrooms:
+                getNumber("bedrooms"),
+
+              bathrooms:
+                getNumber("bathrooms"),
+
+              furnishing:
+                getValue("furnishing") || null,
+
+              availability:
+                getValue("availability") || null,
+
+              description:
+                getValue("description") || null,
+
+              owner_name:
+                getValue("ownerName"),
+
+              owner_phone:
+                getValue("ownerPhone"),
+
+              owner_email:
+                getValue("ownerEmail") || null,
+
+              status:
+                "active"
+
+            };
+
+
+            /* =========================
+               CREATE PROPERTY
+            ========================= */
+
+            const {
+              data: property,
+              error: propertyError
+            } =
+              await supabaseClient
+                .from("properties")
+                .insert(
+                  propertyData
+                )
+                .select()
+                .single();
+
+
+            if(propertyError){
+
+              throw propertyError;
+
+            }
+
+
+            const propertyId =
+              property.id;
+
+
+            /* =========================
+               UPLOAD PHOTOS
+            ========================= */
+
+            for(
+              let i = 0;
+              i < files.length;
+              i++
+            ){
+
+              const file =
+                files[i];
+
+
+              const extension =
+                file.name
+                  .split(".")
+                  .pop()
+                  .toLowerCase();
+
+
+              const fileName =
+                `${propertyId}/${crypto.randomUUID()}.${extension}`;
+
+
+              const {
+                error: uploadError
+              } =
+                await supabaseClient
+                  .storage
+                  .from("property-images")
+                  .upload(
+                    fileName,
+                    file,
+                    {
+                      cacheControl:
+                        "3600",
+
+                      upsert:
+                        false,
+
+                      contentType:
+                        file.type
+
+                    }
+                  );
+
+
+              if(uploadError){
+
+                throw uploadError;
+
+              }
+
+
+              /* =========================
+                 GET PUBLIC IMAGE URL
+              ========================= */
+
+              const {
+                data: publicUrlData
+              } =
+                supabaseClient
+                  .storage
+                  .from("property-images")
+                  .getPublicUrl(
+                    fileName
+                  );
+
+
+              const imageUrl =
+                publicUrlData.publicUrl;
+
+
+              /* =========================
+                 SAVE IMAGE RECORD
+              ========================= */
+
+              const {
+                error: imageRecordError
+              } =
+                await supabaseClient
+                  .from("property_images")
+                  .insert({
+
+                    property_id:
+                      propertyId,
+
+                    image_url:
+                      imageUrl,
+
+                    display_order:
+                      i
+
+                  });
+
+
+              if(imageRecordError){
+
+                throw imageRecordError;
+
+              }
+
+            }
+
+
+            /* =========================
+               SUCCESS
+            ========================= */
+
+            alert(
+              "Property published successfully!"
+            );
+
+
+            window.location.href =
+              "property.html?id=" +
+              encodeURIComponent(
+                propertyId
+              );
+
+
+          }catch(error){
+
+            console.error(
+              "Placingo publish error:",
+              error
+            );
+
+
+            alert(
+              "Something went wrong while publishing your property.\n\n" +
+              (
+                error?.message ||
+                "Please try again."
+              )
+            );
+
+
+          }finally{
+
+            publishBtn.disabled = false;
+
+            publishBtn.textContent =
+              "Publish property";
+
+          }
 
         }
       );
 
     }
-
 
   </script>
 
