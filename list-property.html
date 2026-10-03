@@ -1513,6 +1513,8 @@
     </div>
 
   </footer>
+
+
   <style>
 
     /* =========================
@@ -2009,10 +2011,47 @@
 
 
             /* =========================
+               GET CURRENT USER
+            ========================= */
+
+            const {
+              data: {
+                user
+              },
+              error: userError
+            } =
+              await supabaseClient.auth.getUser();
+
+
+            if(userError){
+
+              throw userError;
+
+            }
+
+
+            if(!user){
+
+              alert(
+                "Please sign in with Google before listing a property."
+              );
+
+              window.location.href =
+                "login.html";
+
+              return;
+
+            }
+
+
+            /* =========================
                PROPERTY DATA
             ========================= */
 
             const propertyData = {
+
+              owner_id:
+                user.id,
 
               title:
                 getValue("title"),
@@ -2094,8 +2133,6 @@
 
             const propertyId =
               property.id;
-
-
             /* =========================
                UPLOAD PHOTOS
             ========================= */
