@@ -1,0 +1,1757 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>List Your Property — Placingo</title>
+
+  <style>
+
+    :root{
+
+      --green:#173f35;
+      --green-dark:#0d2d26;
+      --lime:#d9ef7c;
+
+      --cream:#f5f1e8;
+      --cream-light:#fbf9f3;
+
+      --white:#ffffff;
+
+      --muted:#6c7972;
+
+      --line:rgba(23,63,53,.12);
+
+      --shadow:
+        0 20px 60px rgba(13,45,38,.10);
+
+    }
+
+
+    *{
+      box-sizing:border-box;
+      margin:0;
+      padding:0;
+    }
+
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+
+    body{
+
+      font-family:
+        Inter,
+        Arial,
+        sans-serif;
+
+      background:var(--cream);
+
+      color:var(--green);
+
+      min-height:100vh;
+
+    }
+
+
+    button,
+    input,
+    select,
+    textarea{
+
+      font:inherit;
+
+    }
+
+
+    button{
+      cursor:pointer;
+    }
+
+
+    /* =========================
+       HEADER
+    ========================= */
+
+    header{
+
+      position:sticky;
+
+      top:0;
+
+      z-index:100;
+
+      background:
+        rgba(251,249,243,.94);
+
+      backdrop-filter:
+        blur(16px);
+
+      border-bottom:
+        1px solid var(--line);
+
+    }
+
+
+    .nav{
+
+      width:
+        min(1180px,92%);
+
+      margin:auto;
+
+      min-height:76px;
+
+      display:flex;
+
+      align-items:center;
+
+      justify-content:space-between;
+
+      gap:24px;
+
+    }
+
+
+    .brand{
+
+      display:flex;
+
+      align-items:center;
+
+      gap:11px;
+
+      text-decoration:none;
+
+      color:var(--green);
+
+    }
+
+
+    .brand-mark{
+
+      width:39px;
+
+      height:39px;
+
+      border-radius:13px;
+
+      background:var(--green);
+
+      color:var(--lime);
+
+      display:flex;
+
+      align-items:center;
+
+      justify-content:center;
+
+      font-size:21px;
+
+      font-weight:800;
+
+    }
+
+
+    .brand-name{
+
+      font-size:21px;
+
+      font-weight:800;
+
+      letter-spacing:-.5px;
+
+    }
+
+
+    .nav-links{
+
+      display:flex;
+
+      align-items:center;
+
+      gap:28px;
+
+    }
+
+
+    .nav-links a{
+
+      color:var(--green);
+
+      text-decoration:none;
+
+      font-size:14px;
+
+      font-weight:650;
+
+    }
+
+
+    .nav-actions{
+
+      display:flex;
+
+      align-items:center;
+
+      gap:10px;
+
+    }
+
+
+    .signin-btn{
+
+      border:1px solid var(--line);
+
+      background:var(--white);
+
+      color:var(--green);
+
+      padding:11px 17px;
+
+      border-radius:12px;
+
+      font-weight:700;
+
+    }
+
+
+    /* =========================
+       PAGE
+    ========================= */
+
+    main{
+
+      width:
+        min(980px,92%);
+
+      margin:auto;
+
+      padding:
+        58px 0 90px;
+
+    }
+
+
+    .page-heading{
+
+      max-width:700px;
+
+      margin-bottom:38px;
+
+    }
+
+
+    .eyebrow{
+
+      display:inline-flex;
+
+      align-items:center;
+
+      gap:8px;
+
+      background:
+        rgba(217,239,124,.45);
+
+      color:var(--green);
+
+      padding:8px 12px;
+
+      border-radius:999px;
+
+      font-size:12px;
+
+      font-weight:800;
+
+      letter-spacing:.04em;
+
+      text-transform:uppercase;
+
+      margin-bottom:17px;
+
+    }
+
+
+    .eyebrow-dot{
+
+      width:7px;
+
+      height:7px;
+
+      border-radius:50%;
+
+      background:var(--green);
+
+    }
+
+
+    h1{
+
+      font-size:
+        clamp(38px,6vw,62px);
+
+      line-height:1.02;
+
+      letter-spacing:-2.7px;
+
+      margin-bottom:17px;
+
+    }
+
+
+    .page-heading p{
+
+      color:var(--muted);
+
+      font-size:17px;
+
+      line-height:1.7;
+
+      max-width:650px;
+
+    }
+
+
+    /* =========================
+       FORM
+    ========================= */
+
+    .form-card{
+
+      background:var(--white);
+
+      border:
+        1px solid var(--line);
+
+      border-radius:25px;
+
+      box-shadow:var(--shadow);
+
+      overflow:hidden;
+
+    }
+
+
+    .form-section{
+
+      padding:32px;
+
+      border-bottom:
+        1px solid var(--line);
+
+    }
+
+
+    .form-section:last-child{
+
+      border-bottom:0;
+
+    }
+
+
+    .section-heading{
+
+      margin-bottom:25px;
+
+    }
+
+
+    .section-heading h2{
+
+      font-size:22px;
+
+      letter-spacing:-.7px;
+
+      margin-bottom:7px;
+
+    }
+
+
+    .section-heading p{
+
+      color:var(--muted);
+
+      font-size:14px;
+
+      line-height:1.6;
+
+    }
+
+
+    .field-grid{
+
+      display:grid;
+
+      grid-template-columns:
+        repeat(2,minmax(0,1fr));
+
+      gap:20px;
+
+    }
+
+
+    .field{
+
+      display:flex;
+
+      flex-direction:column;
+
+      gap:8px;
+
+    }
+
+
+    .field.full{
+
+      grid-column:
+        1 / -1;
+
+    }
+
+
+    label{
+
+      font-size:13px;
+
+      font-weight:750;
+
+      color:var(--green);
+
+    }
+
+
+    .required{
+
+      color:#b34b39;
+
+    }
+
+
+    input,
+    select,
+    textarea{
+
+      width:100%;
+
+      border:
+        1px solid var(--line);
+
+      background:#fbfaf6;
+
+      color:var(--green);
+
+      border-radius:13px;
+
+      padding:
+        14px 15px;
+
+      outline:none;
+
+      transition:
+        border-color .2s,
+        box-shadow .2s,
+        background .2s;
+
+    }
+
+
+    input,
+    select{
+
+      min-height:50px;
+
+    }
+
+
+    textarea{
+
+      min-height:140px;
+
+      resize:vertical;
+
+      line-height:1.6;
+
+    }
+
+
+    input:focus,
+    select:focus,
+    textarea:focus{
+
+      background:white;
+
+      border-color:
+        rgba(23,63,53,.38);
+
+      box-shadow:
+        0 0 0 4px
+        rgba(217,239,124,.28);
+
+    }
+
+
+    .hint{
+
+      color:var(--muted);
+
+      font-size:12px;
+
+      line-height:1.5;
+
+    }
+
+
+    /* =========================
+       PURPOSE BUTTONS
+    ========================= */
+
+    .choice-row{
+
+      display:grid;
+
+      grid-template-columns:
+        repeat(2,1fr);
+
+      gap:10px;
+
+    }
+
+
+    .choice{
+
+      position:relative;
+
+    }
+
+
+    .choice input{
+
+      position:absolute;
+
+      opacity:0;
+
+      pointer-events:none;
+
+    }
+
+
+    .choice label{
+
+      min-height:52px;
+
+      display:flex;
+
+      align-items:center;
+
+      justify-content:center;
+
+      border:
+        1px solid var(--line);
+
+      background:#fbfaf6;
+
+      border-radius:13px;
+
+      cursor:pointer;
+
+      transition:.2s;
+
+    }
+
+
+    .choice input:checked + label{
+
+      background:var(--green);
+
+      color:white;
+
+      border-color:var(--green);
+
+      box-shadow:
+        0 8px 20px
+        rgba(23,63,53,.14);
+
+    }
+
+
+    /* =========================
+       PHOTO AREA
+    ========================= */
+
+    .photo-box{
+
+      border:
+        1.5px dashed
+        rgba(23,63,53,.22);
+
+      background:#fbfaf6;
+
+      border-radius:18px;
+
+      padding:35px 22px;
+
+      text-align:center;
+
+    }
+
+
+    .photo-icon{
+
+      width:50px;
+
+      height:50px;
+
+      margin:0 auto 13px;
+
+      border-radius:15px;
+
+      background:
+        rgba(217,239,124,.5);
+
+      display:flex;
+
+      align-items:center;
+
+      justify-content:center;
+
+      font-size:22px;
+
+    }
+
+
+    .photo-box h3{
+
+      font-size:17px;
+
+      margin-bottom:6px;
+
+    }
+
+
+    .photo-box p{
+
+      color:var(--muted);
+
+      font-size:13px;
+
+      line-height:1.5;
+
+      margin-bottom:17px;
+
+    }
+
+
+    .upload-btn{
+
+      display:inline-flex;
+
+      align-items:center;
+
+      justify-content:center;
+
+      background:var(--green);
+
+      color:white;
+
+      border:0;
+
+      border-radius:11px;
+
+      padding:11px 17px;
+
+      font-size:13px;
+
+      font-weight:750;
+
+      cursor:pointer;
+
+    }
+
+
+    #photos{
+
+      display:none;
+
+    }
+
+
+    .photo-preview{
+
+      display:grid;
+
+      grid-template-columns:
+        repeat(4,1fr);
+
+      gap:10px;
+
+      margin-top:15px;
+
+    }
+
+
+    .photo-preview img{
+
+      width:100%;
+
+      aspect-ratio:1;
+
+      object-fit:cover;
+
+      border-radius:12px;
+
+      border:1px solid var(--line);
+
+    }
+
+
+    /* =========================
+       SUBMIT AREA
+    ========================= */
+
+    .submit-section{
+
+      padding:30px 32px;
+
+      background:
+        linear-gradient(
+          135deg,
+          #fbf9f3,
+          #f1f6e8
+        );
+
+      display:flex;
+
+      align-items:center;
+
+      justify-content:space-between;
+
+      gap:20px;
+
+    }
+
+
+    .submit-copy h3{
+
+      font-size:18px;
+
+      margin-bottom:5px;
+
+    }
+
+
+    .submit-copy p{
+
+      color:var(--muted);
+
+      font-size:13px;
+
+      line-height:1.5;
+
+    }
+
+
+    .publish-btn{
+
+      border:0;
+
+      background:var(--green);
+
+      color:white;
+
+      padding:
+        15px 25px;
+
+      border-radius:13px;
+
+      font-weight:800;
+
+      white-space:nowrap;
+
+      box-shadow:
+        0 12px 25px
+        rgba(23,63,53,.17);
+
+    }
+
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media(max-width:760px){
+
+      .nav{
+
+        min-height:68px;
+
+      }
+
+
+      .nav-links{
+
+        display:none;
+
+      }
+
+
+      .signin-btn{
+
+        padding:
+          9px 12px;
+
+      }
+
+
+      main{
+
+        padding:
+          38px 0 60px;
+
+      }
+
+
+      .page-heading{
+
+        margin-bottom:28px;
+
+      }
+
+
+      h1{
+
+        letter-spacing:-1.8px;
+
+      }
+
+
+      .form-section{
+
+        padding:23px 19px;
+
+      }
+
+
+      .field-grid{
+
+        grid-template-columns:1fr;
+
+        gap:17px;
+
+      }
+
+
+      .field.full{
+
+        grid-column:auto;
+
+      }
+
+
+      .photo-preview{
+
+        grid-template-columns:
+          repeat(2,1fr);
+
+      }
+
+
+      .submit-section{
+
+        padding:
+          24px 19px;
+
+        flex-direction:column;
+
+        align-items:stretch;
+
+      }
+
+
+      .publish-btn{
+
+        width:100%;
+
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+
+  <!-- =========================
+       HEADER
+  ========================= -->
+
+  <header>
+
+    <nav class="nav">
+
+      <a
+        class="brand"
+        href="index.html"
+      >
+
+        <div class="brand-mark">
+          P
+        </div>
+
+        <div class="brand-name">
+          Placingo
+        </div>
+
+      </a>
+
+
+      <div class="nav-links">
+
+        <a href="properties.html">
+          Explore
+        </a>
+
+        <a href="properties.html">
+          Properties
+        </a>
+
+        <a href="index.html#fresh">
+          Why Placingo
+        </a>
+
+        <a href="index.html#about">
+          About
+        </a>
+
+      </div>
+
+
+      <div class="nav-actions">
+
+        <button
+          class="signin-btn"
+          type="button"
+          onclick="goToLogin()"
+        >
+          Sign in
+        </button>
+
+      </div>
+
+    </nav>
+
+  </header>
+
+
+  <!-- =========================
+       MAIN
+  ========================= -->
+
+  <main>
+
+
+    <div class="page-heading">
+
+      <div class="eyebrow">
+
+        <span class="eyebrow-dot"></span>
+
+        List on Placingo
+
+      </div>
+
+
+      <h1>
+        Put your property<br>
+        in the right place.
+      </h1>
+
+
+      <p>
+        Share your property directly with people
+        looking for a place. Add the details once,
+        keep availability updated, and connect
+        without the usual middleman.
+      </p>
+
+    </div>
+
+
+    <form
+      class="form-card"
+      id="propertyForm"
+    >
+
+
+      <!-- =========================
+           PROPERTY BASICS
+      ========================= -->
+
+      <section class="form-section">
+
+        <div class="section-heading">
+
+          <h2>
+            Property basics
+          </h2>
+
+          <p>
+            Start with the details people need
+            to understand what you're offering.
+          </p>
+
+        </div>
+
+
+        <div class="field-grid">
+
+
+          <div class="field full">
+
+            <label for="title">
+
+              Property title
+
+              <span class="required">*</span>
+
+            </label>
+
+            <input
+              id="title"
+              type="text"
+              placeholder="e.g. Spacious 2 BHK apartment near Bawadia Kalan"
+              required
+            >
+
+          </div>
+
+
+          <div class="field">
+
+            <label>
+
+              What do you want to do?
+
+              <span class="required">*</span>
+
+            </label>
+
+
+            <div class="choice-row">
+
+
+              <div class="choice">
+
+                <input
+                  type="radio"
+                  id="purposeRent"
+                  name="purpose"
+                  value="rent"
+                  checked
+                >
+
+                <label for="purposeRent">
+                  Rent
+                </label>
+
+              </div>
+
+
+              <div class="choice">
+
+                <input
+                  type="radio"
+                  id="purposeBuy"
+                  name="purpose"
+                  value="buy"
+                >
+
+                <label for="purposeBuy">
+                  Sell
+                </label>
+
+              </div>
+
+
+            </div>
+
+          </div>
+
+
+          <div class="field">
+
+            <label for="propertyType">
+
+              Property type
+
+              <span class="required">*</span>
+
+            </label>
+
+            <select
+              id="propertyType"
+              required
+            >
+
+              <option value="">
+                Select property type
+              </option>
+
+              <option value="home">
+                Homes & Villas
+              </option>
+
+              <option value="apartment">
+                Apartments
+              </option>
+
+              <option value="room">
+                Rooms
+              </option>
+
+              <option value="pg">
+                PGs
+              </option>
+
+              <option value="plot">
+                Plots & Land
+              </option>
+
+              <option value="farmhouse">
+                Farmhouses
+              </option>
+
+              <option value="shop">
+                Shops
+              </option>
+
+              <option value="office">
+                Offices
+              </option>
+
+              <option value="warehouse">
+                Warehouses
+              </option>
+
+              <option value="commercial">
+                Commercial
+              </option>
+
+            </select>
+
+          </div>
+
+
+          <div class="field">
+
+            <label for="price">
+
+              Price
+
+              <span class="required">*</span>
+
+            </label>
+
+            <input
+              id="price"
+              type="number"
+              min="0"
+              placeholder="e.g. 15000"
+              required
+            >
+
+            <div class="hint">
+              Enter monthly rent or total selling price.
+            </div>
+
+          </div>
+
+
+          <div class="field">
+
+            <label for="area">
+              Area
+            </label>
+
+            <input
+              id="area"
+              type="number"
+              min="0"
+              placeholder="e.g. 1200"
+            >
+
+            <div class="hint">
+              Approximate area in sq ft.
+            </div>
+
+          </div>
+
+
+        </div>
+
+      </section>
+
+
+      <!-- =========================
+           LOCATION
+      ========================= -->
+
+      <section class="form-section">
+
+        <div class="section-heading">
+
+          <h2>
+            Location
+          </h2>
+
+          <p>
+            Help people understand exactly
+            where the property is.
+          </p>
+
+        </div>
+
+
+        <div class="field-grid">
+
+
+          <div class="field">
+
+            <label for="city">
+
+              City
+
+              <span class="required">*</span>
+
+            </label>
+
+            <input
+              id="city"
+              type="text"
+              placeholder="e.g. Bhopal"
+              required
+            >
+
+          </div>
+
+
+          <div class="field">
+
+            <label for="locality">
+
+              Area / locality
+
+              <span class="required">*</span>
+
+            </label>
+
+            <input
+              id="locality"
+              type="text"
+              placeholder="e.g. Bawadia Kalan"
+              required
+            >
+
+          </div>
+
+
+          <div class="field full">
+
+            <label for="address">
+              Full address
+            </label>
+
+            <input
+              id="address"
+              type="text"
+              placeholder="Street, landmark, building name..."
+            >
+
+          </div>
+
+
+        </div>
+
+      </section>
+
+
+      <!-- =========================
+           PROPERTY DETAILS
+      ========================= -->
+
+      <section class="form-section">
+
+        <div class="section-heading">
+
+          <h2>
+            Property details
+          </h2>
+
+          <p>
+            Add useful information so people
+            can decide whether the property fits.
+          </p>
+
+        </div>
+
+
+        <div class="field-grid">
+
+
+          <div class="field">
+
+            <label for="bedrooms">
+              Bedrooms
+            </label>
+
+            <input
+              id="bedrooms"
+              type="number"
+              min="0"
+              placeholder="e.g. 2"
+            >
+
+          </div>
+
+
+          <div class="field">
+
+            <label for="bathrooms">
+              Bathrooms
+            </label>
+
+            <input
+              id="bathrooms"
+              type="number"
+              min="0"
+              placeholder="e.g. 2"
+            >
+
+          </div>
+
+
+          <div class="field">
+
+            <label for="furnishing">
+              Furnishing
+            </label>
+
+            <select id="furnishing">
+
+              <option value="">
+                Select furnishing
+              </option>
+
+              <option value="unfurnished">
+                Unfurnished
+              </option>
+
+              <option value="semi">
+                Semi-furnished
+              </option>
+
+              <option value="fully">
+                Fully furnished
+              </option>
+
+            </select>
+
+          </div>
+
+
+          <div class="field">
+
+            <label for="availability">
+              Availability
+            </label>
+
+            <select id="availability">
+
+              <option value="now">
+                Available now
+              </option>
+
+              <option value="soon">
+                Available soon
+              </option>
+
+            </select>
+
+          </div>
+
+
+          <div class="field full">
+
+            <label for="description">
+              Description
+            </label>
+
+            <textarea
+              id="description"
+              placeholder="Tell people about the property, nearby places, amenities, parking, views, rules, and anything else useful..."
+            ></textarea>
+
+          </div>
+
+
+        </div>
+
+      </section>
+      <!-- =========================
+           PHOTOS
+      ========================= -->
+
+      <section class="form-section">
+
+        <div class="section-heading">
+
+          <h2>
+            Property photos
+          </h2>
+
+          <p>
+            Good photos help people understand
+            the property before contacting you.
+          </p>
+
+        </div>
+
+
+        <div class="photo-box">
+
+          <div class="photo-icon">
+            +
+          </div>
+
+
+          <h3>
+            Add property photos
+          </h3>
+
+
+          <p>
+            Select multiple photos from your phone.
+            You can add more than one image.
+          </p>
+
+
+          <label
+            class="upload-btn"
+            for="photos"
+          >
+            Choose photos
+          </label>
+
+
+          <input
+            id="photos"
+            type="file"
+            accept="image/*"
+            multiple
+          >
+
+
+          <div
+            class="photo-preview"
+            id="photoPreview"
+          ></div>
+
+        </div>
+
+      </section>
+
+
+      <!-- =========================
+           OWNER DETAILS
+      ========================= -->
+
+      <section class="form-section">
+
+        <div class="section-heading">
+
+          <h2>
+            Your contact details
+          </h2>
+
+          <p>
+            These details will be used to connect
+            interested people with you.
+          </p>
+
+        </div>
+
+
+        <div class="field-grid">
+
+
+          <div class="field">
+
+            <label for="ownerName">
+
+              Your name
+
+              <span class="required">*</span>
+
+            </label>
+
+            <input
+              id="ownerName"
+              type="text"
+              placeholder="Your full name"
+              required
+            >
+
+          </div>
+
+
+          <div class="field">
+
+            <label for="ownerPhone">
+
+              Phone number
+
+              <span class="required">*</span>
+
+            </label>
+
+            <input
+              id="ownerPhone"
+              type="tel"
+              placeholder="10-digit mobile number"
+              required
+            >
+
+          </div>
+
+
+          <div class="field full">
+
+            <label for="ownerEmail">
+              Email
+            </label>
+
+            <input
+              id="ownerEmail"
+              type="email"
+              placeholder="you@example.com"
+            >
+
+          </div>
+
+
+        </div>
+
+      </section>
+
+
+      <!-- =========================
+           SUBMIT AREA
+      ========================= -->
+
+      <section class="submit-section">
+
+        <div class="submit-copy">
+
+          <h3>
+            Ready to list it?
+          </h3>
+
+          <p>
+            You can update your property's
+            availability later.
+          </p>
+
+        </div>
+
+
+        <button
+          class="publish-btn"
+          type="submit"
+        >
+          Publish property
+        </button>
+
+      </section>
+
+
+    </form>
+
+  </main>
+
+
+  <!-- =========================
+       FOOTER
+  ========================= -->
+
+  <footer>
+
+    <div>
+
+      <strong>
+        Placingo
+      </strong>
+
+      — Property without the middle man.
+
+    </div>
+
+
+    <div>
+      © 2026 Placingo
+    </div>
+
+  </footer>
+  <script>
+
+    /* =========================
+       NAVIGATION
+    ========================= */
+
+    function goToLogin(){
+
+      window.location.href =
+        "login.html";
+
+    }
+
+
+    /* =========================
+       PHOTO PREVIEW
+    ========================= */
+
+    const photoInput =
+      document.getElementById(
+        "photos"
+      );
+
+
+    const photoPreview =
+      document.getElementById(
+        "photoPreview"
+      );
+
+
+    if(photoInput){
+
+      photoInput.addEventListener(
+        "change",
+        function(){
+
+          photoPreview.innerHTML = "";
+
+
+          const files =
+            Array.from(
+              photoInput.files
+            );
+
+
+          files.forEach(
+            function(file){
+
+              if(
+                !file.type.startsWith(
+                  "image/"
+                )
+              ){
+
+                return;
+
+              }
+
+
+              const reader =
+                new FileReader();
+
+
+              reader.onload =
+                function(event){
+
+                  const img =
+                    document.createElement(
+                      "img"
+                    );
+
+
+                  img.src =
+                    event.target.result;
+
+
+                  img.alt =
+                    "Property photo";
+
+
+                  photoPreview.appendChild(
+                    img
+                  );
+
+                };
+
+
+              reader.readAsDataURL(
+                file
+              );
+
+            }
+          );
+
+        }
+      );
+
+    }
+
+
+    /* =========================
+       FORM SUBMIT
+    ========================= */
+
+    const propertyForm =
+      document.getElementById(
+        "propertyForm"
+      );
+
+
+    if(propertyForm){
+
+      propertyForm.addEventListener(
+        "submit",
+        function(event){
+
+          event.preventDefault();
+
+
+          /*
+            Supabase connection
+            will be added next.
+
+            For now we only confirm
+            that the form is working.
+          */
+
+          alert(
+            "Your property form is ready. Database connection comes next."
+          );
+
+        }
+      );
+
+    }
+
+
+  </script>
+
+
+</body>
+
+</html>
