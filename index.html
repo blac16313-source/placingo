@@ -1,2720 +1,2272 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Placingo — Property Without the Middleman</title>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
-
-<style>
-
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-}
-
-html{
-  scroll-behavior:smooth;
-}
-
-body{
-  font-family:"DM Sans",sans-serif;
-  background:#f5f1e8;
-  color:#173f35;
-  overflow-x:hidden;
-}
-
-button,
-input{
-  font-family:inherit;
-}
-
-button{
-  cursor:pointer;
-}
-
-a{
-  color:inherit;
-  text-decoration:none;
-}
-
-:root{
-  --green:#173f35;
-  --green-dark:#0d2d26;
-  --lime:#d9ef7c;
-
-  --cream:#f5f1e8;
-  --cream-light:#fbf9f3;
-
-  --muted:#6c7972;
-  --border:rgba(23,63,53,.12);
-}
-
-
-/* =========================================================
-   GLASS HEADER
-========================================================= */
-
-.navbar{
-  width:calc(100% - 10vw);
-
-  position:absolute;
-  top:18px;
-  left:5vw;
-
-  z-index:20;
-
-  padding:12px 13px 12px 18px;
-
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-
-  color:white;
-
-  background:rgba(255,255,255,.10);
-
-  border:1px solid rgba(255,255,255,.20);
-
-  border-radius:20px;
-
-  backdrop-filter:blur(18px);
-  -webkit-backdrop-filter:blur(18px);
-
-  box-shadow:
-    0 15px 40px rgba(0,0,0,.12);
-}
-
-.logo{
-  display:flex;
-  align-items:center;
-  gap:10px;
-
-  font-size:22px;
-  font-weight:700;
-
-  letter-spacing:-.7px;
-}
-
-.logo-mark{
-  width:35px;
-  height:35px;
-
-  border-radius:11px;
-
-  background:var(--lime);
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  color:var(--green);
-
-  font-weight:800;
-
-  transform:rotate(-8deg);
-}
-
-.nav-links{
-  display:flex;
-  align-items:center;
-  gap:32px;
-
-  font-size:13px;
-  font-weight:500;
-}
-
-.nav-links a{
-  opacity:.86;
-  transition:.25s;
-}
-
-.nav-links a:hover{
-  opacity:1;
-}
-
-.nav-actions{
-  display:flex;
-  align-items:center;
-  gap:10px;
-}
-
-.login-btn{
-  border:1px solid rgba(255,255,255,.35);
-
-  background:rgba(255,255,255,.08);
-
-  color:white;
-
-  padding:10px 17px;
-
-  border-radius:30px;
-
-  font-size:13px;
-}
-
-.list-btn{
-  border:none;
-
-  background:var(--lime);
-
-  color:var(--green);
-
-  padding:11px 18px;
-
-  border-radius:30px;
-
-  font-size:13px;
-
-  font-weight:700;
-}
-
-.menu-btn{
-  display:none;
-
-  width:42px;
-  height:42px;
-
-  border:none;
-
-  border-radius:50%;
-
-  background:rgba(255,255,255,.12);
-
-  color:white;
-
-  font-size:19px;
-}
-
-
-/* =========================================================
-   HERO
-========================================================= */
-
-.hero{
-  min-height:780px;
-
-  position:relative;
-
-  display:flex;
-  align-items:flex-end;
-
-  padding:155px 5vw 65px;
-
-  overflow:hidden;
-
-  background:
-    linear-gradient(
-      180deg,
-      rgba(10,35,29,.42),
-      rgba(10,35,29,.16) 35%,
-      rgba(10,35,29,.80)
-    ),
-    url("https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=2200&q=90")
-    center/cover no-repeat;
-}
-
-.hero::after{
-  content:"";
-
-  position:absolute;
-  inset:0;
-
-  background:
-    radial-gradient(
-      circle at 78% 22%,
-      rgba(217,239,124,.18),
-      transparent 28%
-    );
-
-  pointer-events:none;
-}
-
-.hero-content{
-  width:100%;
-  max-width:1280px;
-
-  margin:auto;
-
-  position:relative;
-  z-index:2;
-
-  color:white;
-}
-
-.hero-top-label{
-  display:inline-flex;
-  align-items:center;
-  gap:9px;
-
-  padding:8px 13px;
-
-  border-radius:30px;
-
-  background:rgba(255,255,255,.13);
-
-  border:1px solid rgba(255,255,255,.2);
-
-  backdrop-filter:blur(12px);
-
-  font-size:12px;
-  font-weight:600;
-
-  margin-bottom:24px;
-}
-
-.status-dot{
-  width:7px;
-  height:7px;
-
-  border-radius:50%;
-
-  background:var(--lime);
-}
-
-.hero h1{
-  max-width:760px;
-
-  font-family:"Playfair Display",serif;
-
-  font-size:clamp(55px,7vw,96px);
-
-  line-height:.94;
-
-  letter-spacing:-4px;
-
-  font-weight:600;
-
-  margin-bottom:25px;
-}
-
-.hero h1 span{
-  color:var(--lime);
-}
-
-.hero-description{
-  max-width:570px;
-
-  font-size:17px;
-
-  line-height:1.65;
-
-  color:rgba(255,255,255,.82);
-
-  margin-bottom:38px;
-}
-
-
-/* =========================================================
-   SEARCH
-========================================================= */
-
-.search-panel{
-  width:min(100%,920px);
-
-  background:rgba(251,249,243,.97);
-
-  border-radius:24px;
-
-  padding:9px;
-
-  display:flex;
-  align-items:center;
-
-  box-shadow:
-    0 25px 70px rgba(0,0,0,.20);
-}
-
-.search-field{
-  flex:1;
-
-  display:flex;
-  align-items:center;
-
-  gap:12px;
-
-  padding:13px 17px;
-
-  border-right:1px solid var(--border);
-}
-
-.search-icon{
-  width:38px;
-  height:38px;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  border-radius:12px;
-
-  background:#edf1e4;
-
-  font-size:17px;
-}
-
-.search-text{
-  display:flex;
-  flex-direction:column;
-  gap:3px;
-}
-
-.search-label{
-  font-size:11px;
-
-  color:#89918c;
-
-  font-weight:600;
-}
-
-.search-value{
-  border:none;
-  outline:none;
-
-  background:transparent;
-
-  color:var(--green);
-
-  font-size:14px;
-
-  font-weight:600;
-
-  width:100%;
-}
-
-.search-value::placeholder{
-  color:var(--green);
-  opacity:1;
-}
-
-.search-button{
-  border:none;
-
-  background:var(--green);
-
-  color:white;
-
-  padding:17px 28px;
-
-  border-radius:18px;
-
-  font-weight:700;
-
-  font-size:14px;
-
-  transition:.25s;
-}
-
-.search-button:hover{
-  background:var(--green-dark);
-
-  transform:translateY(-1px);
-}
-
-
-/* =========================================================
-   INTRO
-========================================================= */
-
-.intro{
-  padding:100px 5vw 85px;
-
-  background:var(--cream-light);
-}
-
-.intro-inner{
-  max-width:1280px;
-
-  margin:auto;
-
-  display:grid;
-
-  grid-template-columns:1fr 1fr;
-
-  gap:90px;
-
-  align-items:end;
-}
-
-.section-eyebrow{
-  color:#718078;
-
-  text-transform:uppercase;
-
-  letter-spacing:1.8px;
-
-  font-size:11px;
-
-  font-weight:700;
-
-  margin-bottom:17px;
-}
-
-.intro h2{
-  font-family:"Playfair Display",serif;
-
-  font-size:clamp(40px,5vw,68px);
-
-  line-height:1.02;
-
-  letter-spacing:-2px;
-
-  font-weight:600;
-}
-
-.intro h2 span{
-  color:#7c9a48;
-}
-
-.intro-copy{
-  max-width:500px;
-
-  color:#65736c;
-
-  font-size:16px;
-
-  line-height:1.75;
-}
-
-.intro-copy strong{
-  color:var(--green);
-}
-
-
-/* =========================================================
-   PROPERTY CATEGORIES
-========================================================= */
-
-.categories{
-  padding:85px 5vw 110px;
-
-  background:var(--cream-light);
-}
-
-.container{
-  max-width:1280px;
-
-  margin:auto;
-}
-
-.section-heading{
-  display:flex;
-
-  justify-content:space-between;
-
-  align-items:flex-end;
-
-  margin-bottom:38px;
-}
-
-.section-heading h2{
-  font-family:"Playfair Display",serif;
-
-  font-size:clamp(40px,5vw,58px);
-
-  letter-spacing:-2px;
-
-  line-height:1;
-}
-
-.section-heading p{
-  max-width:390px;
-
-  color:#718078;
-
-  font-size:14px;
-
-  line-height:1.7;
-}
-
-.category-grid{
-  display:grid;
-
-  grid-template-columns:
-    repeat(4,1fr);
-
-  gap:16px;
-}
-
-.category-card{
-  min-height:255px;
-
-  position:relative;
-
-  overflow:hidden;
-
-  border-radius:25px;
-
-  display:flex;
-
-  align-items:flex-end;
-
-  padding:23px;
-
-  color:white;
-
-  background-size:cover;
-
-  background-position:center;
-
-  transition:.35s;
-}
-
-.category-card:hover{
-  transform:translateY(-5px);
-}
-
-.category-card::before{
-  content:"";
-
-  position:absolute;
-
-  inset:0;
-
-  background:
-    linear-gradient(
-      180deg,
-      transparent 20%,
-      rgba(7,29,23,.86)
-    );
-}
-
-.category-card-content{
-  position:relative;
-
-  z-index:2;
-}
-
-.category-card h3{
-  font-family:"Playfair Display",serif;
-
-  font-size:24px;
-
-  margin-bottom:5px;
-}
-
-.category-card p{
-  color:rgba(255,255,255,.76);
-
-  font-size:11px;
-}
-
-.category-icon{
-  position:absolute;
-
-  top:18px;
-  right:18px;
-
-  width:38px;
-  height:38px;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  border-radius:50%;
-
-  background:rgba(255,255,255,.15);
-
-  border:1px solid rgba(255,255,255,.20);
-
-  backdrop-filter:blur(10px);
-
-  z-index:3;
-
-  font-size:15px;
-}
-
-.category-home{
-  background-image:
-    url("https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=900&q=90");
-}
-
-.category-apartment{
-  background-image:
-    url("https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=900&q=90");
-}
-
-.category-room{
-  background-image:
-    url("https://images.unsplash.com/photo-1560185008-b033106af5c3?auto=format&fit=crop&w=900&q=90");
-}
-
-.category-plot{
-  background-image:
-    url("https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=900&q=90");
-}
-
-.category-commercial{
-  background-image:
-    url("https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=900&q=90");
-}
-
-.category-farmhouse{
-  background-image:
-    url("https://images.unsplash.com/photo-1500076656116-558758c991c1?auto=format&fit=crop&w=900&q=90");
-}
-
-.category-warehouse{
-  background-image:
-    url("https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=900&q=90");
-}
-
-.category-office{
-  background-image:
-    url("https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=900&q=90");
-}
-/* =========================================================
-   FRESH / OWNER CONFIRMED
-========================================================= */
-
-.fresh{
-  padding:110px 5vw;
-
-  background:#eee9dd;
-}
-
-.fresh-box{
-  max-width:1280px;
-
-  margin:auto;
-
-  background:#f9f7f0;
-
-  border-radius:34px;
-
-  padding:65px;
-
-  display:grid;
-
-  grid-template-columns:1fr 1fr;
-
-  gap:75px;
-
-  align-items:center;
-}
-
-.fresh-visual{
-  min-height:480px;
-
-  border-radius:27px;
-
-  position:relative;
-
-  overflow:hidden;
-
-  background:
-    linear-gradient(
-      180deg,
-      transparent,
-      rgba(14,48,39,.38)
-    ),
-    url("https://images.unsplash.com/photo-1600607688969-a5bfcd646154?auto=format&fit=crop&w=1200&q=90")
-    center/cover;
-}
-
-.confirm-card{
-  position:absolute;
-
-  left:25px;
-  right:25px;
-  bottom:25px;
-
-  padding:18px;
-
-  border-radius:20px;
-
-  background:rgba(251,249,243,.95);
-
-  color:var(--green);
-
-  box-shadow:
-    0 15px 35px rgba(0,0,0,.16);
-}
-
-.confirm-top{
-  display:flex;
-
-  justify-content:space-between;
-
-  align-items:center;
-
-  margin-bottom:9px;
-}
-
-.confirm-title{
-  font-size:14px;
-
-  font-weight:700;
-}
-
-.confirm-status{
-  padding:6px 9px;
-
-  border-radius:20px;
-
-  background:#e2efc7;
-
-  color:#54703b;
-
-  font-size:9px;
-
-  font-weight:700;
-}
-
-.confirm-card p{
-  color:#768079;
-
-  font-size:11px;
-
-  line-height:1.5;
-}
-
-.fresh-content h2{
-  font-family:"Playfair Display",serif;
-
-  font-size:clamp(42px,5vw,66px);
-
-  line-height:1;
-
-  letter-spacing:-2px;
-
-  margin-bottom:22px;
-}
-
-.fresh-content h2 span{
-  color:#7c9a48;
-}
-
-.fresh-content > p{
-  max-width:490px;
-
-  color:#68756e;
-
-  font-size:15px;
-
-  line-height:1.75;
-
-  margin-bottom:32px;
-}
-
-.fresh-points{
-  display:flex;
-
-  flex-direction:column;
-
-  gap:18px;
-
-  margin-bottom:34px;
-}
-
-.fresh-point{
-  display:flex;
-
-  align-items:flex-start;
-
-  gap:13px;
-}
-
-.point-icon{
-  width:34px;
-  height:34px;
-
-  flex-shrink:0;
-
-  display:flex;
-
-  align-items:center;
-  justify-content:center;
-
-  border-radius:11px;
-
-  background:#e6eed5;
-
-  color:#607d42;
-
-  font-size:14px;
-}
-
-.point-text strong{
-  display:block;
-
-  font-size:13px;
-
-  margin-bottom:4px;
-}
-
-.point-text span{
-  color:#7b8580;
-
-  font-size:11px;
-
-  line-height:1.5;
-}
-
-.learn-btn{
-  display:inline-flex;
-
-  padding:13px 20px;
-
-  border-radius:30px;
-
-  background:var(--green);
-
-  color:white;
-
-  font-size:12px;
-
-  font-weight:700;
-}
-
-
-/* =========================================================
-   AVAILABILITY INFO STRIP
-========================================================= */
-
-.availability{
-  padding:90px 5vw;
-
-  background:var(--green);
-
-  color:white;
-}
-
-.availability-grid{
-  max-width:1280px;
-
-  margin:auto;
-
-  display:grid;
-
-  grid-template-columns:
-    1.25fr
-    1fr
-    1fr;
-
-  gap:18px;
-}
-
-.availability-main{
-  grid-row:span 2;
-
-  min-height:420px;
-
-  padding:38px;
-
-  border-radius:28px;
-
-  background:
-    linear-gradient(
-      145deg,
-      rgba(217,239,124,.14),
-      rgba(255,255,255,.04)
-    );
-
-  border:1px solid rgba(255,255,255,.10);
-
-  display:flex;
-
-  flex-direction:column;
-
-  justify-content:space-between;
-}
-
-.availability-main h2{
-  max-width:520px;
-
-  font-family:"Playfair Display",serif;
-
-  font-size:clamp(40px,4vw,58px);
-
-  line-height:1;
-
-  letter-spacing:-2px;
-}
-
-.availability-main h2 span{
-  color:var(--lime);
-}
-
-.availability-main p{
-  max-width:480px;
-
-  color:#aebcb5;
-
-  font-size:14px;
-
-  line-height:1.7;
-}
-
-.availability-badge{
-  display:inline-flex;
-
-  width:max-content;
-
-  align-items:center;
-
-  gap:8px;
-
-  padding:8px 12px;
-
-  border-radius:30px;
-
-  background:rgba(255,255,255,.08);
-
-  border:1px solid rgba(255,255,255,.12);
-
-  color:#d8e2dc;
-
-  font-size:10px;
-
-  font-weight:700;
-
-  text-transform:uppercase;
-
-  letter-spacing:1px;
-}
-
-.availability-card{
-  min-height:201px;
-
-  padding:27px;
-
-  border-radius:28px;
-
-  background:#f8f6ef;
-
-  color:var(--green);
-
-  display:flex;
-
-  flex-direction:column;
-
-  justify-content:space-between;
-}
-
-.availability-number{
-  font-family:"Playfair Display",serif;
-
-  font-size:42px;
-
-  line-height:1;
-}
-
-.availability-card p{
-  color:#78847e;
-
-  font-size:12px;
-
-  line-height:1.55;
-}
-
-.availability-card strong{
-  font-size:13px;
-
-  display:block;
-
-  margin-bottom:5px;
-}
-
-
-/* =========================================================
-   HOW IT WORKS
-========================================================= */
-
-.how{
-  padding:105px 5vw;
-
-  background:var(--cream-light);
-}
-
-.how-heading{
-  max-width:1280px;
-
-  margin:0 auto 45px;
-}
-
-.how-heading h2{
-  font-family:"Playfair Display",serif;
-
-  font-size:clamp(42px,5vw,64px);
-
-  line-height:1;
-
-  letter-spacing:-2px;
-}
-
-.how-heading h2 span{
-  color:#7c9a48;
-}
-
-.steps{
-  max-width:1280px;
-
-  margin:auto;
-
-  display:grid;
-
-  grid-template-columns:
-    repeat(3,1fr);
-
-  gap:18px;
-}
-
-.step{
-  padding:30px;
-
-  border-radius:25px;
-
-  background:#f0ebe0;
-
-  min-height:230px;
-
-  position:relative;
-}
-
-.step-number{
-  width:38px;
-  height:38px;
-
-  border-radius:12px;
-
-  background:var(--green);
-
-  color:var(--lime);
-
-  display:flex;
-
-  align-items:center;
-  justify-content:center;
-
-  font-size:12px;
-
-  font-weight:700;
-
-  margin-bottom:40px;
-}
-
-.step h3{
-  font-family:"Playfair Display",serif;
-
-  font-size:24px;
-
-  margin-bottom:9px;
-}
-
-.step p{
-  color:#748078;
-
-  font-size:12px;
-
-  line-height:1.65;
-}
-
-
-/* =========================================================
-   CTA
-========================================================= */
-
-.cta{
-  padding:120px 5vw;
-
-  background:
-    radial-gradient(
-      circle at 82% 20%,
-      rgba(217,239,124,.22),
-      transparent 26%
-    ),
-    var(--green);
-
-  color:white;
-
-  text-align:center;
-}
-
-.cta-inner{
-  max-width:850px;
-
-  margin:auto;
-}
-
-.cta h2{
-  font-family:"Playfair Display",serif;
-
-  font-size:clamp(48px,7vw,82px);
-
-  line-height:.98;
-
-  letter-spacing:-3px;
-
-  margin-bottom:23px;
-}
-
-.cta h2 span{
-  color:var(--lime);
-}
-
-.cta p{
-  max-width:530px;
-
-  margin:0 auto 32px;
-
-  color:#b8c4be;
-
-  font-size:15px;
-
-  line-height:1.7;
-}
-
-.cta-button{
-  display:inline-flex;
-
-  align-items:center;
-
-  gap:8px;
-
-  padding:15px 24px;
-
-  border-radius:30px;
-
-  background:var(--lime);
-
-  color:var(--green);
-
-  font-size:13px;
-
-  font-weight:700;
-}
-
-
-/* =========================================================
-   FOOTER
-========================================================= */
-
-footer{
-  padding:55px 5vw 30px;
-
-  background:#0d2d26;
-
-  color:white;
-}
-
-.footer-top{
-  max-width:1280px;
-
-  margin:auto;
-
-  padding-bottom:45px;
-
-  display:flex;
-
-  justify-content:space-between;
-
-  gap:50px;
-
-  border-bottom:1px solid rgba(255,255,255,.1);
-}
-
-.footer-brand{
-  max-width:320px;
-}
-
-.footer-brand .logo{
-  margin-bottom:15px;
-}
-
-.footer-brand p{
-  color:#81918a;
-
-  font-size:12px;
-
-  line-height:1.7;
-}
-
-.footer-links{
-  display:flex;
-
-  gap:70px;
-}
-
-.footer-column h4{
-  font-size:12px;
-
-  margin-bottom:17px;
-}
-
-.footer-column a{
-  display:block;
-
-  margin-bottom:10px;
-
-  color:#84938c;
-
-  font-size:11px;
-
-  transition:.2s;
-}
-
-.footer-column a:hover{
-  color:white;
-}
-
-.footer-bottom{
-  max-width:1280px;
-
-  margin:auto;
-
-  padding-top:22px;
-
-  display:flex;
-
-  justify-content:space-between;
-
-  color:#64756e;
-
-  font-size:10px;
-}
-@media(max-width:950px){
-
-  .navbar{
-    width:calc(100% - 8vw);
-
-    left:4vw;
-
-    padding:11px 12px 11px 15px;
-  }
-
-  .nav-links,
-  .nav-actions{
-    display:none;
-  }
-
-  .menu-btn{
-    display:block;
-  }
-
-  .hero{
-    min-height:750px;
-
-    padding:135px 5vw 45px;
-  }
-
-  .hero h1{
-    font-size:60px;
-
-    letter-spacing:-2.5px;
-  }
-
-  .search-panel{
-    flex-direction:column;
-
-    padding:8px;
-  }
-
-  .search-field{
-    width:100%;
-
-    border-right:none;
-
-    border-bottom:1px solid var(--border);
-  }
-
-  .search-button{
-    width:100%;
-  }
-
-  .intro-inner{
-    grid-template-columns:1fr;
-
-    gap:30px;
-  }
-
-  .category-grid{
-    grid-template-columns:repeat(2,1fr);
-  }
-
-  .fresh-box{
-    grid-template-columns:1fr;
-
-    padding:28px;
-
-    gap:40px;
-  }
-
-  .fresh-visual{
-    min-height:380px;
-  }
-
-  .availability-grid{
-    grid-template-columns:1fr 1fr;
-  }
-
-  .availability-main{
-    grid-column:span 2;
-
-    min-height:350px;
-  }
-
-  .steps{
-    grid-template-columns:1fr;
-  }
-
-  .footer-top{
-    flex-direction:column;
-  }
-
-}
-
-
-@media(max-width:600px){
-
-  .navbar{
-    top:12px;
-
-    width:calc(100% - 7vw);
-
-    left:3.5vw;
-
-    border-radius:17px;
-  }
-
-  .logo{
-    font-size:20px;
-  }
-
-  .logo-mark{
-    width:32px;
-    height:32px;
-  }
-
-  .hero{
-    min-height:720px;
-
-    padding:125px 5vw 38px;
-  }
-
-  .hero h1{
-    font-size:50px;
-
-    letter-spacing:-2px;
-  }
-
-  .hero-description{
-    font-size:14px;
-
-    margin-bottom:28px;
-  }
-
-  .category-grid{
-    grid-template-columns:1fr;
-  }
-
-  .category-card{
-    min-height:210px;
-  }
-
-  .section-heading{
-    align-items:flex-start;
-
-    flex-direction:column;
-
-    gap:15px;
-  }
-
-  .fresh-box{
-    padding:20px;
-
-    border-radius:25px;
-  }
-
-  .fresh-visual{
-    min-height:320px;
-
-    border-radius:21px;
-  }
-
-  .confirm-card{
-    left:15px;
-    right:15px;
-    bottom:15px;
-  }
-
-  .availability-grid{
-    grid-template-columns:1fr;
-  }
-
-  .availability-main{
-    grid-column:span 1;
-
-    min-height:400px;
-
-    padding:28px;
-  }
-
-  .availability-card{
-    min-height:180px;
-  }
-
-  .how{
-    padding:80px 5vw;
-  }
-
-  .step{
-    min-height:200px;
-  }
-
-  .step-number{
-    margin-bottom:28px;
-  }
-
-  .cta{
-    padding:90px 5vw;
-  }
-
-  .cta h2{
-    font-size:50px;
-
-    letter-spacing:-2px;
-  }
-
-  .footer-links{
-    display:grid;
-
-    grid-template-columns:1fr 1fr;
-
-    gap:25px;
-  }
-
-  .footer-bottom{
-    flex-direction:column;
-
-    gap:10px;
-  }
-
-}
-
-
-/* =========================================================
-   MOBILE MENU
-========================================================= */
-
-.mobile-menu{
-  position:fixed;
-
-  inset:0;
-
-  z-index:50;
-
-  display:none;
-
-  padding:90px 25px 30px;
-
-  background:
-    rgba(13,45,38,.97);
-
-  color:white;
-}
-
-.mobile-menu.active{
-  display:block;
-}
-
-.mobile-menu a{
-  display:block;
-
-  padding:18px 0;
-
-  border-bottom:1px solid rgba(255,255,255,.1);
-
-  font-family:"Playfair Display",serif;
-
-  font-size:28px;
-}
-
-.mobile-close{
-  position:absolute;
-
-  top:20px;
-  right:20px;
-
-  width:42px;
-  height:42px;
-
-  border:none;
-
-  border-radius:50%;
-
-  background:rgba(255,255,255,.1);
-
-  color:white;
-
-  font-size:20px;
-}
-
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Placingo — Find Property Without the Middle Man</title>
+
+  <meta
+    name="description"
+    content="Placingo makes it easier to discover homes, apartments, rooms, plots, commercial spaces and more directly from property owners."
+  >
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+
+    :root{
+      --green:#173f35;
+      --green-dark:#0d2d26;
+      --lime:#d9ef7c;
+      --cream:#f5f1e8;
+      --cream-light:#fbf9f3;
+      --white:#ffffff;
+      --muted:#6c7972;
+      --line:rgba(23,63,53,.12);
+      --shadow:0 20px 60px rgba(13,45,38,.10);
+    }
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      font-family:"DM Sans",sans-serif;
+      color:var(--green);
+      background:var(--cream-light);
+      line-height:1.5;
+      overflow-x:hidden;
+    }
+
+    a{
+      color:inherit;
+      text-decoration:none;
+    }
+
+    button,
+    input{
+      font:inherit;
+    }
+
+    button{
+      border:0;
+      cursor:pointer;
+    }
+
+    .container{
+      width:min(1180px, calc(100% - 40px));
+      margin:auto;
+    }
+
+    /* =========================
+       HEADER
+    ========================= */
+
+    .site-header{
+      position:absolute;
+      top:0;
+      left:0;
+      width:100%;
+      z-index:50;
+      padding:18px 0;
+    }
+
+    .header-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:30px;
+
+      padding:12px 14px 12px 22px;
+
+      border:1px solid rgba(255,255,255,.25);
+      border-radius:18px;
+
+      background:rgba(255,255,255,.12);
+      backdrop-filter:blur(18px);
+      -webkit-backdrop-filter:blur(18px);
+
+      color:#fff;
+    }
+
+    .logo{
+      font-size:25px;
+      font-weight:700;
+      letter-spacing:-1px;
+      white-space:nowrap;
+    }
+
+    .logo span{
+      color:var(--lime);
+    }
+
+    .desktop-nav{
+      display:flex;
+      align-items:center;
+      gap:28px;
+      font-size:14px;
+      font-weight:500;
+    }
+
+    .desktop-nav a{
+      opacity:.92;
+      transition:.2s ease;
+    }
+
+    .desktop-nav a:hover{
+      opacity:1;
+      color:var(--lime);
+    }
+
+    .header-actions{
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+
+    .signin-btn{
+      background:transparent;
+      color:#fff;
+      padding:10px 15px;
+      font-size:14px;
+      font-weight:600;
+    }
+
+    .list-btn{
+      background:var(--lime);
+      color:var(--green-dark);
+      padding:11px 17px;
+      border-radius:11px;
+      font-size:14px;
+      font-weight:700;
+      transition:.2s ease;
+    }
+
+    .list-btn:hover{
+      transform:translateY(-1px);
+      filter:brightness(1.03);
+    }
+
+    .menu-btn{
+      display:none;
+      width:42px;
+      height:42px;
+      border-radius:11px;
+      background:rgba(255,255,255,.15);
+      color:#fff;
+      font-size:21px;
+    }
+
+    .mobile-menu{
+      display:none;
+      margin-top:10px;
+      padding:15px;
+
+      border-radius:16px;
+      background:rgba(13,45,38,.96);
+      backdrop-filter:blur(15px);
+
+      color:#fff;
+    }
+
+    .mobile-menu.open{
+      display:flex;
+      flex-direction:column;
+      gap:4px;
+    }
+
+    .mobile-menu a{
+      padding:13px 12px;
+      border-radius:10px;
+      font-size:15px;
+    }
+
+    .mobile-menu a:hover{
+      background:rgba(255,255,255,.08);
+    }
+
+    /* =========================
+       HERO
+    ========================= */
+
+    .hero{
+      position:relative;
+      min-height:760px;
+
+      display:flex;
+      align-items:center;
+
+      background:
+        linear-gradient(
+          90deg,
+          rgba(7,34,28,.88) 0%,
+          rgba(7,34,28,.62) 48%,
+          rgba(7,34,28,.18) 100%
+        ),
+        url("https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=2200&q=90")
+        center/cover no-repeat;
+
+      color:#fff;
+    }
+
+    .hero-content{
+      position:relative;
+      z-index:2;
+      width:min(720px,100%);
+      padding-top:70px;
+    }
+
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+
+      margin-bottom:22px;
+      padding:7px 12px;
+
+      border:1px solid rgba(217,239,124,.35);
+      border-radius:999px;
+
+      background:rgba(217,239,124,.10);
+      color:var(--lime);
+
+      font-size:12px;
+      font-weight:700;
+      letter-spacing:.5px;
+      text-transform:uppercase;
+    }
+
+    .eyebrow::before{
+      content:"";
+      width:7px;
+      height:7px;
+      border-radius:50%;
+      background:var(--lime);
+    }
+
+    .hero h1{
+      max-width:760px;
+      font-family:"Playfair Display",serif;
+      font-size:clamp(50px,7vw,88px);
+      line-height:.98;
+      letter-spacing:-3px;
+      font-weight:600;
+      margin-bottom:24px;
+    }
+
+    .hero h1 em{
+      color:var(--lime);
+      font-style:normal;
+    }
+
+    .hero-text{
+      max-width:590px;
+      color:rgba(255,255,255,.82);
+      font-size:17px;
+      line-height:1.7;
+      margin-bottom:32px;
+    }
+
+    /* =========================
+       SEARCH BOX
+    ========================= */
+
+    .search-box{
+      width:min(820px,100%);
+
+      display:grid;
+      grid-template-columns:1.1fr 1fr auto;
+      gap:8px;
+
+      padding:8px;
+
+      background:#fff;
+      border-radius:17px;
+
+      box-shadow:0 25px 70px rgba(0,0,0,.20);
+    }
+
+    .search-field{
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+
+      min-height:64px;
+      padding:8px 15px;
+
+      border-radius:11px;
+      background:#f7f7f3;
+    }
+
+    .search-field label{
+      color:#84908a;
+      font-size:11px;
+      font-weight:700;
+      text-transform:uppercase;
+      letter-spacing:.5px;
+      margin-bottom:2px;
+    }
+
+    .search-field input{
+      width:100%;
+      border:0;
+      outline:0;
+      background:transparent;
+
+      color:var(--green);
+      font-size:14px;
+      font-weight:600;
+    }
+
+    .search-field input::placeholder{
+      color:#9aa39e;
+      font-weight:500;
+    }
+
+    .search-button{
+      min-width:175px;
+      padding:0 22px;
+
+      border-radius:11px;
+
+      background:var(--green);
+      color:#fff;
+
+      font-size:14px;
+      font-weight:700;
+
+      transition:.2s ease;
+    }
+
+    .search-button:hover{
+      background:var(--green-dark);
+      transform:translateY(-1px);
+    }
+
+    /* =========================
+       HERO FOOTNOTE
+    ========================= */
+
+    .hero-note{
+      display:flex;
+      align-items:center;
+      gap:10px;
+
+      margin-top:20px;
+
+      color:rgba(255,255,255,.68);
+      font-size:13px;
+    }
+
+    .hero-note-dot{
+      width:8px;
+      height:8px;
+      border-radius:50%;
+      background:var(--lime);
+      box-shadow:0 0 0 5px rgba(217,239,124,.10);
+    }
+
+    /* =========================
+       INTRO
+    ========================= */
+
+    .intro{
+      padding:110px 0 90px;
+      background:var(--cream-light);
+    }
+
+    .intro-grid{
+      display:grid;
+      grid-template-columns:.8fr 1.2fr;
+      gap:80px;
+      align-items:start;
+    }
+
+    .section-label{
+      color:#809088;
+      font-size:12px;
+      font-weight:700;
+      text-transform:uppercase;
+      letter-spacing:1.5px;
+      margin-bottom:18px;
+    }
+
+    .intro h2{
+      font-family:"Playfair Display",serif;
+      font-size:clamp(40px,5vw,64px);
+      line-height:1.04;
+      letter-spacing:-2px;
+      font-weight:600;
+    }
+
+    .intro-copy{
+      padding-top:25px;
+    }
+
+    .intro-copy p{
+      color:var(--muted);
+      font-size:17px;
+      line-height:1.8;
+      margin-bottom:20px;
+    }
+
+    .intro-copy strong{
+      color:var(--green);
+    }
+
+    /* =========================
+       RESPONSIVE
+    ========================= */
+
+    @media(max-width:900px){
+
+      .desktop-nav,
+      .header-actions{
+        display:none;
+      }
+
+      .menu-btn{
+        display:block;
+      }
+
+      .hero{
+        min-height:720px;
+      }
+
+      .intro-grid{
+        grid-template-columns:1fr;
+        gap:25px;
+      }
+
+      .intro-copy{
+        padding-top:0;
+      }
+
+    }
+
+    @media(max-width:680px){
+
+      .container{
+        width:min(100% - 28px,1180px);
+      }
+
+      .site-header{
+        padding:12px 0;
+      }
+
+      .header-inner{
+        padding:10px 10px 10px 16px;
+      }
+
+      .logo{
+        font-size:23px;
+      }
+
+      .hero{
+        min-height:730px;
+
+        background:
+          linear-gradient(
+            90deg,
+            rgba(7,34,28,.88),
+            rgba(7,34,28,.55)
+          ),
+          url("https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1400&q=85")
+          center/cover no-repeat;
+      }
+
+      .hero-content{
+        padding-top:75px;
+      }
+
+      .hero h1{
+        font-size:50px;
+        letter-spacing:-2px;
+      }
+
+      .hero-text{
+        font-size:15px;
+        line-height:1.65;
+      }
+
+      .search-box{
+        grid-template-columns:1fr;
+        padding:8px;
+      }
+
+      .search-button{
+        min-height:56px;
+      }
+
+      .intro{
+        padding:80px 0 70px;
+      }
+
+    }
+
+  </style>
 </head>
-
 
 <body>
 
+  <!-- =========================
+       HEADER
+  ========================= -->
 
-<!-- =======================================================
-     GLASS HEADER
-======================================================== -->
+  <header class="site-header">
 
-<header class="navbar">
+    <div class="container">
 
-  <a href="#" class="logo">
+      <div class="header-inner">
 
-    <span class="logo-mark">
-      P
-    </span>
-
-    <span>
-      Placingo
-    </span>
-
-  </a>
-
-
-  <nav class="nav-links">
-
-    <a href="#explore">
-      Explore
-    </a>
-
-    <a href="#categories">
-      Properties
-    </a>
-
-    <a href="#fresh">
-      Why Placingo
-    </a>
-
-    <a href="#about">
-      About
-    </a>
-
-  </nav>
-
-
-  <div class="nav-actions">
-
-    <button
-      class="login-btn"
-      onclick="signIn()"
-    >
-      Sign in
-    </button>
-
-    <button
-      class="list-btn"
-      onclick="startListing()"
-    >
-      List a property
-    </button>
-
-  </div>
-
-
-  <button
-    class="menu-btn"
-    onclick="toggleMenu()"
-  >
-    ☰
-  </button>
-
-</header>
-
-
-<!-- =======================================================
-     MOBILE MENU
-======================================================== -->
-
-<div
-  class="mobile-menu"
-  id="mobileMenu"
->
-
-  <button
-    class="mobile-close"
-    onclick="toggleMenu()"
-  >
-    ×
-  </button>
-
-  <a
-    href="#explore"
-    onclick="toggleMenu()"
-  >
-    Explore
-  </a>
-
-  <a
-    href="#categories"
-    onclick="toggleMenu()"
-  >
-    Properties
-  </a>
-
-  <a
-    href="#fresh"
-    onclick="toggleMenu()"
-  >
-    Why Placingo
-  </a>
-
-  <a
-    href="#about"
-    onclick="toggleMenu()"
-  >
-    About
-  </a>
-
-</div>
-
-
-<!-- =======================================================
-     HERO
-======================================================== -->
-
-<section
-  class="hero"
-  id="explore"
->
-
-  <div class="hero-content">
-
-
-    <div class="hero-top-label">
-
-      <span class="status-dot"></span>
-
-      A simpler way to find property
-
-    </div>
-
-
-    <h1>
-
-      Find your
-      <span>next place.</span>
-
-    </h1>
-
-
-    <p class="hero-description">
-
-      Homes, apartments, rooms, land and workspaces —
-      all in one place, with a better way to know
-      what's actually available.
-
-    </p>
-
-
-    <div class="search-panel">
-
-
-      <div class="search-field">
-
-        <div class="search-icon">
-          ⌖
-        </div>
-
-        <div class="search-text">
-
-          <span class="search-label">
-            Location
-          </span>
-
-          <input
-            class="search-value"
-            id="locationInput"
-            type="text"
-            placeholder="City or area"
-          >
-
-        </div>
-
-      </div>
-
-
-      <div class="search-field">
-
-        <div class="search-icon">
-          ⌂
-        </div>
-
-        <div class="search-text">
-
-          <span class="search-label">
-            Looking for
-          </span>
-
-          <input
-            class="search-value"
-            id="propertyInput"
-            type="text"
-            placeholder="Home, apartment, land..."
-          >
-
-        </div>
-
-      </div>
-
-
-      <button
-        class="search-button"
-        onclick="searchProperties()"
-      >
-        Search properties
-      </button>
-
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- =======================================================
-     INTRO
-======================================================== -->
-
-<section
-  class="intro"
-  id="about"
->
-
-  <div class="intro-inner">
-
-
-    <div>
-
-      <div class="section-eyebrow">
-        Property, rethought
-      </div>
-
-      <h2>
-
-        Your place<br>
-
-        <span>is out there.</span>
-
-      </h2>
-
-    </div>
-
-
-    <div class="intro-copy">
-
-      <p>
-
-        Finding property shouldn't mean opening ten tabs,
-        calling numbers that don't answer, and discovering
-        that a listing was gone weeks ago.
-
-      </p>
-
-      <br>
-
-      <p>
-
-        <strong>Placingo</strong> is built around a simple idea:
-        make finding a place easier — and make availability
-        something you can actually trust.
-
-      </p>
-
-    </div>
-
-
-  </div>
-
-</section>
-
-
-<!-- =======================================================
-     CATEGORIES
-======================================================== -->
-
-<section
-  class="categories"
-  id="categories"
->
-
-  <div class="container">
-
-
-    <div class="section-heading">
-
-      <div>
-
-        <div class="section-eyebrow">
-          Explore property
-        </div>
-
-        <h2>
-          Find your kind of place.
-        </h2>
-
-      </div>
-
-
-      <p>
-
-        From a room for tonight to land for
-        something much bigger, find the type
-        of place you're actually looking for.
-
-      </p>
-
-    </div>
-
-
-    <div class="category-grid">
-
-
-      <div
-        class="category-card category-home"
-        onclick="openCategory('Homes & Villas')"
-      >
-
-        <div class="category-icon">
-          ↗
-        </div>
-
-        <div class="category-card-content">
-
-          <h3>
-            Homes & Villas
-          </h3>
-
-          <p>
-            A place to call your own
-          </p>
-
-        </div>
-
-      </div>
-
-
-      <div
-        class="category-card category-apartment"
-        onclick="openCategory('Apartments')"
-      >
-
-        <div class="category-icon">
-          ↗
-        </div>
-
-        <div class="category-card-content">
-
-          <h3>
-            Apartments
-          </h3>
-
-          <p>
-            Modern spaces for everyday living
-          </p>
-
-        </div>
-
-      </div>
-
-
-      <div
-        class="category-card category-room"
-        onclick="openCategory('Rooms & PGs')"
-      >
-
-        <div class="category-icon">
-          ↗
-        </div>
-
-        <div class="category-card-content">
-
-          <h3>
-            Rooms & PGs
-          </h3>
-
-          <p>
-            Simple spaces that fit your needs
-          </p>
-
-        </div>
-
-      </div>
-
-
-      <div
-        class="category-card category-plot"
-        onclick="openCategory('Plots & Land')"
-      >
-
-        <div class="category-icon">
-          ↗
-        </div>
-
-        <div class="category-card-content">
-
-          <h3>
-            Plots & Land
-          </h3>
-
-          <p>
-            Space for what's next
-          </p>
-
-        </div>
-
-      </div>
-
-
-      <div
-        class="category-card category-commercial"
-        onclick="openCategory('Commercial')"
-      >
-
-        <div class="category-icon">
-          ↗
-        </div>
-
-        <div class="category-card-content">
-
-          <h3>
-            Commercial
-          </h3>
-
-          <p>
-            Places built for business
-          </p>
-
-        </div>
-
-      </div>
-
-
-      <div
-        class="category-card category-farmhouse"
-        onclick="openCategory('Farmhouses')"
-      >
-
-        <div class="category-icon">
-          ↗
-        </div>
-
-        <div class="category-card-content">
-
-          <h3>
-            Farmhouses
-          </h3>
-
-          <p>
-            More space. More freedom.
-          </p>
-
-        </div>
-
-      </div>
-
-
-      <div
-        class="category-card category-warehouse"
-        onclick="openCategory('Warehouses')"
-      >
-
-        <div class="category-icon">
-          ↗
-        </div>
-
-        <div class="category-card-content">
-
-          <h3>
-            Warehouses
-          </h3>
-
-          <p>
-            Storage and industrial spaces
-          </p>
-
-        </div>
-
-      </div>
-
-
-      <div
-        class="category-card category-office"
-        onclick="openCategory('Offices')"
-      >
-
-        <div class="category-icon">
-          ↗
-        </div>
-
-        <div class="category-card-content">
-
-          <h3>
-            Offices
-          </h3>
-
-          <p>
-            Spaces made for work
-          </p>
-
-        </div>
-
-      </div>
-
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- =======================================================
-     FRESH AVAILABILITY
-======================================================== -->
-
-<section
-  class="fresh"
-  id="fresh"
->
-
-  <div class="fresh-box">
-
-
-    <div class="fresh-visual">
-
-      <div class="confirm-card">
-
-        <div class="confirm-top">
-
-          <div class="confirm-title">
-            Availability
-          </div>
-
-          <div class="confirm-status">
-            OWNER CONFIRMED
-          </div>
-
-        </div>
-
-        <p>
-          The owner recently confirmed that
-          this property is still available.
-        </p>
-
-      </div>
-
-    </div>
-
-
-    <div class="fresh-content">
-
-      <div class="section-eyebrow">
-        A better way to search
-      </div>
-
-
-      <h2>
-
-        Don't chase<br>
-
-        <span>dead listings.</span>
-
-      </h2>
-
-
-      <p>
-
-        Property listings can sit online long after
-        they've been rented, sold or taken off the market.
-        Placingo is designed to make availability clearer.
-
-      </p>
-
-
-      <div class="fresh-points">
-
-
-        <div class="fresh-point">
-
-          <div class="point-icon">
-            ✓
-          </div>
-
-          <div class="point-text">
-
-            <strong>
-              Owners confirm availability
-            </strong>
-
-            <span>
-              Owners can renew their listing when
-              the property is still available.
-            </span>
-
-          </div>
-
-        </div>
-
-
-        <div class="fresh-point">
-
-          <div class="point-icon">
-            ↻
-          </div>
-
-          <div class="point-text">
-
-            <strong>
-              See how fresh a listing is
-            </strong>
-
-            <span>
-              Know when availability was last
-              confirmed instead of guessing.
-            </span>
-
-          </div>
-
-        </div>
-
-
-        <div class="fresh-point">
-
-          <div class="point-icon">
-            →
-          </div>
-
-          <div class="point-text">
-
-            <strong>
-              Spend less time chasing
-            </strong>
-
-            <span>
-              Focus your time on properties that
-              are actually worth contacting.
-            </span>
-
-          </div>
-
-        </div>
-
-
-      </div>
-
-
-      <a
-        href="#how"
-        class="learn-btn"
-      >
-        See how it works →
-      </a>
-
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- =======================================================
-     AVAILABILITY
-======================================================== -->
-
-<section class="availability">
-
-  <div class="availability-grid">
-
-
-    <div class="availability-main">
-
-      <div>
-
-        <div class="availability-badge">
-
-          <span class="status-dot"></span>
-
-          Built around fresh listings
-
-        </div>
-
-      </div>
-
-
-      <div>
-
-        <h2>
-
-          Know when a place was
-          <span>last confirmed.</span>
-
-        </h2>
-
-        <p>
-
-          Instead of treating every listing as equally fresh,
-          Placingo gives availability a timestamp — so you
-          have more context before making that call.
-
-        </p>
-
-      </div>
-
-    </div>
-
-
-    <div class="availability-card">
-
-      <div class="availability-number">
-        01
-      </div>
-
-      <div>
-
-        <strong>
-          Owner lists
-        </strong>
-
-        <p>
-          The property enters the marketplace.
-        </p>
-
-      </div>
-
-    </div>
-
-
-    <div class="availability-card">
-
-      <div class="availability-number">
-        02
-      </div>
-
-      <div>
-
-        <strong>
-          Owner confirms
-        </strong>
-
-        <p>
-          Availability gets renewed when it's still open.
-        </p>
-
-      </div>
-
-    </div>
-
-
-    <div class="availability-card">
-
-      <div class="availability-number">
-        03
-      </div>
-
-      <div>
-
-        <strong>
-          You search
-        </strong>
-
-        <p>
-          See the freshness of the listing before contacting.
-        </p>
-
-      </div>
-
-    </div>
-
-
-    <div class="availability-card">
-
-      <div class="availability-number">
-        04
-      </div>
-
-      <div>
-
-        <strong>
-          Find your place
-        </strong>
-
-        <p>
-          Less uncertainty. A simpler property search.
-        </p>
-
-      </div>
-
-    </div>
-
-
-  </div>
-
-</section>
-
-
-<!-- =======================================================
-     HOW IT WORKS
-======================================================== -->
-
-<section
-  class="how"
-  id="how"
->
-
-  <div class="how-heading">
-
-    <div class="section-eyebrow">
-      Simple by design
-    </div>
-
-    <h2>
-
-      Property hunting,
-      <span>without the chaos.</span>
-
-    </h2>
-
-  </div>
-
-
-  <div class="steps">
-
-
-    <div class="step">
-
-      <div class="step-number">
-        01
-      </div>
-
-      <h3>
-        Search
-      </h3>
-
-      <p>
-        Choose your location and the kind of
-        property you're looking for.
-      </p>
-
-    </div>
-
-
-    <div class="step">
-
-      <div class="step-number">
-        02
-      </div>
-
-      <h3>
-        Check freshness
-      </h3>
-
-      <p>
-        See when the owner last confirmed
-        that the property was available.
-      </p>
-
-    </div>
-
-
-    <div class="step">
-
-      <div class="step-number">
-        03
-      </div>
-
-      <h3>
-        Connect
-      </h3>
-
-      <p>
-        Contact the owner and take the next
-        step toward your new place.
-      </p>
-
-    </div>
-
-
-  </div>
-
-</section>
-
-
-<!-- =======================================================
-     CTA
-======================================================== -->
-
-<section class="cta">
-
-  <div class="cta-inner">
-
-    <div class="section-eyebrow">
-      Your search starts here
-    </div>
-
-    <h2>
-
-      Your next place<br>
-
-      <span>starts here.</span>
-
-    </h2>
-
-    <p>
-
-      Explore homes, rooms, land, workspaces and more —
-      through one simpler property experience.
-
-    </p>
-
-    <a
-      href="#categories"
-      class="cta-button"
-    >
-      Explore properties →
-    </a>
-
-  </div>
-
-</section>
-
-
-<!-- =======================================================
-     FOOTER
-======================================================== -->
-
-<footer>
-
-  <div class="footer-top">
-
-
-    <div class="footer-brand">
-
-      <a
-        href="#"
-        class="logo"
-      >
-
-        <span class="logo-mark">
-          P
-        </span>
-
-        <span>
-          Placingo
-        </span>
-
-      </a>
-
-
-      <p>
-
-        Property without the unnecessary middleman.
-        A simpler way to discover places and understand
-        what's actually available.
-
-      </p>
-
-    </div>
-
-
-    <div class="footer-links">
-
-
-      <div class="footer-column">
-
-        <h4>
-          Explore
-        </h4>
-
-        <a href="#explore">
-          Home
+        <a href="index.html" class="logo">
+          Placing<span>o</span>
         </a>
 
-        <a href="#categories">
+        <nav class="desktop-nav">
+
+          <a href="properties.html">
+            Explore
+          </a>
+
+          <a href="properties.html">
+            Properties
+          </a>
+
+          <a href="#fresh">
+            Why Placingo
+          </a>
+
+          <a href="#about">
+            About
+          </a>
+
+        </nav>
+
+        <div class="header-actions">
+
+          <button
+            class="signin-btn"
+            type="button"
+            onclick="signIn()"
+          >
+            Sign in
+          </button>
+
+          <button
+            class="list-btn"
+            type="button"
+            onclick="startListing()"
+          >
+            List a property
+          </button>
+
+        </div>
+
+        <button
+          class="menu-btn"
+          type="button"
+          aria-label="Open menu"
+          onclick="toggleMenu()"
+        >
+          ☰
+        </button>
+
+      </div>
+
+      <!-- MOBILE MENU -->
+
+      <div class="mobile-menu" id="mobileMenu">
+
+        <a href="properties.html" onclick="closeMenu()">
+          Explore
+        </a>
+
+        <a href="properties.html" onclick="closeMenu()">
           Properties
         </a>
 
-        <a href="#fresh">
+        <a href="#fresh" onclick="closeMenu()">
           Why Placingo
         </a>
 
-        <a href="#about">
+        <a href="#about" onclick="closeMenu()">
           About
         </a>
 
-      </div>
-
-
-      <div class="footer-column">
-
-        <h4>
-          Placingo
-        </h4>
-
-        <a
-          href="#"
-          onclick="signIn(); return false;"
-        >
+        <a href="login.html" onclick="closeMenu()">
           Sign in
         </a>
 
-        <a
-          href="#"
-          onclick="startListing(); return false;"
-        >
+        <a href="list-property.html" onclick="closeMenu()">
           List a property
-        </a>
-
-        <a href="#how">
-          How it works
         </a>
 
       </div>
 
+    </div>
+
+  </header>
+
+
+  <!-- =========================
+       HERO
+  ========================= -->
+
+  <main>
+
+    <section class="hero" id="explore">
+
+      <div class="container">
+
+        <div class="hero-content">
+
+          <div class="eyebrow">
+            Property, made simpler
+          </div>
+
+          <h1>
+            Find your
+            <em>next place.</em>
+          </h1>
+
+          <p class="hero-text">
+            Discover homes, apartments, rooms, plots, commercial spaces
+            and more — directly from property owners, without unnecessary
+            middlemen.
+          </p>
+
+
+          <!-- SEARCH -->
+
+          <div class="search-box">
+
+            <div class="search-field">
+
+              <label for="locationInput">
+                Location
+              </label>
+
+              <input
+                id="locationInput"
+                type="text"
+                placeholder="City, area or locality"
+              >
+
+            </div>
+
+
+            <div class="search-field">
+
+              <label for="propertyInput">
+                Property type
+              </label>
+
+              <input
+                id="propertyInput"
+                type="text"
+                placeholder="Home, plot, shop..."
+              >
+
+            </div>
+
+
+            <button
+              class="search-button"
+              type="button"
+              onclick="searchProperties()"
+            >
+              Search properties →
+            </button>
+
+          </div>
+
+
+          <div class="hero-note">
+
+            <span class="hero-note-dot"></span>
+
+            Listings can be renewed by owners to show current availability.
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         INTRO / ABOUT
+    ========================= -->
+
+    <section class="intro" id="about">
+
+      <div class="container">
+
+        <div class="intro-grid">
+
+          <div>
+
+            <div class="section-label">
+              A better way to search
+            </div>
+
+            <h2>
+              Property should feel
+              <br>
+              straightforward.
+            </h2>
+
+          </div>
+
+
+          <div class="intro-copy">
+
+            <p>
+              Finding property online shouldn't mean scrolling through
+              endless listings that may no longer even be available.
+            </p>
+
+            <p>
+              Placingo is being built around a simpler idea:
+              <strong>
+                connect people with properties and their owners more directly.
+              </strong>
+            </p>
+
+            <p>
+              From a home to rent to a plot to buy, a room, a shop,
+              an office or a warehouse — one place to explore what is
+              actually available.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+    <!-- =========================
+         PROPERTY CATEGORIES
+    ========================= -->
+
+    <section class="categories" id="categories">
+
+      <div class="container">
+
+        <div class="section-heading">
+
+          <div>
+            <div class="section-label">
+              Explore by type
+            </div>
+
+            <h2>
+              Find the kind of
+              <br>
+              place you need.
+            </h2>
+          </div>
+
+          <p>
+            From your next home to a plot for your next project,
+            explore different types of property in one place.
+          </p>
+
+        </div>
+
+
+        <div class="category-grid">
+
+
+          <!-- HOME -->
+
+          <button
+            class="category-card category-large"
+            type="button"
+            onclick="openCategory('Homes & Villas')"
+          >
+
+            <div
+              class="category-image"
+              style="
+                background-image:
+                linear-gradient(180deg,rgba(13,45,38,.05),rgba(13,45,38,.72)),
+                url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=85');
+              "
+            >
+
+              <div class="category-content">
+
+                <span class="category-number">
+                  01
+                </span>
+
+                <h3>
+                  Homes & Villas
+                </h3>
+
+                <span class="category-link">
+                  Explore →
+                </span>
+
+              </div>
+
+            </div>
+
+          </button>
+
+
+          <!-- APARTMENTS -->
+
+          <button
+            class="category-card"
+            type="button"
+            onclick="openCategory('Apartments')"
+          >
+
+            <div
+              class="category-image"
+              style="
+                background-image:
+                linear-gradient(180deg,rgba(13,45,38,.05),rgba(13,45,38,.72)),
+                url('https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1000&q=85');
+              "
+            >
+
+              <div class="category-content">
+
+                <span class="category-number">
+                  02
+                </span>
+
+                <h3>
+                  Apartments
+                </h3>
+
+                <span class="category-link">
+                  Explore →
+                </span>
+
+              </div>
+
+            </div>
+
+          </button>
+
+
+          <!-- ROOMS -->
+
+          <button
+            class="category-card"
+            type="button"
+            onclick="openCategory('Rooms & PGs')"
+          >
+
+            <div
+              class="category-image"
+              style="
+                background-image:
+                linear-gradient(180deg,rgba(13,45,38,.05),rgba(13,45,38,.72)),
+                url('https://images.unsplash.com/photo-1560185008-b033106af5c3?auto=format&fit=crop&w=1000&q=85');
+              "
+            >
+
+              <div class="category-content">
+
+                <span class="category-number">
+                  03
+                </span>
+
+                <h3>
+                  Rooms & PGs
+                </h3>
+
+                <span class="category-link">
+                  Explore →
+                </span>
+
+              </div>
+
+            </div>
+
+          </button>
+
+
+          <!-- PLOTS -->
+
+          <button
+            class="category-card"
+            type="button"
+            onclick="openCategory('Plots & Land')"
+          >
+
+            <div
+              class="category-image"
+              style="
+                background-image:
+                linear-gradient(180deg,rgba(13,45,38,.05),rgba(13,45,38,.72)),
+                url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1000&q=85');
+              "
+            >
+
+              <div class="category-content">
+
+                <span class="category-number">
+                  04
+                </span>
+
+                <h3>
+                  Plots & Land
+                </h3>
+
+                <span class="category-link">
+                  Explore →
+                </span>
+
+              </div>
+
+            </div>
+
+          </button>
+
+
+          <!-- COMMERCIAL -->
+
+          <button
+            class="category-card"
+            type="button"
+            onclick="openCategory('Commercial')"
+          >
+
+            <div
+              class="category-image"
+              style="
+                background-image:
+                linear-gradient(180deg,rgba(13,45,38,.05),rgba(13,45,38,.72)),
+                url('https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1000&q=85');
+              "
+            >
+
+              <div class="category-content">
+
+                <span class="category-number">
+                  05
+                </span>
+
+                <h3>
+                  Commercial
+                </h3>
+
+                <span class="category-link">
+                  Explore →
+                </span>
+
+              </div>
+
+            </div>
+
+          </button>
+
+
+          <!-- FARMHOUSES -->
+
+          <button
+            class="category-card"
+            type="button"
+            onclick="openCategory('Farmhouses')"
+          >
+
+            <div
+              class="category-image"
+              style="
+                background-image:
+                linear-gradient(180deg,rgba(13,45,38,.05),rgba(13,45,38,.72)),
+                url('https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=1000&q=85');
+              "
+            >
+
+              <div class="category-content">
+
+                <span class="category-number">
+                  06
+                </span>
+
+                <h3>
+                  Farmhouses
+                </h3>
+
+                <span class="category-link">
+                  Explore →
+                </span>
+
+              </div>
+
+            </div>
+
+          </button>
+
+
+          <!-- WAREHOUSES -->
+
+          <button
+            class="category-card"
+            type="button"
+            onclick="openCategory('Warehouses')"
+          >
+
+            <div
+              class="category-image"
+              style="
+                background-image:
+                linear-gradient(180deg,rgba(13,45,38,.05),rgba(13,45,38,.72)),
+                url('https://images.unsplash.com/photo-1586528116493-da8b6e1a9a4b?auto=format&fit=crop&w=1000&q=85');
+              "
+            >
+
+              <div class="category-content">
+
+                <span class="category-number">
+                  07
+                </span>
+
+                <h3>
+                  Warehouses
+                </h3>
+
+                <span class="category-link">
+                  Explore →
+                </span>
+
+              </div>
+
+            </div>
+
+          </button>
+
+
+          <!-- OFFICES -->
+
+          <button
+            class="category-card"
+            type="button"
+            onclick="openCategory('Offices')"
+          >
+
+            <div
+              class="category-image"
+              style="
+                background-image:
+                linear-gradient(180deg,rgba(13,45,38,.05),rgba(13,45,38,.72)),
+                url('https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1000&q=85');
+              "
+            >
+
+              <div class="category-content">
+
+                <span class="category-number">
+                  08
+                </span>
+
+                <h3>
+                  Offices
+                </h3>
+
+                <span class="category-link">
+                  Explore →
+                </span>
+
+              </div>
+
+            </div>
+
+          </button>
+
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         FRESH / OWNER CONFIRMED
+    ========================= -->
+
+    <section class="fresh" id="fresh">
+
+      <div class="container">
+
+        <div class="fresh-wrap">
+
+          <div class="fresh-copy">
+
+            <div class="section-label">
+              Built differently
+            </div>
+
+            <h2>
+              Don't just find a
+              <em>listing.</em>
+              Find one that's current.
+            </h2>
+
+            <p>
+              Property listings can become outdated quickly.
+              That's why Placingo is designed around owner-confirmed
+              availability.
+            </p>
+
+            <a
+              href="properties.html"
+              class="text-link"
+            >
+              Explore properties →
+            </a>
+
+          </div>
+
+
+          <div class="fresh-card">
+
+            <div class="fresh-card-top">
+
+              <span class="status-dot"></span>
+
+              <span>
+                Owner Confirmed
+              </span>
+
+            </div>
+
+
+            <div class="fresh-property-image">
+
+              <img
+                src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1200&q=85"
+                alt="Modern property"
+              >
+
+            </div>
+
+
+            <div class="fresh-property-info">
+
+              <div>
+
+                <h3>
+                  Modern 3 BHK Home
+                </h3>
+
+                <p>
+                  Sample property preview
+                </p>
+
+              </div>
+
+              <div class="confirmed-time">
+                Confirmed recently
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         AVAILABILITY STRIP
+    ========================= -->
+
+    <section class="availability-strip">
+
+      <div class="container">
+
+        <div class="availability-inner">
+
+          <div class="availability-icon">
+            ✓
+          </div>
+
+          <div class="availability-text">
+
+            <strong>
+              Availability that stays fresh.
+            </strong>
+
+            <span>
+              Owners can renew their listings so people know
+              when the property was last confirmed available.
+            </span>
+
+          </div>
+
+          <a
+            href="properties.html"
+            class="availability-link"
+          >
+            Browse listings →
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         HOW IT WORKS
+    ========================= -->
+
+    <section class="how" id="how">
+
+      <div class="container">
+
+        <div class="section-heading">
+
+          <div>
+
+            <div class="section-label">
+              How it works
+            </div>
+
+            <h2>
+              Less searching.
+              <br>
+              More finding.
+            </h2>
+
+          </div>
+
+          <p>
+            Placingo keeps the basic property-search journey simple,
+            whether you're looking for a place or listing one.
+          </p>
+
+        </div>
+
+
+        <div class="steps">
+
+
+          <div class="step">
+
+            <div class="step-number">
+              01
+            </div>
+
+            <div>
+
+              <h3>
+                Search
+              </h3>
+
+              <p>
+                Choose a location, property type and other filters
+                to find properties that match what you need.
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <div class="step">
+
+            <div class="step-number">
+              02
+            </div>
+
+            <div>
+
+              <h3>
+                Explore
+              </h3>
+
+              <p>
+                Open a property to see its details, availability,
+                images and information provided by the owner.
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <div class="step">
+
+            <div class="step-number">
+              03
+            </div>
+
+            <div>
+
+              <h3>
+                Connect
+              </h3>
+
+              <p>
+                Contact the owner directly and discuss the property,
+                visit and terms with them.
+              </p>
+
+            </div>
+
+          </div>
+
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         CTA
+    ========================= -->
+
+    <section class="cta-section">
+
+      <div class="container">
+
+        <div class="cta-box">
+
+          <div>
+
+            <div class="section-label">
+              Your next place could be here
+            </div>
+
+            <h2>
+              Start exploring.
+            </h2>
+
+            <p>
+              Browse properties across homes, land, rentals,
+              commercial spaces and more.
+            </p>
+
+          </div>
+
+          <a
+            href="properties.html"
+            class="cta-button"
+          >
+            Explore properties →
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+  </main>
+
+
+  <!-- =========================
+       FOOTER
+  ========================= -->
+
+  <footer class="site-footer">
+
+    <div class="container">
+
+      <div class="footer-top">
+
+        <div class="footer-brand">
+
+          <a href="index.html" class="footer-logo">
+            Placing<span>o</span>
+          </a>
+
+          <p>
+            A simpler way to discover property,
+            directly from owners.
+          </p>
+
+        </div>
+
+
+        <div class="footer-column">
+
+          <h4>
+            Explore
+          </h4>
+
+          <a href="properties.html">
+            Properties
+          </a>
+
+          <a href="properties.html?purpose=buy">
+            Buy
+          </a>
+
+          <a href="properties.html?purpose=rent">
+            Rent
+          </a>
+
+          <a href="#categories">
+            Property types
+          </a>
+
+        </div>
+
+
+        <div class="footer-column">
+
+          <h4>
+            Placingo
+          </h4>
+
+          <a href="#fresh">
+            Why Placingo
+          </a>
+
+          <a href="#how">
+            How it works
+          </a>
+
+          <a href="#about">
+            About
+          </a>
+
+        </div>
+
+
+        <div class="footer-column">
+
+          <h4>
+            For owners
+          </h4>
+
+          <a href="list-property.html">
+            List a property
+          </a>
+
+          <a href="login.html">
+            Sign in
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <div class="footer-bottom">
+
+        <span>
+          © 2026 Placingo. All rights reserved.
+        </span>
+
+        <span>
+          Property without the middle man.
+        </span>
+
+      </div>
 
     </div>
 
-  </div>
+  </footer>
 
 
-  <div class="footer-bottom">
+  <!-- =========================
+       ADDITIONAL PAGE STYLES
+  ========================= -->
 
-    <span>
-      © 2026 Placingo. All rights reserved.
-    </span>
+  <style>
 
-    <span>
-      Property without the unnecessary middleman.
-    </span>
+    /* =========================
+       CATEGORY SECTION
+    ========================= */
 
-  </div>
+    .categories{
+      padding:100px 0;
+      background:var(--cream);
+    }
 
-</footer>
+    .section-heading{
+      display:grid;
+      grid-template-columns:1fr 420px;
+      gap:60px;
+      align-items:end;
+      margin-bottom:45px;
+    }
+
+    .section-heading h2{
+      font-family:"Playfair Display",serif;
+      font-size:clamp(40px,5vw,62px);
+      line-height:1.04;
+      letter-spacing:-2px;
+      font-weight:600;
+    }
+
+    .section-heading > p{
+      color:var(--muted);
+      font-size:16px;
+      line-height:1.75;
+      max-width:420px;
+    }
 
 
-<!-- =======================================================
-     JAVASCRIPT
-======================================================== -->
+    .category-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:14px;
+    }
 
-<script>
+    .category-card{
+      position:relative;
+      min-height:330px;
+      padding:0;
+      overflow:hidden;
+      border-radius:18px;
+      background:var(--green);
+      text-align:left;
+    }
 
-function searchProperties(){
+    .category-large{
+      grid-column:span 2;
+    }
 
-  const location =
-    document
-      .getElementById("locationInput")
-      .value
-      .trim();
+    .category-image{
+      position:absolute;
+      inset:0;
+      background-position:center;
+      background-size:cover;
+      transition:transform .5s ease;
+    }
 
-  const property =
-    document
-      .getElementById("propertyInput")
-      .value
-      .trim();
+    .category-card:hover .category-image{
+      transform:scale(1.045);
+    }
+
+    .category-content{
+      position:absolute;
+      inset:0;
+
+      display:flex;
+      flex-direction:column;
+      justify-content:flex-end;
+
+      padding:24px;
+      color:#fff;
+    }
+
+    .category-number{
+      position:absolute;
+      top:22px;
+      right:22px;
+
+      font-size:11px;
+      font-weight:700;
+      letter-spacing:1px;
+      color:rgba(255,255,255,.72);
+    }
+
+    .category-content h3{
+      font-family:"Playfair Display",serif;
+      font-size:29px;
+      line-height:1.1;
+      font-weight:600;
+      margin-bottom:8px;
+    }
+
+    .category-link{
+      font-size:13px;
+      font-weight:700;
+      color:var(--lime);
+    }
 
 
-  if(!location && !property){
+    /* =========================
+       FRESH SECTION
+    ========================= */
 
-    alert(
-      "Property search will be available soon."
+    .fresh{
+      padding:110px 0;
+      background:var(--cream-light);
+    }
+
+    .fresh-wrap{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:80px;
+      align-items:center;
+    }
+
+    .fresh-copy h2{
+      max-width:570px;
+
+      font-family:"Playfair Display",serif;
+      font-size:clamp(42px,5vw,65px);
+      line-height:1.03;
+      letter-spacing:-2px;
+      font-weight:600;
+      margin-bottom:24px;
+    }
+
+    .fresh-copy h2 em{
+      color:#9aab42;
+      font-style:italic;
+    }
+
+    .fresh-copy p{
+      max-width:520px;
+      color:var(--muted);
+      font-size:17px;
+      line-height:1.8;
+      margin-bottom:28px;
+    }
+
+    .text-link{
+      display:inline-flex;
+      color:var(--green);
+      font-size:14px;
+      font-weight:700;
+      border-bottom:1px solid var(--green);
+      padding-bottom:4px;
+    }
+
+
+    .fresh-card{
+      padding:14px;
+      border-radius:24px;
+      background:#fff;
+      box-shadow:var(--shadow);
+    }
+
+    .fresh-card-top{
+      display:flex;
+      align-items:center;
+      gap:8px;
+
+      padding:12px 10px 15px;
+
+      color:var(--green);
+      font-size:13px;
+      font-weight:700;
+    }
+
+    .status-dot{
+      width:8px;
+      height:8px;
+      border-radius:50%;
+      background:#8ea93b;
+    }
+
+    .fresh-property-image{
+      height:330px;
+      overflow:hidden;
+      border-radius:16px;
+    }
+
+    .fresh-property-image img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+    }
+
+    .fresh-property-info{
+      display:flex;
+      justify-content:space-between;
+      align-items:end;
+      gap:20px;
+      padding:18px 10px 8px;
+    }
+
+    .fresh-property-info h3{
+      font-size:18px;
+      margin-bottom:3px;
+    }
+
+    .fresh-property-info p{
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    .confirmed-time{
+      white-space:nowrap;
+      color:#718331;
+      font-size:12px;
+      font-weight:700;
+    }
+
+
+    /* =========================
+       AVAILABILITY STRIP
+    ========================= */
+
+    .availability-strip{
+      padding:25px 0;
+      background:var(--green);
+      color:#fff;
+    }
+
+    .availability-inner{
+      display:flex;
+      align-items:center;
+      gap:18px;
+    }
+
+    .availability-icon{
+      flex:none;
+
+      display:grid;
+      place-items:center;
+
+      width:44px;
+      height:44px;
+
+      border-radius:50%;
+      background:var(--lime);
+      color:var(--green-dark);
+      font-weight:800;
+    }
+
+    .availability-text{
+      display:flex;
+      flex-direction:column;
+      flex:1;
+    }
+
+    .availability-text strong{
+      font-size:15px;
+      margin-bottom:2px;
+    }
+
+    .availability-text span{
+      color:rgba(255,255,255,.67);
+      font-size:13px;
+    }
+
+    .availability-link{
+      flex:none;
+
+      padding:11px 16px;
+
+      border:1px solid rgba(255,255,255,.25);
+      border-radius:10px;
+
+      font-size:13px;
+      font-weight:700;
+    }
+
+    .availability-link:hover{
+      background:rgba(255,255,255,.08);
+    }
+
+
+    /* =========================
+       HOW IT WORKS
+    ========================= */
+
+    .how{
+      padding:110px 0;
+      background:var(--cream);
+    }
+
+    .steps{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      border-top:1px solid var(--line);
+    }
+
+    .step{
+      display:flex;
+      gap:20px;
+      padding:32px 25px 10px 0;
+      border-right:1px solid var(--line);
+    }
+
+    .step:not(:first-child){
+      padding-left:25px;
+    }
+
+    .step:last-child{
+      border-right:0;
+    }
+
+    .step-number{
+      color:#9aab42;
+      font-size:12px;
+      font-weight:800;
+      letter-spacing:1px;
+    }
+
+    .step h3{
+      font-size:19px;
+      margin-bottom:8px;
+    }
+
+    .step p{
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.75;
+      max-width:290px;
+    }
+
+
+    /* =========================
+       CTA
+    ========================= */
+
+    .cta-section{
+      padding:0 0 110px;
+      background:var(--cream);
+    }
+
+    .cta-box{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:40px;
+
+      padding:55px 60px;
+
+      border-radius:25px;
+      background:var(--green);
+      color:#fff;
+    }
+
+    .cta-box .section-label{
+      color:var(--lime);
+      margin-bottom:10px;
+    }
+
+    .cta-box h2{
+      font-family:"Playfair Display",serif;
+      font-size:52px;
+      line-height:1;
+      margin-bottom:13px;
+    }
+
+    .cta-box p{
+      max-width:500px;
+      color:rgba(255,255,255,.7);
+      font-size:15px;
+    }
+
+    .cta-button{
+      flex:none;
+
+      padding:15px 22px;
+
+      border-radius:12px;
+
+      background:var(--lime);
+      color:var(--green-dark);
+
+      font-size:14px;
+      font-weight:800;
+
+      transition:.2s ease;
+    }
+
+    .cta-button:hover{
+      transform:translateY(-2px);
+    }
+
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    .site-footer{
+      padding:70px 0 25px;
+      background:var(--green-dark);
+      color:#fff;
+    }
+
+    .footer-top{
+      display:grid;
+      grid-template-columns:2fr repeat(3,1fr);
+      gap:60px;
+      padding-bottom:60px;
+    }
+
+    .footer-logo{
+      display:inline-block;
+
+      font-size:27px;
+      font-weight:700;
+      letter-spacing:-1px;
+
+      margin-bottom:15px;
+    }
+
+    .footer-logo span{
+      color:var(--lime);
+    }
+
+    .footer-brand p{
+      max-width:280px;
+      color:rgba(255,255,255,.55);
+      font-size:14px;
+      line-height:1.7;
+    }
+
+    .footer-column{
+      display:flex;
+      flex-direction:column;
+      align-items:flex-start;
+      gap:11px;
+    }
+
+    .footer-column h4{
+      color:#fff;
+      font-size:13px;
+      margin-bottom:7px;
+    }
+
+    .footer-column a{
+      color:rgba(255,255,255,.57);
+      font-size:13px;
+      transition:.2s ease;
+    }
+
+    .footer-column a:hover{
+      color:var(--lime);
+    }
+
+    .footer-bottom{
+      display:flex;
+      justify-content:space-between;
+      gap:20px;
+
+      padding-top:22px;
+
+      border-top:1px solid rgba(255,255,255,.1);
+
+      color:rgba(255,255,255,.4);
+      font-size:11px;
+    }
+
+
+    /* =========================
+       RESPONSIVE
+    ========================= */
+
+    @media(max-width:900px){
+
+      .section-heading{
+        grid-template-columns:1fr;
+        gap:20px;
+      }
+
+      .category-grid{
+        grid-template-columns:repeat(2,1fr);
+      }
+
+      .category-large{
+        grid-column:span 2;
+      }
+
+      .fresh-wrap{
+        grid-template-columns:1fr;
+        gap:45px;
+      }
+
+      .steps{
+        grid-template-columns:1fr;
+      }
+
+      .step,
+      .step:not(:first-child){
+        padding:28px 0;
+        border-right:0;
+        border-bottom:1px solid var(--line);
+      }
+
+      .step:last-child{
+        border-bottom:0;
+      }
+
+      .cta-box{
+        padding:45px 35px;
+      }
+
+      .footer-top{
+        grid-template-columns:1.5fr 1fr 1fr;
+      }
+
+      .footer-brand{
+        grid-column:span 3;
+      }
+
+    }
+
+
+    @media(max-width:680px){
+
+      .categories,
+      .fresh,
+      .how{
+        padding:75px 0;
+      }
+
+      .category-grid{
+        grid-template-columns:1fr;
+      }
+
+      .category-large{
+        grid-column:span 1;
+      }
+
+      .category-card{
+        min-height:290px;
+      }
+
+      .fresh-property-image{
+        height:260px;
+      }
+
+      .fresh-property-info{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:8px;
+      }
+
+      .availability-inner{
+        align-items:flex-start;
+      }
+
+      .availability-link{
+        display:none;
+      }
+
+      .cta-section{
+        padding-bottom:75px;
+      }
+
+      .cta-box{
+        flex-direction:column;
+        align-items:flex-start;
+        padding:38px 25px;
+      }
+
+      .cta-box h2{
+        font-size:44px;
+      }
+
+      .footer-top{
+        grid-template-columns:1fr 1fr;
+        gap:35px;
+      }
+
+      .footer-brand{
+        grid-column:span 2;
+      }
+
+      .footer-bottom{
+        flex-direction:column;
+        gap:8px;
+      }
+
+    }
+
+  </style>
+
+
+  <!-- =========================
+       NAVIGATION JAVASCRIPT
+  ========================= -->
+
+  <script>
+
+    /* =========================
+       SEARCH
+    ========================= */
+
+    function searchProperties(){
+
+      const locationInput =
+        document.getElementById("locationInput");
+
+      const propertyInput =
+        document.getElementById("propertyInput");
+
+      const location =
+        locationInput
+          ? locationInput.value.trim()
+          : "";
+
+      const property =
+        propertyInput
+          ? propertyInput.value.trim()
+          : "";
+
+
+      const params = new URLSearchParams();
+
+
+      if(location){
+        params.set("location", location);
+      }
+
+
+      if(property){
+        params.set("property", property);
+      }
+
+
+      const query =
+        params.toString();
+
+
+      window.location.href =
+        "properties.html" +
+        (query ? "?" + query : "");
+
+    }
+
+
+    /* =========================
+       CATEGORY NAVIGATION
+    ========================= */
+
+    function openCategory(category){
+
+      const params =
+        new URLSearchParams();
+
+      params.set(
+        "category",
+        category
+      );
+
+
+      window.location.href =
+        "properties.html?" +
+        params.toString();
+
+    }
+
+
+    /* =========================
+       SIGN IN
+    ========================= */
+
+    function signIn(){
+
+      window.location.href =
+        "login.html";
+
+    }
+
+
+    /* =========================
+       LIST PROPERTY
+    ========================= */
+
+    function startListing(){
+
+      window.location.href =
+        "list-property.html";
+
+    }
+
+
+    /* =========================
+       MOBILE MENU
+    ========================= */
+
+    function toggleMenu(){
+
+      const menu =
+        document.getElementById("mobileMenu");
+
+      if(!menu){
+        return;
+      }
+
+      menu.classList.toggle("open");
+
+    }
+
+
+    function closeMenu(){
+
+      const menu =
+        document.getElementById("mobileMenu");
+
+      if(!menu){
+        return;
+      }
+
+      menu.classList.remove("open");
+
+    }
+
+
+    /* =========================
+       ENTER KEY SEARCH
+    ========================= */
+
+    document.addEventListener(
+      "DOMContentLoaded",
+      function(){
+
+        const locationInput =
+          document.getElementById("locationInput");
+
+        const propertyInput =
+          document.getElementById("propertyInput");
+
+
+        [locationInput, propertyInput]
+          .forEach(function(input){
+
+            if(!input){
+              return;
+            }
+
+            input.addEventListener(
+              "keydown",
+              function(event){
+
+                if(event.key === "Enter"){
+
+                  event.preventDefault();
+
+                  searchProperties();
+
+                }
+
+              }
+            );
+
+          });
+
+      }
     );
 
-    return;
-  }
 
-
-  if(location && property){
-
-    alert(
-      "Searching for " +
-      property +
-      " in " +
-      location +
-      "."
-    );
-
-    return;
-  }
-
-
-  if(location){
-
-    alert(
-      "Searching properties in " +
-      location +
-      "."
-    );
-
-    return;
-  }
-
-
-  if(property){
-
-    alert(
-      "Searching for " +
-      property +
-      "."
-    );
-
-  }
-
-}
-
-
-function openCategory(category){
-
-  alert(
-    category +
-    " marketplace is coming soon."
-  );
-
-}
-
-
-function startListing(){
-
-  alert(
-    "Property listing will be available soon."
-  );
-
-}
-
-
-function signIn(){
-
-  alert(
-    "Sign in will be available soon."
-  );
-
-}
-
-
-function toggleMenu(){
-
-  const menu =
-    document.getElementById("mobileMenu");
-
-  menu.classList.toggle("active");
-
-}
-
-
-</script>
+  </script>
 
 </body>
 </html>
