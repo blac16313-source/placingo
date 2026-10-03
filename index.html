@@ -4,11 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Placingo — Find Property Without the Middle Man</title>
+  <title>Placingo — Property Without the Middle Man</title>
 
   <meta
     name="description"
-    content="Placingo makes it easier to discover homes, apartments, rooms, plots, commercial spaces and more directly from property owners."
+    content="Find homes, apartments, rooms, PGs, plots, shops, offices and more directly through Placingo."
   >
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -67,9 +67,10 @@
     }
 
     .container{
-      width:min(1180px, calc(100% - 40px));
+      width:min(1180px,calc(100% - 40px));
       margin:auto;
     }
+
 
     /* =========================
        HEADER
@@ -88,7 +89,7 @@
       display:flex;
       align-items:center;
       justify-content:space-between;
-      gap:30px;
+      gap:25px;
 
       padding:12px 14px 12px 22px;
 
@@ -96,6 +97,7 @@
       border-radius:18px;
 
       background:rgba(255,255,255,.12);
+
       backdrop-filter:blur(18px);
       -webkit-backdrop-filter:blur(18px);
 
@@ -117,6 +119,7 @@
       display:flex;
       align-items:center;
       gap:28px;
+
       font-size:14px;
       font-weight:500;
     }
@@ -134,49 +137,65 @@
     .header-actions{
       display:flex;
       align-items:center;
-      gap:10px;
+      gap:8px;
     }
 
     .signin-btn{
+      padding:10px 15px;
+
       background:transparent;
       color:#fff;
-      padding:10px 15px;
+
       font-size:14px;
       font-weight:600;
     }
 
+    .signin-btn:hover{
+      color:var(--lime);
+    }
+
     .list-btn{
+      padding:11px 17px;
+
+      border-radius:11px;
+
       background:var(--lime);
       color:var(--green-dark);
-      padding:11px 17px;
-      border-radius:11px;
+
       font-size:14px;
       font-weight:700;
+
       transition:.2s ease;
     }
 
     .list-btn:hover{
       transform:translateY(-1px);
-      filter:brightness(1.03);
     }
 
     .menu-btn{
       display:none;
+
       width:42px;
       height:42px;
+
       border-radius:11px;
+
       background:rgba(255,255,255,.15);
       color:#fff;
+
       font-size:21px;
     }
 
     .mobile-menu{
       display:none;
+
       margin-top:10px;
       padding:15px;
 
       border-radius:16px;
-      background:rgba(13,45,38,.96);
+
+      background:rgba(13,45,38,.97);
+
       backdrop-filter:blur(15px);
 
       color:#fff;
@@ -198,12 +217,14 @@
       background:rgba(255,255,255,.08);
     }
 
+
     /* =========================
        HERO
     ========================= */
 
     .hero{
       position:relative;
+
       min-height:760px;
 
       display:flex;
@@ -213,7 +234,7 @@
         linear-gradient(
           90deg,
           rgba(7,34,28,.88) 0%,
-          rgba(7,34,28,.62) 48%,
+          rgba(7,34,28,.64) 48%,
           rgba(7,34,28,.18) 100%
         ),
         url("https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=2200&q=90")
@@ -225,8 +246,14 @@
     .hero-content{
       position:relative;
       z-index:2;
-      width:min(720px,100%);
+
+      width:100%;
+
       padding-top:70px;
+    }
+
+    .hero-copy{
+      width:min(760px,100%);
     }
 
     .eyebrow{
@@ -241,6 +268,7 @@
       border-radius:999px;
 
       background:rgba(217,239,124,.10);
+
       color:var(--lime);
 
       font-size:12px;
@@ -251,19 +279,27 @@
 
     .eyebrow::before{
       content:"";
+
       width:7px;
       height:7px;
+
       border-radius:50%;
+
       background:var(--lime);
     }
 
     .hero h1{
       max-width:760px;
+
       font-family:"Playfair Display",serif;
+
       font-size:clamp(50px,7vw,88px);
+
       line-height:.98;
       letter-spacing:-3px;
+
       font-weight:600;
+
       margin-bottom:24px;
     }
 
@@ -273,19 +309,30 @@
     }
 
     .hero-text{
-      max-width:590px;
+      max-width:600px;
+
       color:rgba(255,255,255,.82);
+
       font-size:17px;
       line-height:1.7;
+
       margin-bottom:32px;
     }
 
+
     /* =========================
-       SEARCH BOX
+       SEARCH
     ========================= */
 
+    .hero-search-wrap{
+      width:100%;
+
+      display:flex;
+      justify-content:center;
+    }
+
     .search-box{
-      width:min(820px,100%);
+      width:min(900px,100%);
 
       display:grid;
       grid-template-columns:1.1fr 1fr auto;
@@ -294,9 +341,10 @@
       padding:8px;
 
       background:#fff;
+
       border-radius:17px;
 
-      box-shadow:0 25px 70px rgba(0,0,0,.20);
+      box-shadow:0 25px 70px rgba(0,0,0,.22);
     }
 
     .search-field{
@@ -305,28 +353,36 @@
       justify-content:center;
 
       min-height:64px;
+
       padding:8px 15px;
 
       border-radius:11px;
+
       background:#f7f7f3;
     }
 
     .search-field label{
       color:#84908a;
+
       font-size:11px;
       font-weight:700;
+
       text-transform:uppercase;
       letter-spacing:.5px;
+
       margin-bottom:2px;
     }
 
     .search-field input{
       width:100%;
+
       border:0;
       outline:0;
+
       background:transparent;
 
       color:var(--green);
+
       font-size:14px;
       font-weight:600;
     }
@@ -337,7 +393,8 @@
     }
 
     .search-button{
-      min-width:175px;
+      min-width:180px;
+
       padding:0 22px;
 
       border-radius:11px;
@@ -356,28 +413,32 @@
       transform:translateY(-1px);
     }
 
-    /* =========================
-       HERO FOOTNOTE
-    ========================= */
-
     .hero-note{
       display:flex;
       align-items:center;
+      justify-content:center;
+
       gap:10px;
 
       margin-top:20px;
 
       color:rgba(255,255,255,.68);
+
       font-size:13px;
     }
 
     .hero-note-dot{
       width:8px;
       height:8px;
+
       border-radius:50%;
+
       background:var(--lime);
-      box-shadow:0 0 0 5px rgba(217,239,124,.10);
+
+      box-shadow:
+        0 0 0 5px rgba(217,239,124,.10);
     }
+
 
     /* =========================
        INTRO
@@ -391,24 +452,32 @@
     .intro-grid{
       display:grid;
       grid-template-columns:.8fr 1.2fr;
+
       gap:80px;
+
       align-items:start;
     }
 
     .section-label{
       color:#809088;
+
       font-size:12px;
       font-weight:700;
+
       text-transform:uppercase;
       letter-spacing:1.5px;
+
       margin-bottom:18px;
     }
 
     .intro h2{
       font-family:"Playfair Display",serif;
+
       font-size:clamp(40px,5vw,64px);
+
       line-height:1.04;
       letter-spacing:-2px;
+
       font-weight:600;
     }
 
@@ -418,14 +487,207 @@
 
     .intro-copy p{
       color:var(--muted);
+
       font-size:17px;
       line-height:1.8;
+
       margin-bottom:20px;
     }
 
     .intro-copy strong{
       color:var(--green);
     }
+
+
+    /* =========================
+       CATEGORY INTRO
+    ========================= */
+
+    .categories{
+      padding:100px 0;
+
+      background:var(--cream);
+    }
+
+    .section-heading{
+      display:flex;
+
+      justify-content:space-between;
+      align-items:end;
+
+      gap:50px;
+
+      margin-bottom:42px;
+    }
+
+    .section-heading h2{
+      font-family:"Playfair Display",serif;
+
+      font-size:clamp(40px,5vw,62px);
+
+      line-height:1.04;
+      letter-spacing:-2px;
+
+      font-weight:600;
+    }
+
+    .section-heading > p{
+      max-width:430px;
+
+      color:var(--muted);
+
+      font-size:16px;
+      line-height:1.75;
+    }
+
+
+    /* =========================
+       MARKETPLACE CATEGORIES
+    ========================= */
+
+    .category-grid{
+      display:grid;
+
+      grid-template-columns:
+        repeat(12,1fr);
+
+      gap:14px;
+    }
+
+    .category-card{
+      position:relative;
+
+      min-height:270px;
+
+      padding:0;
+
+      overflow:hidden;
+
+      border-radius:18px;
+
+      background:var(--green);
+
+      text-align:left;
+
+      box-shadow:0 8px 25px rgba(13,45,38,.06);
+    }
+
+    .category-card:nth-child(1){
+      grid-column:span 5;
+    }
+
+    .category-card:nth-child(2){
+      grid-column:span 4;
+    }
+
+    .category-card:nth-child(3){
+      grid-column:span 3;
+    }
+
+    .category-card:nth-child(4){
+      grid-column:span 3;
+    }
+
+    .category-card:nth-child(5){
+      grid-column:span 4;
+    }
+
+    .category-card:nth-child(6){
+      grid-column:span 5;
+    }
+
+    .category-card:nth-child(7){
+      grid-column:span 4;
+    }
+
+    .category-card:nth-child(8){
+      grid-column:span 4;
+    }
+
+    .category-card:nth-child(9){
+      grid-column:span 4;
+    }
+
+    .category-card:nth-child(10){
+      grid-column:span 4;
+    }
+
+    .category-image{
+      position:absolute;
+      inset:0;
+
+      background-position:center;
+      background-size:cover;
+
+      transition:transform .55s ease;
+    }
+
+    .category-card:hover .category-image{
+      transform:scale(1.055);
+    }
+
+    .category-content{
+      position:absolute;
+      inset:0;
+
+      display:flex;
+      flex-direction:column;
+      justify-content:flex-end;
+
+      padding:23px;
+
+      color:#fff;
+
+      background:
+        linear-gradient(
+          180deg,
+          rgba(13,45,38,.03) 25%,
+          rgba(13,45,38,.78) 100%
+        );
+    }
+
+    .category-number{
+      position:absolute;
+
+      top:20px;
+      right:20px;
+
+      color:rgba(255,255,255,.72);
+
+      font-size:11px;
+      font-weight:700;
+
+      letter-spacing:1px;
+    }
+
+    .category-content h3{
+      font-family:"Playfair Display",serif;
+
+      font-size:27px;
+      line-height:1.08;
+
+      font-weight:600;
+
+      margin-bottom:6px;
+    }
+
+    .category-subtitle{
+      max-width:260px;
+
+      color:rgba(255,255,255,.72);
+
+      font-size:12px;
+
+      margin-bottom:10px;
+    }
+
+    .category-link{
+      color:var(--lime);
+
+      font-size:13px;
+      font-weight:700;
+    }
+
 
     /* =========================
        RESPONSIVE
@@ -443,7 +705,19 @@
       }
 
       .hero{
-        min-height:720px;
+        min-height:750px;
+      }
+
+      .hero-copy{
+        width:100%;
+      }
+
+      .hero-search-wrap{
+        justify-content:flex-start;
+      }
+
+      .search-box{
+        width:100%;
       }
 
       .intro-grid{
@@ -455,7 +729,27 @@
         padding-top:0;
       }
 
+      .section-heading{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:20px;
+      }
+
+      .category-grid{
+        grid-template-columns:repeat(2,1fr);
+      }
+
+      .category-card:nth-child(n){
+        grid-column:span 1;
+      }
+
+      .category-card:nth-child(1),
+      .category-card:nth-child(6){
+        grid-column:span 2;
+      }
+
     }
+
 
     @media(max-width:680px){
 
@@ -476,13 +770,13 @@
       }
 
       .hero{
-        min-height:730px;
+        min-height:760px;
 
         background:
           linear-gradient(
             90deg,
-            rgba(7,34,28,.88),
-            rgba(7,34,28,.55)
+            rgba(7,34,28,.90),
+            rgba(7,34,28,.58)
           ),
           url("https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1400&q=85")
           center/cover no-repeat;
@@ -502,6 +796,10 @@
         line-height:1.65;
       }
 
+      .hero-search-wrap{
+        justify-content:flex-start;
+      }
+
       .search-box{
         grid-template-columns:1fr;
         padding:8px;
@@ -511,8 +809,28 @@
         min-height:56px;
       }
 
+      .hero-note{
+        justify-content:flex-start;
+      }
+
       .intro{
         padding:80px 0 70px;
+      }
+
+      .categories{
+        padding:75px 0;
+      }
+
+      .category-grid{
+        grid-template-columns:1fr;
+      }
+
+      .category-card:nth-child(n){
+        grid-column:span 1;
+      }
+
+      .category-card{
+        min-height:260px;
       }
 
     }
@@ -521,6 +839,7 @@
 </head>
 
 <body>
+
 
   <!-- =========================
        HEADER
@@ -535,6 +854,7 @@
         <a href="index.html" class="logo">
           Placing<span>o</span>
         </a>
+
 
         <nav class="desktop-nav">
 
@@ -556,6 +876,7 @@
 
         </nav>
 
+
         <div class="header-actions">
 
           <button
@@ -576,6 +897,7 @@
 
         </div>
 
+
         <button
           class="menu-btn"
           type="button"
@@ -587,31 +909,51 @@
 
       </div>
 
-      <!-- MOBILE MENU -->
 
-      <div class="mobile-menu" id="mobileMenu">
+      <div
+        class="mobile-menu"
+        id="mobileMenu"
+      >
 
-        <a href="properties.html" onclick="closeMenu()">
+        <a
+          href="properties.html"
+          onclick="closeMenu()"
+        >
           Explore
         </a>
 
-        <a href="properties.html" onclick="closeMenu()">
+        <a
+          href="properties.html"
+          onclick="closeMenu()"
+        >
           Properties
         </a>
 
-        <a href="#fresh" onclick="closeMenu()">
+        <a
+          href="#fresh"
+          onclick="closeMenu()"
+        >
           Why Placingo
         </a>
 
-        <a href="#about" onclick="closeMenu()">
+        <a
+          href="#about"
+          onclick="closeMenu()"
+        >
           About
         </a>
 
-        <a href="login.html" onclick="closeMenu()">
+        <a
+          href="login.html"
+          onclick="closeMenu()"
+        >
           Sign in
         </a>
 
-        <a href="list-property.html" onclick="closeMenu()">
+        <a
+          href="list-property.html"
+          onclick="closeMenu()"
+        >
           List a property
         </a>
 
@@ -628,69 +970,85 @@
 
   <main>
 
-    <section class="hero" id="explore">
+    <section
+      class="hero"
+      id="explore"
+    >
 
       <div class="container">
 
         <div class="hero-content">
 
-          <div class="eyebrow">
-            Property, made simpler
+
+          <div class="hero-copy">
+
+            <div class="eyebrow">
+              Property, made simpler
+            </div>
+
+
+            <h1>
+              Find your
+              <em>next place.</em>
+            </h1>
+
+
+            <p class="hero-text">
+              Discover homes, apartments, rooms, plots,
+              commercial spaces and more — directly from
+              property owners, without unnecessary middlemen.
+            </p>
+
           </div>
 
-          <h1>
-            Find your
-            <em>next place.</em>
-          </h1>
 
-          <p class="hero-text">
-            Discover homes, apartments, rooms, plots, commercial spaces
-            and more — directly from property owners, without unnecessary
-            middlemen.
-          </p>
+          <!-- CENTERED SEARCH -->
+
+          <div class="hero-search-wrap">
+
+            <div class="search-box">
 
 
-          <!-- SEARCH -->
+              <div class="search-field">
 
-          <div class="search-box">
+                <label for="locationInput">
+                  Location
+                </label>
 
-            <div class="search-field">
+                <input
+                  id="locationInput"
+                  type="text"
+                  placeholder="City, area or locality"
+                >
 
-              <label for="locationInput">
-                Location
-              </label>
+              </div>
 
-              <input
-                id="locationInput"
-                type="text"
-                placeholder="City, area or locality"
+
+              <div class="search-field">
+
+                <label for="propertyInput">
+                  Property type
+                </label>
+
+                <input
+                  id="propertyInput"
+                  type="text"
+                  placeholder="Home, PG, plot, shop..."
+                >
+
+              </div>
+
+
+              <button
+                class="search-button"
+                type="button"
+                onclick="searchProperties()"
               >
+                Search properties →
+              </button>
+
 
             </div>
-
-
-            <div class="search-field">
-
-              <label for="propertyInput">
-                Property type
-              </label>
-
-              <input
-                id="propertyInput"
-                type="text"
-                placeholder="Home, plot, shop..."
-              >
-
-            </div>
-
-
-            <button
-              class="search-button"
-              type="button"
-              onclick="searchProperties()"
-            >
-              Search properties →
-            </button>
 
           </div>
 
@@ -699,9 +1057,10 @@
 
             <span class="hero-note-dot"></span>
 
-            Listings can be renewed by owners to show current availability.
+            Owners can renew their listings to show current availability.
 
           </div>
+
 
         </div>
 
@@ -711,14 +1070,18 @@
 
 
     <!-- =========================
-         INTRO / ABOUT
+         INTRO
     ========================= -->
 
-    <section class="intro" id="about">
+    <section
+      class="intro"
+      id="about"
+    >
 
       <div class="container">
 
         <div class="intro-grid">
+
 
           <div>
 
@@ -738,24 +1101,27 @@
           <div class="intro-copy">
 
             <p>
-              Finding property online shouldn't mean scrolling through
-              endless listings that may no longer even be available.
+              Finding property online shouldn't mean scrolling
+              through endless listings that may no longer even
+              be available.
             </p>
 
             <p>
               Placingo is being built around a simpler idea:
               <strong>
-                connect people with properties and their owners more directly.
+                connect people with properties and their owners
+                more directly.
               </strong>
             </p>
 
             <p>
-              From a home to rent to a plot to buy, a room, a shop,
-              an office or a warehouse — one place to explore what is
-              actually available.
+              From a home to rent to a plot to buy, a room,
+              a PG, a shop, an office or a warehouse — one place
+              to explore what you need.
             </p>
 
           </div>
+
 
         </div>
 
@@ -766,39 +1132,51 @@
          PROPERTY CATEGORIES
     ========================= -->
 
-    <section class="categories" id="categories">
+    <section
+      class="categories"
+      id="categories"
+    >
 
       <div class="container">
+
 
         <div class="section-heading">
 
           <div>
+
             <div class="section-label">
-              Explore by type
+              What are you looking for?
             </div>
 
             <h2>
-              Find the kind of
+              Find a place
               <br>
-              place you need.
+              that fits your life.
             </h2>
+
           </div>
 
+
           <p>
-            From your next home to a plot for your next project,
-            explore different types of property in one place.
+            Looking for a room, a PG, your first apartment,
+            a new home, a plot or a place for your business?
+            Start with what you need.
           </p>
 
         </div>
 
 
+        <!-- =========================
+             CATEGORY GRID
+        ========================= -->
+
         <div class="category-grid">
 
 
-          <!-- HOME -->
+          <!-- 01 HOME -->
 
           <button
-            class="category-card category-large"
+            class="category-card"
             type="button"
             onclick="openCategory('Homes & Villas')"
           >
@@ -807,33 +1185,35 @@
               class="category-image"
               style="
                 background-image:
-                linear-gradient(180deg,rgba(13,45,38,.05),rgba(13,45,38,.72)),
-                url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=85');
+                url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=88');
               "
-            >
+            ></div>
 
-              <div class="category-content">
 
-                <span class="category-number">
-                  01
-                </span>
+            <div class="category-content">
 
-                <h3>
-                  Homes & Villas
-                </h3>
+              <span class="category-number">
+                01
+              </span>
 
-                <span class="category-link">
-                  Explore →
-                </span>
+              <h3>
+                Homes & Villas
+              </h3>
 
+              <div class="category-subtitle">
+                Find a home to buy or rent
               </div>
+
+              <span class="category-link">
+                Explore homes →
+              </span>
 
             </div>
 
           </button>
 
 
-          <!-- APARTMENTS -->
+          <!-- 02 APARTMENTS -->
 
           <button
             class="category-card"
@@ -845,71 +1225,115 @@
               class="category-image"
               style="
                 background-image:
-                linear-gradient(180deg,rgba(13,45,38,.05),rgba(13,45,38,.72)),
-                url('https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1000&q=85');
+                url('https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1200&q=88');
               "
-            >
+            ></div>
 
-              <div class="category-content">
 
-                <span class="category-number">
-                  02
-                </span>
+            <div class="category-content">
 
-                <h3>
-                  Apartments
-                </h3>
+              <span class="category-number">
+                02
+              </span>
 
-                <span class="category-link">
-                  Explore →
-                </span>
+              <h3>
+                Apartments
+              </h3>
 
+              <div class="category-subtitle">
+                Flats for buying or renting
               </div>
+
+              <span class="category-link">
+                Explore flats →
+              </span>
 
             </div>
 
           </button>
 
 
-          <!-- ROOMS -->
+          <!-- 03 ROOMS -->
 
           <button
             class="category-card"
             type="button"
-            onclick="openCategory('Rooms & PGs')"
+            onclick="openCategory('Rooms')"
           >
 
             <div
               class="category-image"
               style="
                 background-image:
-                linear-gradient(180deg,rgba(13,45,38,.05),rgba(13,45,38,.72)),
-                url('https://images.unsplash.com/photo-1560185008-b033106af5c3?auto=format&fit=crop&w=1000&q=85');
+                url('https://images.unsplash.com/photo-1560185008-b033106af5c3?auto=format&fit=crop&w=1200&q=88');
               "
-            >
+            ></div>
 
-              <div class="category-content">
 
-                <span class="category-number">
-                  03
-                </span>
+            <div class="category-content">
 
-                <h3>
-                  Rooms & PGs
-                </h3>
+              <span class="category-number">
+                03
+              </span>
 
-                <span class="category-link">
-                  Explore →
-                </span>
+              <h3>
+                Rooms
+              </h3>
 
+              <div class="category-subtitle">
+                Find a room that works for you
               </div>
+
+              <span class="category-link">
+                Find rooms →
+              </span>
 
             </div>
 
           </button>
 
 
-          <!-- PLOTS -->
+          <!-- 04 PG -->
+
+          <button
+            class="category-card"
+            type="button"
+            onclick="openCategory('PGs')"
+          >
+
+            <div
+              class="category-image"
+              style="
+                background-image:
+                url('https://images.unsplash.com/photo-1555854877-bab0e564b8d5?auto=format&fit=crop&w=1200&q=88');
+              "
+            ></div>
+
+
+            <div class="category-content">
+
+              <span class="category-number">
+                04
+              </span>
+
+              <h3>
+                PGs
+              </h3>
+
+              <div class="category-subtitle">
+                Comfortable stays for students & professionals
+              </div>
+
+              <span class="category-link">
+                Find a PG →
+              </span>
+
+            </div>
+
+          </button>
+
+
+          <!-- 05 PLOTS -->
 
           <button
             class="category-card"
@@ -921,71 +1345,35 @@
               class="category-image"
               style="
                 background-image:
-                linear-gradient(180deg,rgba(13,45,38,.05),rgba(13,45,38,.72)),
-                url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1000&q=85');
+                url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1200&q=88');
               "
-            >
+            ></div>
 
-              <div class="category-content">
 
-                <span class="category-number">
-                  04
-                </span>
+            <div class="category-content">
 
-                <h3>
-                  Plots & Land
-                </h3>
+              <span class="category-number">
+                05
+              </span>
 
-                <span class="category-link">
-                  Explore →
-                </span>
+              <h3>
+                Plots & Land
+              </h3>
 
+              <div class="category-subtitle">
+                Find land for your next plan
               </div>
+
+              <span class="category-link">
+                Explore land →
+              </span>
 
             </div>
 
           </button>
 
 
-          <!-- COMMERCIAL -->
-
-          <button
-            class="category-card"
-            type="button"
-            onclick="openCategory('Commercial')"
-          >
-
-            <div
-              class="category-image"
-              style="
-                background-image:
-                linear-gradient(180deg,rgba(13,45,38,.05),rgba(13,45,38,.72)),
-                url('https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1000&q=85');
-              "
-            >
-
-              <div class="category-content">
-
-                <span class="category-number">
-                  05
-                </span>
-
-                <h3>
-                  Commercial
-                </h3>
-
-                <span class="category-link">
-                  Explore →
-                </span>
-
-              </div>
-
-            </div>
-
-          </button>
-
-
-          <!-- FARMHOUSES -->
+          <!-- 06 FARMHOUSE -->
 
           <button
             class="category-card"
@@ -997,71 +1385,75 @@
               class="category-image"
               style="
                 background-image:
-                linear-gradient(180deg,rgba(13,45,38,.05),rgba(13,45,38,.72)),
-                url('https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=1000&q=85');
+                url('https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=1200&q=88');
               "
-            >
+            ></div>
 
-              <div class="category-content">
 
-                <span class="category-number">
-                  06
-                </span>
+            <div class="category-content">
 
-                <h3>
-                  Farmhouses
-                </h3>
+              <span class="category-number">
+                06
+              </span>
 
-                <span class="category-link">
-                  Explore →
-                </span>
+              <h3>
+                Farmhouses
+              </h3>
 
+              <div class="category-subtitle">
+                Space away from the usual
               </div>
+
+              <span class="category-link">
+                Explore farmhouses →
+              </span>
 
             </div>
 
           </button>
 
 
-          <!-- WAREHOUSES -->
+          <!-- 07 SHOPS -->
 
           <button
             class="category-card"
             type="button"
-            onclick="openCategory('Warehouses')"
+            onclick="openCategory('Shops')"
           >
 
             <div
               class="category-image"
               style="
                 background-image:
-                linear-gradient(180deg,rgba(13,45,38,.05),rgba(13,45,38,.72)),
-                url('https://images.unsplash.com/photo-1586528116493-da8b6e1a9a4b?auto=format&fit=crop&w=1000&q=85');
+                url('https://images.unsplash.com/photo-1604719312566-8912e9227c6a?auto=format&fit=crop&w=1200&q=88');
               "
-            >
+            ></div>
 
-              <div class="category-content">
 
-                <span class="category-number">
-                  07
-                </span>
+            <div class="category-content">
 
-                <h3>
-                  Warehouses
-                </h3>
+              <span class="category-number">
+                07
+              </span>
 
-                <span class="category-link">
-                  Explore →
-                </span>
+              <h3>
+                Shops
+              </h3>
 
+              <div class="category-subtitle">
+                Find a space for your business
               </div>
+
+              <span class="category-link">
+                Find shops →
+              </span>
 
             </div>
 
           </button>
 
 
-          <!-- OFFICES -->
+          <!-- 08 OFFICES -->
 
           <button
             class="category-card"
@@ -1073,26 +1465,108 @@
               class="category-image"
               style="
                 background-image:
-                linear-gradient(180deg,rgba(13,45,38,.05),rgba(13,45,38,.72)),
-                url('https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1000&q=85');
+                url('https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1200&q=88');
               "
-            >
+            ></div>
 
-              <div class="category-content">
 
-                <span class="category-number">
-                  08
-                </span>
+            <div class="category-content">
 
-                <h3>
-                  Offices
-                </h3>
+              <span class="category-number">
+                08
+              </span>
 
-                <span class="category-link">
-                  Explore →
-                </span>
+              <h3>
+                Offices
+              </h3>
 
+              <div class="category-subtitle">
+                Workspaces for teams and businesses
               </div>
+
+              <span class="category-link">
+                Find offices →
+              </span>
+
+            </div>
+
+          </button>
+
+
+          <!-- 09 WAREHOUSES -->
+
+          <button
+            class="category-card"
+            type="button"
+            onclick="openCategory('Warehouses')"
+          >
+
+            <div
+              class="category-image"
+              style="
+                background-image:
+                url('https://images.unsplash.com/photo-1586528116493-2b1a9f6e5b0b?auto=format&fit=crop&w=1200&q=88');
+              "
+            ></div>
+
+
+            <div class="category-content">
+
+              <span class="category-number">
+                09
+              </span>
+
+              <h3>
+                Warehouses
+              </h3>
+
+              <div class="category-subtitle">
+                Storage and industrial spaces
+              </div>
+
+              <span class="category-link">
+                Find warehouses →
+              </span>
+
+            </div>
+
+          </button>
+
+
+          <!-- 10 COMMERCIAL -->
+
+          <button
+            class="category-card"
+            type="button"
+            onclick="openCategory('Commercial')"
+          >
+
+            <div
+              class="category-image"
+              style="
+                background-image:
+                url('https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1200&q=88');
+              "
+            ></div>
+
+
+            <div class="category-content">
+
+              <span class="category-number">
+                10
+              </span>
+
+              <h3>
+                Commercial
+              </h3>
+
+              <div class="category-subtitle">
+                Property for growing businesses
+              </div>
+
+              <span class="category-link">
+                Explore commercial →
+              </span>
 
             </div>
 
@@ -1110,11 +1584,15 @@
          FRESH / OWNER CONFIRMED
     ========================= -->
 
-    <section class="fresh" id="fresh">
+    <section
+      class="fresh"
+      id="fresh"
+    >
 
       <div class="container">
 
         <div class="fresh-wrap">
+
 
           <div class="fresh-copy">
 
@@ -1122,17 +1600,20 @@
               Built differently
             </div>
 
+
             <h2>
               Don't just find a
               <em>listing.</em>
               Find one that's current.
             </h2>
 
+
             <p>
               Property listings can become outdated quickly.
-              That's why Placingo is designed around owner-confirmed
-              availability.
+              That's why Placingo is designed around
+              owner-confirmed availability.
             </p>
+
 
             <a
               href="properties.html"
@@ -1145,6 +1626,7 @@
 
 
           <div class="fresh-card">
+
 
             <div class="fresh-card-top">
 
@@ -1160,7 +1642,7 @@
             <div class="fresh-property-image">
 
               <img
-                src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1200&q=85"
+                src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1200&q=88"
                 alt="Modern property"
               >
 
@@ -1181,13 +1663,16 @@
 
               </div>
 
+
               <div class="confirmed-time">
                 Confirmed recently
               </div>
 
             </div>
 
+
           </div>
+
 
         </div>
 
@@ -1206,9 +1691,11 @@
 
         <div class="availability-inner">
 
+
           <div class="availability-icon">
             ✓
           </div>
+
 
           <div class="availability-text">
 
@@ -1223,12 +1710,14 @@
 
           </div>
 
+
           <a
             href="properties.html"
             class="availability-link"
           >
             Browse listings →
           </a>
+
 
         </div>
 
@@ -1241,9 +1730,13 @@
          HOW IT WORKS
     ========================= -->
 
-    <section class="how" id="how">
+    <section
+      class="how"
+      id="how"
+    >
 
       <div class="container">
+
 
         <div class="section-heading">
 
@@ -1261,8 +1754,9 @@
 
           </div>
 
+
           <p>
-            Placingo keeps the basic property-search journey simple,
+            Placingo keeps the property-search journey simple,
             whether you're looking for a place or listing one.
           </p>
 
@@ -1285,8 +1779,9 @@
               </h3>
 
               <p>
-                Choose a location, property type and other filters
-                to find properties that match what you need.
+                Choose a location, property type and other
+                filters to find properties that match what
+                you need.
               </p>
 
             </div>
@@ -1329,8 +1824,8 @@
               </h3>
 
               <p>
-                Contact the owner directly and discuss the property,
-                visit and terms with them.
+                Contact the owner directly and discuss the
+                property, visit and terms with them.
               </p>
 
             </div>
@@ -1355,6 +1850,7 @@
 
         <div class="cta-box">
 
+
           <div>
 
             <div class="section-label">
@@ -1366,11 +1862,12 @@
             </h2>
 
             <p>
-              Browse properties across homes, land, rentals,
-              commercial spaces and more.
+              Browse properties across homes, rentals,
+              land, commercial spaces and more.
             </p>
 
           </div>
+
 
           <a
             href="properties.html"
@@ -1378,6 +1875,7 @@
           >
             Explore properties →
           </a>
+
 
         </div>
 
@@ -1397,9 +1895,13 @@
 
       <div class="footer-top">
 
+
         <div class="footer-brand">
 
-          <a href="index.html" class="footer-logo">
+          <a
+            href="index.html"
+            class="footer-logo"
+          >
             Placing<span>o</span>
           </a>
 
@@ -1473,6 +1975,7 @@
 
         </div>
 
+
       </div>
 
 
@@ -1494,113 +1997,10 @@
 
 
   <!-- =========================
-       ADDITIONAL PAGE STYLES
+       EXTRA STYLES
   ========================= -->
 
   <style>
-
-    /* =========================
-       CATEGORY SECTION
-    ========================= */
-
-    .categories{
-      padding:100px 0;
-      background:var(--cream);
-    }
-
-    .section-heading{
-      display:grid;
-      grid-template-columns:1fr 420px;
-      gap:60px;
-      align-items:end;
-      margin-bottom:45px;
-    }
-
-    .section-heading h2{
-      font-family:"Playfair Display",serif;
-      font-size:clamp(40px,5vw,62px);
-      line-height:1.04;
-      letter-spacing:-2px;
-      font-weight:600;
-    }
-
-    .section-heading > p{
-      color:var(--muted);
-      font-size:16px;
-      line-height:1.75;
-      max-width:420px;
-    }
-
-
-    .category-grid{
-      display:grid;
-      grid-template-columns:repeat(4,1fr);
-      gap:14px;
-    }
-
-    .category-card{
-      position:relative;
-      min-height:330px;
-      padding:0;
-      overflow:hidden;
-      border-radius:18px;
-      background:var(--green);
-      text-align:left;
-    }
-
-    .category-large{
-      grid-column:span 2;
-    }
-
-    .category-image{
-      position:absolute;
-      inset:0;
-      background-position:center;
-      background-size:cover;
-      transition:transform .5s ease;
-    }
-
-    .category-card:hover .category-image{
-      transform:scale(1.045);
-    }
-
-    .category-content{
-      position:absolute;
-      inset:0;
-
-      display:flex;
-      flex-direction:column;
-      justify-content:flex-end;
-
-      padding:24px;
-      color:#fff;
-    }
-
-    .category-number{
-      position:absolute;
-      top:22px;
-      right:22px;
-
-      font-size:11px;
-      font-weight:700;
-      letter-spacing:1px;
-      color:rgba(255,255,255,.72);
-    }
-
-    .category-content h3{
-      font-family:"Playfair Display",serif;
-      font-size:29px;
-      line-height:1.1;
-      font-weight:600;
-      margin-bottom:8px;
-    }
-
-    .category-link{
-      font-size:13px;
-      font-weight:700;
-      color:var(--lime);
-    }
-
 
     /* =========================
        FRESH SECTION
@@ -1622,10 +2022,14 @@
       max-width:570px;
 
       font-family:"Playfair Display",serif;
+
       font-size:clamp(42px,5vw,65px);
+
       line-height:1.03;
       letter-spacing:-2px;
+
       font-weight:600;
+
       margin-bottom:24px;
     }
 
@@ -1636,37 +2040,53 @@
 
     .fresh-copy p{
       max-width:520px;
+
       color:var(--muted);
+
       font-size:17px;
       line-height:1.8;
+
       margin-bottom:28px;
     }
 
     .text-link{
       display:inline-flex;
+
       color:var(--green);
+
       font-size:14px;
       font-weight:700;
+
       border-bottom:1px solid var(--green);
+
       padding-bottom:4px;
     }
 
 
+    /* =========================
+       FRESH CARD
+    ========================= */
+
     .fresh-card{
       padding:14px;
+
       border-radius:24px;
+
       background:#fff;
+
       box-shadow:var(--shadow);
     }
 
     .fresh-card-top{
       display:flex;
       align-items:center;
+
       gap:8px;
 
       padding:12px 10px 15px;
 
       color:var(--green);
+
       font-size:13px;
       font-weight:700;
     }
@@ -1674,28 +2094,37 @@
     .status-dot{
       width:8px;
       height:8px;
+
       border-radius:50%;
+
       background:#8ea93b;
     }
 
     .fresh-property-image{
       height:330px;
+
       overflow:hidden;
+
       border-radius:16px;
     }
 
     .fresh-property-image img{
       width:100%;
       height:100%;
-      object-fit:cover;
+
       display:block;
+
+      object-fit:cover;
     }
 
     .fresh-property-info{
       display:flex;
+
       justify-content:space-between;
-      align-items:end;
+      align-items:flex-end;
+
       gap:20px;
+
       padding:18px 10px 8px;
     }
 
@@ -1711,25 +2140,30 @@
 
     .confirmed-time{
       white-space:nowrap;
+
       color:#718331;
+
       font-size:12px;
       font-weight:700;
     }
 
 
     /* =========================
-       AVAILABILITY STRIP
+       AVAILABILITY
     ========================= */
 
     .availability-strip{
       padding:25px 0;
+
       background:var(--green);
+
       color:#fff;
     }
 
     .availability-inner{
       display:flex;
       align-items:center;
+
       gap:18px;
     }
 
@@ -1743,14 +2177,17 @@
       height:44px;
 
       border-radius:50%;
+
       background:var(--lime);
       color:var(--green-dark);
+
       font-weight:800;
     }
 
     .availability-text{
       display:flex;
       flex-direction:column;
+
       flex:1;
     }
 
@@ -1770,10 +2207,13 @@
       padding:11px 16px;
 
       border:1px solid rgba(255,255,255,.25);
+
       border-radius:10px;
 
       font-size:13px;
       font-weight:700;
+
+      transition:.2s ease;
     }
 
     .availability-link:hover{
@@ -1787,19 +2227,25 @@
 
     .how{
       padding:110px 0;
+
       background:var(--cream);
     }
 
     .steps{
       display:grid;
+
       grid-template-columns:repeat(3,1fr);
+
       border-top:1px solid var(--line);
     }
 
     .step{
       display:flex;
+
       gap:20px;
+
       padding:32px 25px 10px 0;
+
       border-right:1px solid var(--line);
     }
 
@@ -1813,21 +2259,26 @@
 
     .step-number{
       color:#9aab42;
+
       font-size:12px;
       font-weight:800;
+
       letter-spacing:1px;
     }
 
     .step h3{
       font-size:19px;
+
       margin-bottom:8px;
     }
 
     .step p{
+      max-width:290px;
+
       color:var(--muted);
+
       font-size:14px;
       line-height:1.75;
-      max-width:290px;
     }
 
 
@@ -1837,19 +2288,24 @@
 
     .cta-section{
       padding:0 0 110px;
+
       background:var(--cream);
     }
 
     .cta-box{
       display:flex;
+
       align-items:center;
       justify-content:space-between;
+
       gap:40px;
 
       padding:55px 60px;
 
       border-radius:25px;
+
       background:var(--green);
+
       color:#fff;
     }
 
@@ -1860,14 +2316,19 @@
 
     .cta-box h2{
       font-family:"Playfair Display",serif;
+
       font-size:52px;
+
       line-height:1;
+
       margin-bottom:13px;
     }
 
     .cta-box p{
       max-width:500px;
+
       color:rgba(255,255,255,.7);
+
       font-size:15px;
     }
 
@@ -1879,6 +2340,7 @@
       border-radius:12px;
 
       background:var(--lime);
+
       color:var(--green-dark);
 
       font-size:14px;
@@ -1898,14 +2360,19 @@
 
     .site-footer{
       padding:70px 0 25px;
+
       background:var(--green-dark);
+
       color:#fff;
     }
 
     .footer-top{
       display:grid;
+
       grid-template-columns:2fr repeat(3,1fr);
+
       gap:60px;
+
       padding-bottom:60px;
     }
 
@@ -1914,6 +2381,7 @@
 
       font-size:27px;
       font-weight:700;
+
       letter-spacing:-1px;
 
       margin-bottom:15px;
@@ -1925,7 +2393,9 @@
 
     .footer-brand p{
       max-width:280px;
+
       color:rgba(255,255,255,.55);
+
       font-size:14px;
       line-height:1.7;
     }
@@ -1933,19 +2403,25 @@
     .footer-column{
       display:flex;
       flex-direction:column;
+
       align-items:flex-start;
+
       gap:11px;
     }
 
     .footer-column h4{
       color:#fff;
+
       font-size:13px;
+
       margin-bottom:7px;
     }
 
     .footer-column a{
       color:rgba(255,255,255,.57);
+
       font-size:13px;
+
       transition:.2s ease;
     }
 
@@ -1955,7 +2431,9 @@
 
     .footer-bottom{
       display:flex;
+
       justify-content:space-between;
+
       gap:20px;
 
       padding-top:22px;
@@ -1963,6 +2441,7 @@
       border-top:1px solid rgba(255,255,255,.1);
 
       color:rgba(255,255,255,.4);
+
       font-size:11px;
     }
 
@@ -1973,21 +2452,9 @@
 
     @media(max-width:900px){
 
-      .section-heading{
-        grid-template-columns:1fr;
-        gap:20px;
-      }
-
-      .category-grid{
-        grid-template-columns:repeat(2,1fr);
-      }
-
-      .category-large{
-        grid-column:span 2;
-      }
-
       .fresh-wrap{
         grid-template-columns:1fr;
+
         gap:45px;
       }
 
@@ -1998,6 +2465,7 @@
       .step,
       .step:not(:first-child){
         padding:28px 0;
+
         border-right:0;
         border-bottom:1px solid var(--line);
       }
@@ -2023,22 +2491,9 @@
 
     @media(max-width:680px){
 
-      .categories,
       .fresh,
       .how{
         padding:75px 0;
-      }
-
-      .category-grid{
-        grid-template-columns:1fr;
-      }
-
-      .category-large{
-        grid-column:span 1;
-      }
-
-      .category-card{
-        min-height:290px;
       }
 
       .fresh-property-image{
@@ -2048,6 +2503,7 @@
       .fresh-property-info{
         flex-direction:column;
         align-items:flex-start;
+
         gap:8px;
       }
 
@@ -2066,6 +2522,7 @@
       .cta-box{
         flex-direction:column;
         align-items:flex-start;
+
         padding:38px 25px;
       }
 
@@ -2075,6 +2532,7 @@
 
       .footer-top{
         grid-template-columns:1fr 1fr;
+
         gap:35px;
       }
 
@@ -2084,6 +2542,7 @@
 
       .footer-bottom{
         flex-direction:column;
+
         gap:8px;
       }
 
@@ -2093,13 +2552,13 @@
 
 
   <!-- =========================
-       NAVIGATION JAVASCRIPT
+       JAVASCRIPT
   ========================= -->
 
   <script>
 
     /* =========================
-       SEARCH
+       SEARCH PROPERTIES
     ========================= */
 
     function searchProperties(){
@@ -2110,10 +2569,12 @@
       const propertyInput =
         document.getElementById("propertyInput");
 
+
       const location =
         locationInput
           ? locationInput.value.trim()
           : "";
+
 
       const property =
         propertyInput
@@ -2121,16 +2582,23 @@
           : "";
 
 
-      const params = new URLSearchParams();
+      const params =
+        new URLSearchParams();
 
 
       if(location){
-        params.set("location", location);
+        params.set(
+          "location",
+          location
+        );
       }
 
 
       if(property){
-        params.set("property", property);
+        params.set(
+          "property",
+          property
+        );
       }
 
 
@@ -2146,13 +2614,14 @@
 
 
     /* =========================
-       CATEGORY NAVIGATION
+       CATEGORY
     ========================= */
 
     function openCategory(category){
 
       const params =
         new URLSearchParams();
+
 
       params.set(
         "category",
@@ -2198,13 +2667,19 @@
     function toggleMenu(){
 
       const menu =
-        document.getElementById("mobileMenu");
+        document.getElementById(
+          "mobileMenu"
+        );
+
 
       if(!menu){
         return;
       }
 
-      menu.classList.toggle("open");
+
+      menu.classList.toggle(
+        "open"
+      );
 
     }
 
@@ -2212,19 +2687,25 @@
     function closeMenu(){
 
       const menu =
-        document.getElementById("mobileMenu");
+        document.getElementById(
+          "mobileMenu"
+        );
+
 
       if(!menu){
         return;
       }
 
-      menu.classList.remove("open");
+
+      menu.classList.remove(
+        "open"
+      );
 
     }
 
 
     /* =========================
-       ENTER KEY SEARCH
+       ENTER TO SEARCH
     ========================= */
 
     document.addEventListener(
@@ -2232,24 +2713,35 @@
       function(){
 
         const locationInput =
-          document.getElementById("locationInput");
+          document.getElementById(
+            "locationInput"
+          );
+
 
         const propertyInput =
-          document.getElementById("propertyInput");
+          document.getElementById(
+            "propertyInput"
+          );
 
 
-        [locationInput, propertyInput]
-          .forEach(function(input){
+        [
+          locationInput,
+          propertyInput
+        ].forEach(
+          function(input){
 
             if(!input){
               return;
             }
 
+
             input.addEventListener(
               "keydown",
               function(event){
 
-                if(event.key === "Enter"){
+                if(
+                  event.key === "Enter"
+                ){
 
                   event.preventDefault();
 
@@ -2260,11 +2752,11 @@
               }
             );
 
-          });
+          }
+        );
 
       }
     );
-
 
   </script>
 
