@@ -1,0 +1,3325 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Property | Placingo</title>
+
+  <meta
+    name="description"
+    content="View property details on Placingo."
+  >
+
+  <style>
+
+    :root{
+
+      --green:#173f35;
+      --green-dark:#0d2d26;
+
+      --lime:#d9ef7c;
+
+      --cream:#f5f1e8;
+      --cream-light:#fbf9f3;
+
+      --white:#ffffff;
+
+      --text:#19352e;
+      --muted:#6c7972;
+
+      --line:rgba(23,63,53,.12);
+
+      --shadow:
+        0 20px 60px rgba(13,45,38,.10);
+
+      --radius:24px;
+
+    }
+
+
+    *{
+      box-sizing:border-box;
+      margin:0;
+      padding:0;
+    }
+
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+
+    body{
+
+      font-family:
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+      background:var(--cream-light);
+
+      color:var(--text);
+
+      line-height:1.5;
+
+    }
+
+
+    button,
+    input,
+    textarea,
+    select{
+      font:inherit;
+    }
+
+
+    button{
+      cursor:pointer;
+    }
+
+
+    a{
+      color:inherit;
+      text-decoration:none;
+    }
+
+
+    /* =========================
+       HEADER
+    ========================= */
+
+    .site-header{
+
+      position:sticky;
+
+      top:0;
+
+      z-index:100;
+
+      background:
+        rgba(251,249,243,.94);
+
+      backdrop-filter:blur(18px);
+
+      border-bottom:
+        1px solid var(--line);
+
+    }
+
+
+    .header-inner{
+
+      width:min(1200px,92%);
+
+      margin:auto;
+
+      height:76px;
+
+      display:flex;
+
+      align-items:center;
+
+      justify-content:space-between;
+
+      gap:24px;
+
+    }
+
+
+    .logo{
+
+      font-size:26px;
+
+      font-weight:850;
+
+      letter-spacing:-1.4px;
+
+      color:var(--green);
+
+      display:flex;
+
+      align-items:center;
+
+      gap:9px;
+
+    }
+
+
+    .logo-mark{
+
+      width:32px;
+
+      height:32px;
+
+      border-radius:10px;
+
+      background:var(--green);
+
+      color:var(--lime);
+
+      display:flex;
+
+      align-items:center;
+
+      justify-content:center;
+
+      font-size:18px;
+
+      font-weight:900;
+
+    }
+
+
+    .desktop-nav{
+
+      display:flex;
+
+      align-items:center;
+
+      gap:28px;
+
+    }
+
+
+    .desktop-nav a{
+
+      color:#51625c;
+
+      font-size:14px;
+
+      font-weight:650;
+
+      transition:.2s ease;
+
+    }
+
+
+    .desktop-nav a:hover{
+      color:var(--green);
+    }
+
+
+    .header-actions{
+
+      display:flex;
+
+      align-items:center;
+
+      gap:10px;
+
+    }
+
+
+    .signin-btn{
+
+      border:1px solid var(--line);
+
+      background:var(--white);
+
+      color:var(--green);
+
+      padding:11px 18px;
+
+      border-radius:12px;
+
+      font-weight:750;
+
+    }
+
+
+    .list-btn{
+
+      border:0;
+
+      background:var(--green);
+
+      color:white;
+
+      padding:12px 18px;
+
+      border-radius:12px;
+
+      font-weight:750;
+
+      transition:.2s ease;
+
+    }
+
+
+    .list-btn:hover{
+      background:var(--green-dark);
+      transform:translateY(-1px);
+    }
+
+
+    .menu-btn{
+
+      display:none;
+
+      width:42px;
+
+      height:42px;
+
+      border:1px solid var(--line);
+
+      background:white;
+
+      border-radius:12px;
+
+      color:var(--green);
+
+      font-size:20px;
+
+    }
+
+
+    .mobile-menu{
+
+      display:none;
+
+      width:min(1200px,92%);
+
+      margin:0 auto 14px;
+
+      background:white;
+
+      border:1px solid var(--line);
+
+      border-radius:18px;
+
+      padding:10px;
+
+      box-shadow:var(--shadow);
+
+    }
+
+
+    .mobile-menu.open{
+      display:block;
+    }
+
+
+    .mobile-menu a,
+    .mobile-menu button{
+
+      width:100%;
+
+      display:block;
+
+      text-align:left;
+
+      padding:13px 14px;
+
+      border:0;
+
+      background:transparent;
+
+      border-radius:11px;
+
+      color:var(--green);
+
+      font-weight:700;
+
+    }
+
+
+    .mobile-menu a:hover,
+    .mobile-menu button:hover{
+      background:var(--cream);
+    }
+
+
+    /* =========================
+       PAGE HERO
+    ========================= */
+
+    .page-hero{
+
+      background:var(--green);
+
+      color:white;
+
+      padding:58px 0 54px;
+
+      position:relative;
+
+      overflow:hidden;
+
+    }
+
+
+    .page-hero::before{
+
+      content:"";
+
+      position:absolute;
+
+      width:420px;
+
+      height:420px;
+
+      border-radius:50%;
+
+      background:
+        rgba(217,239,124,.12);
+
+      right:-120px;
+
+      top:-220px;
+
+    }
+
+
+    .page-hero::after{
+
+      content:"";
+
+      position:absolute;
+
+      width:300px;
+
+      height:300px;
+
+      border-radius:50%;
+
+      background:
+        rgba(255,255,255,.045);
+
+      left:-140px;
+
+      bottom:-210px;
+
+    }
+
+
+    .hero-inner{
+
+      width:min(1200px,92%);
+
+      margin:auto;
+
+      position:relative;
+
+      z-index:2;
+
+    }
+
+
+    .back-link{
+
+      display:inline-flex;
+
+      align-items:center;
+
+      gap:8px;
+
+      color:rgba(255,255,255,.72);
+
+      font-size:14px;
+
+      font-weight:700;
+
+      margin-bottom:28px;
+
+      transition:.2s ease;
+
+    }
+
+
+    .back-link:hover{
+      color:var(--lime);
+    }
+
+
+    .hero-label{
+
+      display:inline-flex;
+
+      align-items:center;
+
+      gap:8px;
+
+      padding:7px 12px;
+
+      border-radius:999px;
+
+      background:
+        rgba(217,239,124,.14);
+
+      border:
+        1px solid rgba(217,239,124,.25);
+
+      color:var(--lime);
+
+      font-size:12px;
+
+      font-weight:800;
+
+      text-transform:uppercase;
+
+      letter-spacing:.8px;
+
+      margin-bottom:16px;
+
+    }
+
+
+    .hero-title{
+
+      font-size:
+        clamp(32px,5vw,58px);
+
+      line-height:1.03;
+
+      letter-spacing:-2.2px;
+
+      max-width:850px;
+
+      margin-bottom:15px;
+
+    }
+
+
+    .hero-location{
+
+      display:flex;
+
+      align-items:center;
+
+      gap:8px;
+
+      color:rgba(255,255,255,.76);
+
+      font-size:15px;
+
+    }
+
+
+    /* =========================
+       MAIN
+    ========================= */
+
+    .property-main{
+
+      width:min(1200px,92%);
+
+      margin:0 auto;
+
+      padding:42px 0 90px;
+
+    }
+
+
+    /* =========================
+       IMAGE GALLERY
+    ========================= */
+
+    .gallery{
+
+      display:grid;
+
+      grid-template-columns:
+        minmax(0,1.55fr)
+        minmax(260px,.75fr);
+
+      gap:12px;
+
+      height:520px;
+
+      margin-bottom:38px;
+
+    }
+
+
+    .gallery-main{
+
+      position:relative;
+
+      overflow:hidden;
+
+      border-radius:var(--radius);
+
+      background:#e7e2d7;
+
+      box-shadow:var(--shadow);
+
+    }
+
+
+    .gallery-main img{
+
+      width:100%;
+
+      height:100%;
+
+      display:block;
+
+      object-fit:cover;
+
+    }
+
+
+    .gallery-side{
+
+      display:grid;
+
+      grid-template-rows:1fr 1fr;
+
+      gap:12px;
+
+    }
+
+
+    .gallery-small{
+
+      position:relative;
+
+      overflow:hidden;
+
+      border-radius:20px;
+
+      background:#e7e2d7;
+
+    }
+
+
+    .gallery-small img{
+
+      width:100%;
+
+      height:100%;
+
+      object-fit:cover;
+
+      display:block;
+
+    }
+
+
+    .gallery-placeholder{
+
+      width:100%;
+
+      height:100%;
+
+      display:flex;
+
+      align-items:center;
+
+      justify-content:center;
+
+      color:var(--muted);
+
+      background:
+        linear-gradient(
+          135deg,
+          #eee9df,
+          #ddd8cb
+        );
+
+      font-weight:700;
+
+      font-size:14px;
+
+    }
+
+
+    .gallery-count{
+
+      position:absolute;
+
+      right:16px;
+
+      bottom:16px;
+
+      padding:9px 13px;
+
+      border-radius:999px;
+
+      background:
+        rgba(13,45,38,.82);
+
+      color:white;
+
+      font-size:12px;
+
+      font-weight:750;
+
+      backdrop-filter:blur(10px);
+
+    }
+
+
+    /* =========================
+       CONTENT GRID
+    ========================= */
+
+    .content-grid{
+
+      display:grid;
+
+      grid-template-columns:
+        minmax(0,1.6fr)
+        minmax(300px,.7fr);
+
+      gap:28px;
+
+      align-items:start;
+
+    }
+
+
+    .content-card{
+
+      background:white;
+
+      border:1px solid var(--line);
+
+      border-radius:var(--radius);
+
+      box-shadow:
+        0 12px 40px rgba(13,45,38,.055);
+
+    }
+
+
+    .details-card{
+
+      padding:30px;
+
+    }
+
+
+    .section-title{
+
+      font-size:22px;
+
+      line-height:1.15;
+
+      letter-spacing:-.6px;
+
+      color:var(--green);
+
+      margin-bottom:20px;
+
+    }
+
+
+    .property-meta{
+
+      display:grid;
+
+      grid-template-columns:
+        repeat(4,minmax(0,1fr));
+
+      border-top:1px solid var(--line);
+
+      border-bottom:1px solid var(--line);
+
+      margin:25px 0;
+
+    }
+
+
+    .meta-item{
+
+      padding:19px 15px;
+
+      border-right:1px solid var(--line);
+
+    }
+
+
+    .meta-item:last-child{
+      border-right:0;
+    }
+
+
+    .meta-label{
+
+      display:block;
+
+      color:var(--muted);
+
+      font-size:12px;
+
+      font-weight:700;
+
+      margin-bottom:5px;
+
+      text-transform:uppercase;
+
+      letter-spacing:.5px;
+
+    }
+
+
+    .meta-value{
+
+      color:var(--green);
+
+      font-size:15px;
+
+      font-weight:800;
+
+    }
+
+
+    .description{
+
+      color:#52635d;
+
+      font-size:15px;
+
+      line-height:1.8;
+
+      white-space:pre-line;
+
+    }
+
+
+    /* =========================
+       PRICE CARD
+    ========================= */
+
+    .price-card{
+
+      padding:26px;
+
+      position:sticky;
+
+      top:100px;
+
+    }
+
+
+    .price-label{
+
+      color:var(--muted);
+
+      font-size:13px;
+
+      font-weight:700;
+
+      margin-bottom:5px;
+
+    }
+
+
+    .price{
+
+      color:var(--green);
+
+      font-size:32px;
+
+      line-height:1.1;
+
+      letter-spacing:-1px;
+
+      font-weight:900;
+
+      margin-bottom:5px;
+
+    }
+
+
+    .price-purpose{
+
+      color:var(--muted);
+
+      font-size:13px;
+
+      margin-bottom:22px;
+
+    }
+
+
+    .confirm-box{
+
+      display:flex;
+
+      align-items:flex-start;
+
+      gap:10px;
+
+      padding:14px;
+
+      background:#f3f8df;
+
+      border:1px solid rgba(104,139,35,.18);
+
+      border-radius:15px;
+
+      margin-bottom:20px;
+
+    }
+
+
+    .confirm-icon{
+
+      width:26px;
+
+      height:26px;
+
+      flex:none;
+
+      border-radius:50%;
+
+      background:var(--green);
+
+      color:var(--lime);
+
+      display:flex;
+
+      align-items:center;
+
+      justify-content:center;
+
+      font-size:13px;
+
+      font-weight:900;
+
+    }
+
+
+    .confirm-text strong{
+
+      display:block;
+
+      color:var(--green);
+
+      font-size:13px;
+
+      margin-bottom:2px;
+
+    }
+
+
+    .confirm-text span{
+
+      display:block;
+
+      color:#66736d;
+
+      font-size:12px;
+
+    }
+
+
+    .contact-btn{
+
+      width:100%;
+
+      border:0;
+
+      background:var(--green);
+
+      color:white;
+
+      padding:15px;
+
+      border-radius:14px;
+
+      font-weight:800;
+
+      transition:.2s ease;
+
+    }
+
+
+    .contact-btn:hover{
+
+      background:var(--green-dark);
+
+      transform:translateY(-1px);
+
+    }
+
+
+    .secondary-btn{
+
+      width:100%;
+
+      border:1px solid var(--line);
+
+      background:white;
+
+      color:var(--green);
+
+      padding:14px;
+
+      border-radius:14px;
+
+      font-weight:800;
+
+      margin-top:10px;
+
+    }
+
+
+    /* =========================
+       RESPONSIVE
+    ========================= */
+
+    @media(max-width:900px){
+
+      .desktop-nav{
+        display:none;
+      }
+
+      .header-actions .signin-btn,
+      .header-actions .list-btn{
+        display:none;
+      }
+
+      .menu-btn{
+        display:block;
+      }
+
+
+      .gallery{
+
+        grid-template-columns:1fr;
+
+        height:auto;
+
+      }
+
+
+      .gallery-main{
+
+        height:390px;
+
+      }
+
+
+      .gallery-side{
+
+        grid-template-columns:1fr 1fr;
+
+        grid-template-rows:190px;
+
+      }
+
+
+      .content-grid{
+
+        grid-template-columns:1fr;
+
+      }
+
+
+      .price-card{
+
+        position:static;
+
+      }
+
+    }
+
+
+    @media(max-width:650px){
+
+      .header-inner{
+        height:68px;
+      }
+
+
+      .logo{
+        font-size:23px;
+      }
+
+
+      .logo-mark{
+        width:29px;
+        height:29px;
+        font-size:16px;
+      }
+
+
+      .page-hero{
+        padding:42px 0 40px;
+      }
+
+
+      .hero-title{
+        letter-spacing:-1.4px;
+      }
+
+
+      .property-main{
+        padding-top:25px;
+      }
+
+
+      .gallery{
+        margin-bottom:25px;
+      }
+
+
+      .gallery-main{
+        height:285px;
+      }
+
+
+      .gallery-side{
+        grid-template-rows:145px;
+      }
+
+
+      .details-card,
+      .price-card{
+        padding:21px;
+      }
+
+
+      .property-meta{
+
+        grid-template-columns:
+          repeat(2,1fr);
+
+      }
+
+
+      .meta-item:nth-child(2){
+        border-right:0;
+      }
+
+
+      .meta-item:nth-child(1),
+      .meta-item:nth-child(2){
+        border-bottom:1px solid var(--line);
+      }
+
+
+      .hero-location{
+        align-items:flex-start;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+
+  <!-- =========================
+       HEADER
+  ========================= -->
+
+  <header class="site-header">
+
+    <div class="header-inner">
+
+      <a
+        href="index.html"
+        class="logo"
+      >
+
+        <span class="logo-mark">P</span>
+
+        <span>Placingo</span>
+
+      </a>
+
+
+      <nav class="desktop-nav">
+
+        <a href="properties.html">
+          Explore
+        </a>
+
+        <a href="properties.html">
+          Properties
+        </a>
+
+        <a href="index.html#fresh">
+          Why Placingo
+        </a>
+
+        <a href="index.html#about">
+          About
+        </a>
+
+      </nav>
+
+
+      <div class="header-actions">
+
+        <button
+          class="signin-btn"
+          type="button"
+          onclick="goToLogin()"
+        >
+          Sign in
+        </button>
+
+
+        <button
+          class="list-btn"
+          type="button"
+          onclick="listProperty()"
+        >
+          List a property
+        </button>
+
+
+        <button
+          class="menu-btn"
+          type="button"
+          onclick="toggleMenu()"
+          aria-label="Open menu"
+        >
+          ☰
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <div
+      class="mobile-menu"
+      id="mobileMenu"
+    >
+
+      <a
+        href="properties.html"
+        onclick="closeMenu()"
+      >
+        Explore
+      </a>
+
+      <a
+        href="properties.html"
+        onclick="closeMenu()"
+      >
+        Properties
+      </a>
+
+      <a
+        href="index.html#fresh"
+        onclick="closeMenu()"
+      >
+        Why Placingo
+      </a>
+
+      <a
+        href="index.html#about"
+        onclick="closeMenu()"
+      >
+        About
+      </a>
+
+      <button
+        type="button"
+        onclick="goToLogin()"
+      >
+        Sign in
+      </button>
+
+      <button
+        type="button"
+        onclick="listProperty()"
+      >
+        List a property
+      </button>
+
+    </div>
+
+  </header>
+
+
+  <!-- =========================
+       PROPERTY HERO
+  ========================= -->
+
+  <section class="page-hero">
+
+    <div class="hero-inner">
+
+      <a
+        href="properties.html"
+        class="back-link"
+      >
+        ← Back to properties
+      </a>
+
+
+      <div class="hero-label">
+        <span>●</span>
+        Property details
+      </div>
+
+
+      <h1
+        class="hero-title"
+        id="propertyTitle"
+      >
+        Loading property...
+      </h1>
+
+
+      <div
+        class="hero-location"
+        id="propertyLocation"
+      >
+        <span>📍</span>
+        <span>Loading location...</span>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       MAIN PROPERTY CONTENT
+  ========================= -->
+
+  <main class="property-main">
+
+
+    <!-- GALLERY -->
+
+    <section class="gallery">
+
+      <div class="gallery-main">
+
+        <div
+          class="gallery-placeholder"
+          id="mainImagePlaceholder"
+        >
+          Loading images...
+        </div>
+
+        <img
+          id="mainImage"
+          src=""
+          alt="Property image"
+          style="display:none;"
+        >
+
+        <div
+          class="gallery-count"
+          id="galleryCount"
+        >
+          0 photos
+        </div>
+
+      </div>
+
+
+      <div class="gallery-side">
+
+        <div class="gallery-small">
+
+          <div
+            class="gallery-placeholder"
+            id="smallImagePlaceholder1"
+          >
+            Photo
+          </div>
+
+          <img
+            id="smallImage1"
+            src=""
+            alt="Property image"
+            style="display:none;"
+          >
+
+        </div>
+
+
+        <div class="gallery-small">
+
+          <div
+            class="gallery-placeholder"
+            id="smallImagePlaceholder2"
+          >
+            Photo
+          </div>
+
+          <img
+            id="smallImage2"
+            src=""
+            alt="Property image"
+            style="display:none;"
+          >
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- CONTENT -->
+
+    <section class="content-grid">
+
+
+      <div class="content-card details-card">
+
+        <h2 class="section-title">
+          Property overview
+        </h2>
+
+
+        <div
+          class="property-meta"
+          id="propertyMeta"
+        >
+
+          <div class="meta-item">
+
+            <span class="meta-label">
+              Property type
+            </span>
+
+            <span
+              class="meta-value"
+              id="metaType"
+            >
+              —
+            </span>
+
+          </div>
+
+
+          <div class="meta-item">
+
+            <span class="meta-label">
+              Purpose
+            </span>
+
+            <span
+              class="meta-value"
+              id="metaPurpose"
+            >
+              —
+            </span>
+
+          </div>
+
+
+          <div class="meta-item">
+
+            <span class="meta-label">
+              Area
+            </span>
+
+            <span
+              class="meta-value"
+              id="metaArea"
+            >
+              —
+            </span>
+
+          </div>
+
+
+          <div class="meta-item">
+
+            <span class="meta-label">
+              Bedrooms
+            </span>
+
+            <span
+              class="meta-value"
+              id="metaBedrooms"
+            >
+              —
+            </span>
+
+          </div>
+
+        </div>
+
+
+        <h2 class="section-title">
+          About this property
+        </h2>
+
+
+        <p
+          class="description"
+          id="propertyDescription"
+        >
+          Loading property description...
+        </p>
+
+      </div>
+
+
+      <aside class="content-card price-card">
+
+        <div class="price-label">
+          Price
+        </div>
+
+
+        <div
+          class="price"
+          id="propertyPrice"
+        >
+          —
+        </div>
+
+
+        <div
+          class="price-purpose"
+          id="pricePurpose"
+        >
+          —
+        </div>
+
+
+        <div class="confirm-box">
+
+          <div class="confirm-icon">
+            ✓
+          </div>
+
+          <div class="confirm-text">
+
+            <strong>
+              Owner confirmed availability
+            </strong>
+
+            <span id="confirmedDate">
+              Checking latest confirmation...
+            </span>
+
+          </div>
+
+        </div>
+
+
+        <button
+          class="contact-btn"
+          type="button"
+          onclick="contactOwner()"
+        >
+          Contact owner
+        </button>
+
+
+        <button
+          class="secondary-btn"
+          type="button"
+          onclick="goBackToProperties()"
+        >
+          View more properties
+        </button>
+
+      </aside>
+
+
+    </section>
+
+  </main>
+  <!-- =========================
+       PROPERTY DETAILS
+  ========================= -->
+
+  <section
+    class="property-extra"
+    style="
+      width:min(1200px,92%);
+      margin:0 auto;
+      padding-bottom:90px;
+    "
+  >
+
+    <div
+      class="content-grid"
+      style="margin-top:0;"
+    >
+
+      <!-- LEFT DETAILS -->
+
+      <div class="content-card details-card">
+
+        <h2 class="section-title">
+          Property details
+        </h2>
+
+
+        <div
+          style="
+            display:grid;
+            grid-template-columns:
+              repeat(2,minmax(0,1fr));
+            gap:14px;
+          "
+          id="extraDetails"
+        >
+
+          <div
+            style="
+              padding:16px;
+              background:var(--cream-light);
+              border-radius:15px;
+            "
+          >
+
+            <span class="meta-label">
+              Bathrooms
+            </span>
+
+            <strong
+              class="meta-value"
+              id="metaBathrooms"
+            >
+              —
+            </strong>
+
+          </div>
+
+
+          <div
+            style="
+              padding:16px;
+              background:var(--cream-light);
+              border-radius:15px;
+            "
+          >
+
+            <span class="meta-label">
+              Furnishing
+            </span>
+
+            <strong
+              class="meta-value"
+              id="metaFurnishing"
+            >
+              —
+            </strong>
+
+          </div>
+
+
+          <div
+            style="
+              padding:16px;
+              background:var(--cream-light);
+              border-radius:15px;
+            "
+          >
+
+            <span class="meta-label">
+              Availability
+            </span>
+
+            <strong
+              class="meta-value"
+              id="metaAvailability"
+            >
+              —
+            </strong>
+
+          </div>
+
+
+          <div
+            style="
+              padding:16px;
+              background:var(--cream-light);
+              border-radius:15px;
+            "
+          >
+
+            <span class="meta-label">
+              Listed
+            </span>
+
+            <strong
+              class="meta-value"
+              id="metaListedDate"
+            >
+              —
+            </strong>
+
+          </div>
+
+        </div>
+
+
+        <div
+          style="
+            height:1px;
+            background:var(--line);
+            margin:30px 0;
+          "
+        ></div>
+
+
+        <h2 class="section-title">
+          Location
+        </h2>
+
+
+        <div
+          style="
+            padding:18px;
+            border:1px solid var(--line);
+            background:var(--cream-light);
+            border-radius:17px;
+          "
+        >
+
+          <div
+            style="
+              display:flex;
+              align-items:flex-start;
+              gap:12px;
+            "
+          >
+
+            <div
+              style="
+                width:36px;
+                height:36px;
+                flex:none;
+                border-radius:12px;
+                background:var(--green);
+                color:var(--lime);
+                display:flex;
+                align-items:center;
+                justify-content:center;
+                font-weight:900;
+              "
+            >
+              📍
+            </div>
+
+
+            <div>
+
+              <strong
+                style="
+                  display:block;
+                  color:var(--green);
+                  margin-bottom:5px;
+                "
+                id="locationLocality"
+              >
+                —
+              </strong>
+
+              <span
+                style="
+                  display:block;
+                  color:var(--muted);
+                  font-size:14px;
+                  line-height:1.6;
+                "
+                id="locationAddress"
+              >
+                —
+              </span>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- OWNER CARD -->
+
+      <aside
+        class="content-card price-card"
+        style="position:static;"
+      >
+
+        <h2
+          class="section-title"
+          style="margin-bottom:8px;"
+        >
+          Owner details
+        </h2>
+
+
+        <p
+          style="
+            color:var(--muted);
+            font-size:13px;
+            line-height:1.6;
+            margin-bottom:22px;
+          "
+        >
+          Contact the property owner directly
+          about this listing.
+        </p>
+
+
+        <div
+          style="
+            display:flex;
+            align-items:center;
+            gap:13px;
+            padding:15px;
+            background:var(--cream-light);
+            border-radius:16px;
+            margin-bottom:18px;
+          "
+        >
+
+          <div
+            style="
+              width:46px;
+              height:46px;
+              flex:none;
+              border-radius:50%;
+              background:var(--green);
+              color:var(--lime);
+              display:flex;
+              align-items:center;
+              justify-content:center;
+              font-weight:900;
+              font-size:17px;
+            "
+            id="ownerInitial"
+          >
+            P
+          </div>
+
+
+          <div>
+
+            <strong
+              style="
+                display:block;
+                color:var(--green);
+                font-size:15px;
+                margin-bottom:2px;
+              "
+              id="ownerName"
+            >
+              Property owner
+            </strong>
+
+            <span
+              style="
+                color:var(--muted);
+                font-size:12px;
+              "
+            >
+              Listed on Placingo
+            </span>
+
+          </div>
+
+        </div>
+
+
+        <button
+          class="contact-btn"
+          type="button"
+          onclick="contactOwner()"
+        >
+          Contact owner
+        </button>
+
+
+        <div
+          style="
+            margin-top:14px;
+            padding:13px 14px;
+            border:1px solid var(--line);
+            border-radius:13px;
+            color:var(--muted);
+            font-size:12px;
+            line-height:1.6;
+          "
+        >
+          Your contact details are not
+          shared with the owner just by
+          viewing this property.
+        </div>
+
+      </aside>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       SIMILAR / DISCOVERY CTA
+  ========================= -->
+
+  <section
+    style="
+      background:var(--green);
+      color:white;
+      padding:70px 0;
+    "
+  >
+
+    <div
+      style="
+        width:min(1000px,92%);
+        margin:auto;
+        text-align:center;
+      "
+    >
+
+      <div
+        style="
+          color:var(--lime);
+          font-size:12px;
+          font-weight:850;
+          letter-spacing:1px;
+          text-transform:uppercase;
+          margin-bottom:12px;
+        "
+      >
+        Keep exploring
+      </div>
+
+
+      <h2
+        style="
+          font-size:clamp(30px,5vw,48px);
+          line-height:1.05;
+          letter-spacing:-1.8px;
+          margin-bottom:14px;
+        "
+      >
+        Your next place could
+        be one search away.
+      </h2>
+
+
+      <p
+        style="
+          max-width:620px;
+          margin:0 auto 25px;
+          color:rgba(255,255,255,.72);
+          line-height:1.7;
+          font-size:15px;
+        "
+      >
+        Explore more properties and find
+        a place that fits what you're looking for.
+      </p>
+
+
+      <button
+        type="button"
+        onclick="goBackToProperties()"
+        style="
+          border:0;
+          background:var(--lime);
+          color:var(--green);
+          padding:14px 22px;
+          border-radius:13px;
+          font-weight:850;
+        "
+      >
+        Explore properties
+      </button>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       FOOTER
+  ========================= -->
+
+  <footer
+    style="
+      background:var(--cream);
+      border-top:1px solid var(--line);
+      padding:55px 0 20px;
+    "
+  >
+
+    <div
+      style="
+        width:min(1200px,92%);
+        margin:auto;
+      "
+    >
+
+      <div
+        style="
+          display:grid;
+          grid-template-columns:
+            1.6fr repeat(3,1fr);
+          gap:40px;
+          padding-bottom:45px;
+        "
+        class="property-footer-grid"
+      >
+
+        <!-- BRAND -->
+
+        <div>
+
+          <a
+            href="index.html"
+            class="logo"
+            style="margin-bottom:15px;"
+          >
+
+            <span class="logo-mark">
+              P
+            </span>
+
+            <span>
+              Placingo
+            </span>
+
+          </a>
+
+
+          <p
+            style="
+              max-width:290px;
+              color:var(--muted);
+              font-size:14px;
+              line-height:1.7;
+            "
+          >
+            Find properties directly from
+            owners. Discover places that are
+            current, useful and made for real life.
+          </p>
+
+        </div>
+
+
+        <!-- EXPLORE -->
+
+        <div>
+
+          <h3
+            style="
+              color:var(--green);
+              font-size:13px;
+              margin-bottom:17px;
+            "
+          >
+            Explore
+          </h3>
+
+
+          <a
+            href="properties.html"
+            style="
+              display:block;
+              color:var(--muted);
+              font-size:13px;
+              margin-bottom:11px;
+            "
+          >
+            Properties
+          </a>
+
+
+          <a
+            href="properties.html?purpose=buy"
+            style="
+              display:block;
+              color:var(--muted);
+              font-size:13px;
+              margin-bottom:11px;
+            "
+          >
+            Buy
+          </a>
+
+
+          <a
+            href="properties.html?purpose=rent"
+            style="
+              display:block;
+              color:var(--muted);
+              font-size:13px;
+              margin-bottom:11px;
+            "
+          >
+            Rent
+          </a>
+
+
+          <a
+            href="index.html#categories"
+            style="
+              display:block;
+              color:var(--muted);
+              font-size:13px;
+            "
+          >
+            Property types
+          </a>
+
+        </div>
+
+
+        <!-- PLACINGO -->
+
+        <div>
+
+          <h3
+            style="
+              color:var(--green);
+              font-size:13px;
+              margin-bottom:17px;
+            "
+          >
+            Placingo
+          </h3>
+
+
+          <a
+            href="index.html#fresh"
+            style="
+              display:block;
+              color:var(--muted);
+              font-size:13px;
+              margin-bottom:11px;
+            "
+          >
+            Why Placingo
+          </a>
+
+
+          <a
+            href="index.html#how"
+            style="
+              display:block;
+              color:var(--muted);
+              font-size:13px;
+              margin-bottom:11px;
+            "
+          >
+            How it works
+          </a>
+
+
+          <a
+            href="index.html#about"
+            style="
+              display:block;
+              color:var(--muted);
+              font-size:13px;
+            "
+          >
+            About
+          </a>
+
+        </div>
+
+
+        <!-- OWNERS -->
+
+        <div>
+
+          <h3
+            style="
+              color:var(--green);
+              font-size:13px;
+              margin-bottom:17px;
+            "
+          >
+            For owners
+          </h3>
+
+
+          <a
+            href="list-property.html"
+            style="
+              display:block;
+              color:var(--muted);
+              font-size:13px;
+              margin-bottom:11px;
+            "
+          >
+            List a property
+          </a>
+
+
+          <a
+            href="login.html"
+            style="
+              display:block;
+              color:var(--muted);
+              font-size:13px;
+            "
+          >
+            Sign in
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <div
+        style="
+          border-top:1px solid var(--line);
+          padding-top:18px;
+          display:flex;
+          align-items:center;
+          justify-content:space-between;
+          gap:15px;
+          color:var(--muted);
+          font-size:12px;
+        "
+        class="property-footer-bottom"
+      >
+
+        <span>
+          © 2026 Placingo
+        </span>
+
+        <span>
+          Property without the middle man.
+        </span>
+
+      </div>
+
+    </div>
+
+  </footer>
+
+
+  <!-- =========================
+       RESPONSIVE FOOTER
+  ========================= -->
+
+  <style>
+
+    @media(max-width:800px){
+
+      .property-footer-grid{
+
+        grid-template-columns:
+          repeat(2,minmax(0,1fr)) !important;
+
+        gap:30px !important;
+
+      }
+
+    }
+
+
+    @media(max-width:550px){
+
+      .property-footer-grid{
+
+        grid-template-columns:1fr !important;
+
+      }
+
+
+      .property-footer-bottom{
+
+        flex-direction:column;
+
+        align-items:flex-start !important;
+
+      }
+
+    }
+
+  </style>
+  <!-- =========================
+       SUPABASE + PAGE LOGIC
+  ========================= -->
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
+  <script>
+
+    /* =========================
+       SUPABASE
+    ========================= */
+
+    const SUPABASE_URL =
+      "https://giugnkxhvahqjjntbpgz.supabase.co";
+
+
+    const SUPABASE_PUBLISHABLE_KEY =
+      "sb_publishable_AM_jASJf8SA4Jn3uTRSATA_0AJhWwl1";
+
+
+    const supabaseClient =
+      window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_PUBLISHABLE_KEY
+      );
+
+
+    let currentProperty = null;
+
+
+    /* =========================
+       HELPERS
+    ========================= */
+
+    function escapeHtml(value){
+
+      if(value === null || value === undefined){
+        return "";
+      }
+
+      return String(value)
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
+
+    }
+
+
+    function formatPrice(value){
+
+      const number = Number(value || 0);
+
+      if(!number){
+        return "Price on request";
+      }
+
+
+      return new Intl.NumberFormat(
+        "en-IN",
+        {
+          style:"currency",
+          currency:"INR",
+          maximumFractionDigits:0
+        }
+      ).format(number);
+
+    }
+
+
+    function formatDate(value){
+
+      if(!value){
+        return "Not available";
+      }
+
+
+      const date = new Date(value);
+
+      if(Number.isNaN(date.getTime())){
+        return "Not available";
+      }
+
+
+      return date.toLocaleDateString(
+        "en-IN",
+        {
+          day:"numeric",
+          month:"short",
+          year:"numeric"
+        }
+      );
+
+    }
+
+
+    function formatPurpose(value){
+
+      if(!value){
+        return "Property";
+      }
+
+
+      const purpose =
+        String(value).toLowerCase();
+
+
+      if(purpose === "rent"){
+        return "For rent";
+      }
+
+
+      if(purpose === "buy"){
+        return "For sale";
+      }
+
+
+      return value;
+    }
+
+
+    function prettyPropertyType(value){
+
+      if(!value){
+        return "Property";
+      }
+
+
+      const labels = {
+
+        home:"Home",
+
+        apartment:"Apartment",
+
+        room:"Room",
+
+        pg:"PG",
+
+        plot:"Plot / Land",
+
+        farmhouse:"Farmhouse",
+
+        shop:"Shop",
+
+        office:"Office",
+
+        warehouse:"Warehouse",
+
+        commercial:"Commercial"
+
+      };
+
+
+      return labels[
+        String(value).toLowerCase()
+      ] || value;
+
+    }
+
+
+    function getInitial(name){
+
+      if(!name){
+        return "P";
+      }
+
+
+      return String(name)
+        .trim()
+        .charAt(0)
+        .toUpperCase();
+
+    }
+
+
+    function getPropertyId(){
+
+      const params =
+        new URLSearchParams(
+          window.location.search
+        );
+
+
+      return params.get("id");
+
+    }
+
+
+    /* =========================
+       FRESHNESS
+    ========================= */
+
+    function getConfirmationText(value){
+
+      if(!value){
+        return "Availability confirmation unavailable";
+      }
+
+
+      const confirmed =
+        new Date(value);
+
+
+      if(Number.isNaN(
+        confirmed.getTime()
+      )){
+        return "Availability confirmation unavailable";
+      }
+
+
+      const now = new Date();
+
+
+      const difference =
+        now.getTime() -
+        confirmed.getTime();
+
+
+      const days = Math.floor(
+        difference /
+        (1000 * 60 * 60 * 24)
+      );
+
+
+      if(days <= 0){
+        return "Confirmed today";
+      }
+
+
+      if(days === 1){
+        return "Confirmed 1 day ago";
+      }
+
+
+      return "Confirmed " +
+        days +
+        " days ago";
+
+    }
+
+
+    /* =========================
+       IMAGE HANDLING
+    ========================= */
+
+    function setImage(
+      imageElement,
+      placeholderElement,
+      url,
+      alt
+    ){
+
+      if(
+        !imageElement ||
+        !placeholderElement
+      ){
+        return;
+      }
+
+
+      if(!url){
+
+        imageElement.style.display =
+          "none";
+
+        placeholderElement.style.display =
+          "flex";
+
+        return;
+
+      }
+
+
+      imageElement.src = url;
+
+      imageElement.alt =
+        alt || "Property image";
+
+
+      imageElement.onload =
+        function(){
+
+          imageElement.style.display =
+            "block";
+
+          placeholderElement.style.display =
+            "none";
+
+        };
+
+
+      imageElement.onerror =
+        function(){
+
+          imageElement.style.display =
+            "none";
+
+          placeholderElement.style.display =
+            "flex";
+
+          placeholderElement.textContent =
+            "Image unavailable";
+
+        };
+
+    }
+
+
+    function loadImages(images){
+
+      const sortedImages =
+        Array.isArray(images)
+          ? [...images].sort(
+              function(a,b){
+
+                return Number(
+                  a.display_order || 0
+                ) -
+                Number(
+                  b.display_order || 0
+                );
+
+              }
+            )
+          : [];
+
+
+      const urls =
+        sortedImages
+          .map(function(image){
+            return image.image_url;
+          })
+          .filter(Boolean);
+
+
+      const title =
+        currentProperty?.title ||
+        "Property";
+
+
+      setImage(
+
+        document.getElementById(
+          "mainImage"
+        ),
+
+        document.getElementById(
+          "mainImagePlaceholder"
+        ),
+
+        urls[0],
+
+        title
+
+      );
+
+
+      setImage(
+
+        document.getElementById(
+          "smallImage1"
+        ),
+
+        document.getElementById(
+          "smallImagePlaceholder1"
+        ),
+
+        urls[1] || urls[0],
+
+        title
+
+      );
+
+
+      setImage(
+
+        document.getElementById(
+          "smallImage2"
+        ),
+
+        document.getElementById(
+          "smallImagePlaceholder2"
+        ),
+
+        urls[2] || urls[0],
+
+        title
+
+      );
+
+
+      const count =
+        document.getElementById(
+          "galleryCount"
+        );
+
+
+      if(count){
+
+        count.textContent =
+          urls.length +
+          (
+            urls.length === 1
+              ? " photo"
+              : " photos"
+          );
+
+      }
+
+    }
+
+
+    /* =========================
+       RENDER PROPERTY
+    ========================= */
+
+    function renderProperty(property){
+
+      currentProperty =
+        property;
+
+
+      document.title =
+        (
+          property.title ||
+          "Property"
+        ) +
+        " | Placingo";
+
+
+      /* HERO */
+
+      const title =
+        document.getElementById(
+          "propertyTitle"
+        );
+
+
+      if(title){
+
+        title.textContent =
+          property.title ||
+          "Property";
+
+      }
+
+
+      const location =
+        document.getElementById(
+          "propertyLocation"
+        );
+
+
+      if(location){
+
+        const locationText =
+          [
+            property.locality,
+            property.city
+          ]
+          .filter(Boolean)
+          .join(", ");
+
+
+        location.innerHTML =
+          "<span>📍</span>" +
+          "<span>" +
+          escapeHtml(
+            locationText ||
+            "Location unavailable"
+          ) +
+          "</span>";
+
+      }
+
+
+      /* PRICE */
+
+      const price =
+        document.getElementById(
+          "propertyPrice"
+        );
+
+
+      if(price){
+
+        price.textContent =
+          formatPrice(
+            property.price
+          );
+
+      }
+
+
+      const pricePurpose =
+        document.getElementById(
+          "pricePurpose"
+        );
+
+
+      if(pricePurpose){
+
+        pricePurpose.textContent =
+          formatPurpose(
+            property.purpose
+          );
+
+      }
+
+
+      /* OVERVIEW */
+
+      const metaType =
+        document.getElementById(
+          "metaType"
+        );
+
+
+      if(metaType){
+
+        metaType.textContent =
+          prettyPropertyType(
+            property.property_type
+          );
+
+      }
+
+
+      const metaPurpose =
+        document.getElementById(
+          "metaPurpose"
+        );
+
+
+      if(metaPurpose){
+
+        metaPurpose.textContent =
+          formatPurpose(
+            property.purpose
+          );
+
+      }
+
+
+      const metaArea =
+        document.getElementById(
+          "metaArea"
+        );
+
+
+      if(metaArea){
+
+        metaArea.textContent =
+          property.area
+            ? Number(property.area).toLocaleString("en-IN") +
+              " sq ft"
+            : "Not specified";
+
+      }
+
+
+      const metaBedrooms =
+        document.getElementById(
+          "metaBedrooms"
+        );
+
+
+      if(metaBedrooms){
+
+        metaBedrooms.textContent =
+          property.bedrooms !== null &&
+          property.bedrooms !== undefined
+            ? property.bedrooms
+            : "Not specified";
+
+      }
+
+
+      const metaBathrooms =
+        document.getElementById(
+          "metaBathrooms"
+        );
+
+
+      if(metaBathrooms){
+
+        metaBathrooms.textContent =
+          property.bathrooms !== null &&
+          property.bathrooms !== undefined
+            ? property.bathrooms
+            : "Not specified";
+
+      }
+
+
+      const metaFurnishing =
+        document.getElementById(
+          "metaFurnishing"
+        );
+
+
+      if(metaFurnishing){
+
+        metaFurnishing.textContent =
+          property.furnishing ||
+          "Not specified";
+
+      }
+
+
+      const metaAvailability =
+        document.getElementById(
+          "metaAvailability"
+        );
+
+
+      if(metaAvailability){
+
+        metaAvailability.textContent =
+          property.availability ||
+          "Not specified";
+
+      }
+
+
+      const metaListedDate =
+        document.getElementById(
+          "metaListedDate"
+        );
+
+
+      if(metaListedDate){
+
+        metaListedDate.textContent =
+          formatDate(
+            property.listed_at
+          );
+
+      }
+
+
+      /* DESCRIPTION */
+
+      const description =
+        document.getElementById(
+          "propertyDescription"
+        );
+
+
+      if(description){
+
+        description.textContent =
+          property.description ||
+          "No description was provided for this property.";
+
+      }
+
+
+      /* LOCATION */
+
+      const locality =
+        document.getElementById(
+          "locationLocality"
+        );
+
+
+      if(locality){
+
+        locality.textContent =
+          [
+            property.locality,
+            property.city
+          ]
+          .filter(Boolean)
+          .join(", ") ||
+          "Location unavailable";
+
+      }
+
+
+      const address =
+        document.getElementById(
+          "locationAddress"
+        );
+
+
+      if(address){
+
+        address.textContent =
+          property.address ||
+          "Address not provided";
+
+      }
+
+
+      /* OWNER */
+
+      const ownerName =
+        document.getElementById(
+          "ownerName"
+        );
+
+
+      if(ownerName){
+
+        ownerName.textContent =
+          property.owner_name ||
+          "Property owner";
+
+      }
+
+
+      const ownerInitial =
+        document.getElementById(
+          "ownerInitial"
+        );
+
+
+      if(ownerInitial){
+
+        ownerInitial.textContent =
+          getInitial(
+            property.owner_name
+          );
+
+      }
+
+
+      /* CONFIRMATION */
+
+      const confirmedDate =
+        document.getElementById(
+          "confirmedDate"
+        );
+
+
+      if(confirmedDate){
+
+        confirmedDate.textContent =
+          getConfirmationText(
+            property.last_confirmed_at
+          );
+
+      }
+
+
+      /* IMAGES */
+
+      loadImages(
+        property.property_images || []
+      );
+
+    }
+
+
+    /* =========================
+       LOAD PROPERTY
+    ========================= */
+
+    async function loadProperty(){
+
+      const propertyId =
+        getPropertyId();
+
+
+      if(!propertyId){
+
+        showPropertyError(
+          "No property was selected."
+        );
+
+        return;
+
+      }
+
+
+      try{
+
+        const {
+          data,
+          error
+        } =
+          await supabaseClient
+
+            .from("properties")
+
+            .select(`
+              *,
+              property_images (
+                image_url,
+                display_order
+              )
+            `)
+
+            .eq(
+              "id",
+              propertyId
+            )
+
+            .eq(
+              "status",
+              "active"
+            )
+
+            .maybeSingle();
+
+
+        if(error){
+
+          console.error(
+            "Property load error:",
+            error
+          );
+
+
+          showPropertyError(
+            "We couldn't load this property."
+          );
+
+          return;
+
+        }
+
+
+        if(!data){
+
+          showPropertyError(
+            "This property is no longer available."
+          );
+
+          return;
+
+        }
+
+
+        renderProperty(data);
+
+      }
+
+      catch(error){
+
+        console.error(
+          "Unexpected error:",
+          error
+        );
+
+
+        showPropertyError(
+          "Something went wrong while loading the property."
+        );
+
+      }
+
+    }
+
+
+    /* =========================
+       ERROR STATE
+    ========================= */
+
+    function showPropertyError(message){
+
+      const title =
+        document.getElementById(
+          "propertyTitle"
+        );
+
+
+      if(title){
+
+        title.textContent =
+          "Property unavailable";
+
+      }
+
+
+      const location =
+        document.getElementById(
+          "propertyLocation"
+        );
+
+
+      if(location){
+
+        location.innerHTML =
+          "<span>←</span>" +
+          "<span>" +
+          escapeHtml(message) +
+          "</span>";
+
+      }
+
+
+      const description =
+        document.getElementById(
+          "propertyDescription"
+        );
+
+
+      if(description){
+
+        description.textContent =
+          message +
+          " Please return to the properties page and try another listing.";
+
+      }
+
+
+      const mainImagePlaceholder =
+        document.getElementById(
+          "mainImagePlaceholder"
+        );
+
+
+      if(mainImagePlaceholder){
+
+        mainImagePlaceholder.textContent =
+          "Property unavailable";
+
+      }
+
+
+      const galleryCount =
+        document.getElementById(
+          "galleryCount"
+        );
+
+
+      if(galleryCount){
+
+        galleryCount.textContent =
+          "0 photos";
+
+      }
+
+    }
+
+
+    /* =========================
+       NAVIGATION
+    ========================= */
+
+    function goBackToProperties(){
+
+      window.location.href =
+        "properties.html";
+
+    }
+
+
+    function listProperty(){
+
+      window.location.href =
+        "list-property.html";
+
+    }
+
+
+    function goToLogin(){
+
+      window.location.href =
+        "login.html";
+
+    }
+
+
+    function toggleMenu(){
+
+      const menu =
+        document.getElementById(
+          "mobileMenu"
+        );
+
+
+      if(!menu){
+        return;
+      }
+
+
+      menu.classList.toggle(
+        "open"
+      );
+
+    }
+
+
+    function closeMenu(){
+
+      const menu =
+        document.getElementById(
+          "mobileMenu"
+        );
+
+
+      if(!menu){
+        return;
+      }
+
+
+      menu.classList.remove(
+        "open"
+      );
+
+    }
+
+
+    /* =========================
+       CONTACT OWNER
+    ========================= */
+
+    function contactOwner(){
+
+      if(!currentProperty){
+
+        return;
+
+      }
+
+
+      const phone =
+        currentProperty.owner_phone;
+
+
+      if(phone){
+
+        const cleanedPhone =
+          String(phone)
+            .replace(/[^\d+]/g,"");
+
+
+        window.location.href =
+          "tel:" +
+          cleanedPhone;
+
+        return;
+
+      }
+
+
+      if(currentProperty.owner_email){
+
+        window.location.href =
+          "mailto:" +
+          currentProperty.owner_email;
+
+        return;
+
+      }
+
+
+      alert(
+        "Owner contact details are not available for this property."
+      );
+
+    }
+
+
+    /* =========================
+       START PAGE
+    ========================= */
+
+    document.addEventListener(
+      "DOMContentLoaded",
+      function(){
+
+        loadProperty();
+
+      }
+    );
+
+  </script>
+
+
+</body>
+
+</html>
