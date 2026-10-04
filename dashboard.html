@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
   <meta charset="UTF-8">
@@ -11,483 +12,1266 @@
 
   <title>Dashboard — Placingo</title>
 
+  <meta
+    name="description"
+    content="Manage your properties on Placingo."
+  >
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
   <script
     src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
   ></script>
 
+
   <style>
 
+    :root{
+
+      --green:#173f35;
+      --green-dark:#0d2d26;
+
+      --lime:#d9ef7c;
+
+      --cream:#f5f1e8;
+      --cream-light:#fbf9f3;
+
+      --white:#ffffff;
+
+      --muted:#6c7972;
+
+      --line:rgba(23,63,53,.12);
+
+      --soft:#f1eee6;
+
+      --danger:#a34c3c;
+
+      --warning:#9a6b20;
+
+      --shadow:
+        0 18px 55px
+        rgba(13,45,38,.08);
+
+    }
+
+
     *{
-      box-sizing:border-box;
+
       margin:0;
       padding:0;
+
+      box-sizing:border-box;
+
     }
+
+
+    html{
+
+      scroll-behavior:smooth;
+
+    }
+
 
     body{
-      font-family:Arial, Helvetica, sans-serif;
-      background:#f7f4ee;
-      color:#17221d;
-      min-height:100vh;
+
+      font-family:"DM Sans",sans-serif;
+
+      color:var(--green);
+
+      background:var(--cream-light);
+
+      line-height:1.5;
+
+      overflow-x:hidden;
+
     }
 
-    header{
-      height:76px;
-      background:rgba(255,255,255,.94);
-      border-bottom:1px solid #e8e1d5;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      padding:0 6%;
+
+    a{
+
+      color:inherit;
+
+      text-decoration:none;
+
+    }
+
+
+    button{
+
+      font:inherit;
+
+      border:0;
+
+      cursor:pointer;
+
+    }
+
+
+    .container{
+
+      width:min(
+        1180px,
+        calc(100% - 40px)
+      );
+
+      margin:auto;
+
+    }
+
+
+    /* =========================
+       HEADER
+    ========================= */
+
+
+    .site-header{
+
       position:sticky;
+
       top:0;
-      z-index:20;
+
+      left:0;
+
+      width:100%;
+
+      z-index:50;
+
+      padding:14px 0;
+
+      background:
+        rgba(251,249,243,.88);
+
+      backdrop-filter:blur(18px);
+
+      -webkit-backdrop-filter:blur(18px);
+
+      border-bottom:
+        1px solid
+        rgba(23,63,53,.08);
+
     }
 
-    .brand{
+
+    .header-inner{
+
       display:flex;
+
       align-items:center;
-      gap:10px;
-      text-decoration:none;
-      color:#17221d;
-      font-size:22px;
-      font-weight:800;
-      letter-spacing:-.5px;
+
+      justify-content:space-between;
+
+      gap:20px;
+
+      padding:
+        10px
+        10px
+        10px
+        20px;
+
+      border:
+        1px solid
+        rgba(23,63,53,.10);
+
+      border-radius:18px;
+
+      background:#fff;
+
+      box-shadow:
+        0 8px 30px
+        rgba(13,45,38,.05);
+
     }
 
-    .brand-mark{
-      width:36px;
-      height:36px;
-      border-radius:11px;
-      background:#173b2b;
-      color:#f4d79a;
+
+    .logo{
+
+      font-size:25px;
+
+      font-weight:700;
+
+      letter-spacing:-1px;
+
+      white-space:nowrap;
+
+    }
+
+
+    .logo span{
+
+      color:var(--lime);
+
+    }
+
+
+    .desktop-nav{
+
       display:flex;
-      align-items:center;
-      justify-content:center;
-      font-weight:900;
-      font-size:20px;
-    }
 
-    nav{
-      display:flex;
       align-items:center;
-      gap:28px;
-    }
 
-    nav a{
-      color:#526057;
-      text-decoration:none;
+      gap:27px;
+
       font-size:14px;
-      font-weight:600;
+
+      font-weight:500;
+
     }
 
-    nav a:hover{
-      color:#173b2b;
+
+    .desktop-nav a{
+
+      color:#53625b;
+
+      transition:.2s ease;
+
     }
+
+
+    .desktop-nav a:hover{
+
+      color:var(--green);
+
+    }
+
+
+    .desktop-nav a.active{
+
+      color:var(--green);
+
+      font-weight:700;
+
+    }
+
 
     .header-actions{
+
       display:flex;
+
       align-items:center;
-      gap:12px;
+
+      gap:9px;
+
     }
+
 
     .user-mini{
+
       display:flex;
+
       align-items:center;
+
       gap:9px;
-      padding:6px 11px 6px 6px;
-      border:1px solid #e4ddd1;
-      border-radius:30px;
-      background:#fff;
+
+      padding:
+        5px
+        11px
+        5px
+        5px;
+
+      border:
+        1px solid
+        rgba(23,63,53,.12);
+
+      border-radius:999px;
+
+      background:#f8f6f0;
+
     }
+
 
     .user-mini img{
+
       width:32px;
+
       height:32px;
+
       border-radius:50%;
+
       object-fit:cover;
+
+      background:#e5e1d7;
+
     }
+
 
     .user-mini span{
-      font-size:13px;
-      font-weight:700;
-      color:#26362e;
+
       max-width:130px;
-      white-space:nowrap;
+
       overflow:hidden;
+
       text-overflow:ellipsis;
+
+      white-space:nowrap;
+
+      color:var(--green);
+
+      font-size:13px;
+
+      font-weight:700;
+
     }
+
 
     .logout-btn{
-      border:0;
+
+      padding:
+        9px
+        11px;
+
       background:transparent;
-      color:#756f66;
+
+      color:#69756f;
+
       font-size:13px;
-      font-weight:700;
-      cursor:pointer;
-      padding:8px;
+
+      font-weight:600;
+
+      transition:.2s ease;
+
     }
+
 
     .logout-btn:hover{
-      color:#b24735;
+
+      color:var(--danger);
+
     }
+
+
+    .menu-btn{
+
+      display:none;
+
+      width:42px;
+
+      height:42px;
+
+      border-radius:11px;
+
+      background:var(--green);
+
+      color:#fff;
+
+      font-size:20px;
+
+    }
+
+
+    .mobile-menu{
+
+      display:none;
+
+      margin-top:9px;
+
+      padding:8px;
+
+      border-radius:16px;
+
+      background:var(--green-dark);
+
+      box-shadow:var(--shadow);
+
+    }
+
+
+    .mobile-menu.open{
+
+      display:flex;
+
+      flex-direction:column;
+
+      gap:2px;
+
+    }
+
+
+    .mobile-menu a{
+
+      padding:13px;
+
+      border-radius:10px;
+
+      color:#fff;
+
+      font-size:14px;
+
+      font-weight:600;
+
+    }
+
+
+    .mobile-menu a:hover{
+
+      background:
+        rgba(255,255,255,.08);
+
+    }
+
+
+    /* =========================
+       MAIN
+    ========================= */
+
 
     main{
-      width:min(1180px,92%);
-      margin:0 auto;
-      padding:58px 0 80px;
+
+      padding:
+        64px 0
+        90px;
+
     }
+
 
     .hero{
-      margin-bottom:38px;
+
+      display:flex;
+
+      align-items:end;
+
+      justify-content:space-between;
+
+      gap:50px;
+
+      margin-bottom:45px;
+
     }
+
+
+    .hero-copy{
+
+      max-width:720px;
+
+    }
+
 
     .eyebrow{
-      color:#9b7740;
-      font-size:12px;
-      font-weight:800;
+
+      display:inline-flex;
+
+      align-items:center;
+
+      gap:8px;
+
+      margin-bottom:18px;
+
+      color:#78877f;
+
+      font-size:11px;
+
+      font-weight:700;
+
+      letter-spacing:1.5px;
+
       text-transform:uppercase;
-      letter-spacing:2px;
-      margin-bottom:12px;
+
     }
+
+
+    .eyebrow::before{
+
+      content:"";
+
+      width:7px;
+
+      height:7px;
+
+      border-radius:50%;
+
+      background:var(--lime);
+
+      box-shadow:
+        0 0 0 5px
+        rgba(217,239,124,.16);
+
+    }
+
 
     h1{
-      font-family:Georgia, "Times New Roman", serif;
-      font-size:clamp(38px,6vw,62px);
-      line-height:1;
-      letter-spacing:-2px;
-      color:#173b2b;
-      margin-bottom:15px;
+
+      font-family:"Playfair Display",serif;
+
+      font-size:
+        clamp(45px,6vw,72px);
+
+      line-height:.98;
+
+      letter-spacing:-2.8px;
+
+      font-weight:600;
+
+      margin-bottom:20px;
+
     }
 
-    .hero p{
-      color:#69736c;
-      font-size:16px;
-      line-height:1.7;
+
+    .hero-copy p{
+
       max-width:620px;
+
+      color:var(--muted);
+
+      font-size:16px;
+
+      line-height:1.75;
+
     }
 
-    .top-actions{
-      margin-top:25px;
-      display:flex;
-      gap:12px;
-      flex-wrap:wrap;
+
+    .hero-action{
+
+      flex-shrink:0;
+
     }
+
 
     .primary-btn{
+
       display:inline-flex;
+
       align-items:center;
+
       justify-content:center;
-      min-height:46px;
-      padding:0 20px;
+
+      min-height:48px;
+
+      padding:
+        0 20px;
+
       border-radius:12px;
-      border:1px solid #173b2b;
-      background:#173b2b;
+
+      background:var(--green);
+
       color:#fff;
-      text-decoration:none;
+
       font-size:14px;
-      font-weight:800;
-      cursor:pointer;
+
+      font-weight:700;
+
+      box-shadow:
+        0 10px 25px
+        rgba(23,63,53,.14);
+
+      transition:.2s ease;
+
     }
+
 
     .primary-btn:hover{
-      background:#24533e;
+
+      background:var(--green-dark);
+
+      transform:translateY(-1px);
+
     }
+
 
     .secondary-btn{
+
       display:inline-flex;
+
       align-items:center;
+
       justify-content:center;
-      min-height:46px;
-      padding:0 20px;
+
+      min-height:48px;
+
+      padding:
+        0 20px;
+
+      border:
+        1px solid
+        rgba(23,63,53,.13);
+
       border-radius:12px;
-      border:1px solid #ddd4c6;
+
       background:#fff;
-      color:#35443b;
-      text-decoration:none;
+
+      color:var(--green);
+
       font-size:14px;
-      font-weight:800;
+
+      font-weight:700;
+
+      transition:.2s ease;
+
     }
+
 
     .secondary-btn:hover{
-      border-color:#b9aa95;
+
+      border-color:
+        rgba(23,63,53,.28);
+
+      transform:translateY(-1px);
+
     }
 
-    .loading{
-      background:#fff;
-      border:1px solid #e8e1d5;
-      border-radius:20px;
-      padding:45px 25px;
-      text-align:center;
-      color:#747d77;
-      margin-top:20px;
-    }
 
-    .dashboard-grid{
+    /* =========================
+       OVERVIEW
+    ========================= */
+
+
+    .overview{
+
       display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:18px;
-      margin-bottom:42px;
+
+      grid-template-columns:
+        repeat(3,1fr);
+
+      gap:14px;
+
+      margin-bottom:55px;
+
     }
+
 
     .stat-card{
-      background:#fff;
-      border:1px solid #e8e1d5;
+
+      position:relative;
+
+      overflow:hidden;
+
+      padding:24px;
+
+      border:
+        1px solid
+        rgba(23,63,53,.10);
+
       border-radius:18px;
-      padding:22px;
+
+      background:#fff;
+
+      box-shadow:
+        0 8px 30px
+        rgba(13,45,38,.045);
+
     }
+
+
+    .stat-card::after{
+
+      content:"";
+
+      position:absolute;
+
+      width:85px;
+
+      height:85px;
+
+      right:-30px;
+
+      top:-30px;
+
+      border-radius:50%;
+
+      background:
+        rgba(217,239,124,.20);
+
+    }
+
 
     .stat-label{
-      font-size:12px;
-      color:#7a827d;
-      font-weight:700;
-      text-transform:uppercase;
-      letter-spacing:1px;
+
+      position:relative;
+
+      z-index:1;
+
       margin-bottom:10px;
+
+      color:#7d8983;
+
+      font-size:11px;
+
+      font-weight:700;
+
+      letter-spacing:1.2px;
+
+      text-transform:uppercase;
+
     }
+
 
     .stat-value{
-      font-family:Georgia, "Times New Roman", serif;
-      font-size:30px;
-      color:#173b2b;
-      font-weight:700;
+
+      position:relative;
+
+      z-index:1;
+
+      font-family:"Playfair Display",serif;
+
+      color:var(--green);
+
+      font-size:34px;
+
+      line-height:1;
+
+      font-weight:600;
+
     }
+
+
+    .stat-note{
+
+      position:relative;
+
+      z-index:1;
+
+      margin-top:9px;
+
+      color:#87928c;
+
+      font-size:12px;
+
+    }
+
+
+    /* =========================
+       SECTION HEADING
+    ========================= */
+
 
     .section-heading{
+
       display:flex;
+
       align-items:end;
+
       justify-content:space-between;
-      gap:20px;
-      margin-bottom:18px;
+
+      gap:25px;
+
+      margin-bottom:20px;
+
     }
+
 
     .section-heading h2{
-      font-family:Georgia, "Times New Roman", serif;
-      font-size:30px;
-      color:#173b2b;
+
+      font-family:"Playfair Display",serif;
+
+      font-size:36px;
+
+      line-height:1.05;
+
+      letter-spacing:-1.2px;
+
+      font-weight:600;
+
     }
+
 
     .section-heading p{
-      color:#7a827d;
+
+      color:var(--muted);
+
       font-size:13px;
+
     }
+
+
+    .section-link{
+
+      color:var(--green);
+
+      font-size:13px;
+
+      font-weight:700;
+
+    }
+
+
+    /* =========================
+       LOADING
+    ========================= */
+
+
+    .loading{
+
+      padding:55px 20px;
+
+      border:
+        1px solid
+        rgba(23,63,53,.10);
+
+      border-radius:22px;
+
+      background:#fff;
+
+      color:#78837d;
+
+      text-align:center;
+
+      box-shadow:
+        0 8px 30px
+        rgba(13,45,38,.04);
+
+    }
+
+
+    /* =========================
+       PROPERTY GRID
+    ========================= */
+
 
     .properties-grid{
+
       display:grid;
-      grid-template-columns:repeat(2,1fr);
-      gap:20px;
+
+      grid-template-columns:
+        repeat(2,1fr);
+
+      gap:18px;
+
     }
+
 
     .property-card{
-      background:#fff;
-      border:1px solid #e8e1d5;
-      border-radius:20px;
+
       overflow:hidden;
+
+      border:
+        1px solid
+        rgba(23,63,53,.10);
+
+      border-radius:20px;
+
+      background:#fff;
+
+      box-shadow:
+        0 8px 35px
+        rgba(13,45,38,.055);
+
+      transition:
+        transform .25s ease,
+        box-shadow .25s ease;
+
     }
+
+
+    .property-card:hover{
+
+      transform:translateY(-3px);
+
+      box-shadow:
+        0 18px 45px
+        rgba(13,45,38,.09);
+
+    }
+
 
     .property-card-image{
-      height:230px;
-      background:#eee8dc;
+
+      position:relative;
+
+      height:250px;
+
       overflow:hidden;
+
+      background:#e8e4db;
+
     }
+
 
     .property-card-image img{
+
       width:100%;
+
       height:100%;
-      object-fit:cover;
+
       display:block;
+
+      object-fit:cover;
+
+      transition:
+        transform .5s ease;
+
     }
+
+
+    .property-card:hover
+    .property-card-image img{
+
+      transform:scale(1.035);
+
+    }
+
+
+    .property-badge{
+
+      position:absolute;
+
+      top:14px;
+
+      left:14px;
+
+      padding:
+        7px 10px;
+
+      border-radius:999px;
+
+      background:
+        rgba(255,255,255,.94);
+
+      color:var(--green);
+
+      font-size:10px;
+
+      font-weight:800;
+
+      letter-spacing:.3px;
+
+      box-shadow:
+        0 6px 18px
+        rgba(0,0,0,.08);
+
+    }
+
 
     .property-content{
+
       padding:22px;
+
     }
+
 
     .property-top{
+
       display:flex;
+
       align-items:start;
+
       justify-content:space-between;
+
       gap:15px;
-      margin-bottom:10px;
+
+      margin-bottom:9px;
+
     }
+
 
     .property-title{
-      font-family:Georgia, "Times New Roman", serif;
-      color:#173b2b;
-      font-size:24px;
-      line-height:1.15;
+
+      font-family:"Playfair Display",serif;
+
+      color:var(--green);
+
+      font-size:25px;
+
+      line-height:1.12;
+
+      font-weight:600;
+
     }
+
 
     .status{
+
       flex-shrink:0;
-      padding:6px 9px;
-      border-radius:20px;
-      background:#edf6ef;
+
+      padding:
+        6px 9px;
+
+      border-radius:999px;
+
+      background:#edf7ef;
+
       color:#287044;
-      font-size:11px;
+
+      font-size:10px;
+
       font-weight:800;
+
+      white-space:nowrap;
+
     }
+
+
+    .status-warning{
+
+      background:#fff5df;
+
+      color:var(--warning);
+
+    }
+
+
+    .status-old{
+
+      background:#fff0ed;
+
+      color:var(--danger);
+
+    }
+
 
     .property-meta{
-      color:#747d77;
+
+      color:#78837d;
+
       font-size:13px;
-      line-height:1.6;
-      margin-bottom:16px;
+
+      line-height:1.65;
+
+      margin-bottom:15px;
+
     }
+
 
     .property-price{
-      color:#173b2b;
-      font-size:20px;
+
+      color:var(--green);
+
+      font-size:21px;
+
       font-weight:800;
+
       margin-bottom:15px;
+
     }
+
 
     .confirmation{
-      background:#f7f4ee;
+
+      padding:13px;
+
       border-radius:12px;
-      padding:12px;
-      color:#59635c;
+
+      background:#f7f5ef;
+
+      color:#66726b;
+
       font-size:12px;
-      line-height:1.5;
+
+      line-height:1.55;
+
       margin-bottom:16px;
+
     }
+
 
     .confirmation strong{
-      color:#173b2b;
+
+      color:var(--green);
+
     }
+
+
+    /* =========================
+       CARD ACTIONS
+    ========================= */
+
 
     .card-actions{
-      display:flex;
-      gap:9px;
-      flex-wrap:wrap;
+
+      display:grid;
+
+      grid-template-columns:
+        1.4fr 1fr 1fr;
+
+      gap:8px;
+
     }
+
 
     .card-btn{
-      flex:1;
-      min-width:100px;
+
       min-height:42px;
-      border-radius:10px;
-      border:1px solid #ded6c9;
-      background:#fff;
-      color:#35443b;
-      font-size:12px;
-      font-weight:800;
-      cursor:pointer;
-      text-decoration:none;
+
       display:flex;
+
       align-items:center;
+
       justify-content:center;
+
+      padding:
+        0 10px;
+
+      border:
+        1px solid
+        rgba(23,63,53,.13);
+
+      border-radius:10px;
+
+      background:#fff;
+
+      color:var(--green);
+
+      font-size:11px;
+
+      font-weight:800;
+
+      text-align:center;
+
+      transition:.2s ease;
+
     }
+
 
     .card-btn:hover{
-      border-color:#aa9a83;
+
+      border-color:
+        rgba(23,63,53,.28);
+
+      background:#faf9f5;
+
     }
+
 
     .renew-btn{
-      background:#173b2b;
-      border-color:#173b2b;
+
+      background:var(--green);
+
+      border-color:var(--green);
+
       color:#fff;
+
     }
+
 
     .renew-btn:hover{
-      background:#24533e;
+
+      background:var(--green-dark);
+
+      border-color:var(--green-dark);
+
     }
+
+
+    .delete-btn{
+
+      color:var(--danger);
+
+    }
+
+
+    .delete-btn:hover{
+
+      background:#fff5f2;
+
+      border-color:#e3c4bb;
+
+    }
+
+
+    /* =========================
+       EMPTY STATE
+    ========================= */
+
 
     .empty-state{
-      background:#fff;
-      border:1px solid #e8e1d5;
+
+      padding:
+        70px 25px;
+
+      border:
+        1px solid
+        rgba(23,63,53,.10);
+
       border-radius:24px;
-      padding:65px 25px;
+
+      background:#fff;
+
       text-align:center;
+
+      box-shadow:
+        0 8px 30px
+        rgba(13,45,38,.04);
+
     }
+
 
     .empty-icon{
-      width:64px;
-      height:64px;
-      border-radius:18px;
-      background:#f0eadf;
+
+      width:70px;
+
+      height:70px;
+
       display:flex;
+
       align-items:center;
+
       justify-content:center;
-      margin:0 auto 20px;
-      font-size:28px;
+
+      margin:
+        0 auto 20px;
+
+      border-radius:20px;
+
+      background:var(--green);
+
+      color:var(--lime);
+
+      font-family:"Playfair Display",serif;
+
+      font-size:30px;
+
     }
+
 
     .empty-state h2{
-      font-family:Georgia, "Times New Roman", serif;
-      color:#173b2b;
-      font-size:30px;
-      margin-bottom:10px;
+
+      font-family:"Playfair Display",serif;
+
+      color:var(--green);
+
+      font-size:34px;
+
+      line-height:1.1;
+
+      margin-bottom:11px;
+
     }
+
 
     .empty-state p{
+
       max-width:470px;
-      margin:0 auto 24px;
-      color:#747d77;
-      line-height:1.7;
+
+      margin:
+        0 auto 25px;
+
+      color:var(--muted);
+
       font-size:14px;
+
+      line-height:1.75;
+
     }
+
+
+    /* =========================
+       ERROR
+    ========================= */
+
 
     .error-state{
-      background:#fff5f2;
-      border:1px solid #ead2ca;
-      color:#8b493b;
+
+      padding:30px;
+
+      border:
+        1px solid
+        #ead2ca;
+
       border-radius:18px;
-      padding:25px;
+
+      background:#fff5f2;
+
+      color:#8b493b;
+
       text-align:center;
-    }
-
-    @media(max-width:850px){
-
-      nav{
-        display:none;
-      }
-
-      .dashboard-grid{
-        grid-template-columns:1fr;
-      }
-
-      .properties-grid{
-        grid-template-columns:1fr;
-      }
-
-      header{
-        padding:0 4%;
-      }
-
-      .user-mini span{
-        display:none;
-      }
-
-    }
-
-    @media(max-width:520px){
-
-      main{
-        padding-top:42px;
-      }
-
-      .header-actions{
-        gap:4px;
-      }
-
-      .logout-btn{
-        font-size:12px;
-      }
-
-      h1{
-        font-size:42px;
-      }
-
-      .property-card-image{
-        height:205px;
-      }
-
-      .property-top{
-        flex-direction:column;
-      }
-
-      .status{
-        align-self:flex-start;
-      }
 
     }
 
@@ -495,980 +1279,1437 @@
 
 </head>
 
+
 <body>
 
-<header>
 
-  <a
-    href="index.html"
-    class="brand"
-  >
-    <div class="brand-mark">P</div>
-    Placingo
-  </a>
+  <!-- HEADER -->
 
-  <nav>
+  <header class="site-header">
 
-    <a href="properties.html">
-      Explore
-    </a>
+    <div class="container">
 
-    <a href="index.html#fresh">
-      Why Placingo
-    </a>
+      <div class="header-inner">
 
-    <a href="index.html#about">
-      About
-    </a>
-
-  </nav>
-
-  <div class="header-actions">
-
-    <div
-      class="user-mini"
-      id="userMini"
-      style="display:none;"
-    >
-
-      <img
-        id="userAvatar"
-        src=""
-        alt="Profile"
-      >
-
-      <span id="userName">
-        Account
-      </span>
-
-    </div>
-
-    <button
-      class="logout-btn"
-      id="logoutBtn"
-      style="display:none;"
-    >
-      Sign out
-    </button>
-
-  </div>
-
-</header>
-
-<main>
-
-  <section class="hero">
-
-    <div class="eyebrow">
-      Your Placingo dashboard
-    </div>
-
-    <h1>
-      Your properties.<br>
-      Your place.
-    </h1>
-
-    <p>
-      Manage the properties you've listed,
-      keep availability fresh, and continue
-      your property journey from one place.
-    </p>
-
-    <div class="top-actions">
-
-      <a
-        href="list-property.html"
-        class="primary-btn"
-      >
-        + List a property
-      </a>
-
-      <a
-        href="properties.html"
-        class="secondary-btn"
-      >
-        Explore properties
-      </a>
-
-    </div>
-
-  </section>
-
-  <div
-    id="loadingState"
-    class="loading"
-  >
-    Loading your dashboard...
-  </div>
-
-  <section
-    id="dashboardContent"
-    style="display:none;"
-  >
-
-    <div class="dashboard-grid">
-
-      <div class="stat-card">
-
-        <div class="stat-label">
-          Your properties
-        </div>
-
-        <div
-          class="stat-value"
-          id="propertyCount"
+        <a
+          href="index.html"
+          class="logo"
         >
-          0
-        </div>
+          Placing<span>o</span>
+        </a>
 
-      </div>
 
-      <div class="stat-card">
+        <nav class="desktop-nav">
 
-        <div class="stat-label">
-          Active listings
-        </div>
-
-        <div
-          class="stat-value"
-          id="activeCount"
-        >
-          0
-        </div>
-
-      </div>
-
-      <div class="stat-card">
-
-        <div class="stat-label">
-          Account
-        </div>
-
-        <div
-          class="stat-value"
-          style="font-size:20px;"
-          id="accountType"
-        >
-          Google
-        </div>
-
-      </div>
-
-    </div>
-
-    <div id="propertySection">
-
-      <div class="section-heading">
-
-        <div>
-          <h2>
-            My properties
-          </h2>
-
-          <p>
-            Keep your listings up to date.
-          </p>
-        </div>
-
-      </div>
-
-      <div
-        class="properties-grid"
-        id="propertiesGrid"
-      ></div>
-
-    </div>
-
-    <div
-      id="emptyState"
-      class="empty-state"
-      style="display:none;"
-    >
-
-      <div class="empty-icon">
-        ⌂
-      </div>
-
-      <h2>
-        Your property journey starts here
-      </h2>
-
-      <p>
-        You haven't listed any properties yet.
-        Add your first property and make it
-        discoverable on Placingo.
-      </p>
-
-      <a
-        href="list-property.html"
-        class="primary-btn"
-      >
-        List your first property
-      </a>
-
-    </div>
-
-  </section>
-
-</main>
-
-<script>
-
-  const SUPABASE_URL =
-    "https://giugnkxhvahqjjntbpgz.supabase.co";
-
-  const SUPABASE_PUBLISHABLE_KEY =
-    "sb_publishable_AM_jASJf8SA4Jn3uTRSATA_0AJhWwl1";
-
-  const supabaseClient =
-    window.supabase.createClient(
-      SUPABASE_URL,
-      SUPABASE_PUBLISHABLE_KEY
-    );
-  let currentUser = null;
-  let properties = [];
-
-  const loadingState =
-    document.getElementById("loadingState");
-
-  const dashboardContent =
-    document.getElementById("dashboardContent");
-
-  const userMini =
-    document.getElementById("userMini");
-
-  const userAvatar =
-    document.getElementById("userAvatar");
-
-  const userName =
-    document.getElementById("userName");
-
-  const logoutBtn =
-    document.getElementById("logoutBtn");
-
-  const propertyCount =
-    document.getElementById("propertyCount");
-
-  const activeCount =
-    document.getElementById("activeCount");
-
-  const propertiesGrid =
-    document.getElementById("propertiesGrid");
-
-  const emptyState =
-    document.getElementById("emptyState");
-
-  const propertySection =
-    document.getElementById("propertySection");
-
-
-  function escapeHtml(value){
-
-    return String(value ?? "")
-      .replace(/&/g, "&amp;")
-      .replace(/</g, "&lt;")
-      .replace(/>/g, "&gt;")
-      .replace(/"/g, "&quot;")
-      .replace(/'/g, "&#039;");
-
-  }
-
-
-  function formatPrice(value){
-
-    if(value === null || value === undefined){
-      return "Price not specified";
-    }
-
-    const number =
-      Number(value);
-
-    if(Number.isNaN(number)){
-      return escapeHtml(value);
-    }
-
-    return "₹" +
-      number.toLocaleString("en-IN");
-
-  }
-
-
-  function formatDate(value){
-
-    if(!value){
-      return "Not confirmed yet";
-    }
-
-    const date =
-      new Date(value);
-
-    if(Number.isNaN(date.getTime())){
-      return "Not confirmed yet";
-    }
-
-    return date.toLocaleDateString(
-      "en-IN",
-      {
-        day:"numeric",
-        month:"short",
-        year:"numeric"
-      }
-    );
-
-  }
-
-
-  function getDaysSince(value){
-
-    if(!value){
-      return null;
-    }
-
-    const date =
-      new Date(value);
-
-    if(Number.isNaN(date.getTime())){
-      return null;
-    }
-
-    const now =
-      new Date();
-
-    const difference =
-      now.getTime() -
-      date.getTime();
-
-    return Math.floor(
-      difference /
-      (1000 * 60 * 60 * 24)
-    );
-
-  }
-
-
-  function getConfirmationText(
-    confirmedAt
-  ){
-
-    const days =
-      getDaysSince(confirmedAt);
-
-    if(days === null){
-      return "Availability has not been confirmed yet.";
-    }
-
-    if(days === 0){
-      return "Availability confirmed today.";
-    }
-
-    if(days === 1){
-      return "Availability confirmed 1 day ago.";
-    }
-
-    return (
-      "Availability confirmed " +
-      days +
-      " days ago."
-    );
-
-  }
-
-
-  function getStatusClass(
-    confirmedAt
-  ){
-
-    const days =
-      getDaysSince(confirmedAt);
-
-    if(days === null){
-      return "status";
-    }
-
-    if(days <= 7){
-      return "status";
-    }
-
-    if(days <= 14){
-      return "status status-warning";
-    }
-
-    return "status status-old";
-
-  }
-
-
-  function getStatusText(
-    property
-  ){
-
-    if(property.status !== "active"){
-      return "Inactive";
-    }
-
-    const days =
-      getDaysSince(
-        property.last_confirmed_at
-      );
-
-    if(days === null){
-      return "Needs confirmation";
-    }
-
-    if(days <= 7){
-      return "Active";
-    }
-
-    if(days <= 14){
-      return "Confirm soon";
-    }
-
-    return "Needs confirmation";
-
-  }
-
-
-  async function loadDashboard(){
-
-    loadingState.style.display =
-      "block";
-
-    dashboardContent.style.display =
-      "none";
-
-    const {
-      data: {
-        user
-      },
-      error: userError
-    } =
-      await supabaseClient.auth.getUser();
-
-
-    if(userError){
-
-      console.error(
-        "User error:",
-        userError
-      );
-
-      showError(
-        "We couldn't load your account. Please try again."
-      );
-
-      return;
-    }
-
-
-    if(!user){
-
-      window.location.href =
-        "login.html";
-
-      return;
-    }
-
-
-    currentUser =
-      user;
-
-
-    updateUserUI();
-
-
-    const {
-      data,
-      error
-    } =
-      await supabaseClient
-        .from("properties")
-        .select(`
-          *,
-          property_images (
-            image_url,
-            display_order
-          )
-        `)
-        .eq(
-          "owner_id",
-          user.id
-        )
-        .order(
-          "created_at",
-          {
-            ascending:false
-          }
-        );
-
-
-    if(error){
-
-      console.error(
-        "Properties error:",
-        error
-      );
-
-      showError(
-        "We couldn't load your properties. Please refresh and try again."
-      );
-
-      return;
-    }
-
-
-    properties =
-      data || [];
-
-
-    renderDashboard();
-
-  }
-
-
-  function updateUserUI(){
-
-    const metadata =
-      currentUser.user_metadata || {};
-
-
-    const name =
-      metadata.full_name ||
-      metadata.name ||
-      currentUser.email ||
-      "Account";
-
-
-    const avatar =
-      metadata.avatar_url ||
-      metadata.picture ||
-      "";
-
-
-    userName.textContent =
-      name;
-
-
-    if(avatar){
-
-      userAvatar.src =
-        avatar;
-
-      userAvatar.style.display =
-        "block";
-
-    }else{
-
-      userAvatar.style.display =
-        "none";
-
-    }
-
-
-    userMini.style.display =
-      "flex";
-
-    logoutBtn.style.display =
-      "block";
-
-  }
-
-
-  function renderDashboard(){
-
-    loadingState.style.display =
-      "none";
-
-    dashboardContent.style.display =
-      "block";
-
-
-    propertyCount.textContent =
-      properties.length;
-
-
-    const activeProperties =
-      properties.filter(
-        property =>
-          property.status === "active"
-      );
-
-
-    activeCount.textContent =
-      activeProperties.length;
-
-
-    if(properties.length === 0){
-
-      propertySection.style.display =
-        "none";
-
-      emptyState.style.display =
-        "block";
-
-      return;
-
-    }
-
-
-    propertySection.style.display =
-      "block";
-
-    emptyState.style.display =
-      "none";
-
-
-    propertiesGrid.innerHTML =
-      properties
-        .map(
-          property =>
-            createPropertyCard(property)
-        )
-        .join("");
-
-  }
-
-
-  function createPropertyCard(
-    property
-  ){
-
-    const images =
-      Array.isArray(
-        property.property_images
-      )
-        ? [...property.property_images]
-            .sort(
-              (a,b) =>
-                (a.display_order || 0) -
-                (b.display_order || 0)
-            )
-        : [];
-
-
-    const imageUrl =
-      images.length
-        ? images[0].image_url
-        : "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80";
-
-
-    const title =
-      escapeHtml(
-        property.title
-      );
-
-
-    const type =
-      escapeHtml(
-        property.property_type
-      );
-
-
-    const purpose =
-      escapeHtml(
-        property.purpose
-      );
-
-
-    const city =
-      escapeHtml(
-        property.city
-      );
-
-
-    const locality =
-      escapeHtml(
-        property.locality
-      );
-
-
-    const status =
-      getStatusText(property);
-
-
-    const statusClass =
-      getStatusClass(
-        property.last_confirmed_at
-      );
-
-
-    const confirmation =
-      getConfirmationText(
-        property.last_confirmed_at
-      );
-
-
-    return `
-
-      <article
-        class="property-card"
-      >
-
-        <div
-          class="property-card-image"
-        >
-
-          <img
-            src="${escapeHtml(imageUrl)}"
-            alt="${title}"
-            loading="lazy"
+          <a
+            href="dashboard.html"
+            class="active"
           >
+            Dashboard
+          </a>
 
-        </div>
+          <a href="properties.html">
+            Properties
+          </a>
+
+          <a href="index.html#fresh">
+            Why Placingo
+          </a>
+
+          <a href="index.html#about">
+            About
+          </a>
+
+        </nav>
 
 
-        <div
-          class="property-content"
-        >
+        <div class="header-actions">
 
           <div
-            class="property-top"
+            class="user-mini"
+            id="userMini"
+            style="display:none;"
           >
 
-            <h3
-              class="property-title"
+            <img
+              id="userAvatar"
+              src=""
+              alt="Profile"
             >
-              ${title}
-            </h3>
 
-            <span
-              class="${statusClass}"
-            >
-              ${escapeHtml(status)}
+            <span id="userName">
+              Account
             </span>
 
           </div>
 
 
-          <div
-            class="property-meta"
+          <button
+            class="logout-btn"
+            id="logoutBtn"
+            style="display:none;"
           >
-            ${type}
-            ·
-            ${purpose}
-            <br>
+            Sign out
+          </button>
 
-            ${locality},
-            ${city}
 
-            ${
-              property.area
-                ? `
-                  <br>
-                  ${escapeHtml(property.area)}
-                  sq ft
-                `
-                : ""
-            }
+          <button
+            class="menu-btn"
+            id="menuBtn"
+            type="button"
+            onclick="toggleMenu()"
+            aria-label="Open menu"
+          >
+            ☰
+          </button>
 
-            ${
-              property.bedrooms
-                ? `
-                  ·
-                  ${escapeHtml(property.bedrooms)}
-                  bed
-                `
-                : ""
-            }
+        </div>
 
-            ${
-              property.bathrooms
-                ? `
-                  ·
-                  ${escapeHtml(property.bathrooms)}
-                  bath
-                `
-                : ""
-            }
+      </div>
 
+
+      <div
+        class="mobile-menu"
+        id="mobileMenu"
+      >
+
+        <a
+          href="dashboard.html"
+          onclick="closeMenu()"
+        >
+          Dashboard
+        </a>
+
+        <a
+          href="properties.html"
+          onclick="closeMenu()"
+        >
+          Properties
+        </a>
+
+        <a
+          href="index.html#fresh"
+          onclick="closeMenu()"
+        >
+          Why Placingo
+        </a>
+
+        <a
+          href="index.html#about"
+          onclick="closeMenu()"
+        >
+          About
+        </a>
+
+        <a
+          href="login.html"
+          onclick="closeMenu()"
+        >
+          Account
+        </a>
+
+        <a
+          href="list-property.html"
+          onclick="closeMenu()"
+        >
+          List a property
+        </a>
+
+      </div>
+
+    </div>
+
+  </header>
+
+
+  <!-- MAIN -->
+
+  <main>
+
+    <div class="container">
+
+      <section class="hero">
+
+        <div class="hero-copy">
+
+          <div class="eyebrow">
+            Your Placingo dashboard
           </div>
 
+          <h1>
+            Your properties.<br>
+            Your place.
+          </h1>
 
-          <div
-            class="property-price"
+          <p>
+            Manage what you've listed,
+            keep availability fresh, and
+            stay in control of your properties
+            from one place.
+          </p>
+
+        </div>
+
+
+        <div class="hero-action">
+
+          <a
+            href="list-property.html"
+            class="primary-btn"
           >
-            ${formatPrice(property.price)}
-          </div>
+            + List a property
+          </a>
+
+        </div>
+
+      </section>
 
 
-          <div
-            class="confirmation"
-          >
-            <strong>
-              Owner confirmed availability
-            </strong>
-            <br>
-
-            ${escapeHtml(confirmation)}
-
-            ${
-              property.listed_at
-                ? `
-                  <br>
-                  Listed
-                  ${escapeHtml(
-                    formatDate(
-                      property.listed_at
-                    )
-                  )}
-                `
-                : ""
-            }
-
-          </div>
+      <div
+        id="loadingState"
+        class="loading"
+      >
+        Loading your dashboard...
+      </div>
 
 
-          <div
-            class="card-actions"
-          >
+      <section
+        id="dashboardContent"
+        style="display:none;"
+      >
 
-            <button
-              class="card-btn renew-btn"
-              onclick="renewAvailability('${property.id}')"
+        <div class="overview">
+
+          <div class="stat-card">
+
+            <div class="stat-label">
+              Your properties
+            </div>
+
+            <div
+              class="stat-value"
+              id="propertyCount"
             >
-              Renew availability
-            </button>
+              0
+            </div>
+
+            <div class="stat-note">
+              Properties you've listed
+            </div>
+
+          </div>
 
 
-            <a
-              class="card-btn"
-              href="property.html?id=${encodeURIComponent(property.id)}"
+          <div class="stat-card">
+
+            <div class="stat-label">
+              Active listings
+            </div>
+
+            <div
+              class="stat-value"
+              id="activeCount"
             >
-              View
-            </a>
+              0
+            </div>
+
+            <div class="stat-note">
+              Currently visible on Placingo
+            </div>
+
+          </div>
+
+
+          <div class="stat-card">
+
+            <div class="stat-label">
+              Account
+            </div>
+
+            <div
+              class="stat-value"
+              style="font-size:24px;"
+              id="accountType"
+            >
+              Google
+            </div>
+
+            <div class="stat-note">
+              Your Placingo account
+            </div>
 
           </div>
 
         </div>
+        <div
+          id="propertySection"
+        >
 
-      </article>
+          <div class="section-heading">
 
-    `;
+            <div>
 
-  }
+              <h2>
+                My properties
+              </h2>
 
+              <p>
+                Manage your listings and keep
+                availability up to date.
+              </p>
 
-  function showError(message){
+            </div>
 
-    loadingState.style.display =
-      "none";
+            <a
+              href="properties.html"
+              class="section-link"
+            >
+              Explore marketplace →
+            </a>
 
-    dashboardContent.style.display =
-      "block";
-
-    dashboardContent.innerHTML = `
-
-      <div
-        class="error-state"
-      >
-        ${escapeHtml(message)}
-      </div>
-
-    `;
-
-  }
+          </div>
 
 
-  async function renewAvailability(
-    propertyId
-  ){
+          <div
+            class="properties-grid"
+            id="propertiesGrid"
+          ></div>
 
-    const property =
-      properties.find(
-        item =>
-          item.id === propertyId
+        </div>
+
+
+        <div
+          id="emptyState"
+          class="empty-state"
+          style="display:none;"
+        >
+
+          <div class="empty-icon">
+            P
+          </div>
+
+          <h2>
+            Your property journey starts here
+          </h2>
+
+          <p>
+            You haven't listed any properties yet.
+            Add your first property and make it
+            discoverable by people looking for
+            their next place.
+          </p>
+
+          <a
+            href="list-property.html"
+            class="primary-btn"
+          >
+            List your first property
+          </a>
+
+        </div>
+
+      </section>
+
+    </div>
+
+  </main>
+
+
+  <script>
+
+    const SUPABASE_URL =
+      "https://giugnkxhvahqjjntbpgz.supabase.co";
+
+
+    const SUPABASE_PUBLISHABLE_KEY =
+      "sb_publishable_AM_jASJf8SA4Jn3uTRSATA_0AJhWwl1";
+
+
+    const supabaseClient =
+      window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_PUBLISHABLE_KEY
       );
 
 
-    if(!property){
-      return;
-    }
+    let currentUser = null;
+
+    let properties = [];
 
 
-    const confirmed =
-      confirm(
-        "Confirm that this property is still available?"
+    const loadingState =
+      document.getElementById(
+        "loadingState"
       );
 
 
-    if(!confirmed){
-      return;
-    }
+    const dashboardContent =
+      document.getElementById(
+        "dashboardContent"
+      );
 
 
-    const now =
-      new Date().toISOString();
+    const userMini =
+      document.getElementById(
+        "userMini"
+      );
 
 
-    const {
-      error
-    } =
-      await supabaseClient
-        .from("properties")
-        .update({
-          last_confirmed_at:
-            now,
+    const userAvatar =
+      document.getElementById(
+        "userAvatar"
+      );
 
-          updated_at:
-            now
-        })
-        .eq(
-          "id",
-          propertyId
+
+    const userName =
+      document.getElementById(
+        "userName"
+      );
+
+
+    const logoutBtn =
+      document.getElementById(
+        "logoutBtn"
+      );
+
+
+    const propertyCount =
+      document.getElementById(
+        "propertyCount"
+      );
+
+
+    const activeCount =
+      document.getElementById(
+        "activeCount"
+      );
+
+
+    const propertiesGrid =
+      document.getElementById(
+        "propertiesGrid"
+      );
+
+
+    const emptyState =
+      document.getElementById(
+        "emptyState"
+      );
+
+
+    const propertySection =
+      document.getElementById(
+        "propertySection"
+      );
+
+
+    function escapeHtml(value){
+
+      return String(value ?? "")
+
+        .replace(
+          /&/g,
+          "&amp;"
         )
-        .eq(
-          "owner_id",
-          currentUser.id
+
+        .replace(
+          /</g,
+          "&lt;"
+        )
+
+        .replace(
+          />/g,
+          "&gt;"
+        )
+
+        .replace(
+          /"/g,
+          "&quot;"
+        )
+
+        .replace(
+          /'/g,
+          "&#039;"
+        );
+
+    }
+
+
+    function formatPrice(value){
+
+      if(
+        value === null ||
+        value === undefined
+      ){
+
+        return "Price not specified";
+
+      }
+
+
+      const number =
+        Number(value);
+
+
+      if(
+        Number.isNaN(number)
+      ){
+
+        return escapeHtml(value);
+
+      }
+
+
+      return (
+        "₹" +
+        number.toLocaleString(
+          "en-IN"
+        )
+      );
+
+    }
+
+
+    function formatDate(value){
+
+      if(!value){
+
+        return "Not confirmed yet";
+
+      }
+
+
+      const date =
+        new Date(value);
+
+
+      if(
+        Number.isNaN(
+          date.getTime()
+        )
+      ){
+
+        return "Not confirmed yet";
+
+      }
+
+
+      return date.toLocaleDateString(
+        "en-IN",
+        {
+          day:"numeric",
+          month:"short",
+          year:"numeric"
+        }
+      );
+
+    }
+
+
+    function getDaysSince(value){
+
+      if(!value){
+
+        return null;
+
+      }
+
+
+      const date =
+        new Date(value);
+
+
+      if(
+        Number.isNaN(
+          date.getTime()
+        )
+      ){
+
+        return null;
+
+      }
+
+
+      const now =
+        new Date();
+
+
+      const difference =
+        now.getTime() -
+        date.getTime();
+
+
+      return Math.floor(
+        difference /
+        (1000 * 60 * 60 * 24)
+      );
+
+    }
+
+
+    function getConfirmationText(
+      confirmedAt
+    ){
+
+      const days =
+        getDaysSince(
+          confirmedAt
         );
 
 
-    if(error){
+      if(days === null){
 
-      console.error(
-        "Renew error:",
-        error
+        return (
+          "Availability has not been " +
+          "confirmed yet."
+        );
+
+      }
+
+
+      if(days === 0){
+
+        return (
+          "Availability confirmed today."
+        );
+
+      }
+
+
+      if(days === 1){
+
+        return (
+          "Availability confirmed " +
+          "1 day ago."
+        );
+
+      }
+
+
+      return (
+        "Availability confirmed " +
+        days +
+        " days ago."
       );
-
-      alert(
-        "Could not renew availability. Please try again."
-      );
-
-      return;
 
     }
 
 
-    property.last_confirmed_at =
-      now;
+    function getStatusClass(
+      confirmedAt
+    ){
 
-    property.updated_at =
-      now;
-
-
-    renderDashboard();
-
-
-    alert(
-      "Availability renewed successfully."
-    );
-
-  }
+      const days =
+        getDaysSince(
+          confirmedAt
+        );
 
 
-  logoutBtn.addEventListener(
-    "click",
-    async () => {
+      if(days === null){
 
-      logoutBtn.disabled =
-        true;
+        return "status status-old";
 
-      logoutBtn.textContent =
-        "Signing out...";
+      }
+
+
+      if(days <= 7){
+
+        return "status";
+
+      }
+
+
+      if(days <= 14){
+
+        return "status status-warning";
+
+      }
+
+
+      return "status status-old";
+
+    }
+
+
+    function getStatusText(
+      property
+    ){
+
+      if(
+        property.status !==
+        "active"
+      ){
+
+        return "Inactive";
+
+      }
+
+
+      const days =
+        getDaysSince(
+          property.last_confirmed_at
+        );
+
+
+      if(days === null){
+
+        return "Needs confirmation";
+
+      }
+
+
+      if(days <= 7){
+
+        return "Active";
+
+      }
+
+
+      if(days <= 14){
+
+        return "Confirm soon";
+
+      }
+
+
+      return "Needs confirmation";
+
+    }
+
+
+    async function loadDashboard(){
+
+      loadingState.style.display =
+        "block";
+
+
+      dashboardContent.style.display =
+        "none";
+
+
+      const {
+        data:{
+          user
+        },
+        error:userError
+      } =
+        await supabaseClient.auth
+          .getUser();
+
+
+      if(userError){
+
+        console.error(
+          "User error:",
+          userError
+        );
+
+
+        showError(
+          "We couldn't load your account. " +
+          "Please try again."
+        );
+
+
+        return;
+
+      }
+
+
+      if(!user){
+
+        window.location.href =
+          "login.html";
+
+        return;
+
+      }
+
+
+      currentUser =
+        user;
+
+
+      updateUserUI();
+
+
+      const {
+        data,
+        error
+      } =
+        await supabaseClient
+
+          .from("properties")
+
+          .select(`
+            *,
+            property_images (
+              image_url,
+              display_order
+            )
+          `)
+
+          .eq(
+            "owner_id",
+            user.id
+          )
+
+          .order(
+            "created_at",
+            {
+              ascending:false
+            }
+          );
+
+
+      if(error){
+
+        console.error(
+          "Properties error:",
+          error
+        );
+
+
+        showError(
+          "We couldn't load your properties. " +
+          "Please refresh and try again."
+        );
+
+
+        return;
+
+      }
+
+
+      properties =
+        data || [];
+
+
+      renderDashboard();
+
+    }
+
+
+    function updateUserUI(){
+
+      const metadata =
+        currentUser.user_metadata ||
+        {};
+
+
+      const name =
+        metadata.full_name ||
+        metadata.name ||
+        currentUser.email ||
+        "Account";
+
+
+      const avatar =
+        metadata.avatar_url ||
+        metadata.picture ||
+        "";
+
+
+      userName.textContent =
+        name;
+
+
+      if(avatar){
+
+        userAvatar.src =
+          avatar;
+
+        userAvatar.style.display =
+          "block";
+
+      }else{
+
+        userAvatar.style.display =
+          "none";
+
+      }
+
+
+      userMini.style.display =
+        "flex";
+
+
+      logoutBtn.style.display =
+        "block";
+
+    }
+
+
+    function renderDashboard(){
+
+      loadingState.style.display =
+        "none";
+
+
+      dashboardContent.style.display =
+        "block";
+
+
+      propertyCount.textContent =
+        properties.length;
+
+
+      const activeProperties =
+        properties.filter(
+          property =>
+            property.status ===
+            "active"
+        );
+
+
+      activeCount.textContent =
+        activeProperties.length;
+
+
+      if(
+        properties.length === 0
+      ){
+
+        propertySection.style.display =
+          "none";
+
+
+        emptyState.style.display =
+          "block";
+
+
+        return;
+
+      }
+
+
+      propertySection.style.display =
+        "block";
+
+
+      emptyState.style.display =
+        "none";
+
+
+      propertiesGrid.innerHTML =
+        properties
+
+          .map(
+            property =>
+              createPropertyCard(
+                property
+              )
+          )
+
+          .join("");
+
+    }
+    function createPropertyCard(
+      property
+    ){
+
+      let images =
+        property.property_images ||
+        [];
+
+
+      images =
+        [...images].sort(
+          (a,b) =>
+            (a.display_order || 0) -
+            (b.display_order || 0)
+        );
+
+
+      const image =
+        images.length
+          ? images[0].image_url
+          : "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1200&q=85";
+
+
+      const title =
+        property.title ||
+        "Untitled property";
+
+
+      const type =
+        property.property_type ||
+        "Property";
+
+
+      const purpose =
+        property.purpose ||
+        "";
+
+
+      const location =
+        [
+          property.locality,
+          property.city
+        ]
+          .filter(Boolean)
+          .join(", ");
+
+
+      const details = [];
+
+
+      if(property.bedrooms){
+
+        details.push(
+          `${property.bedrooms} ${
+            Number(property.bedrooms) === 1
+              ? "bed"
+              : "beds"
+          }`
+        );
+
+      }
+
+
+      if(property.bathrooms){
+
+        details.push(
+          `${property.bathrooms} ${
+            Number(property.bathrooms) === 1
+              ? "bath"
+              : "baths"
+          }`
+        );
+
+      }
+
+
+      if(property.area){
+
+        details.push(
+          `${Number(property.area).toLocaleString("en-IN")} sq ft`
+        );
+
+      }
+
+
+      const confirmation =
+        getConfirmationText(
+          property.last_confirmed_at
+        );
+
+
+      const statusClass =
+        getStatusClass(
+          property.last_confirmed_at
+        );
+
+
+      const statusText =
+        getStatusText(
+          property
+        );
+
+
+      return `
+
+        <article
+          class="property-card"
+        >
+
+          <div class="property-image-wrap">
+
+            <img
+              class="property-image"
+              src="${escapeHtml(image)}"
+              alt="${escapeHtml(title)}"
+              loading="lazy"
+              onerror="
+                this.src='https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1200&q=85'
+              "
+            >
+
+
+            <div class="image-overlay"></div>
+
+
+            <div class="property-badge">
+
+              ${escapeHtml(type)}
+
+            </div>
+
+
+            <div
+              class="${statusClass}"
+            >
+
+              <span class="status-dot"></span>
+
+              ${escapeHtml(statusText)}
+
+            </div>
+
+          </div>
+
+
+          <div class="property-content">
+
+            <div class="property-top">
+
+              <div>
+
+                <h3>
+                  ${escapeHtml(title)}
+                </h3>
+
+                <p class="property-location">
+
+                  ${escapeHtml(
+                    location ||
+                    "Location not specified"
+                  )}
+
+                </p>
+
+              </div>
+
+
+              <div class="property-price">
+
+                ${formatPrice(
+                  property.price
+                )}
+
+              </div>
+
+            </div>
+
+
+            <div class="property-meta">
+
+              ${
+                details.length
+                  ? details
+                      .map(
+                        detail =>
+                          `<span>${escapeHtml(detail)}</span>`
+                      )
+                      .join("")
+                  : `<span>Property details available</span>`
+              }
+
+            </div>
+
+
+            <div class="confirmation-row">
+
+              <span>
+                ${escapeHtml(
+                  confirmation
+                )}
+              </span>
+
+              <span class="purpose-label">
+
+                ${escapeHtml(
+                  purpose
+                )}
+
+              </span>
+
+            </div>
+
+
+            <div class="card-actions">
+
+              <button
+                class="renew-btn"
+                onclick="renewAvailability('${property.id}')"
+              >
+                Renew availability
+              </button>
+
+
+              <a
+                class="secondary-btn"
+                href="edit-property.html?id=${encodeURIComponent(property.id)}"
+              >
+                Edit
+              </a>
+
+
+              <a
+                class="secondary-btn"
+                href="property.html?id=${encodeURIComponent(property.id)}"
+              >
+                View
+              </a>
+
+
+              <button
+                class="delete-btn"
+                onclick="deleteProperty('${property.id}')"
+              >
+                Delete
+              </button>
+
+            </div>
+
+          </div>
+
+        </article>
+
+      `;
+
+    }
+
+
+    async function renewAvailability(
+      propertyId
+    ){
+
+      if(!currentUser){
+
+        return;
+
+      }
+
+
+      const button =
+        event &&
+        event.currentTarget;
+
+
+      if(button){
+
+        button.disabled =
+          true;
+
+        button.textContent =
+          "Updating...";
+
+      }
 
 
       const {
         error
       } =
-        await supabaseClient.auth.signOut();
+        await supabaseClient
+
+          .from("properties")
+
+          .update({
+            last_confirmed_at:
+              new Date().toISOString(),
+
+            updated_at:
+              new Date().toISOString()
+          })
+
+          .eq(
+            "id",
+            propertyId
+          )
+
+          .eq(
+            "owner_id",
+            currentUser.id
+          );
+
+
+      if(error){
+
+        console.error(
+          "Renew error:",
+          error
+        );
+
+
+        alert(
+          "Couldn't renew availability. Please try again."
+        );
+
+
+        if(button){
+
+          button.disabled =
+            false;
+
+          button.textContent =
+            "Renew availability";
+
+        }
+
+
+        return;
+
+      }
+
+
+      const property =
+        properties.find(
+          item =>
+            item.id ===
+            propertyId
+        );
+
+
+      if(property){
+
+        property.last_confirmed_at =
+          new Date().toISOString();
+
+        property.updated_at =
+          new Date().toISOString();
+
+      }
+
+
+      renderDashboard();
+
+    }
+
+
+    async function deleteProperty(
+      propertyId
+    ){
+
+      if(!currentUser){
+
+        return;
+
+      }
+
+
+      const property =
+        properties.find(
+          item =>
+            item.id ===
+            propertyId
+        );
+
+
+      const propertyName =
+        property &&
+        property.title
+          ? property.title
+          : "this property";
+
+
+      const confirmed =
+        window.confirm(
+          `Are you sure you want to permanently delete "${propertyName}"?\n\nThis action cannot be undone.`
+        );
+
+
+      if(!confirmed){
+
+        return;
+
+      }
+
+
+      const {
+        error
+      } =
+        await supabaseClient
+
+          .from("properties")
+
+          .delete()
+
+          .eq(
+            "id",
+            propertyId
+          )
+
+          .eq(
+            "owner_id",
+            currentUser.id
+          );
+
+
+      if(error){
+
+        console.error(
+          "Delete error:",
+          error
+        );
+
+
+        alert(
+          "Couldn't delete this property. Please try again."
+        );
+
+
+        return;
+
+      }
+
+
+      properties =
+        properties.filter(
+          item =>
+            item.id !==
+            propertyId
+        );
+
+
+      renderDashboard();
+
+    }
+
+
+    function showError(
+      message
+    ){
+
+      loadingState.style.display =
+        "none";
+
+
+      dashboardContent.style.display =
+        "block";
+
+
+      propertySection.style.display =
+        "none";
+
+
+      emptyState.style.display =
+        "block";
+
+
+      emptyState.innerHTML = `
+
+        <div class="empty-icon">
+          !
+        </div>
+
+        <h2>
+          Something went wrong
+        </h2>
+
+        <p>
+          ${escapeHtml(message)}
+        </p>
+
+        <button
+          class="primary-btn"
+          onclick="loadDashboard()"
+        >
+          Try again
+        </button>
+
+      `;
+
+    }
+
+
+    async function logout(){
+
+      const {
+        error
+      } =
+        await supabaseClient.auth
+          .signOut();
 
 
       if(error){
@@ -1478,15 +2719,11 @@
           error
         );
 
-        logoutBtn.disabled =
-          false;
-
-        logoutBtn.textContent =
-          "Sign out";
 
         alert(
-          "Could not sign out. Please try again."
+          "Couldn't sign out. Please try again."
         );
+
 
         return;
 
@@ -1497,32 +2734,72 @@
         "login.html";
 
     }
-  );
 
 
-  document.addEventListener(
-    "DOMContentLoaded",
-    () => {
+    const mobileMenuBtn =
+      document.getElementById(
+        "mobileMenuBtn"
+      );
 
-      loadDashboard();
+
+    const mobileMenu =
+      document.getElementById(
+        "mobileMenu"
+      );
+
+
+    if(mobileMenuBtn){
+
+      mobileMenuBtn.addEventListener(
+        "click",
+        function(){
+
+          mobileMenu.classList.toggle(
+            "open"
+          );
+
+        }
+      );
 
     }
-  );
-<style>
 
-  .status-warning{
-    background:#fff5df;
-    color:#9a6b20;
-  }
 
-  .status-old{
-    background:#fff0ed;
-    color:#a34c3c;
-  }
+    document
+      .querySelectorAll(
+        ".mobile-link"
+      )
+      .forEach(
+        link => {
 
-</style>
+          link.addEventListener(
+            "click",
+            function(){
 
-</script>
+              mobileMenu.classList.remove(
+                "open"
+              );
+
+            }
+          );
+
+        }
+      );
+
+
+    if(logoutBtn){
+
+      logoutBtn.addEventListener(
+        "click",
+        logout
+      );
+
+    }
+
+
+    loadDashboard();
+
+  </script>
 
 </body>
+
 </html>
